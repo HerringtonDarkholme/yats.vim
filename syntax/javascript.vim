@@ -44,14 +44,28 @@ syntax region  javascriptComment          start="/\*"  end="\*/" contains=@Spell
 if !exists("javascript_ignore_javaScriptdoc")
   syntax case ignore
 
-" syntax coloring for JSDoc comments (HTML)
+  "" syntax coloring for javadoc comments (HTML)
+  "syntax include @javaHtml <sfile>:p:h/html.vim
   "unlet b:current_syntax
 
-  syntax region  javascriptDocComment    matchgroup=javascriptComment start="/\*\*\s*$"  end="\*/" contains=javascriptDocTags,javascriptCommentTodo,javascriptCvsTag,@javascriptHtml,@Spell fold
-  syntax match   javascriptDocTags       contained "@\(param\|argument\|requires\|exception\|throws\|type\|class\|extends\|see\|link\|member\|module\|method\|title\|namespace\|optional\|default\|base\|file\)\>" nextgroup=javascriptDocParam,javascriptDocSeeTag skipwhite
-  syntax match   javascriptDocTags       contained "@\(beta\|deprecated\|description\|fileoverview\|author\|license\|version\|returns\=\|constructor\|private\|protected\|final\|ignore\|addon\|exec\)\>"
-  syntax match   javascriptDocParam      contained "\%(#\|\w\|\.\|:\|\/\)\+"
-  syntax region  javascriptDocSeeTag     contained matchgroup=javascriptDocSeeTag start="{" end="}" contains=javascriptDocTags
+  syntax region  javaScriptDocComment         matchgroup=javaScriptComment start="/\*\*"  end="\*/" contains=javaScriptDocTags,javaScriptCommentTodo,javaScriptCvsTag,@javaScriptHtml,@Spell fold
+  syntax match   javaScriptDocTags            contained "@\(constant\|constructor\|constrructs\|event\|function\|ignore\|inner\|private\|public\|static\)\>"
+  syntax match   javaScriptDocTags            contained "@\(arguments\|lends\|memberOf\|name\|type\|link\)\>" nextgroup=javaScriptDocParam skipwhite
+  syntax match   javaScriptDocTags            contained "@\(author\|class\|default\|deprecated\|description\|fileOverview\|namespace\|requires\|since\|version\)\>" nextgroup=javaScriptDocDesc skipwhite
+  syntax match   javaScriptDocTags            contained "@\(borrows\|exports\)\>" nextgroup=javaScriptDocA skipwhite
+  syntax match   javaScriptDocTags            contained "@\(example\)\>"
+  syntax match   javaScriptDocTags            contained "@\(param\|property\)\>" nextgroup=javaScriptDocNamedParamType,javaScriptDocParamName skipwhite
+  syntax match   javaScriptDocTags            contained "@\(returns\|throws\)\>" nextgroup=javaScriptDocParamType,javaScriptDocParamName skipwhite
+  syntax match   javaScriptDocTags            contained "@\(see\)\>" nextgroup=javaScriptDocRef skipwhite
+  syntax match   javaScriptDocNamedParamType  contained "{\w\+}" nextgroup=javaScriptDocParamName skipwhite
+  syntax match   javaScriptDocParamName       contained "\w\+" nextgroup=javaScriptDocDesc skipwhite
+  syntax match   javaScriptDocParamType       contained "{\w\+}" nextgroup=javaScriptDocDesc skipwhite
+  syntax match   javaScriptDocA               contained "\%(#\|\w\|\.\|:\|\/\)\+" nextgroup=javaScriptDocAs skipwhite
+  syntax match   javaScriptDocAs              contained "\s*as\s*" nextgroup=javaScriptDocB skipwhite
+  syntax match   javaScriptDocB               contained "\%(#\|\w\|\.\|:\|\/\)\+"
+  syntax match   javaScriptDocParam           contained "\%(#\|\w\|\.\|:\|\/\)\+"
+  syntax match   javaScriptDocRef             contained "\%(#\|\w\|\.\|:\|\/\)\+"
+  syntax region  javaScriptDocLinkTag         contained matchgroup=javaScriptDocLinkTag start="{" end="}" contains=javaScriptDocTags
 
   syntax case match
 endif   "" JSDoc end
