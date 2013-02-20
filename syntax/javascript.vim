@@ -38,7 +38,7 @@ hi link shebang Comment
 syntax keyword javascriptCommentTodo      TODO FIXME XXX TBD contained
 syntax match   javascriptLineComment      "\/\/.*" contains=@Spell,javascriptCommentTodo
 syntax match   javascriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
-syntax region  javascriptComment	       start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
+syntax region  javascriptComment          start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
 "}}}
 "" JSDoc support start"{{{
 if !exists("javascript_ignore_javaScriptdoc")
