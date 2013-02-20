@@ -320,7 +320,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptNumber               Number
   HiLink javascriptPropietaryObjects    Constant
 
-  hiLink shebang                        Comment
+  HiLink shebang                        Comment
 
   delcommand HiLink
 endif
