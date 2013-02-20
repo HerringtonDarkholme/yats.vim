@@ -32,7 +32,6 @@ syntax sync fromstart
 
 "" syntax coloring for Node.js shebang line
 syntax match shebang "^#!.*/bin/env\s\+node\>"
-hi link shebang Comment
 
 "" JavaScript comments"{{{
 syntax keyword javascriptCommentTodo      TODO FIXME XXX TBD contained
@@ -320,6 +319,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 
   HiLink javascriptNumber               Number
   HiLink javascriptPropietaryObjects    Constant
+
+  hiLink shebang                        Comment
 
   delcommand HiLink
 endif
