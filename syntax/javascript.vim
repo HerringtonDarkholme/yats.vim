@@ -59,9 +59,9 @@ if !exists("javascript_ignore_javaScriptdoc")
   syntax match   javaScriptDocTags            contained "@\(define\|enum\|extends\|implements\|this\|typedef\)\>" nextgroup=javaScriptDocParamType skipwhite
   syntax match   javaScriptDocTags            contained "@\(returns\|throws\)\>" nextgroup=javaScriptDocParamType,javaScriptDocParamName skipwhite
   syntax match   javaScriptDocTags            contained "@\(see\)\>" nextgroup=javaScriptDocRef skipwhite
-  syntax match   javaScriptDocNamedParamType  contained "{\w\+}" nextgroup=javaScriptDocParamName skipwhite
+  syntax match   javaScriptDocNamedParamType  contained "{.\+}" nextgroup=javaScriptDocParamName skipwhite
   syntax match   javaScriptDocParamName       contained "\w\+" nextgroup=javaScriptDocDesc skipwhite
-  syntax match   javaScriptDocParamType       contained "{\w\+}" nextgroup=javaScriptDocDesc skipwhite
+  syntax match   javaScriptDocParamType       contained "{.\+}" nextgroup=javaScriptDocDesc skipwhite
   syntax match   javaScriptDocA               contained "\%(#\|\w\|\.\|:\|\/\)\+" nextgroup=javaScriptDocAs skipwhite
   syntax match   javaScriptDocAs              contained "\s*as\s*" nextgroup=javaScriptDocB skipwhite
   syntax match   javaScriptDocB               contained "\%(#\|\w\|\.\|:\|\/\)\+"
