@@ -49,11 +49,14 @@ if !exists("javascript_ignore_javaScriptdoc")
 
   syntax region  javaScriptDocComment         matchgroup=javaScriptComment start="/\*\*"  end="\*/" contains=javaScriptDocTags,javaScriptCommentTodo,javaScriptCvsTag,@javaScriptHtml,@Spell fold
   syntax match   javaScriptDocTags            contained "@\(constant\|constructor\|constrructs\|event\|function\|ignore\|inner\|private\|public\|static\)\>"
+  syntax match   javaScriptDocTags            contained "@\(const\|dict\|expose\|inheritDoc\|interface\|nosideeffects\|override\|protected\|struct\)\>"
   syntax match   javaScriptDocTags            contained "@\(arguments\|lends\|memberOf\|name\|type\|link\)\>" nextgroup=javaScriptDocParam skipwhite
   syntax match   javaScriptDocTags            contained "@\(author\|class\|default\|deprecated\|description\|fileOverview\|namespace\|requires\|since\|version\)\>" nextgroup=javaScriptDocDesc skipwhite
+  syntax match   javaScriptDocTags            contained "@\(license\|preserve\)\>" nextgroup=javaScriptDocDesc skipwhite
   syntax match   javaScriptDocTags            contained "@\(borrows\|exports\)\>" nextgroup=javaScriptDocA skipwhite
   syntax match   javaScriptDocTags            contained "@\(example\)\>"
   syntax match   javaScriptDocTags            contained "@\(param\|property\)\>" nextgroup=javaScriptDocNamedParamType,javaScriptDocParamName skipwhite
+  syntax match   javaScriptDocTags            contained "@\(define\|enum\|extends\|implements\|this\|typedef\)\>" nextgroup=javaScriptDocParamType skipwhite
   syntax match   javaScriptDocTags            contained "@\(returns\|throws\)\>" nextgroup=javaScriptDocParamType,javaScriptDocParamName skipwhite
   syntax match   javaScriptDocTags            contained "@\(see\)\>" nextgroup=javaScriptDocRef skipwhite
   syntax match   javaScriptDocNamedParamType  contained "{\w\+}" nextgroup=javaScriptDocParamName skipwhite
