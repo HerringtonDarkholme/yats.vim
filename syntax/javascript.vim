@@ -82,23 +82,23 @@ endif   "" JSDoc end
 syntax case match
 
 "" Syntax in the JavaScript code"{{{
-syntax match   javascriptSpecial	       "\\\d\d\d\|\\."
-syntax region  javascriptStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javascriptSpecial,@htmlPreproc
-syntax region  javascriptStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javascriptSpecial,@htmlPreproc
+syntax match   javascriptSpecial	        "\\\d\d\d\|\\."
+syntax region  javascriptStringD	        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javascriptSpecial,@htmlPreproc
+syntax region  javascriptStringS	        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javascriptSpecial,@htmlPreproc
 
 syntax match   javascriptSpecialCharacter "'\\.'"
-syntax match   javascriptNumber	         "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
-syntax region  javascriptRegexpString    start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
-" syntax match   javascriptSpecial        "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
-" syntax region  javascriptStringD        start=+"+  skip=+\\\\\|\\$"+  end=+"+  contains=javascriptSpecial,@htmlPreproc
-" syntax region  javascriptStringS        start=+'+  skip=+\\\\\|\\$'+  end=+'+  contains=javascriptSpecial,@htmlPreproc
-" syntax region  javascriptRegexpString   start=+/\(\*\|/\)\@!+ skip=+\\\\\|\\/+ end=+/[gim]\{,3}+ contains=javascriptSpecial,@htmlPreproc oneline
-" syntax match   javascriptNumber         /\<-\=\d\+L\=\>\|\<0[xX]\x\+\>/
-syntax match   javascriptFloat          /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
-" syntax match   javascriptLabel          /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
+syntax match   javascriptNumber	          "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
+syntax region  javascriptRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
+" syntax match   javascriptSpecial          "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
+" syntax region  javascriptStringD          start=+"+  skip=+\\\\\|\\$"+  end=+"+  contains=javascriptSpecial,@htmlPreproc
+" syntax region  javascriptStringS          start=+'+  skip=+\\\\\|\\$'+  end=+'+  contains=javascriptSpecial,@htmlPreproc
+" syntax region  javascriptRegexpString     start=+/\(\*\|/\)\@!+ skip=+\\\\\|\\/+ end=+/[gim]\{,3}+ contains=javascriptSpecial,@htmlPreproc oneline
+" syntax match   javascriptNumber           /\<-\=\d\+L\=\>\|\<0[xX]\x\+\>/
+syntax match   javascriptFloat            /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
+" syntax match   javascriptLabel            /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 "}}}
 "" JavaScript Prototype"{{{
-syntax keyword javascriptPrototype      prototype
+syntax keyword javascriptPrototype        prototype
 "}}}
 "  DOM, Browser and Ajax Support   {{{
 """"""""""""""""""""""""
@@ -213,15 +213,15 @@ if main_syntax == "javascript"
   " syntax sync match javascriptHighlight grouphere javascriptBlock /{/
 endif
 
-syntax keyword javascriptFuncKeyword function contained
-syntax region  javascriptFuncDef start="function" end="\([^)]*\)" contains=javascriptFuncKeyword,javascriptFuncArg keepend
-syntax match   javascriptFuncArg "\(([^()]*)\)" contains=javascriptParens,javascriptFuncComma contained
-syntax match   javascriptFuncComma /,/ contained
+syntax keyword javascriptFuncKeyword  function contained
+syntax region  javascriptFuncDef      start="function" end="\([^)]*\)" contains=javascriptFuncKeyword,javascriptFuncArg keepend
+syntax match   javascriptFuncArg      "\(([^()]*)\)" contains=javascriptParens,javascriptFuncComma contained
+syntax match   javascriptFuncComma    /,/ contained
 " syntax region  javascriptFuncBlock      contained matchgroup=javascriptFuncBlock start="{" end="}" contains=@javascriptAll,javascriptParensErrA,javascriptParensErrB,javascriptParen,javascriptBracket,javascriptBlock fold
 
-syntax match   javascriptBraces	   "[{}\[\]]"
-syntax match   javascriptParens	   "[()]"
-syntax match   javascriptOpSymbols	   "=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-="
+syntax match   javascriptBraces	      "[{}\[\]]"
+syntax match   javascriptParens	      "[()]"
+syntax match   javascriptOpSymbols	  "=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-="
 syntax match   javascriptEndColons    "[;,]"
 syntax match   javascriptLogicSymbols "\(&&\)\|\(||\)"
 
@@ -230,7 +230,7 @@ syntax match   javascriptLogicSymbols "\(&&\)\|\(||\)"
 function! JavaScriptFold()
 	setl foldmethod=syntax
 	setl foldlevelstart=1
-	syntax region  foldBraces start=/{/ end=/}/ transparent fold keepend extend
+	syntax region  foldBraces             start=/{/ end=/}/ transparent fold keepend extend
 
 	setl foldtext=FoldText()
 endfunction
@@ -337,8 +337,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 endif
 
 " Define the htmlJavaScript for HTML syntax html.vim
-"syntax clear htmlJavaScript
-"syntax clear javascriptExpression
+" syntax clear    htmlJavaScript
+" syntax clear    javascriptExpression
 syntax cluster  htmlJavaScript contains=@javascriptAll,javascriptBracket,javascriptParen,javascriptBlock,javascriptParenError
 syntax cluster  javascriptExpression contains=@javascriptAll,javascriptBracket,javascriptParen,javascriptBlock,javascriptParenError,@htmlPreproc
 
