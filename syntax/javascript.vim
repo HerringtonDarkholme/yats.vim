@@ -264,6 +264,9 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptDocTags              Special
   HiLink javascriptDocSeeTag            Function
   HiLink javascriptDocParam             Function
+  HiLink javascriptDocNamedParamType    Type
+  HiLink javascriptDocParamName         Type
+  HiLink javascriptDocParamType         Type
   HiLink javascriptStringS              String
   HiLink javascriptStringD              String
   HiLink javascriptRegexpString         String
