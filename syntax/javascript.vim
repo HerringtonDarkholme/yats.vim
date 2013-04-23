@@ -83,8 +83,8 @@ syntax case match
 
 "" Syntax in the JavaScript code"{{{
 syntax match   javascriptSpecial	        "\\\d\d\d\|\\."
-syntax region  javascriptStringD	        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javascriptSpecial,@htmlPreproc
-syntax region  javascriptStringS	        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javascriptSpecial,@htmlPreproc
+syntax region  javascriptString	        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javascriptSpecial,@htmlPreproc
+syntax region  javascriptString	        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javascriptSpecial,@htmlPreproc
 
 syntax match   javascriptSpecialCharacter "'\\.'"
 syntax match   javascriptNumber	          "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
@@ -205,7 +205,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javascriptAll       contains=javascriptComment,javascriptLineComment,javascriptDocComment,javascriptStringD,javascriptStringS,javascriptRegexpString,javascriptNumber,javascriptFloat,javascriptLabel,javascriptSource,javascriptType,javascriptOperator,javascriptBoolean,javascriptNull,javascriptFuncKeyword,javascriptConditional,javascriptGlobal,javascriptRepeat,javascriptBranch,javascriptStatement,javascriptGlobalObjects,javascriptMessage,javascriptIdentifier,javascriptExceptions,javascriptReserved,javascriptDeprecated,javascriptDomErrNo,javascriptDomNodeConsts,javascriptHtmlEvents,javascriptDotNotation,javascriptBrowserObjects,javascriptDOMObjects,javascriptAjaxObjects,javascriptPropietaryObjects,javascriptDOMMethods,javascriptHtmlElemProperties,javascriptDOMProperties,javascriptEventListenerKeywords,javascriptEventListenerMethods,javascriptAjaxProperties,javascriptAjaxMethods,javascriptFuncArg,javascriptTypedArray,javascriptFileAPI
+syntax cluster javascriptAll       contains=javascriptComment,javascriptLineComment,javascriptDocComment,javascriptString,javascriptRegexpString,javascriptNumber,javascriptFloat,javascriptLabel,javascriptSource,javascriptType,javascriptOperator,javascriptBoolean,javascriptNull,javascriptFuncKeyword,javascriptConditional,javascriptGlobal,javascriptRepeat,javascriptBranch,javascriptStatement,javascriptGlobalObjects,javascriptMessage,javascriptIdentifier,javascriptExceptions,javascriptReserved,javascriptDeprecated,javascriptDomErrNo,javascriptDomNodeConsts,javascriptHtmlEvents,javascriptDotNotation,javascriptBrowserObjects,javascriptDOMObjects,javascriptAjaxObjects,javascriptPropietaryObjects,javascriptDOMMethods,javascriptHtmlElemProperties,javascriptDOMProperties,javascriptEventListenerKeywords,javascriptEventListenerMethods,javascriptAjaxProperties,javascriptAjaxMethods,javascriptFuncArg,javascriptTypedArray,javascriptFileAPI
 
 if main_syntax == "javascript"
   syntax sync clear
@@ -267,8 +267,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptDocNamedParamType    Type
   HiLink javascriptDocParamName         Type
   HiLink javascriptDocParamType         Type
-  HiLink javascriptStringS              String
-  HiLink javascriptStringD              String
+  HiLink javascriptString               String
   HiLink javascriptRegexpString         String
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
