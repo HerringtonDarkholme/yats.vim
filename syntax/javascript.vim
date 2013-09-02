@@ -147,7 +147,10 @@ syntax keyword javascriptTypedArray     Int32Array Uint32Array Float32Array Floa
 
 " http://www.w3.org/TR/FileAPI/
 " https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html
-syntax keyword javascriptFileAPI        File Blob FileReader URL
+syntax keyword javascriptFileAPI             File Blob BlobBuilder FileReader URL
+syntax keyword javascriptBlobBuilderMethods  apeend getBlob getFile
+syntax keyword javascriptFileReaderMethods   readAsArrayBuffer readAsBinaryString readAsDataURL readAsText
+syntax keyword javascriptURLMethods          createObjectURL revokeObjectURL
 
 syntax keyword javascriptExceptions     try catch throw finally Error EvalError RangeError ReferenceError SyntaxError TypeError URIError
 
@@ -298,7 +301,11 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptGlobalObjects        Special
   HiLink javascriptExceptions           Special
   HiLink javascriptTypedArray           Special
+
   HiLink javascriptFileAPI              Special
+  HiLink javascriptBlobBuilderMethods   Exception
+  HiLink javascriptFileReaderMethods    Exception
+  HiLink javascriptURLMethods           Exception
 
   HiLink javascriptDomErrNo             Constant
   HiLink javascriptDomNodeConsts        Constant
