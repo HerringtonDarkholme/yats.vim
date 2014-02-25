@@ -104,8 +104,10 @@ syntax keyword javascriptPrototype        prototype
 """"""""""""""""""""""""
 syntax keyword javascriptBrowserObjects           window navigator screen history location
 
+syntax keyword javascriptWinDocMethods            postMessage registerElement
+
 syntax keyword javascriptDOMObjects               document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea CustomeEevent
-syntax keyword javascriptDOMMethods               createTextNode createElement insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode initCustomEvent postMessage
+syntax keyword javascriptDOMMethods               createTextNode createElement insertBefore replaceChild removeChild appendChild  hasChildNodes  cloneNode  normalize  isSupported  hasAttributes  getAttribute  setAttribute  removeAttribute  getAttributeNode  setAttributeNode  removeAttributeNode  getElementsByTagName  hasAttribute  getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode initCustomEvent
 syntax keyword javascriptDOMProperties            nodeName  nodeValue  nodeType  parentNode  childNodes  firstChild  lastChild  previousSibling  nextSibling  attributes  ownerDocument  namespaceURI  prefix  localName  tagName
 
 syntax keyword javascriptAjaxObjects              XMLHttpRequest
@@ -335,6 +337,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptBrowserObjects       Constant
                                         
   HiLink javascriptDOMObjects           Constant
+  HiLink javascriptWinDocMethods        Constant
   HiLink javascriptHtmlInterface        Constant
   HiLink javascriptDOMMethods           Exception
   HiLink javascriptDOMProperties        Type
