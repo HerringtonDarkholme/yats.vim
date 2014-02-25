@@ -35,6 +35,12 @@ You can help me improve it too.
 Changes
 -------
 
+### Version 0.9
+
+- Add HTML interfaces
+- Add CustomEvent
+- Add custom element api
+
 ### Version 0.8
 
 - Use javascript as group name prefix, which makes SyntaxComplete can work for JavaScript
