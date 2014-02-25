@@ -152,6 +152,20 @@ syntax keyword javascriptBlobBuilderMethods  apeend getBlob getFile
 syntax keyword javascriptFileReaderMethods   readAsArrayBuffer readAsBinaryString readAsDataURL readAsText
 syntax keyword javascriptURLMethods          createObjectURL revokeObjectURL
 
+" HTMLInterface
+
+syntax keyword javascriptHtmlInterface HTMLAnchorElement HTMLAreaElement HTMLAudioElement HTMLBaseElement HTMLBodyElement HTMLBRElement
+syntax keyword javascriptHtmlInterface HTMLButtonElement HTMLCanvasElement HTMLCollection HTMLDataElement HTMLDataListElement HTMLDivElement
+syntax keyword javascriptHtmlInterface HTMLDListElement HTMLDocument HTMLEmbedElement HTMLFieldSetElement HTMLFormControlsCollection HTMLFormElement
+syntax keyword javascriptHtmlInterface HTMLHeadElement HTMLHeadingElement HTMLHRElement HTMLHtmlElement HTMLIFrameElement HTMLImageElement
+syntax keyword javascriptHtmlInterface HTMLInputElement HTMLKeygenElement HTMLLabelElement HTMLLegendElement HTMLLIElement HTMLLinkElement
+syntax keyword javascriptHtmlInterface HTMLMapElement HTMLMediaElement HTMLMetaElement HTMLMeterElement HTMLModElement HTMLObjectElement 
+syntax keyword javascriptHtmlInterface HTMLOListElement HTMLOptGroupElement HTMLOptionElement HTMLOptionsCollection HTMLOutputElement HTMLParagraphElement
+syntax keyword javascriptHtmlInterface HTMLParamElement HTMLPreElement HTMLProgressElement HTMLQuoteElement HTMLScriptElement HTMLSelectElement
+syntax keyword javascriptHtmlInterface HTMLSourceElement HTMLSpanElement HTMLStyleElement HTMLTableCaptionElement HTMLTableCellElement HTMLTableColElement
+syntax keyword javascriptHtmlInterface HTMLTableDataCellElement HTMLTableElement HTMLTableHeaderCellElement HTMLTableRowElement HTMLTableSectionElement HTMLTextAreaElement
+syntax keyword javascriptHtmlInterface HTMLTimeElement HTMLTitleElement HTMLTrackElement HTMLUListElement HTMLUnknownElement HTMLVideoElement 
+
 syntax keyword javascriptExceptions     try catch throw finally Error EvalError RangeError ReferenceError SyntaxError TypeError URIError
 
 syntax keyword javascriptReserved       abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws const goto private transient debugger implements protected volatile double import public
@@ -208,7 +222,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javascriptAll       contains=javascriptComment,javascriptLineComment,javascriptDocComment,javascriptString,javascriptRegexpString,javascriptNumber,javascriptFloat,javascriptLabel,javascriptSource,javascriptType,javascriptOperator,javascriptBoolean,javascriptNull,javascriptFuncKeyword,javascriptConditional,javascriptGlobal,javascriptRepeat,javascriptBranch,javascriptStatement,javascriptGlobalObjects,javascriptMessage,javascriptIdentifier,javascriptExceptions,javascriptReserved,javascriptDeprecated,javascriptDomErrNo,javascriptDomNodeConsts,javascriptHtmlEvents,javascriptDotNotation,javascriptBrowserObjects,javascriptDOMObjects,javascriptAjaxObjects,javascriptPropietaryObjects,javascriptDOMMethods,javascriptHtmlElemProperties,javascriptDOMProperties,javascriptEventListenerKeywords,javascriptEventListenerMethods,javascriptAjaxProperties,javascriptAjaxMethods,javascriptFuncArg,javascriptTypedArray,javascriptFileAPI
+syntax cluster javascriptAll       contains=javascriptComment,javascriptLineComment,javascriptDocComment,javascriptString,javascriptRegexpString,javascriptNumber,javascriptFloat,javascriptLabel,javascriptSource,javascriptType,javascriptOperator,javascriptBoolean,javascriptNull,javascriptFuncKeyword,javascriptConditional,javascriptGlobal,javascriptRepeat,javascriptBranch,javascriptStatement,javascriptGlobalObjects,javascriptMessage,javascriptIdentifier,javascriptExceptions,javascriptReserved,javascriptDeprecated,javascriptDomErrNo,javascriptDomNodeConsts,javascriptHtmlEvents,javascriptDotNotation,javascriptBrowserObjects,javascriptDOMObjects,javascriptHtmlInterface,javascriptAjaxObjects,javascriptPropietaryObjects,javascriptDOMMethods,javascriptHtmlElemProperties,javascriptDOMProperties,javascriptEventListenerKeywords,javascriptEventListenerMethods,javascriptAjaxProperties,javascriptAjaxMethods,javascriptFuncArg,javascriptTypedArray,javascriptFileAPI
 
 if main_syntax == "javascript"
   syntax sync clear
@@ -321,6 +335,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptBrowserObjects       Constant
                                         
   HiLink javascriptDOMObjects           Constant
+  HiLink javascriptHtmlInterface        Constant
   HiLink javascriptDOMMethods           Exception
   HiLink javascriptDOMProperties        Type
                                         
