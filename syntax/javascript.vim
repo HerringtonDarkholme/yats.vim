@@ -85,6 +85,8 @@ syntax case match
 syntax match   javascriptSpecial	        "\\\d\d\d\|\\."
 syntax region  javascriptString	        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javascriptSpecial,@htmlPreproc
 syntax region  javascriptString	        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javascriptSpecial,@htmlPreproc
+syntax region  javascriptTemplate       start=+`+  skip=+\\\\\|\\`+  end=+`\|$+	contains=javascriptTemplateVar
+syntax match   javascriptTemplateVar    /\${\w\+}/
 
 syntax match   javascriptSpecialCharacter "'\\.'"
 syntax match   javascriptNumber	          "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
@@ -288,6 +290,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptDocParamName         Type
   HiLink javascriptDocParamType         Type
   HiLink javascriptString               String
+  HiLink javascriptTemplate             String
+  HiLink javascriptTemplateVar          Label
   HiLink javascriptRegexpString         String
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
