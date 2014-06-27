@@ -237,10 +237,11 @@ syntax region  javascriptFuncDef      start="function" end="\([^)]*\)" contains=
 syntax match   javascriptFuncArg      "\(([^()]*)\)" contains=javascriptParens,javascriptFuncComma contained
 syntax match   javascriptFuncComma    /,/ contained
 " syntax region  javascriptFuncBlock      contained matchgroup=javascriptFuncBlock start="{" end="}" contains=@javascriptAll,javascriptParensErrA,javascriptParensErrB,javascriptParen,javascriptBracket,javascriptBlock fold
+syntax match   javascriptArrowFunc    /=>/
 
 syntax match   javascriptBraces	      "[{}\[\]]"
 syntax match   javascriptParens	      "[()]"
-syntax match   javascriptOpSymbols	  "=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-="
+syntax match   javascriptOpSymbols	  "[ \^]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze[ \$]"
 syntax match   javascriptEndColons    "[;,]"
 syntax match   javascriptLogicSymbols "\(&&\)\|\(||\)"
 
@@ -297,6 +298,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptRepeat               Repeat
   HiLink javascriptStatement            Statement
   HiLink javascriptFuncKeyword          Function
+  HiLink javascriptArrowFunc            Function
   HiLink javascriptMessage              Keyword
   HiLink javascriptDeprecated           Exception
   HiLink javascriptError                Error
