@@ -135,7 +135,7 @@ syntax keyword javascriptDeprecated     escape unescape all applets alinkColor b
 "}}}
 "" Statement Keywords"{{{
 syntax keyword javascriptConditional    if else switch
-syntax keyword javascriptRepeat         do while for in
+syntax keyword javascriptRepeat         do while for in of
 syntax keyword javascriptBranch         break continue
 syntax keyword javascriptLabel          case default
 syntax keyword javascriptStatement      return with
