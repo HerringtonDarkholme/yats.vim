@@ -82,11 +82,10 @@ endif   "" JSDoc end
 syntax case match
 
 "" Syntax in the JavaScript code"{{{
-syntax match   javascriptSpecial	        "\\\d\d\d\|\\."
-syntax region  javascriptString	        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javascriptSpecial,@htmlPreproc
-syntax region  javascriptString	        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javascriptSpecial,@htmlPreproc
-syntax region  javascriptTemplate       start=+`+  skip=+\\\\\|\\`+  end=+`\|$+	contains=javascriptTemplateVar
-syntax match   javascriptTemplateVar    /\${\w\+}/
+syntax region  javascriptString	               start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=@htmlPreproc
+syntax region  javascriptString	               start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=@htmlPreproc
+syntax region  javascriptTemplate              start=+`+  skip=+\\\\\|\\`+  end=+`\|$+	contains=javascriptTemplateSubstitution
+syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 
 syntax match   javascriptSpecialCharacter "'\\.'"
 syntax match   javascriptNumber	          "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
@@ -291,7 +290,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptDocParamType         Type
   HiLink javascriptString               String
   HiLink javascriptTemplate             String
-  HiLink javascriptTemplateVar          Label
+  HiLink javascriptTemplateSubstitution Label
   HiLink javascriptRegexpString         String
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
