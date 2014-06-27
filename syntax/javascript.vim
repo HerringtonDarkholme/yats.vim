@@ -243,7 +243,7 @@ syntax match   javascriptArrowFunc    /=>/
 
 syntax match   javascriptBraces	      "[{}\[\]]"
 syntax match   javascriptParens	      "[()]"
-syntax match   javascriptOpSymbols	  "[ \^]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze[ \$]"
+syntax match   javascriptOpSymbols	  "\_[ \_^]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[ \_$]"
 syntax match   javascriptEndColons    "[;,]"
 syntax match   javascriptLogicSymbols "\(&&\)\|\(||\)"
 
