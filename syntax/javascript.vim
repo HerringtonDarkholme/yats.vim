@@ -127,7 +127,7 @@ syntax keyword javascriptEventListenerMethods     scrollIntoView  addEventListen
 " }}}
 "" Programm Keywords"{{{
 syntax keyword javascriptSource         import export
-syntax keyword javascriptIdentifier     arguments this let var const void yield
+syntax keyword javascriptIdentifier     arguments this let var const void
 syntax keyword javascriptOperator       delete new instanceof typeof
 syntax keyword javascriptBoolean        true false
 syntax keyword javascriptNull           null undefined
@@ -140,7 +140,7 @@ syntax keyword javascriptConditional    if else switch
 syntax keyword javascriptRepeat         do while for in of
 syntax keyword javascriptBranch         break continue
 syntax keyword javascriptLabel          case default
-syntax keyword javascriptStatement      return with
+syntax keyword javascriptStatement      return with yield
 
 syntax keyword javascriptGlobalObjects  Array Boolean Date Function Infinity Math Number NaN Object Packages RegExp String netscape
 
