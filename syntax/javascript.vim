@@ -125,7 +125,7 @@ syntax keyword javascriptEventListenerMethods     scrollIntoView  addEventListen
 " }}}
 "" Programm Keywords"{{{
 syntax keyword javascriptSource         import export
-syntax keyword javascriptIdentifier     arguments this let var void yield
+syntax keyword javascriptIdentifier     arguments this let var const void yield
 syntax keyword javascriptOperator       delete new instanceof typeof
 syntax keyword javascriptBoolean        true false
 syntax keyword javascriptNull           null undefined
