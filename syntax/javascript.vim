@@ -151,7 +151,7 @@ syntax keyword javascriptTypedArray     Int32Array Uint32Array Float32Array Floa
 " http://www.w3.org/TR/FileAPI/
 " https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html
 syntax keyword javascriptFileAPI             File Blob BlobBuilder FileReader URL
-syntax keyword javascriptBlobBuilderMethods  apeend getBlob getFile
+syntax keyword javascriptBlobBuilderMethods  append getBlob getFile
 syntax keyword javascriptFileReaderMethods   readAsArrayBuffer readAsBinaryString readAsDataURL readAsText
 syntax keyword javascriptURLMethods          createObjectURL revokeObjectURL
 
