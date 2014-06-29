@@ -1,6 +1,7 @@
 {
     "devDependencies": {
         "js-yaml": "*",
-        "camel-case": "*"
+        "camel-case": "*",
+        "is-upper-case": "*"
     }
 }

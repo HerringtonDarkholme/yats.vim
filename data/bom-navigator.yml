@@ -1,0 +1,49 @@
+javascriptBOMNavigatorProp:
+    - battery
+    - buildID
+    - cookieEnabled
+    - doNotTrack
+    - maxTouchPoints
+    # - mozAlarms
+    # - mozApps
+    # - mozContacts
+    # - mozFMRadio
+    # - mozMobileConnection
+    # - mozMobileMessage
+    # - mozNetworkStats
+    # - mozPower
+    # - mozSettings
+    # - mozSms
+    # - mozTCPSocket
+    # - mozTelephony
+    # - mozTime
+    # - mozWifiManager
+    - oscpu
+    - productSub
+    - push
+    - vendor
+    - vendorSub
+    # - id
+    # - mozSocial
+
+javascriptBOMNavigatorMethod:
+    - addIdleObserver
+    - getDeviceStorage
+    - getDeviceStorages
+    - getGamepads
+    - getUserMedia
+    # - mozHasPendingMessage
+    # - mozIsLocallyAvailable
+    # - mozPay
+    # - mozSetMessageHandler
+    - registerContentHandler
+    - removeIdleObserver
+    - requestWakeLock
+    - vibrate
+    # - id.get
+    # - id.getVerifiedEmail
+    # - id.logout
+    # - id.request
+    - watch
+    # - mozNotification
+    - registerProtocolHandler

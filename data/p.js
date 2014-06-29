@@ -2,10 +2,11 @@
 var yaml = require('js-yaml');
 var fs   = require('fs');
 var camel = require('camel-case');
+var isUpper = require('is-upper-case');
 
 // Get document, or throw exception on error
 try {
-  var files = ['bom', 'dom', 'css'];
+  var files = ['bom', 'bom-window', 'bom-navigator', 'dom', 'css'];
   var i = 0;
   var yml = {};
   var group = '';
@@ -28,7 +29,10 @@ try {
       def = predef;
 
       while(rule) {
-        def = def + ' ' + camel(rule);
+        if (!isUpper(rule.substr(0,1))) {
+          rule = camel(rule);
+        }
+        def = def + ' ' + rule;
         if (def.length > 80) {
           console.log(def);
           def = predef;
