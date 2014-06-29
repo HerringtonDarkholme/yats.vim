@@ -24,7 +24,7 @@ try {
 
     for (group in yml) {
       contained = true;
-      if (/Global/.test(group)) {
+      if (/Global/.test(group) || /BOMWindow(Prop|Method|Cons)/.test(group)) {
           contained = false;
       }
       
@@ -46,7 +46,10 @@ try {
           console.log(def);
           def = predef;
         }
-      rule = rules.shift();
+        rule = rules.shift();
+      }
+      if (def.length > predef.length) {
+        console.log(def);
       }
     }
 
