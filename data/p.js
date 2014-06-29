@@ -6,7 +6,7 @@ var isUpper = require('is-upper-case');
 
 // Get document, or throw exception on error
 try {
-  var files = ['bom', 'bom-window', 'bom-navigator', 'dom', 'css'];
+  var files = ['javascript', 'node', 'bom', 'bom-window', 'bom-navigator', 'dom', 'css'];
   var i = 0;
   var yml = {};
   var group = '';
@@ -15,6 +15,7 @@ try {
   var defs = [];
   var predef = '';
   var def = '';
+  var contained = true;
 
 
   for (i in files) {
@@ -22,10 +23,18 @@ try {
     yml = yaml.safeLoad(fs.readFileSync(files[i] + '.yml', 'utf8'));
 
     for (group in yml) {
+      contained = true;
+      if (/Global/.test(group)) {
+          contained = false;
+      }
+      
       rules = yml[group];
       rule = rules.shift();
       defs = [];
       predef = 'syntax keyword ' + group;
+      if (contained) {
+          predef += ' contained';
+      }
       def = predef;
 
       while(rule) {

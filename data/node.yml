@@ -1,0 +1,7 @@
+javascriptNodeGlobal:
+    - global
+    - process
+    - console
+    - Buffer
+    - module
+    - expports
