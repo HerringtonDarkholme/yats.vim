@@ -1,0 +1,107 @@
+javascriptDOMDocProp:
+    - URL
+    - activeElement
+    # - alinkColor
+    # - anchors
+    # - applets
+    # - bgColor
+    - body
+    - cookie
+    - defaultView
+    - designMode
+    - dir
+    # - domConfig
+    - domain
+    - embeds
+    # - fgColor
+    - forms
+    - head
+    # - height
+    - images
+    - lastModified
+    # - linkColor
+    - links
+    - location
+    - plugins
+    - readyState
+    - referrer
+    - scripts
+    - styleSheets
+    - title
+    - vlinkColor
+    # - width
+    - xmlEncoding
+    # - async
+    - characterSet
+    - compatMode
+    - contentType
+    - currentScript
+    - doctype
+    - documentElement
+    - documentURI
+    - documentURIObject
+    - firstChild
+    - implementation
+    # - inputEncoding
+    - lastStyleSheetSet
+    # - mozFullScreen
+    # - mozFullScreenElement
+    # - mozFullScreenEnabled
+    # - mozSyntheticDocument
+    - namespaceURI
+    - nodePrincipal
+    - ononline
+    - pointerLockElement
+    - popupNode
+    - preferredStyleSheetSet
+    - selectedStyleSheetSet
+    - styleSheetSets
+    - textContent
+    - tooltipNode
+    # - xmlVersion
+
+javascriptDOMDocMethod:
+    - caretPositionFromPoint
+    # - clear
+    - close
+    - createNodeIterator
+    - createRange
+    - createTreeWalker
+    - elementFromPoint
+    - getElementsByName
+    # - releaseCapture
+    - adoptNode
+    - createAttribute
+    - createCDATASection
+    - createComment
+    - createDocumentFragment
+    - createElement
+    - createElementNS
+    # - createEntityReference
+    - createEvent
+    - createExpression
+    - createNSResolver
+    - createProcessingInstruction
+    - createTextNode
+    - enableStyleSheetsForSet
+    - evaluate
+    - execCommand
+    - exitPointerLock
+    - getBoxObjectFor
+    - getElementById
+    - getElementsByClassName
+    - getElementsByTagName
+    - getElementsByTagNameNS
+    - getSelection
+    - hasFocus
+    - importNode
+    - loadOverlay
+    # - mozCancelFullScreen
+    # - mozSetImageElement
+    - open
+    - queryCommandSupported
+    - querySelector
+    - querySelectorAll
+    - write
+    - writeln
+
