@@ -1,4 +1,4 @@
-javascriptDOMProp:
+javascriptDOMElemProp:
     - accessKey
     - clientHeight
     - clientLeft
@@ -23,7 +23,7 @@ javascriptDOMProp:
     - name
     - outerHTML
 
-javascriptDOMMethod:
+javascriptDOMElemMethod:
     - getAttributeNS
     - getAttributeNode
     - getAttributeNodeNS
@@ -52,7 +52,43 @@ javascriptDOMMethod:
     - supports
     - getAttribute
 
-javascriptDOMEvent:
-    - addEventListener
-    - removeEventListener
-    - dispatchEvent
+javascriptDOMNodeProp:
+    - attributes
+    - baseURI
+    - baseURIObject
+    - childNodes
+    - firstChild
+    - lastChild
+    - localName
+    - namespaceURI
+    - nextSibling
+    - nodeName
+    - nodePrincipal
+    - nodeType
+    - nodeValue
+    - ownerDocument
+    - parentElement
+    - parentNode
+    - prefix
+    - previousSibling
+    - textContent
+
+javascriptDOMNodeMethod:
+    - appendChild
+    - cloneNode
+    - compareDocumentPosition
+    - contains
+    - getUserData
+    - hasAttributes
+    - hasChildNodes
+    - insertBefore
+    - isDefaultNamespace
+    - isEqualNode
+    - isSameNode
+    - isSupported
+    - lookupNamespaceURI
+    - lookupPrefix
+    - normalize
+    - removeChild
+    - replaceChild
+    - setUserData
