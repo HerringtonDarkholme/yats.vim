@@ -5,3 +5,7 @@ javascriptNodeGlobal:
     - Buffer
     - module
     - expports
+    - setTimeout
+    - clearTimeout
+    - setInterval
+    - clearInterval
