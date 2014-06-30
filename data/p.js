@@ -6,7 +6,7 @@ var isUpper = require('is-upper-case');
 
 // Get document, or throw exception on error
 try {
-  var files = ['javascript', 'node', 'bom', 'bom-window', 'bom-navigator', 'dom', 'css'];
+  var files = ['javascript', 'node', 'bom', 'bom-window', 'bom-navigator', 'dom', 'dom-event', 'css'];
   var i = 0;
   var yml = {};
   var group = '';
@@ -24,7 +24,7 @@ try {
 
     for (group in yml) {
       contained = true;
-      if (/Global/.test(group) || /BOMWindow(Prop|Method|Cons)/.test(group)) {
+      if (/Global/.test(group) || /Cons/.test(group) || /BOMWindow(Prop|Method)/.test(group)) {
           contained = false;
       }
       
