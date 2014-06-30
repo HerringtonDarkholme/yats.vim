@@ -2,7 +2,7 @@ javascriptBOM:
     # - A
     - AbstractWorker
     - AnalyserNode
-    - AnimationEvent
+    # - AnimationEvent
     - App
     - Apps
     - ArrayBuffer
@@ -15,20 +15,20 @@ javascriptBOM:
     - AudioListener
     - AudioNode
     - AudioParam
-    - AudioProcessingEvent
+    # - AudioProcessingEvent
     # - B
     - BatteryManager
     - BiquadFilterNode
     - Blob
     - BlobBuilder
-    - BlobEvent
+    # - BlobEvent
     - BluetoothAdapter
     - BluetoothDevice
-    - BluetoothDeviceEvent
+    # - BluetoothDeviceEvent
     - BluetoothManager
-    - BluetoothStatusChangedEvent
+    # - BluetoothStatusChangedEvent
     # - C
-    - CallEvent
+    # - CallEvent
     - CameraCapabilities
     - CameraControl
     - CameraManager
@@ -44,10 +44,10 @@ javascriptBOM:
     - CharacterData
     - ChildNode
     - ChromeWorker
-    - ClipboardEvent
-    - CloseEvent
+    # - ClipboardEvent
+    # - CloseEvent
     - Comment
-    - CompositionEvent
+    # - CompositionEvent
     - Connection
     - Console
     - ContactManager
@@ -68,20 +68,20 @@ javascriptBOM:
     - CSSStyleRule
     - CSSStyleSheet
     - CSSSupportsRule
-    - CustomEvent
+    # - CustomEvent
     # - D
     - DataTransfer
     - DataView
     - DedicatedWorkerGlobalScope
     - DelayNode
     - DeviceAcceleration
-    - DeviceLightEvent
-    - DeviceMotionEvent
-    - DeviceOrientationEvent
-    - DeviceProximityEvent
+    # - DeviceLightEvent
+    # - DeviceMotionEvent
+    # - DeviceOrientationEvent
+    # - DeviceProximityEvent
     - DeviceRotationRate
     - DeviceStorage
-    - DeviceStorageChangeEvent
+    # - DeviceStorageChangeEvent
     - DirectoryEntry
     - DirectoryEntrySync
     - DirectoryReader
@@ -118,11 +118,11 @@ javascriptBOM:
     - EntityReference
     - Entry
     - EntrySync
-    - ErrorEvent
-    - Event
-    - EventListener
-    - EventSource
-    - EventTarget
+    # - ErrorEvent
+    # - Event
+    # - EventListener
+    # - EventSource
+    # - EventTarget
     - Extensions
     # - F
     - File
@@ -140,15 +140,15 @@ javascriptBOM:
     - Float32Array
     - Float64Array
     - FMRadio
-    - FocusEvent
+    # - FocusEvent
     - FormData
     # - G
     - GainNode
     - Gamepad
     - GamepadButton
-    - GamepadEvent
+    # - GamepadEvent
     - Geolocation
-    - GlobalEventHandlers
+    # - GlobalEventHandlers
     # - H
     - History
     - HTMLAnchorElement
@@ -240,16 +240,16 @@ javascriptBOM:
     - IDBRequest
     - IDBTransaction
     - IDBTransactionSync
-    - IDBVersionChangeEvent
+    # - IDBVersionChangeEvent
     - IDBVersionChangeRequest
     - ImageData
     - IndexedDB
-    - InputEvent
+    # - InputEvent
     - Int16Array
     - Int32Array
     - Int8Array
     # - K
-    - KeyboardEvent
+    # - KeyboardEvent
     # - L
     - L10n
     - LinkStyle
@@ -264,46 +264,46 @@ javascriptBOM:
     - MediaSource
     - MediaStream
     - MediaStreamTrack
-    - MessageEvent
-    - MouseEvent
-    - MouseScrollEvent
-    - MouseWheelEvent
-    - MozActivity
-    - MozActivityOptions
-    - MozActivityRequestHandler
-    - MozAlarmsManager
-    - MozContact
-    - MozContactChangeEvent
-    - MozIccManager
-    - MozMmsEvent
-    - MozMmsMessage
-    - MozMobileCellInfo
-    - MozMobileCFInfo
-    - MozMobileConnection
-    - MozMobileConnectionInfo
-    - MozMobileICCInfo
-    - MozMobileMessageManager
-    - MozMobileMessageThread
-    - MozMobileNetworkInfo
-    - MozNDEFRecord
-    - MozNetworkStats
-    - MozNetworkStatsData
-    - MozNetworkStatsManager
-    - MozNFC
-    - MozNFCPeer
-    - MozNFCTag
-    - MozSettingsEvent
-    - MozSmsEvent
-    - MozSmsFilter
-    - MozSmsManager
-    - MozSmsMessage
-    - MozSmsSegmentInfo
-    - MozTimeManager
-    - MozVoicemail
-    - MozVoicemailEvent
-    - MozVoicemailStatus
-    - MozWifiConnectionInfoEvent
-    - MozWifiStatusChangeEvent
+    # - MessageEvent
+    # - MouseEvent
+    # - MouseScrollEvent
+    # - MouseWheelEvent
+    # - MozActivity
+    # - MozActivityOptions
+    # - MozActivityRequestHandler
+    # - MozAlarmsManager
+    # - MozContact
+    # - MozContactChangeEvent
+    # - MozIccManager
+    # - MozMmsEvent
+    # - MozMmsMessage
+    # - MozMobileCellInfo
+    # - MozMobileCFInfo
+    # - MozMobileConnection
+    # - MozMobileConnectionInfo
+    # - MozMobileICCInfo
+    # - MozMobileMessageManager
+    # - MozMobileMessageThread
+    # - MozMobileNetworkInfo
+    # - MozNDEFRecord
+    # - MozNetworkStats
+    # - MozNetworkStatsData
+    # - MozNetworkStatsManager
+    # - MozNFC
+    # - MozNFCPeer
+    # - MozNFCTag
+    # - MozSettingsEvent
+    # - MozSmsEvent
+    # - MozSmsFilter
+    # - MozSmsManager
+    # - MozSmsMessage
+    # - MozSmsSegmentInfo
+    # - MozTimeManager
+    # - MozVoicemail
+    # - MozVoicemailEvent
+    # - MozVoicemailStatus
+    # - MozWifiConnectionInfoEvent
+    # - MozWifiStatusChangeEvent
     - MutationObserver
     # - N
     - NamedNodeMap
@@ -321,9 +321,9 @@ javascriptBOM:
     - NodeList
     - Notation
     - Notification
-    - NotifyAudioAvailableEvent
+    # - NotifyAudioAvailableEvent
     # - O
-    - OfflineAudioCompletionEvent
+    # - OfflineAudioCompletionEvent
     - OfflineAudioContext
     - OscillatorNode
     # - P
@@ -341,7 +341,7 @@ javascriptBOM:
     - PositionOptions
     - PowerManager
     - ProcessingInstruction
-    - ProgressEvent
+    # - ProgressEvent
     - PromiseResolver
     - PushManager
     # - R
@@ -357,7 +357,7 @@ javascriptBOM:
     - SettingsLock
     - SettingsManager
     - SharedWorker
-    - StorageEvent
+    # - StorageEvent
     - StyleSheet
     - StyleSheetList
     - SVGAElement
@@ -451,14 +451,14 @@ javascriptBOM:
     - TextMetrics
     - TimeRanges
     - Touch
-    - TouchEvent
+    # - TouchEvent
     - TouchList
     - Transferable
-    - TransitionEvent
+    # - TransitionEvent
     - TreeWalker
     - TypeInfo
     # - U
-    - UIEvent
+    # - UIEvent
     - Uint16Array
     - Uint32Array
     - Uint8Array
@@ -468,7 +468,7 @@ javascriptBOM:
     - URLUtils
     - URLUtilsReadOnly
     - UserDataHandler
-    - UserProximityEvent
+    # - UserProximityEvent
     # - V
     - ValidityState
     - VideoPlaybackQuality
@@ -479,7 +479,7 @@ javascriptBOM:
     - WebSMS
     - WebSocket
     - WebVTT
-    - WheelEvent
+    # - WheelEvent
     - WifiManager
     - Window
     - Worker
@@ -490,5 +490,5 @@ javascriptBOM:
     - XDomainRequest
     - XMLDocument
     - XMLHttpRequest
-    - XMLHttpRequestEventTarget
+    # - XMLHttpRequestEventTarget
 

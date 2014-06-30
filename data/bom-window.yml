@@ -21,10 +21,10 @@ javascriptBOMWindowProp:
     - localStorage
     - menubar
     - messageManager
-    - mozAnimationStartTime
-    - mozInnerScreenX
-    - mozInnerScreenY
-    - mozPaintCount
+    # - mozAnimationStartTime
+    # - mozInnerScreenX
+    # - mozInnerScreenY
+    # - mozPaintCount
     - name
     - navigator
     - opener
@@ -81,7 +81,7 @@ javascriptBOMWindowMethod:
     # - minimize (top-level XUL windows only)
     - moveBy
     - moveTo
-    - mozRequestAnimationFrame
+    # - mozRequestAnimationFrame
     - open
     - openDialog
     - postMessage
