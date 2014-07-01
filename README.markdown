@@ -1,5 +1,13 @@
-Enhanced Javascript Syntax for Vim
-==================================
+YAJS: Yet Another Javascript Syntax for Vim
+===========================================
+
+Yet another javascript syntax file for Vim. Key differences:
+
+* Use 'javascript' as group name's prefix, not 'javaScript' or 'JavaScript'. Works great with [SyntaxComplete](https://github.com/vim-scripts/SyntaxComplete).
+* Reorganize Web API and DOM keywords. Keep increase.
+* Wroks perfect with [javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
+* Remove old, unused syntax definitions.
+* Support several ES6 nex syntax, ex: arrow function `=>`. 
 
 Credits
 -------
@@ -8,32 +16,16 @@ Credits
 - Zhao Yi, Claudio Fleiner, Scott Shattuck (This file is based on their hard work)
 - gumnos (From the #vim IRC Channel in Freenode) (Who helped me figured out the crazy Vim Regexes)
 
-Description
------------
-
-This file is a fork of [this file](http://www.vim.org/scripts/script.php?script_id=1491) and [the stock one](http://fleiner.com/vim/download.html)
-
-This version of this file features the following text highlights:
-
-- Parenthesis, curly and regular brackets.
-- The semicolon or comma at the end of line.
-- Browser, DOM and "Ajax" keywords like objects, methods, properties and others.
-- Operation, comparison and logical symbols (`=`,`==`,`===`,`!=`,etc.).
-
-To enable code folding add the following to your `.vimrc`.
-
-    au FileType javascript call JavaScriptFold()
-
-TODO
-----
-
-You can help me improve it too.
-
-- The separate highlight of the arguments
-- Add new stuff from new specs
-
 Changes
 -------
+
+### Version 1.0
+
+- New name
+- Refactor Web API and DOM
+- Remove old definitions
+- Supports partial ES6
+- Work with js lib syntax
 
 ### Version 0.9
 
