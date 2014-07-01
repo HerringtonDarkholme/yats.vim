@@ -1,3 +1,4 @@
+# https://developer.mozilla.org/en-US/docs/Web/API
 javascriptBOM:
     # - A
     - AbstractWorker
@@ -20,8 +21,8 @@ javascriptBOM:
     - BatteryManager
     - BiquadFilterNode
     - Blob
-    - BlobBuilder
-    # - BlobEvent
+    # - BlobBuilder
+    - BlobEvent
     - BluetoothAdapter
     - BluetoothDevice
     # - BluetoothDeviceEvent
@@ -35,7 +36,7 @@ javascriptBOM:
     - CanvasGradient
     - CanvasImageSource
     - CanvasPattern
-    - CanvasPixelArray
+    # - CanvasPixelArray
     - CanvasRenderingContext2D
     - CaretPosition
     - CDATASection
@@ -90,18 +91,18 @@ javascriptBOM:
     - DocumentFragment
     - DocumentTouch
     - DocumentType
-    - DOMConfiguration
+    # - DOMConfiguration
     - DOMCursor
     - DOMError
-    - DOMErrorHandler
+    # - DOMErrorHandler
     - DOMException
     - DOMHighResTimeStamp
     - DOMImplementation
-    - DOMImplementationList
+    # - DOMImplementationList
     - DOMImplementationRegistry
-    - DOMImplementationSource
-    - DOMLocator
-    - DOMObject
+    # - DOMImplementationSource
+    # - DOMLocator
+    # - DOMObject
     - DOMParser
     - DOMRequest
     - DOMString
@@ -109,13 +110,13 @@ javascriptBOM:
     - DOMStringMap
     - DOMTimeStamp
     - DOMTokenList
-    - DOMUserData
+    # - DOMUserData
     - DynamicsCompressorNode
     # - E
     - Element
-    - ElementTraversal
-    - Entity
-    - EntityReference
+    # - ElementTraversal
+    # - Entity
+    # - EntityReference
     - Entry
     - EntrySync
     # - ErrorEvent
@@ -128,7 +129,7 @@ javascriptBOM:
     - File
     - FileEntry
     - FileEntrySync
-    - FileError
+    # - FileError
     - FileException
     - FileHandle
     - FileList
@@ -155,7 +156,7 @@ javascriptBOM:
     - HTMLAreaElement
     - HTMLAudioElement
     - HTMLBaseElement
-    - HTMLBaseFontElement
+    # - HTMLBaseFontElement
     - HTMLBodyElement
     - HTMLBRElement
     - HTMLButtonElement
@@ -178,7 +179,7 @@ javascriptBOM:
     - HTMLIFrameElement
     - HTMLImageElement
     - HTMLInputElement
-    - HTMLIsIndexElement
+    # - HTMLIsIndexElement
     - HTMLKeygenElement
     - HTMLLabelElement
     - HTMLLegendElement
@@ -225,7 +226,7 @@ javascriptBOM:
     - IDBCursorSync
     - IDBCursorWithValue
     - IDBDatabase
-    - IDBDatabaseException
+    # - IDBDatabaseException
     - IDBDatabaseSync
     - IDBEnvironment
     - IDBEnvironmentSync
@@ -240,8 +241,8 @@ javascriptBOM:
     - IDBRequest
     - IDBTransaction
     - IDBTransactionSync
-    # - IDBVersionChangeEvent
-    - IDBVersionChangeRequest
+    - IDBVersionChangeEvent
+    # - IDBVersionChangeRequest
     - ImageData
     - IndexedDB
     # - InputEvent
@@ -306,8 +307,8 @@ javascriptBOM:
     # - MozWifiStatusChangeEvent
     - MutationObserver
     # - N
-    - NamedNodeMap
-    - NameList
+    # - NamedNodeMap
+    # - NameList
     - Navigator
     - NavigatorGeolocation
     - NavigatorID
@@ -319,7 +320,7 @@ javascriptBOM:
     - NodeFilter
     - NodeIterator
     - NodeList
-    - Notation
+    # - Notation
     - Notification
     # - NotifyAudioAvailableEvent
     # - O
@@ -456,7 +457,7 @@ javascriptBOM:
     - Transferable
     # - TransitionEvent
     - TreeWalker
-    - TypeInfo
+    # - TypeInfo
     # - U
     # - UIEvent
     - Uint16Array
@@ -467,8 +468,8 @@ javascriptBOM:
     - URLSearchParams
     - URLUtils
     - URLUtilsReadOnly
-    - UserDataHandler
-    # - UserProximityEvent
+    # - UserDataHandler
+    - UserProximityEvent
     # - V
     - ValidityState
     - VideoPlaybackQuality
@@ -490,5 +491,5 @@ javascriptBOM:
     - XDomainRequest
     - XMLDocument
     - XMLHttpRequest
-    # - XMLHttpRequestEventTarget
+    - XMLHttpRequestEventTarget
 
