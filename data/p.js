@@ -12,6 +12,7 @@ try {
     'web',
     'web-window',
     'web-navigator',
+    'web-location',
     'dom-node',
     'dom-elem',
     'dom-event',

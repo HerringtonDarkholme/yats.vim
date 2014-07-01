@@ -1,0 +1,18 @@
+javascriptBOMLocationProp:
+    - href
+    - protocol
+    - host
+    - hostname
+    - port
+    - pathname
+    - search
+    - hash
+    - username
+    - password
+    - origin
+
+javascriptBOMLocationMethod:
+    - assign
+    - reload
+    - replace
+    - toString
