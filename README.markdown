@@ -1,5 +1,5 @@
-YAJS: Yet Another Javascript Syntax for Vim
-===========================================
+YAJS: Yet Another Javascript Syntax
+===================================
 
 Yet another javascript syntax file for Vim. Key differences:
 
