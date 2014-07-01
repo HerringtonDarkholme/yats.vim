@@ -3,16 +3,19 @@ javascriptBOMWindowProp:
     - closed
     - Components
     - console
-    - content
+    # - content
+    # - _content
     - controllers
     - crypto
+    # - defaultStatus
     - dialogArguments
-    - directories
+    # - directories
     - document
     - frameElement
     - frames
     - fullScreen
     - history
+    # - globalStorage
     - innerHeight
     - innerWidth
     - length
@@ -35,6 +38,7 @@ javascriptBOMWindowProp:
     - parent
     - performance
     - personalbar
+    # - pkcs11
     - returnValue
     - screen
     - screenX
@@ -56,26 +60,28 @@ javascriptBOMWindowProp:
 javascriptBOMWindowMethod:
     - alert
     - atob
-    - back
+    # - back
     - blur
     - btoa
-    - captureEvents
+    # - captureEvents
     - clearImmediate
     - clearInterval
     - clearTimeout
     - close
     - confirm
+    # - disableExternalCapture 
     - dispatchEvent
     - dump
+    # - enableExternalCapture 
     - find
     - focus
-    - forward
+    # - forward
     - getAttention
     - getAttentionWithCycleCount
     - getComputedStyle
     - getDefaulComputedStyle
     - getSelection
-    - home
+    # - home
     - matchMedia
     - maximize
     # - minimize (top-level XUL windows only)
@@ -87,11 +93,12 @@ javascriptBOMWindowMethod:
     - postMessage
     - print
     - prompt
-    - releaseEvents
+    # - releaseEvents
     - removeEventListener
     - resizeBy
     - resizeTo
     - restore
+    # - routeEvent
     - scroll
     - scrollBy
     - scrollByLines
