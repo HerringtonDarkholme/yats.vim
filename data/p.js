@@ -34,7 +34,7 @@ try {
 
     for (group in yml) {
       contained = true;
-      if (/Global/.test(group) || /Cons/.test(group) || /BOMWindow(Prop|Method)/.test(group)) {
+      if (/Global/.test(group) || /Cons/.test(group) || /BOMWindow(Prop|Method)/.test(group) || /BOM$/.test(group)) {
           contained = false;
       }
       
@@ -48,7 +48,8 @@ try {
       def = predef;
 
       while(rule) {
-        if (!isUpper(rule.substr(0,1))) {
+        // if (!isUpper(rule.substr(0,1))) {
+        if (/Style/.test(group)) {
           rule = camel(rule);
         }
         def = def + ' ' + rule;
