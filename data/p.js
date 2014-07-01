@@ -9,9 +9,9 @@ try {
   var files = [
     'javascript',
     'node',
-    'bom',
-    'bom-window',
-    'bom-navigator',
+    'web',
+    'web-window',
+    'web-navigator',
     'dom-node',
     'dom-elem',
     'dom-event',
