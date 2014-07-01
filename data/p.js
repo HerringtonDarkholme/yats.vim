@@ -6,7 +6,17 @@ var isUpper = require('is-upper-case');
 
 // Get document, or throw exception on error
 try {
-  var files = ['javascript', 'node', 'bom', 'bom-window', 'bom-navigator', 'dom', 'dom-event', 'css'];
+  var files = [
+    'javascript',
+    'node',
+    'bom',
+    'bom-window',
+    'bom-navigator',
+    'dom-node',
+    'dom-elem',
+    'dom-event',
+    'css'
+  ];
   var i = 0;
   var yml = {};
   var group = '';
