@@ -294,6 +294,11 @@ syntax keyword javascriptBOMNavigatorMethod contained getUserMedia registerConte
 syntax keyword javascriptBOMNavigatorMethod contained removeIdleObserver requestWakeLock
 syntax keyword javascriptBOMNavigatorMethod contained vibrate watch registerProtocolHandler
 
+syntax keyword javascriptBOMLocationProp contained href protocol host hostname port
+syntax keyword javascriptBOMLocationProp contained pathname search hash username password
+syntax keyword javascriptBOMLocationProp contained origin
+syntax keyword javascriptBOMLocationMethod contained assign reload replace toString
+
 syntax keyword javascriptDOMNodeProp contained attributes baseURI baseURIObject childNodes
 syntax keyword javascriptDOMNodeProp contained firstChild lastChild localName namespaceURI
 syntax keyword javascriptDOMNodeProp contained nextSibling nodeName nodePrincipal
@@ -424,7 +429,13 @@ syntax match javascriptDOMNodeMethod contained /contains/
   syntax keyword javascriptDOMStyle contained writingMode zIndex
 " endif
 
-syntax cluster props                    contains=javascriptPrototype,javascriptBOMWindowProp,javascriptBOMWindowMethod,javascriptBOMWindowEvent,javascriptBOMNavigatorProp,javascriptDOMNodeProp,javascriptDOMNodeMethod,javascriptDOMNodeType,javascriptDOMElemProp,javascriptDOMElemMethod,javascriptDOMEventTargetMethod,javascriptDOMEventProp,javascriptDOMEventMethod,
+syntax cluster props add=javascriptPrototype,javascriptBOMWindowProp,javascriptBOMWindowMethod,javascriptBOMWindowEvent
+syntax cluster props add=javascriptBOMNavigatorProp,javascriptBOMLocationProp,javascriptBOMLocationMethod
+syntax cluster props add=javascriptDOMNodeProp,javascriptDOMNodeMethod
+syntax cluster props add=javascriptDOMNodeType,javascriptDOMElemProp,javascriptDOMElemMethod
+syntax cluster props add=javascriptDOMEventTargetMethod,javascriptDOMEventProp,javascriptDOMEventMethod
+
+let javascript_props = 1
 
 syntax match javascriptDotNotation      "\." nextgroup=@props
 syntax match javascriptDotStyleNotation "\.style\." nextgroup=javascriptDOMStyle transparent
