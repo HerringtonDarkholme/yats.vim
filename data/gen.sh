@@ -8,6 +8,7 @@ files='
   web-location
   web-history
   web-xhr
+  web-blob
   dom-node
   dom-elem
   dom-event
