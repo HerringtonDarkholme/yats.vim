@@ -1,0 +1,2 @@
+syntax keyword javascriptNodeGlobal global process console Buffer module expports
+syntax keyword javascriptNodeGlobal setTimeout clearTimeout setInterval clearInterval

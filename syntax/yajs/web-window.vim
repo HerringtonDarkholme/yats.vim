@@ -1,0 +1,32 @@
+syntax keyword javascriptBOMWindowProp applicationCache closed Components console
+syntax keyword javascriptBOMWindowProp controllers crypto dialogArguments document
+syntax keyword javascriptBOMWindowProp frameElement frames fullScreen history innerHeight
+syntax keyword javascriptBOMWindowProp innerWidth length location locationbar localStorage
+syntax keyword javascriptBOMWindowProp menubar messageManager name navigator opener
+syntax keyword javascriptBOMWindowProp outerHeight outerWidth pageXOffset pageYOffset
+syntax keyword javascriptBOMWindowProp parent performance personalbar returnValue
+syntax keyword javascriptBOMWindowProp screen screenX screenY scrollbars scrollMaxX
+syntax keyword javascriptBOMWindowProp scrollMaxY scrollX scrollY self sessionStorage
+syntax keyword javascriptBOMWindowProp sidebar status statusbar toolbar top window
+syntax keyword javascriptBOMWindowMethod alert atob blur btoa clearImmediate clearInterval
+syntax keyword javascriptBOMWindowMethod clearTimeout close confirm dispatchEvent
+syntax keyword javascriptBOMWindowMethod dump find focus getAttention getAttentionWithCycleCount
+syntax keyword javascriptBOMWindowMethod getComputedStyle getDefaulComputedStyle getSelection
+syntax keyword javascriptBOMWindowMethod matchMedia maximize moveBy moveTo open openDialog
+syntax keyword javascriptBOMWindowMethod postMessage print prompt removeEventListener
+syntax keyword javascriptBOMWindowMethod resizeBy resizeTo restore scroll scrollBy
+syntax keyword javascriptBOMWindowMethod scrollByLines scrollByPages scrollTo setCursor
+syntax keyword javascriptBOMWindowMethod setImmediate setInterval setResizable setTimeout
+syntax keyword javascriptBOMWindowMethod showModalDialog sizeToContent stop updateCommands
+syntax keyword javascriptBOMWindowEvent contained onabort onbeforeunload onblur onchange
+syntax keyword javascriptBOMWindowEvent contained onclick onclose oncontextmenu ondevicelight
+syntax keyword javascriptBOMWindowEvent contained ondevicemotion ondeviceorientation
+syntax keyword javascriptBOMWindowEvent contained ondeviceproximity ondragdrop onerror
+syntax keyword javascriptBOMWindowEvent contained onfocus onhashchange onkeydown onkeypress
+syntax keyword javascriptBOMWindowEvent contained onkeyup onload onmousedown onmousemove
+syntax keyword javascriptBOMWindowEvent contained onmouseout onmouseover onmouseup
+syntax keyword javascriptBOMWindowEvent contained onmozbeforepaint onpaint onpopstate
+syntax keyword javascriptBOMWindowEvent contained onreset onresize onscroll onselect
+syntax keyword javascriptBOMWindowEvent contained onsubmit onunload onuserproximity
+syntax keyword javascriptBOMWindowEvent contained onpageshow onpagehide
+syntax keyword javascriptBOMWindowCons DOMParser QueryInterface XMLSerializer
