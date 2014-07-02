@@ -20,6 +20,21 @@ if !exists("main_syntax")
   let main_syntax = 'javascript'
 endif
 
+" Define the default highlighting.
+" For version 5.7 and earlier: only when not done already
+" For version 5.8 and later: only when an item doesn't have highlighting yet
+if version >= 508 || !exists("did_javascript_syn_inits")
+  let did_javascript_hilink = 1
+  if version < 508
+    let did_javascript_syn_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
+else
+  finish
+endif
+
 "" dollar sign is permitted anywhere in an identifier
 setlocal iskeyword+=$
 
@@ -153,17 +168,8 @@ syntax match   javascriptOpSymbols	  "\_[ \_^]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<
 syntax match   javascriptEndColons    "[;,]"
 syntax match   javascriptLogicSymbols "\(&&\)\|\(||\)"
 
-" Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_javascript_syn_inits")
-  if version < 508
-    let did_javascript_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
 
+if exists("did_javascript_hilink")
   HiLink javascriptEndColons            Exception
   HiLink javascriptOpSymbols            Operator
   HiLink javascriptLogicSymbols         Boolean
@@ -208,29 +214,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptSource               Special
   HiLink javascriptExceptions           Special
 
-  HiLink javascriptGlobal               Constant
-  HiLink javascriptNodeGlobal           Constant
-  HiLink javascriptBOM                  Constant
-  HiLink javascriptGlobalMethod         Constant
-  HiLink javascriptBOMWindowCons        Constant
-  HiLink javascriptDOMEventCons         Constant
-  HiLink javascriptBOMWindowProp        Type
-  HiLink javascriptBOMWindowMethod      Type
-  HiLink javascriptBOMWindowEvent       Type
-  HiLink javascriptBOMNavigatorProp     Type
-  HiLink javascriptBOMNavigatorMethod   Type
-  HiLink javascriptXHRProp              Type
-  HiLink javascriptXHRMethod            Type
-  HiLink javascriptDOMNodeProp          Type
-  HiLink javascriptDOMNodeMethod        Type
-  HiLink javascriptDOMNodeType          Type
-  HiLink javascriptDOMElemProp          Type
-  HiLink javascriptDOMElemMethod        Type
-  HiLink javascriptDOMEventTargetMethod Type
-  HiLink javascriptDOMEventProp         Type
-  HiLink javascriptDOMEventMethod       Type
-  HiLink javascriptDOMStyle             Type
-                                        
   HiLink javascriptFuncDef              Title
   HiLink javascriptFuncArg              Special
   HiLink javascriptFuncComma            Operator  

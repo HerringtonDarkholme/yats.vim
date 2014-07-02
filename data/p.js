@@ -67,6 +67,12 @@ try {
     if (/Prop|Method/.test(group)) {
       console.log('syntax cluster props add=' + group);
     }
+
+    if (contained) {
+      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Type | endif');
+    } else {
+      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure | endif');
+    }
   }
 
 } catch (e) {

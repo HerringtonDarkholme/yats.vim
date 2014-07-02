@@ -9,6 +9,7 @@ syntax keyword javascriptBOMWindowProp screen screenX screenY scrollbars scrollM
 syntax keyword javascriptBOMWindowProp scrollMaxY scrollX scrollY self sessionStorage
 syntax keyword javascriptBOMWindowProp sidebar status statusbar toolbar top window
 syntax cluster props add=javascriptBOMWindowProp
+HiLink javascriptBOMWindowProp Structure
 syntax keyword javascriptBOMWindowMethod alert atob blur btoa clearImmediate clearInterval nextgroup=javascriptFuncArg
 syntax keyword javascriptBOMWindowMethod clearTimeout close confirm dispatchEvent nextgroup=javascriptFuncArg
 syntax keyword javascriptBOMWindowMethod dump find focus getAttention getAttentionWithCycleCount nextgroup=javascriptFuncArg
@@ -20,6 +21,7 @@ syntax keyword javascriptBOMWindowMethod scrollByLines scrollByPages scrollTo se
 syntax keyword javascriptBOMWindowMethod setImmediate setInterval setResizable setTimeout nextgroup=javascriptFuncArg
 syntax keyword javascriptBOMWindowMethod showModalDialog sizeToContent stop updateCommands nextgroup=javascriptFuncArg
 syntax cluster props add=javascriptBOMWindowMethod
+HiLink javascriptBOMWindowMethod Structure
 syntax keyword javascriptBOMWindowEvent contained onabort onbeforeunload onblur onchange
 syntax keyword javascriptBOMWindowEvent contained onclick onclose oncontextmenu ondevicelight
 syntax keyword javascriptBOMWindowEvent contained ondevicemotion ondeviceorientation
@@ -31,4 +33,6 @@ syntax keyword javascriptBOMWindowEvent contained onmozbeforepaint onpaint onpop
 syntax keyword javascriptBOMWindowEvent contained onreset onresize onscroll onselect
 syntax keyword javascriptBOMWindowEvent contained onsubmit onunload onuserproximity
 syntax keyword javascriptBOMWindowEvent contained onpageshow onpagehide
+HiLink javascriptBOMWindowEvent Type
 syntax keyword javascriptBOMWindowCons DOMParser QueryInterface XMLSerializer
+HiLink javascriptBOMWindowCons Structure

@@ -65,3 +65,4 @@ syntax keyword javascriptDOMStyle contained transitionTimingFunction unicodeBidi
 syntax keyword javascriptDOMStyle contained verticalAlign visibility whiteSpace width
 syntax keyword javascriptDOMStyle contained willChange wordBreak wordSpacing wordWrap
 syntax keyword javascriptDOMStyle contained writingMode zIndex
+HiLink javascriptDOMStyle Type

@@ -5,6 +5,7 @@ syntax keyword javascriptDOMElemProp contained onpaste onwheel scrollHeight scro
 syntax keyword javascriptDOMElemProp contained scrollTop scrollWidth tagName classList
 syntax keyword javascriptDOMElemProp contained className name outerHTML style
 syntax cluster props add=javascriptDOMElemProp
+HiLink javascriptDOMElemProp Type
 syntax keyword javascriptDOMElemMethod contained getAttributeNS getAttributeNode getAttributeNodeNS nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMElemMethod contained getBoundingClientRect getClientRects nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMElemMethod contained getElementsByClassName getElementsByTagName nextgroup=javascriptFuncArg
@@ -18,3 +19,4 @@ syntax keyword javascriptDOMElemMethod contained setAttribute setAttributeNS set
 syntax keyword javascriptDOMElemMethod contained setAttributeNodeNS setCapture supports nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMElemMethod contained getAttribute
 syntax cluster props add=javascriptDOMElemMethod
+HiLink javascriptDOMElemMethod Type
