@@ -1,7 +1,7 @@
-YAJS: Yet Another Javascript Syntax
+YAJS: Yet Another JavaScript Syntax
 ===================================
 
-Yet another javascript syntax file for Vim. Key differences:
+Yet Another JavaScript Syntax file for Vim. Key differences:
 
 * Use 'javascript' as group name's prefix, not 'javaScript' or 'JavaScript'. Works great with [SyntaxComplete](https://github.com/vim-scripts/SyntaxComplete).
 * Reorganize Web API and DOM keywords. Keep increase.
@@ -39,15 +39,6 @@ Changes
 - Better support for JSDoc
 - Support [closure compiler JSDoc annotation](https://developers.google.com/closure/compiler/docs/js-for-compiler)
 - Support [Typed Array](http://www.khronos.org/registry/typedarray/specs/latest/) and [File API](http://www.w3.org/TR/FileAPI/)
-
-Screenshots
------------
-
-This is the stock Javascript syntax file
-![Stock Vim Javascript syntax file](http://i.imgur.com/bfQD7.png)
-
-This is with the Enhanced Syntax file
-![Enhanced Javascript Vim syntax](http://i.imgur.com/Tezu3.png)
 
 License
 -------
