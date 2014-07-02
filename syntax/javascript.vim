@@ -1,15 +1,13 @@
 " Vim syntax file
 " Language:     JavaScript
-" Maintainer:   Kao Wei-Ko <othree@gmail.com>
-" Maintainer:   Jose Elera Campana <https://github.com/jelera>
-" Last Change:  2013-02-19
-" Version:      0.8
-" Changes:      Go to https://github.com/othree/vim-javascript-syntax for
-"               recent changes.
+" Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
+" Last Change:  2014-07-02
+" Version:      1.0
+" Changes:      Go to https://github.com/othree/yajs for recent changes.
 " Origin:       https://github.com/jelera/vim-javascript-syntax
-" Credits:      Zhao Yi, Claudio Fleiner, Scott Shattuck (This file is based
-"               on their hard work), gumnos (From the #vim IRC Channel in
-"               Freenode)
+" Credits:      Jose Elera Campana, Zhao Yi, Claudio Fleiner, Scott Shattuck 
+"               (This file is based on their hard work), gumnos (From the #vim 
+"               IRC Channel in Freenode)
 
 if !exists("main_syntax")
   if version < 600
