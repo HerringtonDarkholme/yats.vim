@@ -20,11 +20,6 @@ if !exists("main_syntax")
   let main_syntax = 'javascript'
 endif
 
-" Drop fold if it set but vim doesn't support it.
-if version < 600 && exists("javaScript_fold")
-  unlet javaScript_fold
-endif
-
 "" dollar sign is permitted anywhere in an identifier
 setlocal iskeyword+=$
 
