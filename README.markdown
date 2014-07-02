@@ -4,7 +4,7 @@ YAJS: Yet Another JavaScript Syntax
 Yet Another JavaScript Syntax file for Vim. Key differences:
 
 * Use 'javascript' as group name's prefix, not 'javaScript' or 'JavaScript'. Works great with [SyntaxComplete](https://github.com/vim-scripts/SyntaxComplete).
-* Reorganize Web API and DOM keywords. Keep increase.
+* Recognize Web API and DOM keywords. Keep increase.
 * Works perfect with [javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
 * Remove old, unused syntax definitions.
 * Support several ES6 new syntax, ex: arrow function `=>`. 
