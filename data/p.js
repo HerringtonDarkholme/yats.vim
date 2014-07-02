@@ -49,6 +49,9 @@ try {
         contains = true;
       }
       if (def.length > 80) {
+        if (/Method/.test(group)) {
+          def = def + 'nextgroup=javascriptFuncArg'
+        }
         console.log(def);
         def = predef;
       }

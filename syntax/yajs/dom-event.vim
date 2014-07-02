@@ -1,4 +1,4 @@
-syntax keyword javascriptDOMEventTargetMethod contained addEventListener removeEventListener
+syntax keyword javascriptDOMEventTargetMethod contained addEventListener removeEventListenernextgroup=javascriptFuncArg
 syntax keyword javascriptDOMEventTargetMethod contained dispatchEvent
 syntax keyword javascriptDOMEventCons AnimationEvent AudioProcessingEvent BeforeInputEvent
 syntax keyword javascriptDOMEventCons BeforeUnloadEvent BlobEvent ClipboardEvent CloseEvent
@@ -16,5 +16,5 @@ syntax keyword javascriptDOMEventCons TimeEvent TouchEvent TrackEvent Transition
 syntax keyword javascriptDOMEventCons UIEvent UserProximityEvent WheelEvent
 syntax keyword javascriptDOMEventProp contained bubbles cancelable currentTarget defaultPrevented
 syntax keyword javascriptDOMEventProp contained eventPhase target timeStamp type isTrusted
-syntax keyword javascriptDOMEventMethod contained initEvent preventDefault stopImmediatePropagation
+syntax keyword javascriptDOMEventMethod contained initEvent preventDefault stopImmediatePropagationnextgroup=javascriptFuncArg
 syntax keyword javascriptDOMEventMethod contained stopPropagation

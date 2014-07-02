@@ -6,5 +6,5 @@ syntax keyword javascriptGlobal Int8Array Uint16Array Uint32Array Uint8Array Uin
 syntax keyword javascriptGlobal ParallelArray Map Set WeakMap WeakSet ArrayBuffer
 syntax keyword javascriptGlobal DataView JSON Iterator Generator Promise Reflect Proxy
 syntax keyword javascriptGlobal Intl argumrnts
-syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt
-syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponent
+syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseIntnextgroup=javascriptFuncArg
+syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponentnextgroup=javascriptFuncArg
