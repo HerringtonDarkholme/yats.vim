@@ -9,6 +9,6 @@ javascriptBOMBlobMethod:
     - getBlob
     - getFile
 
-javascriptBOMFileMethod:
+javascriptBOMURLMethod:
     - createObjectURL
     - revokeObjectURL

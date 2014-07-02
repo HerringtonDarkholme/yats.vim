@@ -137,6 +137,7 @@ runtime! syntax/yajs/web-window.vim
 runtime! syntax/yajs/web-location.vim
 runtime! syntax/yajs/web-history.vim
 runtime! syntax/yajs/web-xhr.vim
+runtime! syntax/yajs/web-blob.vim
 runtime! syntax/yajs/dom-node.vim
 runtime! syntax/yajs/dom-elem.vim
 runtime! syntax/yajs/dom-event.vim
