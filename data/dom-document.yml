@@ -23,8 +23,10 @@ javascriptDOMDocProp:
     - links
     - location
     - plugins
+    - postMessage
     - readyState
     - referrer
+    - registerElement
     - scripts
     - styleSheets
     - title
