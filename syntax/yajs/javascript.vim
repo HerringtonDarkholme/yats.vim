@@ -6,8 +6,10 @@ syntax keyword javascriptGlobal Int8Array Uint16Array Uint32Array Uint8Array Uin
 syntax keyword javascriptGlobal ParallelArray Map Set WeakMap WeakSet ArrayBuffer
 syntax keyword javascriptGlobal DataView JSON Iterator Generator Promise Reflect Proxy
 syntax keyword javascriptGlobal Intl argumrnts
-HiLink javascriptGlobal Structure
+if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
+endif
 syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncArg
 syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponent nextgroup=javascriptFuncArg
 syntax cluster props add=javascriptGlobalMethod
-HiLink javascriptGlobalMethod Structure
+if exists("did_javascript_hilink") | HiLink javascriptGlobalMethod Structure
+endif

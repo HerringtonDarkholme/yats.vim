@@ -69,10 +69,11 @@ try {
     }
 
     if (contained) {
-      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Type | endif');
+      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Type');
     } else {
-      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure | endif');
+      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure');
     }
+    console.log('endif');
   }
 
 } catch (e) {

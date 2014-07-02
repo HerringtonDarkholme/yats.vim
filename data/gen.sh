@@ -6,6 +6,7 @@ files='
   web-window
   web-navigator
   web-location
+  web-history
   web-xhr
   dom-node
   dom-elem

@@ -1,7 +1,8 @@
 syntax keyword javascriptDOMEventTargetMethod contained addEventListener removeEventListener nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMEventTargetMethod contained dispatchEvent
 syntax cluster props add=javascriptDOMEventTargetMethod
-HiLink javascriptDOMEventTargetMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventTargetMethod Type
+endif
 syntax keyword javascriptDOMEventCons AnimationEvent AudioProcessingEvent BeforeInputEvent
 syntax keyword javascriptDOMEventCons BeforeUnloadEvent BlobEvent ClipboardEvent CloseEvent
 syntax keyword javascriptDOMEventCons CompositionEvent CSSFontFaceLoadEvent CustomEvent
@@ -16,12 +17,15 @@ syntax keyword javascriptDOMEventCons ProgressEvent RelatedEvent RTCPeerConnecti
 syntax keyword javascriptDOMEventCons SensorEvent StorageEvent SVGEvent SVGZoomEvent
 syntax keyword javascriptDOMEventCons TimeEvent TouchEvent TrackEvent TransitionEvent
 syntax keyword javascriptDOMEventCons UIEvent UserProximityEvent WheelEvent
-HiLink javascriptDOMEventCons Structure
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventCons Structure
+endif
 syntax keyword javascriptDOMEventProp contained bubbles cancelable currentTarget defaultPrevented
 syntax keyword javascriptDOMEventProp contained eventPhase target timeStamp type isTrusted
 syntax cluster props add=javascriptDOMEventProp
-HiLink javascriptDOMEventProp Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventProp Type
+endif
 syntax keyword javascriptDOMEventMethod contained initEvent preventDefault stopImmediatePropagation nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMEventMethod contained stopPropagation
 syntax cluster props add=javascriptDOMEventMethod
-HiLink javascriptDOMEventMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventMethod Type
+endif

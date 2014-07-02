@@ -90,4 +90,5 @@ syntax keyword javascriptBOM ValidityState VideoPlaybackQuality WaveShaperNode W
 syntax keyword javascriptBOM WebGLRenderingContext WebSMS WebSocket WebVTT WifiManager
 syntax keyword javascriptBOM Window Worker WorkerConsole WorkerLocation WorkerNavigator
 syntax keyword javascriptBOM XDomainRequest XMLDocument XMLHttpRequest XMLHttpRequestEventTarget
-HiLink javascriptBOM Structure
+if exists("did_javascript_hilink") | HiLink javascriptBOM Structure
+endif

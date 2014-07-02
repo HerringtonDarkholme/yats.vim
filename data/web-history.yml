@@ -1,0 +1,13 @@
+javascriptBOMHistoryProp:
+  - length
+  - current
+  - next
+  - previous
+  - state
+
+javascriptBOMHistoryMethod:
+  - back
+  - forward
+  - go
+  - pushState
+  - replaceState
