@@ -220,6 +220,7 @@ if exists("did_javascript_hilink")
   HiLink shellbang                      Comment
 
   delcommand HiLink
+  unlet did_javascript_hilink
 endif
 
 let b:current_syntax = "javascript"
