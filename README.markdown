@@ -7,7 +7,7 @@ Yet Another JavaScript Syntax file for Vim. Key differences:
 * Reorganize Web API and DOM keywords. Keep increase.
 * Wroks perfect with [javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
 * Remove old, unused syntax definitions.
-* Support several ES6 nex syntax, ex: arrow function `=>`. 
+* Support several ES6 new syntax, ex: arrow function `=>`. 
 
 Credits
 -------
