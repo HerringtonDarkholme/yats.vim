@@ -1,7 +1,11 @@
 {
+    "name": "yajs.vim",
+    "version": "1.0.0",
+    "description": "Yet another JavaScript syntax for Vim",
     "devDependencies": {
         "js-yaml": "*",
         "camel-case": "*",
         "is-upper-case": "*"
-    }
+    },
+    "license": "Same as Vim"
 }
