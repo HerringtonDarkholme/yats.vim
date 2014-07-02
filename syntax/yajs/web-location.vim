@@ -1,4 +1,6 @@
 syntax keyword javascriptBOMLocationProp contained href protocol host hostname port
 syntax keyword javascriptBOMLocationProp contained pathname search hash username password
 syntax keyword javascriptBOMLocationProp contained origin
-syntax keyword javascriptBOMLocationMethod contained assign reload replace toStringnextgroup=javascriptFuncArg
+syntax cluster props add=javascriptBOMLocationProp
+syntax keyword javascriptBOMLocationMethod contained assign reload replace toString nextgroup=javascriptFuncArg
+syntax cluster props add=javascriptBOMLocationMethod

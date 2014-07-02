@@ -1,0 +1,22 @@
+javascriptXHRProp:
+  - onreadystatechange
+  - readyState
+  - response
+  - responseText
+  - responseType
+  - responseXML
+  - status
+  - statusText
+  - timeout
+  - ontimeout
+  - upload
+  - withCredentials
+
+javascriptXHRMethod:
+  - abort
+  - getAllResponseHeaders
+  - getResponseHeader
+  - open
+  - overrideMimeType
+  - send
+  - setRequestHeader

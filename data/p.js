@@ -50,7 +50,7 @@ try {
       }
       if (def.length > 80) {
         if (/Method/.test(group)) {
-          def = def + 'nextgroup=javascriptFuncArg'
+          def = def + ' nextgroup=javascriptFuncArg'
         }
         console.log(def);
         def = predef;
@@ -63,6 +63,9 @@ try {
 
     if (contains) {
       console.log('syntax match ' + group + ' contained /contains/');
+    }
+    if (/Prop|Method/.test(group)) {
+      console.log('syntax cluster props add=' + group);
     }
   }
 

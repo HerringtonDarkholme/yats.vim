@@ -127,16 +127,11 @@ runtime! syntax/yajs/node.vim
 runtime! syntax/yajs/web.vim
 runtime! syntax/yajs/web-window.vim
 runtime! syntax/yajs/web-location.vim
+runtime! syntax/yajs/web-xhr.vim
 runtime! syntax/yajs/dom-node.vim
 runtime! syntax/yajs/dom-elem.vim
 runtime! syntax/yajs/dom-event.vim
 runtime! syntax/yajs/css.vim
-
-syntax cluster props add=javascriptPrototype,javascriptBOMWindowProp,javascriptBOMWindowMethod
-syntax cluster props add=javascriptBOMWindowEvent,javascriptBOMNavigatorProp,javascriptBOMLocationProp
-syntax cluster props add=javascriptBOMLocationMethod,javascriptDOMNodeProp,javascriptDOMNodeMethod
-syntax cluster props add=javascriptDOMNodeType,javascriptDOMElemProp,javascriptDOMElemMethod
-syntax cluster props add=javascriptDOMEventTargetMethod,javascriptDOMEventProp,javascriptDOMEventMethod
 
 let javascript_props = 1
 
@@ -229,6 +224,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javascriptBOMWindowEvent       Type
   HiLink javascriptBOMNavigatorProp     Type
   HiLink javascriptBOMNavigatorMethod   Type
+  HiLink javascriptXHRProp              Type
+  HiLink javascriptXHRMethod            Type
   HiLink javascriptDOMNodeProp          Type
   HiLink javascriptDOMNodeMethod        Type
   HiLink javascriptDOMNodeType          Type
