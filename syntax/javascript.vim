@@ -164,9 +164,9 @@ syntax match   javascriptArrowFunc    /=>/
 syntax region  javaScriptParen        contained start="(" end=")" 
 syntax match   javascriptBraces	      "[{}\[\]]"
 syntax match   javascriptParens	      "[()]"
-syntax match   javascriptOpSymbols	  "\_[ \_^]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[ \_$]"
+syntax match   javascriptOpSymbols    "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]"
 syntax match   javascriptEndColons    "[;,]"
-syntax match   javascriptLogicSymbols "\(&&\)\|\(||\)"
+syntax match   javascriptLogicSymbols "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]"
 
 
 if exists("did_javascript_hilink")
