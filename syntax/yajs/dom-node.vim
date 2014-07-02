@@ -9,7 +9,7 @@ syntax keyword javascriptDOMNodeMethod contained insertBefore isDefaultNamespace
 syntax keyword javascriptDOMNodeMethod contained isSameNode isSupported lookupNamespaceURInextgroup=javascriptFuncArg
 syntax keyword javascriptDOMNodeMethod contained lookupPrefix normalize removeChildnextgroup=javascriptFuncArg
 syntax keyword javascriptDOMNodeMethod contained replaceChild setUserData
-syntax match javascriptDOMNodeMethod /contains/
+syntax match javascriptDOMNodeMethod contained /contains/
 syntax keyword javascriptDOMNodeType contained ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE
 syntax keyword javascriptDOMNodeType contained CDATA_SECTION_NODEN_NODE ENTITY_REFERENCE_NODE
 syntax keyword javascriptDOMNodeType contained ENTITY_NODE PROCESSING_INSTRUCTION_NODEN_NODE

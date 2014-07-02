@@ -62,7 +62,7 @@ try {
     }
 
     if (contains) {
-      console.log('syntax match ' + group + ' /contains/');
+      console.log('syntax match ' + group + ' contained /contains/');
     }
   }
 
