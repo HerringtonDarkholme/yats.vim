@@ -1,0 +1,17 @@
+javascriptGlobal:
+    - Map
+
+javascriptES6MapProp:
+    - size
+
+javascriptES6MapMethod:
+    - clear
+    - delete
+    - entries
+    - forEach
+    - get
+    - has
+    - keys
+    - set
+    - values
+

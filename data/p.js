@@ -18,6 +18,7 @@ try {
   var def = '';
   var contained = true;
   var contains = false;
+  var hilink = true;
 
 
   yml = yaml.safeLoad(fs.readFileSync(file + '.yml', 'utf8'));
@@ -50,7 +51,7 @@ try {
       }
       if (def.length > 80) {
         if (/Method/.test(group)) {
-          def = def + ' nextgroup=javascriptFuncArg'
+          def = def + ' nextgroup=javascriptFuncArg';
         }
         console.log(def);
         def = predef;
@@ -68,12 +69,18 @@ try {
       console.log('syntax cluster props add=' + group);
     }
 
-    if (contained) {
-      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Type');
-    } else {
-      console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure');
+    hilink = true;
+    if (group === 'javascriptGlobal' && file !== 'javascript') {
+        hilink = false;
     }
-    console.log('endif');
+    if (hilink) {
+      if (contained) {
+        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Type');
+      } else {
+        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure');
+      }
+      console.log('endif');
+    }
   }
 
 } catch (e) {

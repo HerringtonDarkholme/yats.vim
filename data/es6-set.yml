@@ -1,0 +1,15 @@
+javascriptGlobal:
+    - Set
+
+javascriptES6SetProp:
+    - size
+
+javascriptES6SetMethod:
+    - add
+    - clear
+    - delete
+    - entries
+    - forEach
+    - has
+    - values
+
