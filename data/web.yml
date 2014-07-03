@@ -20,7 +20,7 @@ javascriptBOM:
     # - B
     - BatteryManager
     - BiquadFilterNode
-    - Blob
+    # - Blob
     # - BlobBuilder
     - BlobEvent
     - BluetoothAdapter
@@ -126,18 +126,18 @@ javascriptBOM:
     # - EventTarget
     - Extensions
     # - F
-    - File
-    - FileEntry
-    - FileEntrySync
+    # - File
+    # - FileEntry
+    # - FileEntrySync
     # - FileError
     - FileException
-    - FileHandle
-    - FileList
-    - FileReader
-    - FileReaderSync
-    - FileRequest
-    - FileSystem
-    - FileSystemSync
+    # - FileHandle
+    # - FileList
+    # - FileReader
+    # - FileReaderSync
+    # - FileRequest
+    # - FileSystem
+    # - FileSystemSync
     - Float32Array
     - Float64Array
     - FMRadio

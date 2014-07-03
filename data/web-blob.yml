@@ -1,8 +1,30 @@
+javascriptGlobal:
+    - Blob
+    - BlobBuilder
+    - File
+    - FileReader
+    - FileReaderSync
+
 javascriptBOMFileMethod:
     - readAsArrayBuffer
     - readAsBinaryString
     - readAsDataURL
     - readAsText
+
+javascriptBOMFileReaderMethod:
+    - error
+    - readyState
+    - result
+
+javascariptBOMFileReaderMethod:
+    - abort
+    - readAsArrayBuffer
+    - readAsBinaryString
+    - readAsDataURL
+    - readAsText
+
+javascriptBOMFileListMethod:
+    - item
 
 javascriptBOMBlobMethod:
     - append

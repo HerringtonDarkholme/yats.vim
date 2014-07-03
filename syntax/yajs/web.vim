@@ -1,7 +1,7 @@
 syntax keyword javascriptBOM AbstractWorker AnalyserNode App Apps ArrayBuffer ArrayBufferView
 syntax keyword javascriptBOM Attr AudioBuffer AudioBufferSourceNode AudioContext AudioDestinationNode
 syntax keyword javascriptBOM AudioListener AudioNode AudioParam BatteryManager BiquadFilterNode
-syntax keyword javascriptBOM Blob BlobEvent BluetoothAdapter BluetoothDevice BluetoothManager
+syntax keyword javascriptBOM BlobEvent BluetoothAdapter BluetoothDevice BluetoothManager
 syntax keyword javascriptBOM CameraCapabilities CameraControl CameraManager CanvasGradient
 syntax keyword javascriptBOM CanvasImageSource CanvasPattern CanvasRenderingContext2D
 syntax keyword javascriptBOM CaretPosition CDATASection ChannelMergerNode ChannelSplitterNode
@@ -18,9 +18,7 @@ syntax keyword javascriptBOM DOMCursor DOMError DOMException DOMHighResTimeStamp
 syntax keyword javascriptBOM DOMImplementationRegistry DOMParser DOMRequest DOMString
 syntax keyword javascriptBOM DOMStringList DOMStringMap DOMTimeStamp DOMTokenList
 syntax keyword javascriptBOM DynamicsCompressorNode Element Entry EntrySync Extensions
-syntax keyword javascriptBOM File FileEntry FileEntrySync FileException FileHandle
-syntax keyword javascriptBOM FileList FileReader FileReaderSync FileRequest FileSystem
-syntax keyword javascriptBOM FileSystemSync Float32Array Float64Array FMRadio FormData
+syntax keyword javascriptBOM FileException Float32Array Float64Array FMRadio FormData
 syntax keyword javascriptBOM GainNode Gamepad GamepadButton Geolocation History HTMLAnchorElement
 syntax keyword javascriptBOM HTMLAreaElement HTMLAudioElement HTMLBaseElement HTMLBodyElement
 syntax keyword javascriptBOM HTMLBRElement HTMLButtonElement HTMLCanvasElement HTMLCollection
