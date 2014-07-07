@@ -101,6 +101,20 @@ syntax match   javascriptFloat                 /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d
 syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
 " syntax match   javascriptLabel            /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
+syntax keyword javascriptReserved              break case class catch const continue
+syntax keyword javascriptReserved              debugger default delete do else export
+syntax keyword javascriptReserved              extends finally for function if import
+syntax keyword javascriptReserved              in instanceof let new return super
+syntax keyword javascriptReserved              switch this throw try typeof var
+syntax keyword javascriptReserved              void while with yield
+
+syntax keyword javascriptReserved              enum implements package protected static
+syntax keyword javascriptReserved              interface private public abstract boolean
+syntax keyword javascriptReserved              byte char double final float goto int
+syntax keyword javascriptReserved              long native short synchronized transient
+syntax keyword javascriptReserved              volatile
+
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
                                               
@@ -123,12 +137,7 @@ syntax keyword javascriptStatement             return with yield
 syntax keyword javascriptExceptions            try catch throw finally Error EvalError
 syntax keyword javascriptExceptions            RangeError ReferenceError SyntaxError TypeError URIError
                                               
-syntax keyword javascriptReserved              abstract enum int short boolean export
-syntax keyword javascriptReserved              interface static byte extends long super
-syntax keyword javascriptReserved              char final native synchronized class float
-syntax keyword javascriptReserved              package throws const goto private transient
-syntax keyword javascriptReserved              debugger implements protected volatile
-syntax keyword javascriptReserved              double import public
+
 
 runtime! syntax/yajs/javascript.vim
 runtime! syntax/yajs/es6-map.vim
