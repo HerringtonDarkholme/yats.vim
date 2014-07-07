@@ -56,7 +56,7 @@ if !exists("javascript_ignore_javaScriptdoc")
   "syntax include @javaHtml <sfile>:p:h/html.vim
   "unlet b:current_syntax
 
-  syntax region  javascriptDocComment         matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,javascriptCvsTag,@javascriptHtml,@Spell fold
+  syntax region  javascriptDocComment         matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
   syntax match   javascriptDocNotation        contained "@" nextgroup=javascriptDocTags
 
   syntax keyword javascriptDocTags            contained constant constructor constrructs event function ignore inner private public static
@@ -195,7 +195,6 @@ if exists("did_javascript_hilink")
   HiLink javascriptLineComment          Comment
   HiLink javascriptDocComment           Comment
   HiLink javascriptCommentTodo          Todo
-  HiLink javascriptCvsTag               Function
   HiLink javascriptDocNotation          Special
   HiLink javascriptDocTags              Special
   " HiLink javascriptDocSeeTag            Function
@@ -220,13 +219,13 @@ if exists("did_javascript_hilink")
   HiLink javascriptMessage              Keyword
   HiLink javascriptReserved             Keyword
   HiLink javascriptOperator             Operator
-  HiLink javascriptType                 Type
+  " HiLink javascriptType                 Type
   HiLink javascriptNull                 Type
   HiLink javascriptNumber               Number
   HiLink javascriptFloat                Number
   HiLink javascriptBoolean              Boolean
   HiLink javascriptLabel                Label
-  HiLink javascriptSpecial              Special
+  " HiLink javascriptSpecial              Special
   HiLink javascriptImport               Special
   HiLink javascriptExport               Special
   HiLink javascriptExceptions           Special
