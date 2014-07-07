@@ -104,7 +104,8 @@ syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              break case class catch const continue
 syntax keyword javascriptReserved              debugger default delete do else export
-syntax keyword javascriptReserved              extends finally for function if import
+syntax keyword javascriptReserved              extends finally for function if 
+"import
 syntax keyword javascriptReserved              in instanceof let new return super
 syntax keyword javascriptReserved              switch this throw try typeof var
 syntax keyword javascriptReserved              void while with yield
@@ -117,26 +118,30 @@ syntax keyword javascriptReserved              volatile
 
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
-                                              
-"Program Keywords                             
-syntax keyword javascriptSource                import export
+
+"Import
+syntax region javascriptImportDef              start=+import+ end=+;\|$+ contains=javascriptImport
+
+"Program Keywords
+syntax keyword javascriptImport                contained from as import
+syntax keyword javascriptExport                export
 syntax keyword javascriptIdentifier            arguments this let var const void
 syntax keyword javascriptOperator              delete new instanceof typeof
 syntax keyword javascriptBoolean               true false
 syntax keyword javascriptNull                  null undefined
 syntax keyword javascriptMessage               alert confirm prompt status
 syntax keyword javascriptGlobal                self top parent
-                                              
-"Statement Keywords                           
+
+"Statement Keywords
 syntax keyword javascriptConditional           if else switch
 syntax keyword javascriptRepeat                do while for in of
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptLabel                 case default
 syntax keyword javascriptStatement             return with yield
-                                              
+
 syntax keyword javascriptExceptions            try catch throw finally Error EvalError
 syntax keyword javascriptExceptions            RangeError ReferenceError SyntaxError TypeError URIError
-                                              
+
 
 
 runtime! syntax/yajs/javascript.vim
@@ -222,13 +227,14 @@ if exists("did_javascript_hilink")
   HiLink javascriptBoolean              Boolean
   HiLink javascriptLabel                Label
   HiLink javascriptSpecial              Special
-  HiLink javascriptSource               Special
+  HiLink javascriptImport               Special
+  HiLink javascriptExport               Special
   HiLink javascriptExceptions           Special
 
   HiLink javascriptFuncDef              Title
   HiLink javascriptFuncArg              Special
   HiLink javascriptFuncComma            Operator  
-                                        
+
   HiLink shellbang                      Comment
 
   delcommand HiLink
