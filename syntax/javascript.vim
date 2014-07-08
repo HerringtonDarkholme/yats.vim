@@ -121,14 +121,6 @@ syntax keyword javascriptReserved              volatile
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
 
-"Class
-" syntax region  javascriptClassDef              start=/class\s\+{/ end=/}/ contains=javascriptClassMethod,javascriptClassKeyword 
-syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassBlock skipwhite
-syntax region  javascriptClassBLock            contained start=/{/ end=/}/ contains=javascriptClassMethod 
-syntax region  javascriptClassMethod           contained start=/\(\(\(set\|get\)\s\+\)\=\)\k\+\s\+(/ end=/}/ contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg 
-syntax keyword javascriptClassAccessor         contained get set
-syntax match   javascriptClassMethodName       contained /\k\+\ze\s\+(/
-
 "Import
 syntax region  javascriptImportDef             start=+import+ end=+;\|$+ contains=javascriptImport
 
@@ -181,22 +173,27 @@ if main_syntax == "javascript"
   " syntax sync match javascriptHighlight grouphere javascriptBlock /{/
 endif
 
-syntax region  javascriptParen        contained start="(" end=")" 
-" syntax region  javascriptBlock        start=/{/ end=/}/ contains=TOP
-syntax region  javascriptFuncBlock    contained start=/{/ end=/}/ contains=TOP
+syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/{/ end=/}/ contains=TOP
+                                               
+syntax keyword javascriptFuncKeyword           contained function
+syntax region  javascriptFuncDef               start="function" end=")" contains=javascriptFuncKeyword,javascriptFuncArg keepend
+syntax match   javascriptFuncArg               contained "([^()]*)" contains=javascriptParens,javascriptFuncComma
+syntax match   javascriptFuncComma             contained /,/
+syntax match   javascriptArrowFunc             /=>/
 
-syntax keyword javascriptFuncKeyword  contained function
-syntax region  javascriptFuncDef      start="function" end="\([^)]*\)" contains=javascriptFuncKeyword,javascriptFuncArg keepend
-syntax match   javascriptFuncArg      contained "([^()]*)" contains=javascriptParens,javascriptFuncComma nextgroup=javascriptFuncBlock skipwhite extend
-syntax match   javascriptFuncComma    contained /,/
-" syntax region  javascriptFuncBlock      contained matchgroup=javascriptFuncBlock start="{" end="}" contains=@javascriptAll,javascriptParensErrA,javascriptParensErrB,javascriptParen,javascriptBracket,javascriptBlock fold
-syntax match   javascriptArrowFunc    /=>/
+"Class
+syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassName skipwhite
+syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock skipwhite
+syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptClassMethod
+syntax region  javascriptClassMethod           contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+syntax keyword javascriptClassAccessor         contained get set
+syntax match   javascriptClassMethodName       contained /\k\+\ze\s\?(/
 
-" syntax match   javascriptBraces	      "[{}\[\]]"
-syntax match   javascriptParens	      "[()]"
-syntax match   javascriptOpSymbols    "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]"
-syntax match   javascriptEndColons    "[;,]"
-syntax match   javascriptLogicSymbols "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]"
+syntax match   javascriptBraces	               contained "[{}\[\]]"
+syntax match   javascriptParens	               "[()]"
+syntax match   javascriptOpSymbols             "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]"
+syntax match   javascriptEndColons             "[;,]"
+syntax match   javascriptLogicSymbols          "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]"
 
 
 if exists("did_javascript_hilink")
@@ -249,6 +246,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptFuncArg              Special
   HiLink javascriptFuncComma            Operator  
 
+  HiLink javascriptClassName            Title
   HiLink javascriptClassMethodName      Title
   HiLink javascriptClassAccessor        Operator
 
