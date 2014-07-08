@@ -124,7 +124,7 @@ syntax region javascriptImportDef              start=+import+ end=+;\|$+ contain
 
 "Program Keywords
 syntax keyword javascriptImport                contained from as import
-syntax keyword javascriptExport                export
+syntax keyword javascriptExport                export module
 syntax keyword javascriptIdentifier            arguments this let var const void
 syntax keyword javascriptOperator              delete new instanceof typeof
 syntax keyword javascriptBoolean               true false
