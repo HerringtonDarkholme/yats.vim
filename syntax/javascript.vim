@@ -48,45 +48,41 @@ syntax match   javascriptLineComment      "\/\/.*" contains=@Spell,javascriptCom
 syntax match   javascriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
 syntax region  javascriptComment          start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
 
-" JSDoc support start
-if !exists("javascript_ignore_javaScriptdoc")
-  syntax case ignore
+"JSDoc
+syntax case ignore
 
-  "" syntax coloring for javadoc comments (HTML)
-  "syntax include @javaHtml <sfile>:p:h/html.vim
-  "unlet b:current_syntax
+"" syntax coloring for javadoc comments (HTML)
+"syntax include @javaHtml <sfile>:p:h/html.vim
+"unlet b:current_syntax
 
-  syntax region  javascriptDocComment         matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
-  syntax match   javascriptDocNotation        contained "@" nextgroup=javascriptDocTags
-
-  syntax keyword javascriptDocTags            contained constant constructor constrructs event function ignore inner private public static
-  syntax keyword javascriptDocTags            contained const dict expose inheritDoc interface nosideeffects override protected struct
-  syntax keyword javascriptDocTags            contained example
-
-  syntax keyword javascriptDocTags            contained arguments lends memberOf name type link nextgroup=javascriptDocParam skipwhite
-
-  syntax keyword javascriptDocTags            contained author class default deprecated description nextgroup=javascriptDocDesc skipwhite
-  syntax keyword javascriptDocTags            contained fileOverview namespace requires since version nextgroup=javascriptDocDesc skipwhite
-  syntax keyword javascriptDocTags            contained license preserve nextgroup=javascriptDocDesc skipwhite
-
-  syntax keyword javascriptDocTags            contained borrows exports nextgroup=javascriptDocA skipwhite
-  syntax keyword javascriptDocTags            contained param property nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
-  syntax keyword javascriptDocTags            contained define enum extends implements this typedef nextgroup=javascriptDocParamType skipwhite
-  syntax keyword javascriptDocTags            contained returns throws nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
-  syntax keyword javascriptDocTags            contained see nextgroup=javascriptDocRef skipwhite
-
-  syntax match   javascriptDocNamedParamType  contained "{.\+}" nextgroup=javascriptDocParamName skipwhite
-  syntax match   javascriptDocParamName       contained "\[\?\w\+\]\?" nextgroup=javascriptDocDesc skipwhite
-  syntax match   javascriptDocParamType       contained "{.\+}" nextgroup=javascriptDocDesc skipwhite
-  syntax match   javascriptDocA               contained "\%(#\|\w\|\.\|:\|\/\)\+" nextgroup=javascriptDocAs skipwhite
-  syntax match   javascriptDocAs              contained "\s*as\s*" nextgroup=javascriptDocB skipwhite
-  syntax match   javascriptDocB               contained "\%(#\|\w\|\.\|:\|\/\)\+"
-  syntax match   javascriptDocParam           contained "\%(#\|\w\|\.\|:\|\/\)\+"
-  syntax match   javascriptDocRef             contained "\%(#\|\w\|\.\|:\|\/\)\+"
-  syntax region  javascriptDocLinkTag         contained matchgroup=javascriptDocLinkTag start="{" end="}" contains=javascriptDocTags
-
-  syntax case match
-endif
+syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
+syntax match   javascriptDocNotation           contained "@" nextgroup=javascriptDocTags
+                                               
+syntax keyword javascriptDocTags               contained constant constructor constrructs event function ignore inner private public static
+syntax keyword javascriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
+syntax keyword javascriptDocTags               contained example
+                                               
+syntax keyword javascriptDocTags               contained arguments lends memberOf name type link nextgroup=javascriptDocParam skipwhite
+                                               
+syntax keyword javascriptDocTags               contained author class default deprecated description nextgroup=javascriptDocDesc skipwhite
+syntax keyword javascriptDocTags               contained fileOverview namespace requires since version nextgroup=javascriptDocDesc skipwhite
+syntax keyword javascriptDocTags               contained license preserve nextgroup=javascriptDocDesc skipwhite
+                                               
+syntax keyword javascriptDocTags               contained borrows exports nextgroup=javascriptDocA skipwhite
+syntax keyword javascriptDocTags               contained param property nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
+syntax keyword javascriptDocTags               contained define enum extends implements this typedef nextgroup=javascriptDocParamType skipwhite
+syntax keyword javascriptDocTags               contained returns throws nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
+syntax keyword javascriptDocTags               contained see nextgroup=javascriptDocRef skipwhite
+                                               
+syntax match   javascriptDocNamedParamType     contained "{.\+}" nextgroup=javascriptDocParamName skipwhite
+syntax match   javascriptDocParamName          contained "\[\?\w\+\]\?" nextgroup=javascriptDocDesc skipwhite
+syntax match   javascriptDocParamType          contained "{.\+}" nextgroup=javascriptDocDesc skipwhite
+syntax match   javascriptDocA                  contained "\%(#\|\w\|\.\|:\|\/\)\+" nextgroup=javascriptDocAs skipwhite
+syntax match   javascriptDocAs                 contained "\s*as\s*" nextgroup=javascriptDocB skipwhite
+syntax match   javascriptDocB                  contained "\%(#\|\w\|\.\|:\|\/\)\+"
+syntax match   javascriptDocParam              contained "\%(#\|\w\|\.\|:\|\/\)\+"
+syntax match   javascriptDocRef                contained "\%(#\|\w\|\.\|:\|\/\)\+"
+syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start="{" end="}" contains=javascriptDocTags
 
 syntax case match
 
