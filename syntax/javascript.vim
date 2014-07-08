@@ -33,27 +33,23 @@ else
   finish
 endif
 
-"" dollar sign is permitted anywhere in an identifier
+"Dollar sign is permitted anywhere in an identifier
 setlocal iskeyword+=$
 
 syntax sync fromstart
 
-"" syntax coloring for Node.js shebang line
+"Syntax coloring for Node.js shebang line
 syntax match   shellbang "^#!.*/bin/env\s\+node\>"
 
 
-" JavaScript comments
-syntax keyword javascriptCommentTodo      TODO FIXME XXX TBD contained
-syntax match   javascriptLineComment      "\/\/.*" contains=@Spell,javascriptCommentTodo
-syntax match   javascriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
-syntax region  javascriptComment          start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
+"JavaScript comments
+syntax keyword javascriptCommentTodo           TODO FIXME XXX TBD contained
+syntax match   javascriptLineComment           "\/\/.*" contains=@Spell,javascriptCommentTodo
+syntax match   javascriptCommentSkip           "^[ \t]*\*\($\|[ \t]\+\)"
+syntax region  javascriptComment               start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
 
 "JSDoc
 syntax case ignore
-
-"" syntax coloring for javadoc comments (HTML)
-"syntax include @javaHtml <sfile>:p:h/html.vim
-"unlet b:current_syntax
 
 syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
 syntax match   javascriptDocNotation           contained "@" nextgroup=javascriptDocTags
@@ -83,6 +79,12 @@ syntax match   javascriptDocB                  contained "\%(#\|\w\|\.\|:\|\/\)\
 syntax match   javascriptDocParam              contained "\%(#\|\w\|\.\|:\|\/\)\+"
 syntax match   javascriptDocRef                contained "\%(#\|\w\|\.\|:\|\/\)\+"
 syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start="{" end="}" contains=javascriptDocTags
+
+if main_syntax == "javascript"
+  syntax sync clear
+  syntax sync ccomment javascriptComment minlines=200
+  " syntax sync match javascriptHighlight grouphere javascriptBlock /{/
+endif
 
 syntax case match
 
@@ -160,14 +162,8 @@ runtime! syntax/yajs/css.vim
 
 let javascript_props = 1
 
-syntax match javascriptDotNotation      "\." nextgroup=@props
-syntax match javascriptDotStyleNotation "\.style\." nextgroup=javascriptDOMStyle transparent
-
-if main_syntax == "javascript"
-  syntax sync clear
-  syntax sync ccomment javascriptComment minlines=200
-  " syntax sync match javascriptHighlight grouphere javascriptBlock /{/
-endif
+syntax match   javascriptDotNotation           "\." nextgroup=@props
+syntax match   javascriptDotStyleNotation      "\.style\." nextgroup=javascriptDOMStyle transparent
 
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/{/ end=/}/ contains=TOP
                                                
