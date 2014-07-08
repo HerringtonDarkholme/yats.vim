@@ -147,6 +147,7 @@ syntax keyword javascriptExceptions            RangeError ReferenceError SyntaxE
 runtime! syntax/yajs/javascript.vim
 runtime! syntax/yajs/es6-map.vim
 runtime! syntax/yajs/es6-set.vim
+runtime! syntax/yajs/es6-proxy.vim
 runtime! syntax/yajs/node.vim
 runtime! syntax/yajs/web.vim
 runtime! syntax/yajs/web-window.vim

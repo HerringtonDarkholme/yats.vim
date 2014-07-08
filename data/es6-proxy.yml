@@ -1,0 +1,20 @@
+javascriptGlobal:
+  - Proxy
+
+javascriptProxyAPI:
+  - getOwnPropertyDescriptor
+  - getOwnPropertyNames
+  - defineProperty
+  - deleteProperty
+  - freeze
+  - seal
+  - preventExtensions
+  - has
+  - hasOwn
+  - get
+  - set
+  - enumerate
+  - iterate
+  - ownKeys
+  - apply
+  - construct

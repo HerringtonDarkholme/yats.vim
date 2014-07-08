@@ -3,6 +3,7 @@ files='
   javascript
   es6-map
   es6-set
+  es6-proxy
   node
   web
   web-window
