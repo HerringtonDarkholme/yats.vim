@@ -1,6 +1,4 @@
 syntax keyword javascriptGlobal Blob BlobBuilder File FileReader FileReaderSync
-if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
-endif
 syntax keyword javascriptBOMFileMethod contained readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncArg
 syntax keyword javascriptBOMFileMethod contained readAsDataURL readAsText
 syntax cluster props add=javascriptBOMFileMethod
