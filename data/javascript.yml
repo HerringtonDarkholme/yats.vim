@@ -54,3 +54,28 @@ javascriptGlobalMethod:
     - decodeURIComponent
     - encodeURI
     - encodeURIComponent
+
+javascriptObjMethod:
+    - create
+    - defineProperties
+    - defineProperty
+    - freeze
+    - getOwnPropertyDescriptor
+    - getOwnPropertyNames
+    - getOwnPropertySymbols
+    - getPrototypeOf
+    - is
+    - isExtensible
+    - isFrozen
+    - isSealed
+    - keys
+    - preventExtensions 
+    - seal
+
+javascriptObjProtoMethod:
+    - hasOwnProperty
+    - isPrototypeOf
+    - propertyIsEnumerable
+    - toLocaleString
+    - toString
+    - valueOf

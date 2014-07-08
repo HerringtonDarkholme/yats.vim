@@ -142,13 +142,12 @@ syntax keyword javascriptStatement             return with yield
 syntax keyword javascriptExceptions            try catch throw finally Error EvalError
 syntax keyword javascriptExceptions            RangeError ReferenceError SyntaxError TypeError URIError
 
-
-
 runtime! syntax/yajs/javascript.vim
 runtime! syntax/yajs/es6-map.vim
 runtime! syntax/yajs/es6-set.vim
 runtime! syntax/yajs/es6-proxy.vim
 runtime! syntax/yajs/es6-promise.vim
+runtime! syntax/yajs/es6-symbol.vim
 runtime! syntax/yajs/node.vim
 runtime! syntax/yajs/web.vim
 runtime! syntax/yajs/web-window.vim
