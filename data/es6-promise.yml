@@ -1,0 +1,10 @@
+javascriptGlobal:
+  - Promise
+
+javascriptPromiseMethod:
+  - then
+  - catch
+  - resolve
+  - reject
+  - all
+  - race

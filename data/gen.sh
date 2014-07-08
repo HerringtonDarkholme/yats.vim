@@ -4,6 +4,7 @@ files='
   es6-map
   es6-set
   es6-proxy
+  es6-promise
   node
   web
   web-window
