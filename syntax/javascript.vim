@@ -124,8 +124,8 @@ syntax keyword javascriptPrototype             prototype
 "Class
 " syntax region  javascriptClassDef              start=/class\s\+{/ end=/}/ contains=javascriptClassMethod,javascriptClassKeyword 
 syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassBlock skipwhite
-syntax region  javascriptClassBLock            contained start=/{/ end=/}/ contains=javascriptBraces,javascriptClassMethod keepend
-syntax region  javascriptClassMethod           contained start=/\(\(\(set\|get\)\s\+\)\=\)\k\+\s\+(/ end=/}/ contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg keepend
+syntax region  javascriptClassBLock            contained start=/{/ end=/}/ contains=javascriptClassMethod 
+syntax region  javascriptClassMethod           contained start=/\(\(\(set\|get\)\s\+\)\=\)\k\+\s\+(/ end=/}/ contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg 
 syntax keyword javascriptClassAccessor         contained get set
 syntax match   javascriptClassMethodName       contained /\k\+\ze\s\+(/
 
@@ -183,16 +183,16 @@ endif
 
 syntax region  javascriptParen        contained start="(" end=")" 
 " syntax region  javascriptBlock        start=/{/ end=/}/ contains=TOP
-syntax region  javascriptFuncBlock    contained start=/{/ end=/}/ keepend contains=TOP
+syntax region  javascriptFuncBlock    contained start=/{/ end=/}/ contains=TOP
 
 syntax keyword javascriptFuncKeyword  contained function
 syntax region  javascriptFuncDef      start="function" end="\([^)]*\)" contains=javascriptFuncKeyword,javascriptFuncArg keepend
-syntax match   javascriptFuncArg      contained "([^()]*)" contains=javascriptParens,javascriptFuncComma nextgroup=javascriptFuncBlock skipwhite
+syntax match   javascriptFuncArg      contained "([^()]*)" contains=javascriptParens,javascriptFuncComma nextgroup=javascriptFuncBlock skipwhite extend
 syntax match   javascriptFuncComma    contained /,/
 " syntax region  javascriptFuncBlock      contained matchgroup=javascriptFuncBlock start="{" end="}" contains=@javascriptAll,javascriptParensErrA,javascriptParensErrB,javascriptParen,javascriptBracket,javascriptBlock fold
 syntax match   javascriptArrowFunc    /=>/
 
-syntax match   javascriptBraces	      "[{}\[\]]"
+" syntax match   javascriptBraces	      "[{}\[\]]"
 syntax match   javascriptParens	      "[()]"
 syntax match   javascriptOpSymbols    "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]"
 syntax match   javascriptEndColons    "[;,]"
