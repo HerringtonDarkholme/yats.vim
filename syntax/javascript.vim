@@ -94,7 +94,10 @@ syntax region  javascriptString	               start=+'+  skip=+\\\\\|\\'+  end=
 syntax region  javascriptTemplate              start=+`+  skip=+\\\\\|\\`+  end=+`\|$+	contains=javascriptTemplateSubstitution
 syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 
-syntax match   javascriptNumber	               "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
+syntax match   javascriptNumber	               "-\=\<\d\+L\=\>"
+syntax match   javascriptNumber	               "0[bB][01]\+\>"
+syntax match   javascriptNumber	               "0[oO][0-7]\+\>"
+syntax match   javascriptNumber	               "0[xX][0-9a-fA-F]\+\>"
 syntax match   javascriptFloat                 /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
 syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
 syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
