@@ -208,7 +208,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptOpSymbols            Normal
   HiLink javascriptLogicSymbols         Boolean
   HiLink javascriptBraces               Function
-  HiLink javascriptParens               Operator
+  HiLink javascriptParens               Normal
   HiLink javascriptComment              Comment
   HiLink javascriptLineComment          Comment
   HiLink javascriptDocComment           Comment
