@@ -19,10 +19,10 @@ syntax keyword javascriptObjMethod contained getOwnPropertySymbols getPrototypeO
 syntax keyword javascriptObjMethod contained is isExtensible isFrozen isSealed keys nextgroup=javascriptFuncArg
 syntax keyword javascriptObjMethod contained preventExtensions seal
 syntax cluster props add=javascriptObjMethod
-if exists("did_javascript_hilink") | HiLink javascriptObjMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptObjMethod Keyword
 endif
 syntax keyword javascriptObjProtoMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncArg
 syntax keyword javascriptObjProtoMethod contained toLocaleString toString valueOf nextgroup=javascriptFuncArg
 syntax cluster props add=javascriptObjProtoMethod
-if exists("did_javascript_hilink") | HiLink javascriptObjProtoMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptObjProtoMethod Keyword
 endif

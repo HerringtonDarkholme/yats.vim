@@ -35,7 +35,7 @@ syntax keyword javascriptBOMWindowEvent contained onmozbeforepaint onpaint onpop
 syntax keyword javascriptBOMWindowEvent contained onreset onresize onscroll onselect
 syntax keyword javascriptBOMWindowEvent contained onsubmit onunload onuserproximity
 syntax keyword javascriptBOMWindowEvent contained onpageshow onpagehide
-if exists("did_javascript_hilink") | HiLink javascriptBOMWindowEvent Type
+if exists("did_javascript_hilink") | HiLink javascriptBOMWindowEvent Keyword
 endif
 syntax keyword javascriptBOMWindowCons DOMParser QueryInterface XMLSerializer
 if exists("did_javascript_hilink") | HiLink javascriptBOMWindowCons Structure

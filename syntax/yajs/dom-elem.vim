@@ -5,7 +5,7 @@ syntax keyword javascriptDOMElemProp contained onpaste onwheel scrollHeight scro
 syntax keyword javascriptDOMElemProp contained scrollTop scrollWidth tagName classList
 syntax keyword javascriptDOMElemProp contained className name outerHTML style
 syntax cluster props add=javascriptDOMElemProp
-if exists("did_javascript_hilink") | HiLink javascriptDOMElemProp Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMElemProp Keyword
 endif
 syntax keyword javascriptDOMElemMethod contained getAttributeNS getAttributeNode getAttributeNodeNS nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMElemMethod contained getBoundingClientRect getClientRects nextgroup=javascriptFuncArg
@@ -20,5 +20,5 @@ syntax keyword javascriptDOMElemMethod contained setAttribute setAttributeNS set
 syntax keyword javascriptDOMElemMethod contained setAttributeNodeNS setCapture supports nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMElemMethod contained getAttribute
 syntax cluster props add=javascriptDOMElemMethod
-if exists("did_javascript_hilink") | HiLink javascriptDOMElemMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMElemMethod Keyword
 endif

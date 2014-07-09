@@ -75,7 +75,7 @@ try {
     }
     if (hilink) {
       if (contained) {
-        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Type');
+        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Keyword');
       } else {
         console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure');
       }

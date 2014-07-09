@@ -100,10 +100,9 @@ syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|
 " syntax match   javascriptLabel            /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              break case catch const continue
-" class
+syntax keyword javascriptReserved              break case catch class const continue
 syntax keyword javascriptReserved              debugger default delete do else export
-syntax keyword javascriptReserved              extends finally for if 
+syntax keyword javascriptReserved              extends finally for function if 
 " function
 "import
 syntax keyword javascriptReserved              in instanceof let new return super
@@ -167,15 +166,17 @@ syntax match   javascriptDotStyleNotation      "\.style\." nextgroup=javascriptD
 
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/{/ end=/}/ contains=TOP
                                                
-syntax keyword javascriptFuncKeyword           contained function
-syntax region  javascriptFuncDef               start="function" end=")" contains=javascriptFuncKeyword,javascriptFuncArg keepend
+syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName skipwhite
+syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
 syntax match   javascriptFuncArg               contained "([^()]*)" contains=javascriptParens,javascriptFuncComma
 syntax match   javascriptFuncComma             contained /,/
 syntax match   javascriptArrowFunc             /=>/
 
 "Class
 syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassName skipwhite
-syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock skipwhite
+syntax keyword javascriptClassSuper            super
+syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
+syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassName skipwhite
 syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptClassMethod
 syntax region  javascriptClassMethod           contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax keyword javascriptClassAccessor         contained get set
@@ -189,6 +190,8 @@ syntax match   javascriptLogicSymbols          "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[
 
 
 if exists("did_javascript_hilink")
+  HiLink javascriptReserved             Error
+
   HiLink javascriptEndColons            Exception
   HiLink javascriptOpSymbols            Operator
   HiLink javascriptLogicSymbols         Boolean
@@ -198,8 +201,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptLineComment          Comment
   HiLink javascriptDocComment           Comment
   HiLink javascriptCommentTodo          Todo
-  HiLink javascriptDocNotation          Special
-  HiLink javascriptDocTags              Special
+  HiLink javascriptDocNotation          SpecialComment
+  HiLink javascriptDocTags              SpecialComment
   " HiLink javascriptDocSeeTag            Function
   HiLink javascriptDocParam             Function
   HiLink javascriptDocNamedParamType    Type
@@ -209,24 +212,20 @@ if exists("did_javascript_hilink")
   HiLink javascriptTemplate             String
   HiLink javascriptTemplateSubstitution Label
   HiLink javascriptRegexpString         String
-  " HiLink javascriptGlobal               Constant
-  " HiLink javascriptCharacter            Character
+  HiLink javascriptGlobal               Constant
+  HiLink javascriptCharacter            Character
   HiLink javascriptPrototype            Type
   HiLink javascriptConditional          Conditional
   HiLink javascriptBranch               Conditional
   HiLink javascriptIdentifier           Identifier
   HiLink javascriptRepeat               Repeat
   HiLink javascriptStatement            Statement
-  HiLink javascriptFuncKeyword          Function
-  HiLink javascriptArrowFunc            Function
-  HiLink javascriptClassKeyword         Function
   HiLink javascriptMessage              Keyword
-  HiLink javascriptReserved             Keyword
   HiLink javascriptOperator             Operator
   " HiLink javascriptType                 Type
-  HiLink javascriptNull                 Type
+  HiLink javascriptNull                 Boolean
   HiLink javascriptNumber               Number
-  HiLink javascriptFloat                Number
+  HiLink javascriptFloat                Float
   HiLink javascriptBoolean              Boolean
   HiLink javascriptLabel                Label
   " HiLink javascriptSpecial              Special
@@ -234,13 +233,18 @@ if exists("did_javascript_hilink")
   HiLink javascriptExport               Special
   HiLink javascriptExceptions           Special
 
-  HiLink javascriptFuncDef              Title
+  HiLink javascriptFuncKeyword          Type
+  HiLink javascriptArrowFunc            Type
+  HiLink javascriptFuncName             Function
   HiLink javascriptFuncArg              Special
   HiLink javascriptFuncComma            Operator  
 
-  HiLink javascriptClassName            Title
-  HiLink javascriptClassMethodName      Title
+  HiLink javascriptClassKeyword         Type
+  HiLink javascriptClassExtends         Type
+  HiLink javascriptClassName            Function
+  HiLink javascriptClassMethodName      Function
   HiLink javascriptClassAccessor        Operator
+  HiLink javascriptClassSuper           keyword
 
   HiLink shellbang                      Comment
 

@@ -1,7 +1,7 @@
 syntax keyword javascriptDOMEventTargetMethod contained addEventListener removeEventListener nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMEventTargetMethod contained dispatchEvent
 syntax cluster props add=javascriptDOMEventTargetMethod
-if exists("did_javascript_hilink") | HiLink javascriptDOMEventTargetMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventTargetMethod Keyword
 endif
 syntax keyword javascriptDOMEventCons AnimationEvent AudioProcessingEvent BeforeInputEvent
 syntax keyword javascriptDOMEventCons BeforeUnloadEvent BlobEvent ClipboardEvent CloseEvent
@@ -22,10 +22,10 @@ endif
 syntax keyword javascriptDOMEventProp contained bubbles cancelable currentTarget defaultPrevented
 syntax keyword javascriptDOMEventProp contained eventPhase target timeStamp type isTrusted
 syntax cluster props add=javascriptDOMEventProp
-if exists("did_javascript_hilink") | HiLink javascriptDOMEventProp Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventProp Keyword
 endif
 syntax keyword javascriptDOMEventMethod contained initEvent preventDefault stopImmediatePropagation nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMEventMethod contained stopPropagation
 syntax cluster props add=javascriptDOMEventMethod
-if exists("did_javascript_hilink") | HiLink javascriptDOMEventMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMEventMethod Keyword
 endif

@@ -4,7 +4,7 @@ syntax keyword javascriptDOMNodeProp contained nextSibling nodeName nodePrincipa
 syntax keyword javascriptDOMNodeProp contained nodeType nodeValue ownerDocument parentElement
 syntax keyword javascriptDOMNodeProp contained parentNode prefix previousSibling textContent
 syntax cluster props add=javascriptDOMNodeProp
-if exists("did_javascript_hilink") | HiLink javascriptDOMNodeProp Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMNodeProp Keyword
 endif
 syntax keyword javascriptDOMNodeMethod contained appendChild cloneNode compareDocumentPosition nextgroup=javascriptFuncArg
 syntax keyword javascriptDOMNodeMethod contained getUserData hasAttributes hasChildNodes nextgroup=javascriptFuncArg
@@ -14,12 +14,12 @@ syntax keyword javascriptDOMNodeMethod contained lookupPrefix normalize removeCh
 syntax keyword javascriptDOMNodeMethod contained replaceChild setUserData
 syntax match javascriptDOMNodeMethod contained /contains/
 syntax cluster props add=javascriptDOMNodeMethod
-if exists("did_javascript_hilink") | HiLink javascriptDOMNodeMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMNodeMethod Keyword
 endif
 syntax keyword javascriptDOMNodeType contained ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE
 syntax keyword javascriptDOMNodeType contained CDATA_SECTION_NODEN_NODE ENTITY_REFERENCE_NODE
 syntax keyword javascriptDOMNodeType contained ENTITY_NODE PROCESSING_INSTRUCTION_NODEN_NODE
 syntax keyword javascriptDOMNodeType contained COMMENT_NODE DOCUMENT_NODE DOCUMENT_TYPE_NODE
 syntax keyword javascriptDOMNodeType contained DOCUMENT_FRAGMENT_NODE NOTATION_NODE
-if exists("did_javascript_hilink") | HiLink javascriptDOMNodeType Type
+if exists("did_javascript_hilink") | HiLink javascriptDOMNodeType Keyword
 endif

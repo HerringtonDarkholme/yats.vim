@@ -2,7 +2,7 @@ syntax keyword javascriptBOMNavigatorProp contained battery buildID cookieEnable
 syntax keyword javascriptBOMNavigatorProp contained doNotTrack maxTouchPoints oscpu
 syntax keyword javascriptBOMNavigatorProp contained productSub push vendor vendorSub
 syntax cluster props add=javascriptBOMNavigatorProp
-if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorProp Type
+if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorProp Keyword
 endif
 syntax keyword javascriptBOMNavigatorMethod contained addIdleObserver getDeviceStorage nextgroup=javascriptFuncArg
 syntax keyword javascriptBOMNavigatorMethod contained getDeviceStorages getGamepads nextgroup=javascriptFuncArg
@@ -10,5 +10,5 @@ syntax keyword javascriptBOMNavigatorMethod contained getUserMedia registerConte
 syntax keyword javascriptBOMNavigatorMethod contained removeIdleObserver requestWakeLock nextgroup=javascriptFuncArg
 syntax keyword javascriptBOMNavigatorMethod contained vibrate watch registerProtocolHandler nextgroup=javascriptFuncArg
 syntax cluster props add=javascriptBOMNavigatorMethod
-if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorMethod Type
+if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorMethod Keyword
 endif
