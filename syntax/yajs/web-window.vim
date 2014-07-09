@@ -13,7 +13,7 @@ if exists("did_javascript_hilink") | HiLink javascriptBOMWindowProp Structure
 endif
 syntax keyword javascriptBOMWindowMethod alert atob blur btoa clearImmediate clearInterval nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMWindowMethod clearTimeout close confirm dispatchEvent nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod dump find focus getAttention getAttentionWithCycleCount nextgroup=javascriptFuncCallArg
+syntax keyword javascriptBOMWindowMethod find focus getAttention getAttentionWithCycleCount nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMWindowMethod getComputedStyle getDefaulComputedStyle getSelection nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMWindowMethod matchMedia maximize moveBy moveTo open openDialog nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMWindowMethod postMessage print prompt removeEventListener nextgroup=javascriptFuncCallArg

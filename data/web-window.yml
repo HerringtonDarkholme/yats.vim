@@ -71,7 +71,7 @@ javascriptBOMWindowMethod:
     - confirm
     # - disableExternalCapture 
     - dispatchEvent
-    - dump
+    # - dump
     # - enableExternalCapture 
     - find
     - focus
