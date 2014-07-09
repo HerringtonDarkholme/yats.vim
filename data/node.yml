@@ -4,7 +4,7 @@ javascriptNodeGlobal:
     - console
     - Buffer
     - module
-    - expports
+    - exports
     - setTimeout
     - clearTimeout
     - setInterval
