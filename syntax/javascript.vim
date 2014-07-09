@@ -205,7 +205,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
 
   HiLink javascriptEndColons            Exception
-  HiLink javascriptOpSymbols            Operator
+  HiLink javascriptOpSymbols            Normal
   HiLink javascriptLogicSymbols         Boolean
   HiLink javascriptBraces               Function
   HiLink javascriptParens               Operator
