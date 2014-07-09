@@ -1,0 +1,17 @@
+javascriptGlobal:
+    - console
+
+javascriptConsoleMethod:
+    - count
+    - dir
+    - error
+    - group
+    - groupCollapsed
+    - groupEnd
+    - info
+    - log
+    - time
+    - timeEnd
+    - trace
+    - warn
+

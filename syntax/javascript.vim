@@ -143,6 +143,7 @@ runtime! syntax/yajs/es6-promise.vim
 runtime! syntax/yajs/es6-symbol.vim
 runtime! syntax/yajs/node.vim
 runtime! syntax/yajs/web.vim
+runtime! syntax/yajs/web-console.vim
 runtime! syntax/yajs/web-window.vim
 runtime! syntax/yajs/web-location.vim
 runtime! syntax/yajs/web-history.vim

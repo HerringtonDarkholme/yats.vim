@@ -2,7 +2,7 @@ javascriptBOMWindowProp:
     - applicationCache
     - closed
     - Components
-    - console
+    # - console
     # - content
     # - _content
     - controllers

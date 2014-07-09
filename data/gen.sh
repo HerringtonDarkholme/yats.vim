@@ -7,6 +7,7 @@ files='
   es6-promise
   node
   web
+  web-console
   web-window
   web-navigator
   web-location
