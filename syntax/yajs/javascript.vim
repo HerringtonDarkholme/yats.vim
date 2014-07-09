@@ -8,21 +8,21 @@ syntax keyword javascriptGlobal DataView JSON Iterator Generator Promise Reflect
 syntax keyword javascriptGlobal Intl argumrnts
 if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
 endif
-syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncArg
-syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponent nextgroup=javascriptFuncArg
+syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponent nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptGlobalMethod
 if exists("did_javascript_hilink") | HiLink javascriptGlobalMethod Structure
 endif
-syntax keyword javascriptObjMethod contained create defineProperties defineProperty nextgroup=javascriptFuncArg
-syntax keyword javascriptObjMethod contained freeze getOwnPropertyDescriptor getOwnPropertyNames nextgroup=javascriptFuncArg
-syntax keyword javascriptObjMethod contained getOwnPropertySymbols getPrototypeOf nextgroup=javascriptFuncArg
-syntax keyword javascriptObjMethod contained is isExtensible isFrozen isSealed keys nextgroup=javascriptFuncArg
+syntax keyword javascriptObjMethod contained create defineProperties defineProperty nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjMethod contained freeze getOwnPropertyDescriptor getOwnPropertyNames nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjMethod contained getOwnPropertySymbols getPrototypeOf nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjMethod contained is isExtensible isFrozen isSealed keys nextgroup=javascriptFuncCallArg
 syntax keyword javascriptObjMethod contained preventExtensions seal
 syntax cluster props add=javascriptObjMethod
 if exists("did_javascript_hilink") | HiLink javascriptObjMethod Keyword
 endif
-syntax keyword javascriptObjProtoMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncArg
-syntax keyword javascriptObjProtoMethod contained toLocaleString toString valueOf nextgroup=javascriptFuncArg
+syntax keyword javascriptObjProtoMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjProtoMethod contained toLocaleString toString valueOf nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptObjProtoMethod
 if exists("did_javascript_hilink") | HiLink javascriptObjProtoMethod Keyword
 endif

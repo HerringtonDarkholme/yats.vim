@@ -1,5 +1,5 @@
 syntax keyword javascriptGlobal Blob BlobBuilder File FileReader FileReaderSync
-syntax keyword javascriptBOMFileMethod contained readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncArg
+syntax keyword javascriptBOMFileMethod contained readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMFileMethod contained readAsDataURL readAsText
 syntax cluster props add=javascriptBOMFileMethod
 if exists("did_javascript_hilink") | HiLink javascriptBOMFileMethod Keyword
@@ -8,7 +8,7 @@ syntax keyword javascriptBOMFileReaderMethod contained error readyState result
 syntax cluster props add=javascriptBOMFileReaderMethod
 if exists("did_javascript_hilink") | HiLink javascriptBOMFileReaderMethod Keyword
 endif
-syntax keyword javascariptBOMFileReaderMethod contained abort readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncArg
+syntax keyword javascariptBOMFileReaderMethod contained abort readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncCallArg
 syntax keyword javascariptBOMFileReaderMethod contained readAsDataURL readAsText
 syntax cluster props add=javascariptBOMFileReaderMethod
 if exists("did_javascript_hilink") | HiLink javascariptBOMFileReaderMethod Keyword

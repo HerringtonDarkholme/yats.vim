@@ -103,7 +103,6 @@ syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 syntax keyword javascriptReserved              break case catch class const continue
 syntax keyword javascriptReserved              debugger default delete do else export
 syntax keyword javascriptReserved              extends finally for function if 
-" function
 "import
 syntax keyword javascriptReserved              in instanceof let new return super
 syntax keyword javascriptReserved              switch this throw try typeof var
@@ -164,9 +163,11 @@ let javascript_props = 1
 syntax match   javascriptDotNotation           "\." nextgroup=@props
 syntax match   javascriptDotStyleNotation      "\.style\." nextgroup=javascriptDOMStyle transparent
 
-syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/{/ end=/}/ contains=TOP
+syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
                                                
-syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+syntax keyword javascriptMethodAccessor        contained get set
+syntax match   javascriptMethodName       contained /\k\+\ze\s\?(/
 
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
@@ -180,16 +181,23 @@ syntax keyword javascriptClassSuper            super
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
 syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassName skipwhite
 syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodDef,javascriptClassStatic
-syntax keyword javascriptClassAccessor         contained get set
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
-syntax match   javascriptClassMethodName       contained /\k\+\ze\s\?(/
+
+
+syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptMethodDef,@javascriptExpression
 
 syntax match   javascriptBraces	               contained "[{}\[\]]"
 syntax match   javascriptParens	               "[()]"
-syntax match   javascriptOpSymbols             "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]"
+syntax match   javascriptOpSymbols             "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]" nextgroup=@javascriptExpression skipwhite
 syntax match   javascriptEndColons             "[;,]"
 syntax match   javascriptLogicSymbols          "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]"
 
+syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptFloat,javascriptBoolean,javascriptNull
+syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols
+syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression
+syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,@javascriptTypes,@javascriptOps
+
+syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/rs=e end=/)/re=s contains=@javascriptExpression
 
 if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
@@ -235,17 +243,18 @@ if exists("did_javascript_hilink")
   HiLink javascriptExport               Special
   HiLink javascriptExceptions           Special
 
-  HiLink javascriptFuncKeyword          Type
+  HiLink javascriptMethodName           Function
+  HiLink javascriptMethodAccessor       Operator
+
+  HiLink javascriptFuncKeyword          Keyword
   HiLink javascriptArrowFunc            Type
   HiLink javascriptFuncName             Function
   HiLink javascriptFuncArg              Special
   HiLink javascriptFuncComma            Operator  
 
-  HiLink javascriptClassKeyword         Type
-  HiLink javascriptClassExtends         Type
+  HiLink javascriptClassKeyword         Keyword
+  HiLink javascriptClassExtends         Keyword
   HiLink javascriptClassName            Function
-  HiLink javascriptClassMethodName      Function
-  HiLink javascriptClassAccessor        Operator
   HiLink javascriptClassStatic          StorageClass
   HiLink javascriptClassSuper           keyword
 

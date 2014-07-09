@@ -4,8 +4,8 @@ syntax keyword javascriptXHRProp contained statusText timeout ontimeout upload w
 syntax cluster props add=javascriptXHRProp
 if exists("did_javascript_hilink") | HiLink javascriptXHRProp Keyword
 endif
-syntax keyword javascriptXHRMethod contained abort getAllResponseHeaders getResponseHeader nextgroup=javascriptFuncArg
-syntax keyword javascriptXHRMethod contained open overrideMimeType send setRequestHeader nextgroup=javascriptFuncArg
+syntax keyword javascriptXHRMethod contained abort getAllResponseHeaders getResponseHeader nextgroup=javascriptFuncCallArg
+syntax keyword javascriptXHRMethod contained open overrideMimeType send setRequestHeader nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptXHRMethod
 if exists("did_javascript_hilink") | HiLink javascriptXHRMethod Keyword
 endif

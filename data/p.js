@@ -51,7 +51,7 @@ try {
       }
       if (def.length > 80) {
         if (/Method/.test(group)) {
-          def = def + ' nextgroup=javascriptFuncArg';
+          def = def + ' nextgroup=javascriptFuncCallArg';
         }
         console.log(def);
         def = predef;
