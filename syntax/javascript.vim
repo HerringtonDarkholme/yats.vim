@@ -97,7 +97,7 @@ syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 syntax match   javascriptNumber	               "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
 syntax match   javascriptFloat                 /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
 syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
-" syntax match   javascriptLabel            /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
+syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              break case catch class const continue
@@ -166,6 +166,8 @@ syntax match   javascriptDotStyleNotation      "\.style\." nextgroup=javascriptD
 
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/{/ end=/}/ contains=TOP
                                                
+syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
 syntax match   javascriptFuncArg               contained "([^()]*)" contains=javascriptParens,javascriptFuncComma
@@ -177,9 +179,9 @@ syntax keyword javascriptClassKeyword          class nextgroup=javascriptClassNa
 syntax keyword javascriptClassSuper            super
 syntax match   javascriptClassName             contained /\k\+/ nextgroup=javascriptClassBlock,javascriptClassExtends skipwhite
 syntax keyword javascriptClassExtends          contained extends nextgroup=javascriptClassName skipwhite
-syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptClassMethod
-syntax region  javascriptClassMethod           contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptClassAccessor,javascriptClassMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+syntax region  javascriptClassBLock            contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptMethodDef,javascriptClassStatic
 syntax keyword javascriptClassAccessor         contained get set
+syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 syntax match   javascriptClassMethodName       contained /\k\+\ze\s\?(/
 
 syntax match   javascriptBraces	               contained "[{}\[\]]"
@@ -244,6 +246,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptClassName            Function
   HiLink javascriptClassMethodName      Function
   HiLink javascriptClassAccessor        Operator
+  HiLink javascriptClassStatic          StorageClass
   HiLink javascriptClassSuper           keyword
 
   HiLink shellbang                      Comment
