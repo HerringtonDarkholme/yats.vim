@@ -193,9 +193,10 @@ syntax match   javascriptOpSymbols             "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\
 syntax match   javascriptEndColons             "[;,]"
 syntax match   javascriptLogicSymbols          "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]"
 
+syntax keyword javascriptComprehension         for of if
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptFloat,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols
-syntax region  javascriptParenExp              contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression
+syntax region  javascriptParenExp              contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression,javascriptComprehension
 syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,@javascriptTypes,@javascriptOps
 
 syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/rs=e end=/)/re=s contains=@javascriptExpression
@@ -230,6 +231,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptBranch               Conditional
   HiLink javascriptIdentifier           Identifier
   HiLink javascriptRepeat               Repeat
+  HiLink javascriptComprehension        Repeat
   HiLink javascriptStatement            Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Operator
