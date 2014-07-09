@@ -43,7 +43,7 @@ syntax match   shellbang "^#!.*/bin/env\s\+node\>"
 
 
 "JavaScript comments
-syntax keyword javascriptCommentTodo           TODO FIXME XXX TBD contained
+syntax keyword javascriptCommentTodo           contained TODO FIXME XXX TBD
 syntax match   javascriptLineComment           "\/\/.*" contains=@Spell,javascriptCommentTodo
 syntax match   javascriptCommentSkip           "^[ \t]*\*\($\|[ \t]\+\)"
 syntax region  javascriptComment               start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
@@ -117,12 +117,7 @@ syntax keyword javascriptReserved              volatile
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
 
-"Import
-syntax region  javascriptImportDef             start=+import+ end=+;\|$+ contains=javascriptImport
-
 "Program Keywords
-syntax keyword javascriptImport                contained from as import
-syntax keyword javascriptExport                export module
 syntax keyword javascriptIdentifier            arguments this let var const void
 syntax keyword javascriptOperator              delete new instanceof typeof
 syntax keyword javascriptBoolean               true false
@@ -163,11 +158,16 @@ let javascript_props = 1
 syntax match   javascriptDotNotation           "\." nextgroup=@props
 syntax match   javascriptDotStyleNotation      "\.style\." nextgroup=javascriptDOMStyle transparent
 
+"Import
+syntax region  javascriptImportDef             start=+import+ end=+;\|$+ contains=javascriptImport
+syntax keyword javascriptImport                contained from as import
+syntax keyword javascriptExport                export module
+
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
                                                
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax keyword javascriptMethodAccessor        contained get set
-syntax match   javascriptMethodName       contained /\k\+\ze\s\?(/
+syntax match   javascriptMethodName            contained /\k\+\ze\s\?(/
 
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
