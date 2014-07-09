@@ -132,8 +132,7 @@ syntax keyword javascriptBranch                break continue
 syntax keyword javascriptLabel                 case default
 syntax keyword javascriptStatement             return with yield
 
-syntax keyword javascriptExceptions            try catch throw finally Error EvalError
-syntax keyword javascriptExceptions            RangeError ReferenceError SyntaxError TypeError URIError
+syntax keyword javascriptExceptions            try catch throw finally
 
 runtime! syntax/yajs/javascript.vim
 runtime! syntax/yajs/es6-map.vim
