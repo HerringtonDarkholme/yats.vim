@@ -9,6 +9,7 @@ files='
   es6-math
   es6-json
   es6-date
+  es6-regexp
   es6-map
   es6-set
   es6-proxy

@@ -1,0 +1,8 @@
+javascriptGlobal:
+  - RegExp
+
+javascriptRegExpMethod:
+  - exec
+  - test
+  # - toSource
+  # - toString
