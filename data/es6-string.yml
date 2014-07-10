@@ -1,0 +1,50 @@
+javascriptGlobal:
+  - String
+
+javascriptStringMethod:
+  - fromCharCode
+  - fromCodePoint
+  - anchor
+  # - big
+  # - blink
+  # - bold
+  - charAt
+  - charCodeAt
+  - codePointAt
+  - concat
+  - contains
+  - endsWith
+  # - fixed
+  # - fontcolor
+  # - fontsize
+  - indexOf
+  # - italics
+  - lastIndexOf
+  - link
+  - localeCompare
+  - match
+  - normalize
+  # - quote
+  - repeat
+  - replace
+  - search
+  - slice
+  # - small
+  - split
+  - startsWith
+  # - strike
+  # - sub
+  - substr
+  - substring
+  # - sup
+  - toLocaleLowerCase
+  - toLocaleUpperCase
+  - toLowerCase
+  # - toSource
+  - toString
+  - toUpperCase
+  - trim
+  # - trimLeft
+  # - trimRight
+  - valueOf
+

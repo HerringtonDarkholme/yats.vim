@@ -137,6 +137,7 @@ syntax keyword javascriptStatement             return with yield
 syntax keyword javascriptExceptions            try catch throw finally
 
 runtime! syntax/yajs/javascript.vim
+runtime! syntax/yajs/es6-string.vim
 runtime! syntax/yajs/es6-map.vim
 runtime! syntax/yajs/es6-set.vim
 runtime! syntax/yajs/es6-proxy.vim
