@@ -1,0 +1,34 @@
+javascriptGlobal:
+  - Object
+
+javascriptMethod:
+  - create
+  - defineProperties
+  - defineProperty
+  - freeze
+  - getOwnPropertyDescriptor
+  - getOwnPropertyNames
+  - getOwnPropertySymbols
+  - getPrototypeOf
+  - is
+  - isExtensible
+  - isFrozen
+  - isSealed
+  - keys
+  - preventExtensions
+  # - __defineGetter__
+  # - __defineSetter__
+  # - __lookupGetter__
+  # - __lookupSetter__
+  # - eval
+  - hasOwnProperty
+  - isPrototypeOf
+  - propertyIsEnumerable
+  - toLocaleString
+  # - toSource
+  - toString
+  # - unwatch
+  - valueOf
+  # - watch
+  - seal
+  - setPrototypeOf

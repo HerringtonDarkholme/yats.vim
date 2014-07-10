@@ -1,0 +1,10 @@
+syntax keyword javascriptGlobal Object
+syntax keyword javascriptMethod contained create defineProperties defineProperty freeze nextgroup=javascriptFuncCallArg
+syntax keyword javascriptMethod contained getOwnPropertyDescriptor getOwnPropertyNames nextgroup=javascriptFuncCallArg
+syntax keyword javascriptMethod contained getOwnPropertySymbols getPrototypeOf is nextgroup=javascriptFuncCallArg
+syntax keyword javascriptMethod contained isExtensible isFrozen isSealed keys preventExtensions nextgroup=javascriptFuncCallArg
+syntax keyword javascriptMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncCallArg
+syntax keyword javascriptMethod contained toLocaleString toString valueOf seal setPrototypeOf nextgroup=javascriptFuncCallArg
+syntax cluster props add=javascriptMethod
+if exists("did_javascript_hilink") | HiLink javascriptMethod Keyword
+endif

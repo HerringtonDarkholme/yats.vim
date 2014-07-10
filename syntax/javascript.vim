@@ -140,11 +140,12 @@ runtime! syntax/yajs/javascript.vim
 runtime! syntax/yajs/es6-number.vim
 runtime! syntax/yajs/es6-string.vim
 runtime! syntax/yajs/es6-array.vim
+runtime! syntax/yajs/es6-number.vim
+runtime! syntax/yajs/es6-symbol.vim
 runtime! syntax/yajs/es6-map.vim
 runtime! syntax/yajs/es6-set.vim
 runtime! syntax/yajs/es6-proxy.vim
 runtime! syntax/yajs/es6-promise.vim
-runtime! syntax/yajs/es6-symbol.vim
 runtime! syntax/yajs/node.vim
 runtime! syntax/yajs/web.vim
 runtime! syntax/yajs/web-console.vim

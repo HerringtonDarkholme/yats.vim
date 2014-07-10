@@ -1,8 +1,8 @@
 javascriptGlobal:
-    - Object
+    # - Object
     - Function
     - Boolean
-    - Symbol
+    # - Symbol
     - Error
     - EvalError
     - InternalError
@@ -12,12 +12,12 @@ javascriptGlobal:
     - SyntaxError
     - TypeError
     - URIError
-    - Number
+    # - Number
     - Math
     - Date
-    - String
+    # - String
     - RegExp
-    - Array
+    # - Array
     - Float32Array
     - Float64Array
     - Int16Array
