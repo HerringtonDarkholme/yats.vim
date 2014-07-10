@@ -1,0 +1,56 @@
+javascriptGlobal:
+  - Date
+
+javascriptDateMethod:
+  - UTC
+  - now
+  - parse
+  - getDate
+  - getDay
+  - getFullYear
+  - getHours
+  - getMilliseconds
+  - getMinutes
+  - getMonth
+  - getSeconds
+  - getTime
+  - getTimezoneOffset
+  - getUTCDate
+  - getUTCDay
+  - getUTCFullYear
+  - getUTCHours
+  - getUTCMilliseconds
+  - getUTCMinutes
+  - getUTCMonth
+  - getUTCSeconds
+  # - getYear
+  - setDate
+  - setFullYear
+  - setHours
+  - setMilliseconds
+  - setMinutes
+  - setMonth
+  - setSeconds
+  - setTime
+  - setUTCDate
+  - setUTCFullYear
+  - setUTCHours
+  - setUTCMilliseconds
+  - setUTCMinutes
+  - setUTCMonth
+  - setUTCSeconds
+  # - setYear
+  - toDateString
+  # - toGMTString
+  - toISOString
+  - toJSON
+  - toLocaleDateString
+  - toLocaleFormat
+  - toLocaleString
+  - toLocaleTimeString
+  - toSource
+  - toString
+  - toTimeString
+  - toUTCString
+  - valueOf
+

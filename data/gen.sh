@@ -8,6 +8,7 @@ files='
   es6-symbol
   es6-math
   es6-json
+  es6-date
   es6-map
   es6-set
   es6-proxy
