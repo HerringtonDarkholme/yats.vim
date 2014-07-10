@@ -2,9 +2,8 @@ syntax keyword javascriptGlobal Function Boolean Error EvalError InternalError R
 syntax keyword javascriptGlobal ReferenceError StopIteration SyntaxError TypeError
 syntax keyword javascriptGlobal URIError Date RegExp Float32Array Float64Array Int16Array
 syntax keyword javascriptGlobal Int32Array Int8Array Uint16Array Uint32Array Uint8Array
-syntax keyword javascriptGlobal Uint8ClampedArray ParallelArray Map Set WeakMap WeakSet
-syntax keyword javascriptGlobal ArrayBuffer DataView Iterator Generator Reflect Proxy
-syntax keyword javascriptGlobal Intl argumrnts
+syntax keyword javascriptGlobal Uint8ClampedArray ParallelArray WeakMap WeakSet ArrayBuffer
+syntax keyword javascriptGlobal DataView Iterator Generator Reflect Proxy Intl argumrnts
 if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
 endif
 syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncCallArg

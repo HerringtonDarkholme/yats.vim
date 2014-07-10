@@ -28,8 +28,8 @@ javascriptGlobal:
     - Uint8Array
     - Uint8ClampedArray
     - ParallelArray
-    - Map
-    - Set
+    # - Map
+    # - Set
     - WeakMap
     - WeakSet
     - ArrayBuffer

@@ -464,9 +464,9 @@ javascriptBOM:
     - Uint32Array
     - Uint8Array
     - Uint8ClampedArray
-    - URL
+    # - URL
     - URLSearchParams
-    - URLUtils
+    # - URLUtils
     - URLUtilsReadOnly
     # - UserDataHandler
     - UserProximityEvent

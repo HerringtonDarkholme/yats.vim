@@ -83,10 +83,10 @@ syntax keyword javascriptBOM SVGUseElement SVGViewElement SVGVKernElement TCPSer
 syntax keyword javascriptBOM TCPSocket Telephony TelephonyCall Text TextDecoder TextEncoder
 syntax keyword javascriptBOM TextMetrics TimeRanges Touch TouchList Transferable TreeWalker
 syntax keyword javascriptBOM Uint16Array Uint32Array Uint8Array Uint8ClampedArray
-syntax keyword javascriptBOM URL URLSearchParams URLUtils URLUtilsReadOnly UserProximityEvent
-syntax keyword javascriptBOM ValidityState VideoPlaybackQuality WaveShaperNode WebBluetooth
-syntax keyword javascriptBOM WebGLRenderingContext WebSMS WebSocket WebVTT WifiManager
-syntax keyword javascriptBOM Window Worker WorkerConsole WorkerLocation WorkerNavigator
-syntax keyword javascriptBOM XDomainRequest XMLDocument XMLHttpRequest XMLHttpRequestEventTarget
+syntax keyword javascriptBOM URLSearchParams URLUtilsReadOnly UserProximityEvent ValidityState
+syntax keyword javascriptBOM VideoPlaybackQuality WaveShaperNode WebBluetooth WebGLRenderingContext
+syntax keyword javascriptBOM WebSMS WebSocket WebVTT WifiManager Window Worker WorkerConsole
+syntax keyword javascriptBOM WorkerLocation WorkerNavigator XDomainRequest XMLDocument
+syntax keyword javascriptBOM XMLHttpRequest XMLHttpRequestEventTarget
 if exists("did_javascript_hilink") | HiLink javascriptBOM Structure
 endif

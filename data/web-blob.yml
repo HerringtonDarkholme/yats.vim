@@ -4,6 +4,8 @@ javascriptGlobal:
     - File
     - FileReader
     - FileReaderSync
+    - URL
+    - URLUtils
 
 javascriptBOMFileMethod:
     - readAsArrayBuffer
@@ -30,6 +32,20 @@ javascriptBOMBlobMethod:
     - append
     - getBlob
     - getFile
+
+javascriptBOMURLUtilProp:
+    - hash
+    - host
+    - hostname
+    - href
+    - origin
+    - password
+    - pathname
+    - port
+    - protocol
+    - search
+    - searchParams
+    - username
 
 javascriptBOMURLMethod:
     - createObjectURL
