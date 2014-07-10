@@ -5,6 +5,8 @@ files='
   es6-string
   es6-array
   es6-object
+  es6-symbol
+  es6-math
   es6-map
   es6-set
   es6-proxy

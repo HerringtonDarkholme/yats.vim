@@ -13,7 +13,7 @@ javascriptGlobal:
     - TypeError
     - URIError
     # - Number
-    - Math
+    # - Math
     - Date
     # - String
     - RegExp
