@@ -1,7 +1,7 @@
 javascriptGlobal:
   - Math
 
-javascriptMathProp:
+javascriptMathStaticProp:
   - E
   - LN10
   - LN2
@@ -11,7 +11,7 @@ javascriptMathProp:
   - SQRT1_2
   - SQRT2
 
-javascriptMathMethod:
+javascriptMathStaticMethod:
   - abs
   - acos
   - acosh

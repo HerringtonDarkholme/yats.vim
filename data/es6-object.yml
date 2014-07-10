@@ -1,7 +1,7 @@
 javascriptGlobal:
   - Object
 
-javascriptMethod:
+javascriptObjectStaticMethod:
   - create
   - defineProperties
   - defineProperty
@@ -16,6 +16,8 @@ javascriptMethod:
   - isSealed
   - keys
   - preventExtensions
+
+javascriptObjectMethod:
   # - __defineGetter__
   # - __defineSetter__
   # - __lookupGetter__

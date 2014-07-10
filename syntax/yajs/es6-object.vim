@@ -1,10 +1,15 @@
-syntax keyword javascriptGlobal Object
-syntax keyword javascriptMethod contained create defineProperties defineProperty freeze nextgroup=javascriptFuncCallArg
-syntax keyword javascriptMethod contained getOwnPropertyDescriptor getOwnPropertyNames nextgroup=javascriptFuncCallArg
-syntax keyword javascriptMethod contained getOwnPropertySymbols getPrototypeOf is nextgroup=javascriptFuncCallArg
-syntax keyword javascriptMethod contained isExtensible isFrozen isSealed keys preventExtensions nextgroup=javascriptFuncCallArg
-syntax keyword javascriptMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncCallArg
-syntax keyword javascriptMethod contained toLocaleString toString valueOf seal setPrototypeOf nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptMethod
-if exists("did_javascript_hilink") | HiLink javascriptMethod Keyword
+syntax keyword javascriptGlobal Object nextgroup=javascriptGlobalObjectDot
+syntax match   javascriptGlobalObjectDot /\./ contained nextgroup=javascriptObjectStaticMethod
+syntax keyword javascriptObjectStaticMethod contained create defineProperties defineProperty nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjectStaticMethod contained freeze getOwnPropertyDescriptor nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjectStaticMethod contained getOwnPropertyNames getOwnPropertySymbols nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjectStaticMethod contained getPrototypeOf is isExtensible nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjectStaticMethod contained isFrozen isSealed keys preventExtensions nextgroup=javascriptFuncCallArg
+if exists("did_javascript_hilink") | HiLink javascriptObjectStaticMethod Keyword
+endif
+syntax keyword javascriptObjectMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjectMethod contained toLocaleString toString valueOf seal nextgroup=javascriptFuncCallArg
+syntax keyword javascriptObjectMethod contained setPrototypeOf
+syntax cluster props add=javascriptObjectMethod
+if exists("did_javascript_hilink") | HiLink javascriptObjectMethod Keyword
 endif

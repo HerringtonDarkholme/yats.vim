@@ -18,7 +18,7 @@ javascriptBOMFileReaderMethod:
     - readyState
     - result
 
-javascariptBOMFileReaderMethod:
+javascriptBOMFileReaderMethod:
     - abort
     - readAsArrayBuffer
     - readAsBinaryString

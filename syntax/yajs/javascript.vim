@@ -11,16 +11,3 @@ syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI enc
 syntax cluster props add=javascriptGlobalMethod
 if exists("did_javascript_hilink") | HiLink javascriptGlobalMethod Structure
 endif
-syntax keyword javascriptObjMethod contained create defineProperties defineProperty nextgroup=javascriptFuncCallArg
-syntax keyword javascriptObjMethod contained freeze getOwnPropertyDescriptor getOwnPropertyNames nextgroup=javascriptFuncCallArg
-syntax keyword javascriptObjMethod contained getOwnPropertySymbols getPrototypeOf nextgroup=javascriptFuncCallArg
-syntax keyword javascriptObjMethod contained is isExtensible isFrozen isSealed keys nextgroup=javascriptFuncCallArg
-syntax keyword javascriptObjMethod contained preventExtensions seal
-syntax cluster props add=javascriptObjMethod
-if exists("did_javascript_hilink") | HiLink javascriptObjMethod Keyword
-endif
-syntax keyword javascriptObjProtoMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncCallArg
-syntax keyword javascriptObjProtoMethod contained toLocaleString toString valueOf nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptObjProtoMethod
-if exists("did_javascript_hilink") | HiLink javascriptObjProtoMethod Keyword
-endif

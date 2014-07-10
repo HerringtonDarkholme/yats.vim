@@ -5,14 +5,10 @@ syntax keyword javascriptBOMFileMethod contained readAsDataURL readAsText
 syntax cluster props add=javascriptBOMFileMethod
 if exists("did_javascript_hilink") | HiLink javascriptBOMFileMethod Keyword
 endif
-syntax keyword javascriptBOMFileReaderMethod contained error readyState result
+syntax keyword javascriptBOMFileReaderMethod contained abort readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncCallArg
+syntax keyword javascriptBOMFileReaderMethod contained readAsDataURL readAsText
 syntax cluster props add=javascriptBOMFileReaderMethod
 if exists("did_javascript_hilink") | HiLink javascriptBOMFileReaderMethod Keyword
-endif
-syntax keyword javascariptBOMFileReaderMethod contained abort readAsArrayBuffer readAsBinaryString nextgroup=javascriptFuncCallArg
-syntax keyword javascariptBOMFileReaderMethod contained readAsDataURL readAsText
-syntax cluster props add=javascariptBOMFileReaderMethod
-if exists("did_javascript_hilink") | HiLink javascariptBOMFileReaderMethod Keyword
 endif
 syntax keyword javascriptBOMFileListMethod contained item
 syntax cluster props add=javascriptBOMFileListMethod

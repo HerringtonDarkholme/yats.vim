@@ -135,11 +135,14 @@ syntax keyword javascriptStatement             return with yield
 
 syntax keyword javascriptExceptions            try catch throw finally
 
+syntax match   javascriptDotNotation           /\./ nextgroup=@props
+syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
+
 runtime! syntax/yajs/javascript.vim
 runtime! syntax/yajs/es6-number.vim
 runtime! syntax/yajs/es6-string.vim
 runtime! syntax/yajs/es6-array.vim
-runtime! syntax/yajs/es6-number.vim
+runtime! syntax/yajs/es6-object.vim
 runtime! syntax/yajs/es6-symbol.vim
 runtime! syntax/yajs/es6-math.vim
 runtime! syntax/yajs/es6-date.vim
@@ -163,9 +166,6 @@ runtime! syntax/yajs/dom-event.vim
 runtime! syntax/yajs/css.vim
 
 let javascript_props = 1
-
-syntax match   javascriptDotNotation           /\./ nextgroup=@props
-syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
 "Import
 syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contains=javascriptImport
