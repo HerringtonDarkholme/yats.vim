@@ -44,8 +44,7 @@ syntax match   shellbang "^#!.*/bin/env\s\+node\>"
 
 "JavaScript comments
 syntax keyword javascriptCommentTodo           contained TODO FIXME XXX TBD
-syntax match   javascriptLineComment           "\/\/.*" contains=@Spell,javascriptCommentTodo
-syntax match   javascriptCommentSkip           "^[ \t]*\*\($\|[ \t]\+\)"
+syntax match   javascriptLineComment           "//.*" contains=@Spell,javascriptCommentTodo
 syntax region  javascriptComment               start="/\*"  end="\*/" contains=@Spell,javascriptCommentTodo
 
 "JSDoc
@@ -53,32 +52,32 @@ syntax case ignore
 
 syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
 syntax match   javascriptDocNotation           contained "@" nextgroup=javascriptDocTags
-                                               
+
 syntax keyword javascriptDocTags               contained constant constructor constrructs event function ignore inner private public static
 syntax keyword javascriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
 syntax keyword javascriptDocTags               contained example
-                                               
+
 syntax keyword javascriptDocTags               contained arguments lends memberOf name type link nextgroup=javascriptDocParam skipwhite
-                                               
+
 syntax keyword javascriptDocTags               contained author class default deprecated description nextgroup=javascriptDocDesc skipwhite
 syntax keyword javascriptDocTags               contained fileOverview namespace requires since version nextgroup=javascriptDocDesc skipwhite
 syntax keyword javascriptDocTags               contained license preserve nextgroup=javascriptDocDesc skipwhite
-                                               
+
 syntax keyword javascriptDocTags               contained borrows exports nextgroup=javascriptDocA skipwhite
 syntax keyword javascriptDocTags               contained param property nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
 syntax keyword javascriptDocTags               contained define enum extends implements this typedef nextgroup=javascriptDocParamType skipwhite
 syntax keyword javascriptDocTags               contained returns throws nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
 syntax keyword javascriptDocTags               contained see nextgroup=javascriptDocRef skipwhite
-                                               
-syntax match   javascriptDocNamedParamType     contained "{.\+}" nextgroup=javascriptDocParamName skipwhite
-syntax match   javascriptDocParamName          contained "\[\?\w\+\]\?" nextgroup=javascriptDocDesc skipwhite
-syntax match   javascriptDocParamType          contained "{.\+}" nextgroup=javascriptDocDesc skipwhite
-syntax match   javascriptDocA                  contained "\%(#\|\w\|\.\|:\|\/\)\+" nextgroup=javascriptDocAs skipwhite
-syntax match   javascriptDocAs                 contained "\s*as\s*" nextgroup=javascriptDocB skipwhite
-syntax match   javascriptDocB                  contained "\%(#\|\w\|\.\|:\|\/\)\+"
-syntax match   javascriptDocParam              contained "\%(#\|\w\|\.\|:\|\/\)\+"
-syntax match   javascriptDocRef                contained "\%(#\|\w\|\.\|:\|\/\)\+"
-syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start="{" end="}" contains=javascriptDocTags
+
+syntax match   javascriptDocNamedParamType     contained /{.\+}/ nextgroup=javascriptDocParamName skipwhite
+syntax match   javascriptDocParamName          contained /\[\?\w\+\]\?/ nextgroup=javascriptDocDesc skipwhite
+syntax match   javascriptDocParamType          contained /{.\+}/ nextgroup=javascriptDocDesc skipwhite
+syntax match   javascriptDocA                  contained /\%(#\|\w\|\.\|:\|\/\)\+/ nextgroup=javascriptDocAs skipwhite
+syntax match   javascriptDocAs                 contained /\s*as\s*/ nextgroup=javascriptDocB skipwhite
+syntax match   javascriptDocB                  contained /\%(#\|\w\|\.\|:\|\/\)\+/
+syntax match   javascriptDocParam              contained /\%(#\|\w\|\.\|:\|\/\)\+/
+syntax match   javascriptDocRef                contained /\%(#\|\w\|\.\|:\|\/\)\+/
+syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start=/{/ end=/}/ contains=javascriptDocTags
 
 if main_syntax == "javascript"
   syntax sync clear
@@ -89,16 +88,16 @@ endif
 syntax case match
 
 "Syntax in the JavaScript code
-syntax region  javascriptString	               start=+"+  skip=+\\\\\|\\"+  end=+"\|$+
-syntax region  javascriptString	               start=+'+  skip=+\\\\\|\\'+  end=+'\|$+
-syntax region  javascriptTemplate              start=+`+  skip=+\\\\\|\\`+  end=+`\|$+	contains=javascriptTemplateSubstitution
+syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"/  end=/"\|$/
+syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'/  end=/'\|$/
+syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`/  end=/`\|$/ contains=javascriptTemplateSubstitution
 syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 
-syntax match   javascriptNumber	               /0[bB][01]\+\>/
-syntax match   javascriptNumber	               /0[oO][0-7]\+\>/
-syntax match   javascriptNumber	               /0[xX][0-9a-fA-F]\+\>/
+syntax match   javascriptNumber                /0[bB][01]\+\>/
+syntax match   javascriptNumber                /0[oO][0-7]\+\>/
+syntax match   javascriptNumber                /0[xX][0-9a-fA-F]\+\>/
 syntax match   javascriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
-syntax region  javascriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
+syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gi]\{0,2\}\s*$" end="/[gi]\{0,2\}\s*[;.,)\]}]"me=e-1 oneline
 syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
@@ -165,23 +164,23 @@ runtime! syntax/yajs/css.vim
 
 let javascript_props = 1
 
-syntax match   javascriptDotNotation           "\." nextgroup=@props
-syntax match   javascriptDotStyleNotation      "\.style\." nextgroup=javascriptDOMStyle transparent
+syntax match   javascriptDotNotation           /\./ nextgroup=@props
+syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
 "Import
-syntax region  javascriptImportDef             start=+import+ end=+;\|$+ contains=javascriptImport
+syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contains=javascriptImport
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
 syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
-                                               
-syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=")" contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
+
+syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax keyword javascriptMethodAccessor        contained get set
 syntax match   javascriptMethodName            contained /\k\+\ze\s\?(/
 
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
-syntax match   javascriptFuncArg               contained "([^()]*)" contains=javascriptParens,javascriptFuncComma
+syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncComma
 syntax match   javascriptFuncComma             contained /,/
 syntax match   javascriptArrowFunc             /=>/
 
@@ -196,11 +195,11 @@ syntax keyword javascriptClassStatic           contained static nextgroup=javasc
 
 syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptMethodDef,@javascriptExpression
 
-syntax match   javascriptBraces	               contained "[{}\[\]]"
-syntax match   javascriptParens	               "[()]"
-syntax match   javascriptOpSymbols             "\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]" nextgroup=@javascriptExpression skipwhite
-syntax match   javascriptEndColons             "[;,]"
-syntax match   javascriptLogicSymbols          "\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]"
+syntax match   javascriptBraces                contained /[{}\[\]]/
+syntax match   javascriptParens                /[()]/
+syntax match   javascriptOpSymbols             /\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]/ nextgroup=@javascriptExpression skipwhite
+syntax match   javascriptEndColons             /[;,]/
+syntax match   javascriptLogicSymbols          /\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]/
 
 syntax keyword javascriptComprehension         for of if
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
@@ -224,7 +223,6 @@ if exists("did_javascript_hilink")
   HiLink javascriptCommentTodo          Todo
   HiLink javascriptDocNotation          SpecialComment
   HiLink javascriptDocTags              SpecialComment
-  " HiLink javascriptDocSeeTag            Function
   HiLink javascriptDocParam             Function
   HiLink javascriptDocNamedParamType    Type
   HiLink javascriptDocParamName         Type
@@ -249,7 +247,6 @@ if exists("did_javascript_hilink")
   HiLink javascriptNumber               Number
   HiLink javascriptBoolean              Boolean
   HiLink javascriptLabel                Label
-  " HiLink javascriptSpecial              Special
   HiLink javascriptImport               Special
   HiLink javascriptExport               Special
   HiLink javascriptExceptions           Special
@@ -261,7 +258,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptArrowFunc            Type
   HiLink javascriptFuncName             Function
   HiLink javascriptFuncArg              Special
-  HiLink javascriptFuncComma            Operator  
+  HiLink javascriptFuncComma            Operator
 
   HiLink javascriptClassKeyword         Keyword
   HiLink javascriptClassExtends         Keyword
