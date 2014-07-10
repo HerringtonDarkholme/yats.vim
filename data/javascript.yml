@@ -34,10 +34,10 @@ javascriptGlobal:
     - WeakSet
     - ArrayBuffer
     - DataView
-    - JSON
+    # - JSON
     - Iterator
     - Generator
-    - Promise
+    # - Promise
     - Reflect
     - Proxy
     - Intl
