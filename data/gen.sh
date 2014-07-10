@@ -1,7 +1,9 @@
 
 files='
   javascript
+  es6-number
   es6-string
+  es6-array
   es6-map
   es6-set
   es6-proxy

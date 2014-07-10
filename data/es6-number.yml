@@ -1,0 +1,27 @@
+javascriptGlobal:
+  - Number
+
+javascriptNumberProp:
+  - EPSILON
+  - MAX_SAFE_INTEGER
+  - MAX_VALUE
+  - MIN_SAFE_INTEGER
+  - MIN_VALUE
+  - NEGATIVE_INFINITY
+  - NaN
+  - POSITIVE_INFINITY 
+
+javascriptNumberMethod:
+  - isFinite
+  - isInteger
+  - isNaN
+  - isSafeInteger
+  - parseFloat
+  - parseInt
+  - toExponential
+  - toFixed
+  - toLocaleString
+  - toPrecision
+  - toSource
+  - toString
+  - valueOf 
