@@ -1,10 +1,10 @@
-syntax keyword javascriptGlobal Symbol
-syntax keyword javascriptSymProp contained create hasInstance isConcatSpreadable isRegExp
-syntax keyword javascriptSymProp contained iterator toPrimitive toStringTag unscopables
-syntax cluster props add=javascriptSymProp
-if exists("did_javascript_hilink") | HiLink javascriptSymProp Keyword
+syntax keyword javascriptGlobal Symbol nextgroup=javascriptGlobalSymbolDot
+syntax match   javascriptGlobalSymbolDot /\./ contained nextgroup=javascriptSymbolStaticProp,javascriptSymbolStaticMethod
+syntax keyword javascriptSymbolStaticProp contained create hasInstance isConcatSpreadable
+syntax keyword javascriptSymbolStaticProp contained isRegExp iterator toPrimitive
+syntax keyword javascriptSymbolStaticProp contained toStringTag unscopables
+if exists("did_javascript_hilink") | HiLink javascriptSymbolStaticProp Keyword
 endif
-syntax keyword javascriptSymMethod contained for keyFor nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptSymMethod
-if exists("did_javascript_hilink") | HiLink javascriptSymMethod Keyword
+syntax keyword javascriptSymbolStaticMethod contained for keyFor nextgroup=javascriptFuncCallArg
+if exists("did_javascript_hilink") | HiLink javascriptSymbolStaticMethod Keyword
 endif

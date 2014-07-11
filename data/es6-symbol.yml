@@ -1,7 +1,7 @@
 javascriptGlobal:
   - Symbol
 
-javascriptSymProp:
+javascriptSymbolStaticProp:
   - create
   - hasInstance
   - isConcatSpreadable
@@ -11,6 +11,6 @@ javascriptSymProp:
   - toStringTag
   - unscopables
 
-javascriptSymMethod:
+javascriptSymbolStaticMethod:
   - for
   - keyFor
