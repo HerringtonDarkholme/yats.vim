@@ -1,8 +1,16 @@
 javascriptGlobal:
   - RegExp
 
+javascriptRegExpStaticProp:
+  - lastIndex
+
+javascriptRegExpProp:
+  - global
+  - ignoreCase
+  - multiline
+  - source
+  - sticky
+
 javascriptRegExpMethod:
   - exec
   - test
-  # - toSource
-  # - toString
