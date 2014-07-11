@@ -1,7 +1,11 @@
-syntax keyword javascriptGlobal Date
-syntax keyword javascriptDateMethod contained UTC now parse getDate getDay getFullYear nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDateMethod contained getHours getMilliseconds getMinutes nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDateMethod contained getMonth getSeconds getTime getTimezoneOffset nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobal Date nextgroup=javascriptGlobalDateDot
+syntax match   javascriptGlobalDateDot /\./ contained nextgroup=javascriptDateStaticMethod
+syntax keyword javascriptDateStaticMethod contained UTC now parse nextgroup=javascriptFuncCallArg
+if exists("did_javascript_hilink") | HiLink javascriptDateStaticMethod Keyword
+endif
+syntax keyword javascriptDateMethod contained getDate getDay getFullYear getHours nextgroup=javascriptFuncCallArg
+syntax keyword javascriptDateMethod contained getMilliseconds getMinutes getMonth nextgroup=javascriptFuncCallArg
+syntax keyword javascriptDateMethod contained getSeconds getTime getTimezoneOffset nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDateMethod contained getUTCDate getUTCDay getUTCFullYear nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDateMethod contained getUTCHours getUTCMilliseconds getUTCMinutes nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDateMethod contained getUTCMonth getUTCSeconds setDate setFullYear nextgroup=javascriptFuncCallArg
