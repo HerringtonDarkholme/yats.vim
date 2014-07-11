@@ -7,7 +7,7 @@ endif
 syntax keyword javascriptNumberMethod contained isFinite isInteger isNaN isSafeInteger nextgroup=javascriptFuncCallArg
 syntax keyword javascriptNumberMethod contained parseFloat parseInt toExponential nextgroup=javascriptFuncCallArg
 syntax keyword javascriptNumberMethod contained toFixed toLocaleString toPrecision nextgroup=javascriptFuncCallArg
-syntax keyword javascriptNumberMethod contained toSource toString valueOf
+syntax keyword javascriptNumberMethod contained toSource toString valueOf nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptNumberMethod
 if exists("did_javascript_hilink") | HiLink javascriptNumberMethod Keyword
 endif

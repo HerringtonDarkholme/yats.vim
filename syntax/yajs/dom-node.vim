@@ -11,7 +11,7 @@ syntax keyword javascriptDOMNodeMethod contained getUserData hasAttributes hasCh
 syntax keyword javascriptDOMNodeMethod contained insertBefore isDefaultNamespace isEqualNode nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDOMNodeMethod contained isSameNode isSupported lookupNamespaceURI nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDOMNodeMethod contained lookupPrefix normalize removeChild nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMNodeMethod contained replaceChild setUserData
+syntax keyword javascriptDOMNodeMethod contained replaceChild setUserData nextgroup=javascriptFuncCallArg
 syntax match javascriptDOMNodeMethod contained /contains/
 syntax cluster props add=javascriptDOMNodeMethod
 if exists("did_javascript_hilink") | HiLink javascriptDOMNodeMethod Keyword

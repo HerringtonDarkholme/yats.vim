@@ -18,7 +18,7 @@ syntax keyword javascriptDOMElemMethod contained removeAttributeNode requestFull
 syntax keyword javascriptDOMElemMethod contained requestPointerLock scrollIntoView nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDOMElemMethod contained setAttribute setAttributeNS setAttributeNode nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDOMElemMethod contained setAttributeNodeNS setCapture supports nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMElemMethod contained getAttribute
+syntax keyword javascriptDOMElemMethod contained getAttribute nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptDOMElemMethod
 if exists("did_javascript_hilink") | HiLink javascriptDOMElemMethod Keyword
 endif

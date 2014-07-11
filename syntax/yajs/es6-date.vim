@@ -12,7 +12,7 @@ syntax keyword javascriptDateMethod contained setUTCMinutes setUTCMonth setUTCSe
 syntax keyword javascriptDateMethod contained toDateString toISOString toJSON toLocaleDateString nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDateMethod contained toLocaleFormat toLocaleString toLocaleTimeString nextgroup=javascriptFuncCallArg
 syntax keyword javascriptDateMethod contained toSource toString toTimeString toUTCString nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDateMethod contained valueOf
+syntax keyword javascriptDateMethod contained valueOf nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptDateMethod
 if exists("did_javascript_hilink") | HiLink javascriptDateMethod Keyword
 endif

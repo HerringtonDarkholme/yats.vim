@@ -9,7 +9,7 @@ if exists("did_javascript_hilink") | HiLink javascriptObjectStaticMethod Keyword
 endif
 syntax keyword javascriptObjectMethod contained hasOwnProperty isPrototypeOf propertyIsEnumerable nextgroup=javascriptFuncCallArg
 syntax keyword javascriptObjectMethod contained toLocaleString toString valueOf seal nextgroup=javascriptFuncCallArg
-syntax keyword javascriptObjectMethod contained setPrototypeOf
+syntax keyword javascriptObjectMethod contained setPrototypeOf nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptObjectMethod
 if exists("did_javascript_hilink") | HiLink javascriptObjectMethod Keyword
 endif

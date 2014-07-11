@@ -4,7 +4,7 @@ syntax keyword javascriptSymProp contained iterator toPrimitive toStringTag unsc
 syntax cluster props add=javascriptSymProp
 if exists("did_javascript_hilink") | HiLink javascriptSymProp Keyword
 endif
-syntax keyword javascriptSymMethod contained for keyFor
+syntax keyword javascriptSymMethod contained for keyFor nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptSymMethod
 if exists("did_javascript_hilink") | HiLink javascriptSymMethod Keyword
 endif

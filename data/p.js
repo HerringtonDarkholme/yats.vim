@@ -87,6 +87,9 @@ try {
       rule = rules.shift();
     }
     if (def.length > predef.length) {
+      if (/Method/.test(group)) {
+        def = def + ' nextgroup=javascriptFuncCallArg';
+      }
       console.log(def);
     }
 
