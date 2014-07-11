@@ -27,6 +27,7 @@ files='
   dom-node
   dom-elem
   dom-event
+  dom-document
   css'
 
 for file in $files; do

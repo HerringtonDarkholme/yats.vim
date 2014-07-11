@@ -155,14 +155,16 @@ runtime! syntax/yajs/es6-proxy.vim
 runtime! syntax/yajs/es6-promise.vim
 runtime! syntax/yajs/node.vim
 runtime! syntax/yajs/web.vim
-runtime! syntax/yajs/web-console.vim
 runtime! syntax/yajs/web-window.vim
+runtime! syntax/yajs/web-navigator.vim
 runtime! syntax/yajs/web-location.vim
 runtime! syntax/yajs/web-history.vim
+runtime! syntax/yajs/web-console.vim
 runtime! syntax/yajs/web-xhr.vim
 runtime! syntax/yajs/web-blob.vim
 runtime! syntax/yajs/dom-node.vim
 runtime! syntax/yajs/dom-elem.vim
+runtime! syntax/yajs/dom-document.vim
 runtime! syntax/yajs/dom-event.vim
 runtime! syntax/yajs/css.vim
 
