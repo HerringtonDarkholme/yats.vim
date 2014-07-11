@@ -1,10 +1,14 @@
-syntax keyword javascriptGlobal Array
-syntax keyword javascriptArrayMethod contained from isArray of concat copyWithin entries nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained every fill filter find findIndex forEach nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained indexOf join keys lastIndexOf map pop nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained push reduce reduceRight reverse shift nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained slice some sort splice toLocaleString nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained toSource toString unshift nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobal Array nextgroup=javascriptGlobalArrayDot
+syntax match   javascriptGlobalArrayDot /\./ contained nextgroup=javascriptArrayStaticMethod
+syntax keyword javascriptArrayStaticMethod contained from isArray of nextgroup=javascriptFuncCallArg
+if exists("did_javascript_hilink") | HiLink javascriptArrayStaticMethod Keyword
+endif
+syntax keyword javascriptArrayMethod contained concat copyWithin entries every fill nextgroup=javascriptFuncCallArg
+syntax keyword javascriptArrayMethod contained filter find findIndex forEach indexOf nextgroup=javascriptFuncCallArg
+syntax keyword javascriptArrayMethod contained join keys lastIndexOf map pop push nextgroup=javascriptFuncCallArg
+syntax keyword javascriptArrayMethod contained reduce reduceRight reverse shift slice nextgroup=javascriptFuncCallArg
+syntax keyword javascriptArrayMethod contained some sort splice toLocaleString toSource nextgroup=javascriptFuncCallArg
+syntax keyword javascriptArrayMethod contained toString unshift nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptArrayMethod
 if exists("did_javascript_hilink") | HiLink javascriptArrayMethod Keyword
 endif

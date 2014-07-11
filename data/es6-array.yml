@@ -1,10 +1,12 @@
 javascriptGlobal:
   - Array
 
-javascriptArrayMethod:
+javascriptArrayStaticMethod:
   - from
   - isArray
   - of
+
+javascriptArrayMethod:
   - concat
   - copyWithin
   - entries
