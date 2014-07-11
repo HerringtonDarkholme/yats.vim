@@ -1,10 +1,12 @@
 javascriptGlobal:
   - Date
 
-javascriptDateMethod:
+javascriptDateStaticMethod:
   - UTC
   - now
   - parse
+
+javascriptDateMethod:
   - getDate
   - getDay
   - getFullYear
