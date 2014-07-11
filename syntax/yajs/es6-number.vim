@@ -1,13 +1,16 @@
-syntax keyword javascriptGlobal Number
-syntax keyword javascriptNumberProp contained EPSILON MAX_SAFE_INTEGER MAX_VALUE MIN_SAFE_INTEGER
-syntax keyword javascriptNumberProp contained MIN_VALUE NEGATIVE_INFINITY NaN POSITIVE_INFINITY
-syntax cluster props add=javascriptNumberProp
-if exists("did_javascript_hilink") | HiLink javascriptNumberProp Keyword
+syntax keyword javascriptGlobal Number nextgroup=javascriptGlobalNumberDot
+syntax match   javascriptGlobalNumberDot /\./ contained nextgroup=javascriptNumberStaticProp,javascriptNumberStaticMethod
+syntax keyword javascriptNumberStaticProp contained EPSILON MAX_SAFE_INTEGER MAX_VALUE
+syntax keyword javascriptNumberStaticProp contained MIN_SAFE_INTEGER MIN_VALUE NEGATIVE_INFINITY
+syntax keyword javascriptNumberStaticProp contained NaN POSITIVE_INFINITY
+if exists("did_javascript_hilink") | HiLink javascriptNumberStaticProp Keyword
 endif
-syntax keyword javascriptNumberMethod contained isFinite isInteger isNaN isSafeInteger nextgroup=javascriptFuncCallArg
-syntax keyword javascriptNumberMethod contained parseFloat parseInt toExponential nextgroup=javascriptFuncCallArg
-syntax keyword javascriptNumberMethod contained toFixed toLocaleString toPrecision nextgroup=javascriptFuncCallArg
-syntax keyword javascriptNumberMethod contained toSource toString valueOf nextgroup=javascriptFuncCallArg
+syntax keyword javascriptNumberStaticMethod contained isFinite isInteger isNaN isSafeInteger nextgroup=javascriptFuncCallArg
+syntax keyword javascriptNumberStaticMethod contained parseFloat parseInt nextgroup=javascriptFuncCallArg
+if exists("did_javascript_hilink") | HiLink javascriptNumberStaticMethod Keyword
+endif
+syntax keyword javascriptNumberMethod contained toExponential toFixed toLocaleString nextgroup=javascriptFuncCallArg
+syntax keyword javascriptNumberMethod contained toPrecision toSource toString valueOf nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptNumberMethod
 if exists("did_javascript_hilink") | HiLink javascriptNumberMethod Keyword
 endif
