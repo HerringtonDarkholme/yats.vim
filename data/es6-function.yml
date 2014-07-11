@@ -1,0 +1,7 @@
+javascriptGlobal:
+  - Function
+
+javascriptFunctionMethod:
+  - apply
+  - bind
+  - call

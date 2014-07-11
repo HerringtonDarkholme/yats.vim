@@ -144,6 +144,7 @@ runtime! syntax/yajs/es6-string.vim
 runtime! syntax/yajs/es6-array.vim
 runtime! syntax/yajs/es6-object.vim
 runtime! syntax/yajs/es6-symbol.vim
+runtime! syntax/yajs/es6-function.vim
 runtime! syntax/yajs/es6-math.vim
 runtime! syntax/yajs/es6-date.vim
 runtime! syntax/yajs/es6-json.vim

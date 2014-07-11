@@ -6,6 +6,7 @@ files='
   es6-array
   es6-object
   es6-symbol
+  es6-function
   es6-math
   es6-json
   es6-date
