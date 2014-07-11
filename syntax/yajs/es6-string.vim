@@ -1,10 +1,13 @@
-syntax keyword javascriptGlobal String
-syntax keyword javascriptStringMethod contained fromCharCode fromCodePoint anchor nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained charAt charCodeAt codePointAt concat nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained endsWith indexOf lastIndexOf link nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained localeCompare match normalize repeat nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained replace search slice split startsWith nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained substr substring toLocaleLowerCase nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobal String nextgroup=javascriptGlobalStringDot
+syntax match   javascriptGlobalStringDot /\./ contained nextgroup=javascriptStringStaticMethod
+syntax keyword javascriptStringStaticMethod contained fromCharCode fromCodePoint nextgroup=javascriptFuncCallArg
+if exists("did_javascript_hilink") | HiLink javascriptStringStaticMethod Keyword
+endif
+syntax keyword javascriptStringMethod contained anchor charAt charCodeAt codePointAt nextgroup=javascriptFuncCallArg
+syntax keyword javascriptStringMethod contained concat endsWith indexOf lastIndexOf nextgroup=javascriptFuncCallArg
+syntax keyword javascriptStringMethod contained link localeCompare match normalize nextgroup=javascriptFuncCallArg
+syntax keyword javascriptStringMethod contained repeat replace search slice split nextgroup=javascriptFuncCallArg
+syntax keyword javascriptStringMethod contained startsWith substr substring toLocaleLowerCase nextgroup=javascriptFuncCallArg
 syntax keyword javascriptStringMethod contained toLocaleUpperCase toLowerCase toString nextgroup=javascriptFuncCallArg
 syntax keyword javascriptStringMethod contained toUpperCase trim valueOf nextgroup=javascriptFuncCallArg
 syntax match javascriptStringMethod contained /contains/

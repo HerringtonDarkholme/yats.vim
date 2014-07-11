@@ -1,9 +1,11 @@
 javascriptGlobal:
   - String
 
-javascriptStringMethod:
+javascriptStringStaticMethod:
   - fromCharCode
   - fromCodePoint
+
+javascriptStringMethod:
   - anchor
   # - big
   # - blink
