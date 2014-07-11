@@ -7,33 +7,33 @@ javascriptGlobal:
     - URL
     - URLUtils
 
-javascriptBOMFileMethod:
+javascriptFileMethod:
     - readAsArrayBuffer
     - readAsBinaryString
     - readAsDataURL
     - readAsText
 
-javascriptBOMFileReaderMethod:
+javascriptFileReaderProp:
     - error
     - readyState
     - result
 
-javascriptBOMFileReaderMethod:
+javascriptFileReaderMethod:
     - abort
     - readAsArrayBuffer
     - readAsBinaryString
     - readAsDataURL
     - readAsText
 
-javascriptBOMFileListMethod:
+javascriptFileListMethod:
     - item
 
-javascriptBOMBlobMethod:
+javascriptBlobMethod:
     - append
     - getBlob
     - getFile
 
-javascriptBOMURLUtilProp:
+javascriptURLUtilsProp:
     - hash
     - host
     - hostname
@@ -47,6 +47,6 @@ javascriptBOMURLUtilProp:
     - searchParams
     - username
 
-javascriptBOMURLMethod:
+javascriptURLStaticMethod:
     - createObjectURL
     - revokeObjectURL
