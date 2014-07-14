@@ -88,9 +88,10 @@ endif
 syntax case match
 
 "Syntax in the JavaScript code
-syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"/  end=/"\|$/
-syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'/  end=/'\|$/
-syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`/  end=/`\|$/ contains=javascriptTemplateSubstitution
+syntax match   javascriptASCII                 contained /\\\d\d\d/
+syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"/  end=/"\|$/ contains=javascriptASCII
+syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'/  end=/'\|$/ contains=javascriptASCII
+syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`/  end=/`\|$/ contains=javascriptASCII,javascriptTemplateSubstitution
 syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 
 syntax match   javascriptNumber                /0[bB][01]\+\>/
@@ -232,6 +233,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptDocParamType         Type
   HiLink javascriptString               String
   HiLink javascriptTemplate             String
+  HiLink javascriptASCII                Label
   HiLink javascriptTemplateSubstitution Label
   HiLink javascriptRegexpString         String
   HiLink javascriptGlobal               Constant
