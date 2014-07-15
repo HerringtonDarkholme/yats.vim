@@ -201,9 +201,9 @@ syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBr
 
 syntax match   javascriptBraces                contained /[{}\[\]]/
 syntax match   javascriptParens                /[()]/
-syntax match   javascriptOpSymbols             /\_[^+-=<>]\zs\(=\{1,3}\|!==\|!=\|<\|>\|>=\|<=\|++\|+=\|--\|-=\)\ze\_[^+-=<>]/ nextgroup=@javascriptExpression skipwhite
+syntax match   javascriptOpSymbols             /\_[^+\-*/%\^=!<>&|?]\zs\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
 syntax match   javascriptEndColons             /[;,]/
-syntax match   javascriptLogicSymbols          /\_[^&|]\zs\(&&\|||\|&\||\)\ze\_[^&|]/
+syntax match   javascriptLogicSymbols          /\_[^&|]\zs\(&&\|||\)\ze\_[^&|]/
 
 syntax keyword javascriptComprehension         for of if
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
