@@ -183,9 +183,9 @@ syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)
 syntax keyword javascriptMethodAccessor        contained get set
 syntax match   javascriptMethodName            contained /\k\+\ze\s\?(/
 
-syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName skipwhite
+syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
-syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncComma
+syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncComma nextgroup=javascriptBlock skipwhite
 syntax match   javascriptFuncComma             contained /,/
 syntax match   javascriptArrowFunc             /=>/
 
