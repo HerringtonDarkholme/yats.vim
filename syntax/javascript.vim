@@ -94,27 +94,27 @@ syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'/  end=
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`/  end=/`\|$/ contains=javascriptASCII,javascriptTemplateSubstitution
 syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 
-syntax match   javascriptNumber                /0[bB][01]\+\>/
-syntax match   javascriptNumber                /0[oO][0-7]\+\>/
-syntax match   javascriptNumber                /0[xX][0-9a-fA-F]\+\>/
-syntax match   javascriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
+syntax match   javascriptNumber                /\<0[bB][01]\+\>/
+syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
+syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/
+syntax match   javascriptNumber                /\<[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
 syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gi]\{0,2\}\s*$" end="/[gi]\{0,2\}\s*[;.,)\]}]"me=e-1 oneline
 syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              break case catch class const continue
-syntax keyword javascriptReserved              debugger default delete do else export
-syntax keyword javascriptReserved              extends finally for function if 
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp break case catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp extends finally for function if 
 "import
-syntax keyword javascriptReserved              in instanceof let new return super
-syntax keyword javascriptReserved              switch this throw try typeof var
-syntax keyword javascriptReserved              void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp switch this throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp void while with yield
 
-syntax keyword javascriptReserved              enum implements package protected static
-syntax keyword javascriptReserved              interface private public abstract boolean
-syntax keyword javascriptReserved              byte char double final float goto int
-syntax keyword javascriptReserved              long native short synchronized transient
-syntax keyword javascriptReserved              volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp enum implements package protected static
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp interface private public abstract boolean
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp byte char double final float goto int
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp long native short synchronized transient
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp volatile
 
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
@@ -136,7 +136,8 @@ syntax keyword javascriptStatement             return with yield
 
 syntax keyword javascriptExceptions            try catch throw finally
 
-syntax match   javascriptDotNotation           /\./ nextgroup=@props
+syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props
+syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp
 syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
 runtime! syntax/yajs/javascript.vim
