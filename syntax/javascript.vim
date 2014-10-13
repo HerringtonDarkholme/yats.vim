@@ -183,6 +183,7 @@ syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)
 syntax keyword javascriptMethodAccessor        contained get set
 syntax match   javascriptMethodName            contained /\k\+\ze\s\?(/
 
+syntax keyword javascriptAsyncFuncKeyword      async await
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
 syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncComma nextgroup=javascriptBlock skipwhite
@@ -260,6 +261,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptMethodName           Function
   HiLink javascriptMethodAccessor       Operator
 
+  HiLink javascriptAsyncFuncKeyword     Keyword
   HiLink javascriptFuncKeyword          Keyword
   HiLink javascriptArrowFunc            Type
   HiLink javascriptFuncName             Function
