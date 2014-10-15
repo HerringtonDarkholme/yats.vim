@@ -40,7 +40,7 @@ javascriptGlobal:
     # - Promise
     - Reflect
     - Proxy
-    - Intl
+    # - Intl
     - argumrnts
 
 javascriptGlobalMethod:
