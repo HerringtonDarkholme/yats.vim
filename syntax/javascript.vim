@@ -102,19 +102,19 @@ syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|
 syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp break case catch class const continue
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp debugger default delete do else export
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp extends finally for function if 
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment break case catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment extends finally for function if 
 "import
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp switch this throw try typeof var
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment switch this throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment void while with yield
 
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp enum implements package protected static
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp interface private public abstract boolean
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp byte char double final float goto int
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp long native short synchronized transient
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment enum implements package protected static
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment interface private public abstract boolean
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment byte char double final float goto int
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment long native short synchronized transient
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment volatile
 
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
