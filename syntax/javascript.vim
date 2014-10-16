@@ -34,7 +34,9 @@ else
 endif
 
 "Dollar sign is permitted anywhere in an identifier
-setlocal iskeyword+=$
+if &filetype == 'javascript'
+  setlocal iskeyword+=$
+endif
 
 syntax sync fromstart
 
