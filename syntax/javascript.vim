@@ -89,10 +89,10 @@ syntax case match
 
 "Syntax in the JavaScript code
 syntax match   javascriptASCII                 contained /\\\d\d\d/
+syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
 syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"/  end=/"\|$/ contains=javascriptASCII
 syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'/  end=/'\|$/ contains=javascriptASCII
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`/  end=/`\|$/ contains=javascriptASCII,javascriptTemplateSubstitution
-syntax match   javascriptTemplateSubstitution  /\${\w\+}/
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
