@@ -98,7 +98,7 @@ syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
 syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/
 syntax match   javascriptNumber                /\<[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
-syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gi]\{0,2\}\s*$" end="/[gi]\{0,2\}\s*[;.,)\]}]"me=e-1 oneline
+syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}\s*$" end="/[gi]\{0,2\}\s*[;.,)\]}]"me=e-1 oneline
 syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
