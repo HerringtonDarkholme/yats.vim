@@ -1,5 +1,6 @@
 javascriptGlobal:
     - Set
+    - WeakSet
 
 javascriptES6SetProp:
     - size

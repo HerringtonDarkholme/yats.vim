@@ -1,4 +1,4 @@
-syntax keyword javascriptGlobal Set
+syntax keyword javascriptGlobal Set WeakSet
 syntax keyword javascriptES6SetProp contained size
 syntax cluster props add=javascriptES6SetProp
 if exists("did_javascript_hilink") | HiLink javascriptES6SetProp Keyword

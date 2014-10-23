@@ -1,5 +1,6 @@
 javascriptGlobal:
     - Map
+    - WeakMap
 
 javascriptES6MapProp:
     - size

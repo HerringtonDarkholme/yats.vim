@@ -1,4 +1,4 @@
-syntax keyword javascriptGlobal Map
+syntax keyword javascriptGlobal Map WeakMap
 syntax keyword javascriptES6MapProp contained size
 syntax cluster props add=javascriptES6MapProp
 if exists("did_javascript_hilink") | HiLink javascriptES6MapProp Keyword

@@ -30,8 +30,8 @@ javascriptGlobal:
     - ParallelArray
     # - Map
     # - Set
-    - WeakMap
-    - WeakSet
+    # - WeakMap
+    # - WeakSet
     - ArrayBuffer
     - DataView
     # - JSON
