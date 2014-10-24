@@ -19,6 +19,14 @@ Credits
 Changes
 -------
 
+### Version 1.1
+
+- JSDoc 3
+- ECMA-402: Intl
+- async, await
+- String bugs fix
+- Minor bug fix
+
 ### Version 1.0
 
 - New name
