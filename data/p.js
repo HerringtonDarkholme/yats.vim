@@ -99,6 +99,9 @@ try {
     if (/Prop|Method/.test(group) && !/Static/.test(group)) {
       console.log('syntax cluster props add=' + group);
     }
+    if (/Event/.test(group)) {
+      console.log('syntax cluster events add=' + group);
+    }
 
     hilink = true;
     if (group === 'javascriptGlobal' && file !== 'javascript') {

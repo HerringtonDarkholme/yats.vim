@@ -183,6 +183,7 @@ runtime! syntax/yajs/dom-elem.vim
 runtime! syntax/yajs/dom-document.vim
 runtime! syntax/yajs/dom-event.vim
 runtime! syntax/yajs/dom-storage.vim
+runtime! syntax/yajs/event.vim
 runtime! syntax/yajs/css.vim
 
 let javascript_props = 1

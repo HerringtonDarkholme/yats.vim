@@ -30,6 +30,7 @@ files='
   dom-event
   dom-document
   dom-storage
+  event
   css'
 
 for file in $files; do

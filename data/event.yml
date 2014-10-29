@@ -1,0 +1,332 @@
+javascriptAnimationEvent:
+    - animationend
+    - animationiteration
+    - animationstart
+    - beginEvent
+    - endEvent
+    - repeatEvent
+
+# javascriptBatteryEvent:
+    # - chargingchange
+    # - chargingtimechange
+    # - dischargingtimechange
+    # - levelchange
+
+# javascriptCallEvent:
+
+javascriptCSSEvent:
+    - CssRuleViewRefreshed
+    - CssRuleViewChanged
+    - CssRuleViewCSSLinkClicked
+    - transitionend
+
+javascriptDatabaseEvent:
+    # - abort
+    - blocked
+    - complete
+    - error
+    - success
+    - upgradeneeded
+    - versionchange
+
+javascriptDocumentEvent:
+    - DOMLinkAdded
+    - DOMLinkRemoved
+    - DOMMetaAdded
+    - DOMMetaRemoved
+    - DOMWillOpenModalDialog
+    - DOMModalDialogClosed
+    - unload
+
+javascriptDOMMutationEvent:
+    - DOMAttributeNameChanged
+    - DOMAttrModified
+    - DOMCharacterDataModified
+    - DOMContentLoaded
+    - DOMElementNameChanged
+    - DOMNodeInserted
+    - DOMNodeInsertedIntoDocument
+    - DOMNodeRemoved
+    - DOMNodeRemovedFromDocument
+    - DOMSubtreeModified
+
+javascriptDragEvent:
+    - drag
+    - dragdrop
+    - dragend
+    - dragenter
+    - dragexit
+    - draggesture
+    - dragleave
+    - dragover
+    - dragstart
+    - drop
+
+javascriptElementEvent:
+    - invalid
+    - overflow
+    - underflow
+    - DOMAutoComplete
+    - command
+    - commandupdate
+
+javascriptFocusEvent:
+    - blur
+    - change
+    - DOMFocusIn
+    - DOMFocusOut
+    - focus
+    - focusin
+    - focusout
+
+javascriptFormEvent:
+    - reset
+    - submit
+
+javascriptFrameEvent:
+    # - mozbrowserclose
+    # - mozbrowsercontextmenu
+    # - mozbrowsererror
+    # - mozbrowsericonchange
+    # - mozbrowserlocationchange
+    # - mozbrowserloadend
+    # - mozbrowserloadstart
+    # - mozbrowseropenwindow
+    # - mozbrowsersecuritychange
+    # - mozbrowsershowmodalprompt
+    # - mozbrowsertitlechange
+    - DOMFrameContentLoaded
+
+javascriptInputDeviceEvent:
+    - click
+    - contextmenu
+    - DOMMouseScroll
+    - dblclick
+    - gamepadconnected
+    - gamepaddisconnected
+    - keydown
+    - keypress
+    - keyup
+    - MozGamepadButtonDown
+    - MozGamepadButtonUp
+    - mousedown
+    - mouseenter
+    - mouseleave
+    - mousemove
+    - mouseout
+    - mouseover
+    - mouseup
+    - mousewheel
+    - MozMousePixelScroll
+    - pointerlockchange
+    - pointerlockerror
+    - wheel
+
+javascriptMediaEvent:
+    - audioprocess
+    - canplay
+    - canplaythrough
+    - durationchange
+    - emptied
+    - ended
+    - ended
+    - loadeddata
+    - loadedmetadata
+    - MozAudioAvailable
+    - pause
+    - play
+    - playing
+    - ratechange
+    - seeked
+    - seeking
+    - stalled
+    - suspend
+    - timeupdate
+    - volumechange
+    - waiting
+    - complete
+
+javascriptMenuEvent:
+    - DOMMenuItemActive
+    - DOMMenuItemInactive
+
+javascriptNetworkEvent:
+    - datachange
+    - dataerror
+    - disabled
+    - enabled
+    - offline
+    - online
+    - statuschange
+    - connectionInfoUpdate
+
+# javascriptNotificationEvent:
+    # - AlertActive
+    # - AlertClose
+
+# javascriptPopupEvent:
+    # - popuphidden
+    # - popuphiding
+    # - popupshowing
+    # - popupshown
+    # - DOMPopupBlocked
+
+# javascriptPrintingEvent:
+    # - afterprint
+    # - beforeprint
+
+javascriptProgressEvent:
+    - abort
+    - error
+    - load
+    - loadend
+    - loadstart
+    - progress
+    # - progress
+    - timeout
+    - uploadprogress
+
+javascriptResourceEvent:
+    # - abort
+    - cached
+    - error
+    - load
+
+javascriptScriptEvent:
+    - afterscriptexecute
+    - beforescriptexecute
+
+javascriptSensorEvent:
+    - compassneedscalibration
+    - devicelight
+    - devicemotion
+    - deviceorientation
+    - deviceproximity
+    # - MozOrientation
+    - orientationchange
+    - userproximity
+
+javascriptSessionHistoryEvent:
+    - pagehide
+    - pageshow
+    - popstate
+
+# javascriptSmartcardEvent:
+
+# javascriptSMSEvent:
+
+javascriptStorageEvent:
+    - change
+    - storage
+
+javascriptSVGEvent:
+    - SVGAbort
+    - SVGError
+    - SVGLoad
+    - SVGResize
+    - SVGScroll
+    - SVGUnload
+    - SVGZoom
+
+javascriptTabEvent:
+    # - tabviewsearchenabled
+    # - tabviewsearchdisabled
+    # - tabviewframeinitialized
+    # - tabviewshown
+    # - tabviewhidden
+    # - TabOpen
+    # - TabClose
+    # - TabSelect
+    # - TabShow
+    # - TabHide
+    # - TabPinned
+    # - TabUnpinned
+    # - SSTabClosing
+    # - SSTabRestoring
+    # - SSTabRestored
+    - visibilitychange
+
+javascriptTextEvent:
+    - compositionend
+    - compositionstart
+    - compositionupdate
+    - copy
+    - cut
+    - paste
+    - select
+    - text
+
+javascriptTouchEvent:
+    # - MozEdgeUIGesture
+    # - MozMagnifyGesture
+    # - MozMagnifyGestureStart
+    # - MozMagnifyGestureUpdate
+    # - MozPressTapGesture
+    # - MozRotateGesture
+    # - MozRotateGestureStart
+    # - MozRotateGestureUpdate
+    # - MozSwipeGesture
+    # - MozTapGesture
+    # - MozTouchDown
+    # - MozTouchMove
+    # - MozTouchUp
+    - touchcancel
+    - touchend
+    - touchenter
+    - touchleave
+    - touchmove
+    - touchstart
+
+javascriptUpdateEvent:
+    - checking
+    - downloading
+    - error
+    - noupdate
+    - obsolete
+    - updateready
+
+javascriptValueChangeEvent:
+    # - broadcast
+    # - CheckboxStateChange
+    - hashchange
+    - input
+    # - RadioStateChange
+    - readystatechange
+    # - ValueChange
+
+javascriptViewEvent:
+    - fullscreen
+    - fullscreenchange
+    - fullscreenerror
+    # - MozEnteredDomFullscreen
+    # - MozScrolledAreaChanged
+    - resize
+    - scroll
+    # - sizemodechange
+
+javascriptWebsocketEvent:
+    - close
+    - error
+    - message
+    - open
+
+javascriptWindowEvent:
+    - DOMWindowCreated
+    - DOMWindowClose
+    - DOMTitleChanged
+    # - MozBeforeResize 
+    # - SSWindowClosing
+    # - SSWindowStateReady
+    # - SSWindowStateBusy
+    # - close
+
+javascriptUncategorizedEvent:
+    - beforeunload
+    # - localized
+    - message
+    # - message
+    # - message
+    # - MozAfterPaint
+    # - moztimechange
+    - open
+    - show
