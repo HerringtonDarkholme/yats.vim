@@ -1,0 +1,15 @@
+javascriptDOMStorage:
+    - sessionStorage
+    - localStorage
+    # - globalStorage
+
+javascriptDOMStorageProp:
+    - length
+
+javascriptDOMStorageMethod:
+    - getItem
+    - key
+    - setItem
+    - removeItem
+    - clear
+

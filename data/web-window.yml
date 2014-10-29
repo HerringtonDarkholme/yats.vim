@@ -21,7 +21,7 @@ javascriptBOMWindowProp:
     - length
     - location
     - locationbar
-    - localStorage
+    # - localStorage
     - menubar
     - messageManager
     # - mozAnimationStartTime
@@ -49,7 +49,7 @@ javascriptBOMWindowProp:
     - scrollX
     - scrollY
     - self
-    - sessionStorage
+    # - sessionStorage
     - sidebar
     - status
     - statusbar

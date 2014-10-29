@@ -1,13 +1,12 @@
 syntax keyword javascriptBOMWindowProp applicationCache closed Components controllers
 syntax keyword javascriptBOMWindowProp crypto dialogArguments document frameElement
 syntax keyword javascriptBOMWindowProp frames fullScreen history innerHeight innerWidth
-syntax keyword javascriptBOMWindowProp length location locationbar localStorage menubar
-syntax keyword javascriptBOMWindowProp messageManager name navigator opener outerHeight
-syntax keyword javascriptBOMWindowProp outerWidth pageXOffset pageYOffset parent performance
+syntax keyword javascriptBOMWindowProp length location locationbar menubar messageManager
+syntax keyword javascriptBOMWindowProp name navigator opener outerHeight outerWidth
+syntax keyword javascriptBOMWindowProp pageXOffset pageYOffset parent performance
 syntax keyword javascriptBOMWindowProp personalbar returnValue screen screenX screenY
 syntax keyword javascriptBOMWindowProp scrollbars scrollMaxX scrollMaxY scrollX scrollY
-syntax keyword javascriptBOMWindowProp self sessionStorage sidebar status statusbar
-syntax keyword javascriptBOMWindowProp toolbar top window
+syntax keyword javascriptBOMWindowProp self sidebar status statusbar toolbar top window
 syntax cluster props add=javascriptBOMWindowProp
 if exists("did_javascript_hilink") | HiLink javascriptBOMWindowProp Structure
 endif
