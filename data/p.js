@@ -116,7 +116,9 @@ try {
         hilink = false;
     }
     if (hilink) {
-      if (contained) {
+      if (file === 'event') {
+        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Title');
+      } else if (contained) {
         console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Keyword');
       } else {
         console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure');
