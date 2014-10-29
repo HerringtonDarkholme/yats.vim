@@ -221,9 +221,9 @@ syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBr
 
 syntax match   javascriptBraces                contained /[{}\[\]]/
 syntax match   javascriptParens                /[()]/
-syntax match   javascriptOpSymbols             /\_[^+\-*/%\^=!<>&|?]\zs\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
+syntax match   javascriptOpSymbols             /\_[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
 syntax match   javascriptEndColons             /[;,]/
-syntax match   javascriptLogicSymbols          /\_[^&|]\zs\(&&\|||\)\ze\_[^&|]/
+syntax match   javascriptLogicSymbols          /\_[^&|]\@<=\(&&\|||\)\ze\_[^&|]/
 
 syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}" oneline
 
