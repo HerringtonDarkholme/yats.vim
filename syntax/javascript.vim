@@ -149,7 +149,7 @@ syntax keyword javascriptStatement             return with yield
 
 syntax keyword javascriptExceptions            try catch throw finally
 
-syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props
+syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*(\?/ contains=@props transparent
 syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp
 syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
@@ -183,10 +183,13 @@ runtime! syntax/yajs/dom-elem.vim
 runtime! syntax/yajs/dom-document.vim
 runtime! syntax/yajs/dom-event.vim
 runtime! syntax/yajs/dom-storage.vim
-runtime! syntax/yajs/event.vim
 runtime! syntax/yajs/css.vim
 
 let javascript_props = 1
+
+runtime! syntax/yajs/event.vim
+syntax region  javascriptEventString           contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/ contains=javascriptASCII,@events
+syntax region  javascriptEventString           contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/ contains=javascriptASCII,@events
 
 "Import
 syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contains=javascriptImport
@@ -225,11 +228,14 @@ syntax match   javascriptLogicSymbols          /\_[^&|]\zs\(&&\|||\)\ze\_[^&|]/
 
 syntax keyword javascriptComprehension         for of if
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
+syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols
 syntax region  javascriptParenExp              contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression,javascriptComprehension
 syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,@javascriptTypes,@javascriptOps
+syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,@javascriptEventTypes,@javascriptOps
 
 syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/rs=e end=/)/re=s contains=@javascriptExpression
+syntax region  javascriptEventFuncCallArg      contained matchgroup=javascriptParens start=/(/rs=e end=/)/re=s contains=@javascriptEventExpression
 
 if exists("did_javascript_hilink")
   HiLink javascriptReserved             Error
@@ -253,6 +259,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptDocParamType         Type
   HiLink javascriptString               String
   HiLink javascriptTemplate             String
+  HiLink javascriptEventString          String
   HiLink javascriptASCII                Label
   HiLink javascriptTemplateSubstitution Label
   HiLink javascriptRegexpString         String
