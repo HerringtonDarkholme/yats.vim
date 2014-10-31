@@ -24,6 +24,7 @@ Changes
 - JSDoc 3
 - ECMA-402: Intl
 - async, await
+- Event name
 - String bugs fix
 - Minor bug fix
 
