@@ -1,0 +1,5 @@
+javascriptCryptoGlobal:
+    - crypto
+javascriptCryptoMethod:
+    - subtle
+    - getRandomValues

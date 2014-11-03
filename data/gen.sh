@@ -25,6 +25,7 @@ files='
   web-history
   web-xhr
   web-blob
+  web-crypto
   dom-node
   dom-elem
   dom-event

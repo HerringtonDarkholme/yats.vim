@@ -6,7 +6,7 @@ javascriptBOMWindowProp:
     # - content
     # - _content
     - controllers
-    - crypto
+    # - crypto
     # - defaultStatus
     - dialogArguments
     # - directories

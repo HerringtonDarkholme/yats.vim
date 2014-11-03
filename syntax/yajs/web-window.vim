@@ -1,7 +1,7 @@
 syntax keyword javascriptBOMWindowProp applicationCache closed Components controllers
-syntax keyword javascriptBOMWindowProp crypto dialogArguments document frameElement
-syntax keyword javascriptBOMWindowProp frames fullScreen history innerHeight innerWidth
-syntax keyword javascriptBOMWindowProp length location locationbar menubar messageManager
+syntax keyword javascriptBOMWindowProp dialogArguments document frameElement frames
+syntax keyword javascriptBOMWindowProp fullScreen history innerHeight innerWidth length
+syntax keyword javascriptBOMWindowProp location locationbar menubar messageManager
 syntax keyword javascriptBOMWindowProp name navigator opener outerHeight outerWidth
 syntax keyword javascriptBOMWindowProp pageXOffset pageYOffset parent performance
 syntax keyword javascriptBOMWindowProp personalbar returnValue screen screenX screenY
