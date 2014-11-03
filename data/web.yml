@@ -490,6 +490,6 @@ javascriptBOM:
     # - X
     - XDomainRequest
     - XMLDocument
-    - XMLHttpRequest
+    # - XMLHttpRequest
     - XMLHttpRequestEventTarget
 

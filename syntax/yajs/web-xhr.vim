@@ -1,3 +1,6 @@
+syntax keyword javascriptXHRGlobal XMLHttpRequest
+if exists("did_javascript_hilink") | HiLink javascriptXHRGlobal Structure
+endif
 syntax keyword javascriptXHRProp contained onreadystatechange readyState response
 syntax keyword javascriptXHRProp contained responseText responseType responseXML status
 syntax keyword javascriptXHRProp contained statusText timeout ontimeout upload withCredentials

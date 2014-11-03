@@ -1,3 +1,6 @@
+javascriptXHRGlobal:
+  - XMLHttpRequest
+
 javascriptXHRProp:
   - onreadystatechange
   - readyState

@@ -87,6 +87,6 @@ syntax keyword javascriptBOM URLSearchParams URLUtilsReadOnly UserProximityEvent
 syntax keyword javascriptBOM VideoPlaybackQuality WaveShaperNode WebBluetooth WebGLRenderingContext
 syntax keyword javascriptBOM WebSMS WebSocket WebVTT WifiManager Window Worker WorkerConsole
 syntax keyword javascriptBOM WorkerLocation WorkerNavigator XDomainRequest XMLDocument
-syntax keyword javascriptBOM XMLHttpRequest XMLHttpRequestEventTarget
+syntax keyword javascriptBOM XMLHttpRequestEventTarget
 if exists("did_javascript_hilink") | HiLink javascriptBOM Structure
 endif
