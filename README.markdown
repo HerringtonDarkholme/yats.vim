@@ -19,6 +19,11 @@ Credits
 Changes
 -------
 
+### Version 1.1.1
+
+- Function brace in new line
+- Web Crypto
+
 ### Version 1.1
 
 - JSDoc 3
