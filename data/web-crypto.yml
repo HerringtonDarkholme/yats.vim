@@ -1,5 +1,38 @@
 javascriptCryptoGlobal:
     - crypto
-javascriptCryptoMethod:
+
+javascriptSubtleCryptoMethod:
+    - encrypt
+    - decrypt
+    - sign
+    - verify
+    - digest
+
+javascriptCryptoProp:
     - subtle
+
+javascriptCryptoMethod:
     - getRandomValues
+
+# javascriptCryptoAlgorithm:
+    # - RSAES-PKCS1-v1_5
+    # - RSASSA-PKCS1-v1_5
+    # - RSA-PSS
+    # - RSA-OAEP
+    # - ECDSA
+    # - ECDH
+    # - AES-CTR
+    # - AES-CBC
+    # - AES-CMAC
+    # - AES-GCM
+    # - AES-CFB
+    # - AES-KW
+    # - HMAC
+    # - DH
+    # - SHA-1
+    # - SHA-256
+    # - SHA-384
+    # - SHA-512
+    # - CONCAT
+    # - HKDF-CTR
+    # - PBKDF2
