@@ -47,3 +47,4 @@ javascriptBOMNavigatorMethod:
     - watch
     # - mozNotification
     - registerProtocolHandler
+    - sendBeacon
