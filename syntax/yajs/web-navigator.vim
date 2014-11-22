@@ -9,6 +9,7 @@ syntax keyword javascriptBOMNavigatorMethod contained getDeviceStorages getGamep
 syntax keyword javascriptBOMNavigatorMethod contained getUserMedia registerContentHandler nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMNavigatorMethod contained removeIdleObserver requestWakeLock nextgroup=javascriptFuncCallArg
 syntax keyword javascriptBOMNavigatorMethod contained vibrate watch registerProtocolHandler nextgroup=javascriptFuncCallArg
+syntax keyword javascriptBOMNavigatorMethod contained sendBeacon nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptBOMNavigatorMethod
 if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorMethod Keyword
 endif
