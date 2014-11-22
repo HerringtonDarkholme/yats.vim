@@ -14,11 +14,12 @@ javascriptStringMethod:
   - charCodeAt
   - codePointAt
   - concat
-  - contains
+  # - contains
   - endsWith
   # - fixed
   # - fontcolor
   # - fontsize
+  - includes
   - indexOf
   # - italics
   - lastIndexOf
