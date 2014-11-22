@@ -6,8 +6,9 @@ syntax keyword javascriptGlobal Uint8ClampedArray ParallelArray ArrayBuffer Data
 syntax keyword javascriptGlobal Iterator Generator Reflect Proxy argumrnts
 if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
 endif
-syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncCallArg
-syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponent nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobalMethod eval fetch uneval isFinite isNaN parseFloat nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobalMethod parseInt decodeURI decodeURIComponent encodeURI nextgroup=javascriptFuncCallArg
+syntax keyword javascriptGlobalMethod encodeURIComponent nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptGlobalMethod
 if exists("did_javascript_hilink") | HiLink javascriptGlobalMethod Structure
 endif

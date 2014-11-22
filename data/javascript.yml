@@ -45,6 +45,7 @@ javascriptGlobal:
 
 javascriptGlobalMethod:
     - eval
+    - fetch
     - uneval
     - isFinite
     - isNaN
