@@ -9,6 +9,13 @@
 "               (This file is based on their hard work), gumnos (From the #vim 
 "               IRC Channel in Freenode)
 
+
+if exists("b:yajs_loaded")
+  finish
+else
+  let b:yajs_loaded = 1
+endif
+
 if !exists("main_syntax")
   if version < 600
     syntax clear
