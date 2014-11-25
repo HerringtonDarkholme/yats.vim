@@ -158,38 +158,38 @@ syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$
 syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp
 syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
-runtime! syntax/yajs/javascript.vim
-runtime! syntax/yajs/es6-number.vim
-runtime! syntax/yajs/es6-string.vim
-runtime! syntax/yajs/es6-array.vim
-runtime! syntax/yajs/es6-object.vim
-runtime! syntax/yajs/es6-symbol.vim
-runtime! syntax/yajs/es6-function.vim
-runtime! syntax/yajs/es6-math.vim
-runtime! syntax/yajs/es6-date.vim
-runtime! syntax/yajs/es6-json.vim
-runtime! syntax/yajs/es6-regexp.vim
-runtime! syntax/yajs/es6-map.vim
-runtime! syntax/yajs/es6-set.vim
-runtime! syntax/yajs/es6-proxy.vim
-runtime! syntax/yajs/es6-promise.vim
-runtime! syntax/yajs/ecma-402.vim
-runtime! syntax/yajs/node.vim
-runtime! syntax/yajs/web.vim
-runtime! syntax/yajs/web-window.vim
-runtime! syntax/yajs/web-navigator.vim
-runtime! syntax/yajs/web-location.vim
-runtime! syntax/yajs/web-history.vim
-runtime! syntax/yajs/web-console.vim
-runtime! syntax/yajs/web-xhr.vim
-runtime! syntax/yajs/web-blob.vim
-runtime! syntax/yajs/web-crypto.vim
-runtime! syntax/yajs/dom-node.vim
-runtime! syntax/yajs/dom-elem.vim
-runtime! syntax/yajs/dom-document.vim
-runtime! syntax/yajs/dom-event.vim
-runtime! syntax/yajs/dom-storage.vim
-runtime! syntax/yajs/css.vim
+runtime syntax/yajs/javascript.vim
+runtime syntax/yajs/es6-number.vim
+runtime syntax/yajs/es6-string.vim
+runtime syntax/yajs/es6-array.vim
+runtime syntax/yajs/es6-object.vim
+runtime syntax/yajs/es6-symbol.vim
+runtime syntax/yajs/es6-function.vim
+runtime syntax/yajs/es6-math.vim
+runtime syntax/yajs/es6-date.vim
+runtime syntax/yajs/es6-json.vim
+runtime syntax/yajs/es6-regexp.vim
+runtime syntax/yajs/es6-map.vim
+runtime syntax/yajs/es6-set.vim
+runtime syntax/yajs/es6-proxy.vim
+runtime syntax/yajs/es6-promise.vim
+runtime syntax/yajs/ecma-402.vim
+runtime syntax/yajs/node.vim
+runtime syntax/yajs/web.vim
+runtime syntax/yajs/web-window.vim
+runtime syntax/yajs/web-navigator.vim
+runtime syntax/yajs/web-location.vim
+runtime syntax/yajs/web-history.vim
+runtime syntax/yajs/web-console.vim
+runtime syntax/yajs/web-xhr.vim
+runtime syntax/yajs/web-blob.vim
+runtime syntax/yajs/web-crypto.vim
+runtime syntax/yajs/dom-node.vim
+runtime syntax/yajs/dom-elem.vim
+runtime syntax/yajs/dom-document.vim
+runtime syntax/yajs/dom-event.vim
+runtime syntax/yajs/dom-storage.vim
+runtime syntax/yajs/css.vim
 
 let javascript_props = 1
 
