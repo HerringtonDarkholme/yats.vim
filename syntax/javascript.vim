@@ -102,7 +102,6 @@ syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDo
 if main_syntax == "javascript"
   syntax sync clear
   syntax sync ccomment javascriptComment minlines=200
-  " syntax sync match javascriptHighlight grouphere javascriptBlock /{/
 endif
 
 syntax case match
@@ -203,7 +202,11 @@ syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contain
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
-syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
+if main_syntax == 'html'
+  syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
+else
+  syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
+endif
 
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
 syntax keyword javascriptMethodAccessor        contained get set
