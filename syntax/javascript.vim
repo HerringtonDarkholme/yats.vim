@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     JavaScript
 " Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
-" Last Change:  2014-10-31
+" Last Change:  2014-11-26
 " Version:      1.1
 " Changes:      Go to https://github.com/othree/yajs for recent changes.
 " Origin:       https://github.com/jelera/vim-javascript-syntax
@@ -312,6 +312,8 @@ if exists("did_javascript_hilink")
   HiLink javascriptClassSuper           keyword
 
   HiLink shellbang                      Comment
+
+  highlight link javaScript             NONE
 
   delcommand HiLink
   unlet did_javascript_hilink
