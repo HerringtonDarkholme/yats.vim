@@ -1,0 +1,38 @@
+javascriptGlobal:
+    - Headers
+    - Request
+    - Response
+
+javascriptGlobalMethod:
+    - fetch
+
+javascriptHeadersMethod:
+    - append
+    - delete
+    - get
+    - getAll
+    - has
+    - set
+
+javascriptRequestProp:
+    - method
+    - url
+    - headers
+    - context
+    - referrer
+    - mode
+    - credentials
+    - cache
+
+javascriptRequestMethod:
+    - clone
+
+javascriptResponseProp:
+    - type
+    - url
+    - status
+    - statusText
+    - headers
+
+javascriptResponseMethod:
+    - clone
