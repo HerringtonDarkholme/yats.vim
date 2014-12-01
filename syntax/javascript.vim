@@ -194,7 +194,7 @@ runtime syntax/yajs/css.vim
 
 let javascript_props = 1
 
-runtime! syntax/yajs/event.vim
+runtime syntax/yajs/event.vim
 syntax region  javascriptEventString           contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/ contains=javascriptASCII,@events
 syntax region  javascriptEventString           contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/ contains=javascriptASCII,@events
 
