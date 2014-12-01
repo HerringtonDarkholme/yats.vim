@@ -1,5 +1,5 @@
 NAME=yajs.vim
-VERSION=1.1.1
+VERSION=1.2
 
 bundle-deps:
 	$(call fetch_github,ID,REPOSITORY,BRANCH,PATH,TARGET_PATH)
