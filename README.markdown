@@ -19,6 +19,13 @@ Credits
 Changes
 -------
 
+### Version 1.2
+
+- Embed JS in html/erb/haml
+- fetch
+- sendBeacon
+- Improve init performance
+
 ### Version 1.1.1
 
 - Function brace in new line
