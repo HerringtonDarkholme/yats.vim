@@ -1,0 +1,19 @@
+javascriptServiceWorkerProp:
+    - controller
+    - ready
+
+javascriptServiceWorkerMethod:
+    - register
+    - getRegistration
+
+javascriptGlobal:
+    - Cache
+
+javascriptCacheMethod:
+    - match
+    - matchAll
+    - add
+    - addAll
+    - put
+    - delete
+    - keys

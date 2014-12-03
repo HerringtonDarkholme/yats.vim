@@ -330,3 +330,8 @@ javascriptUncategorizedEvent:
     # - moztimechange
     - open
     - show
+
+javascriptServiceWorkerEvent:
+    - install
+    - activate
+    - fetch

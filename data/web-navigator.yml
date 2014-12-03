@@ -21,6 +21,7 @@ javascriptBOMNavigatorProp:
     - oscpu
     - productSub
     - push
+    - serviceWorker
     - vendor
     - vendorSub
     # - id
@@ -48,3 +49,6 @@ javascriptBOMNavigatorMethod:
     # - mozNotification
     - registerProtocolHandler
     - sendBeacon
+
+javascriptServiceWorkerMethod:
+    - register
