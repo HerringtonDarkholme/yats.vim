@@ -117,7 +117,7 @@ syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
 syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/
 syntax match   javascriptNumber                /\<[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
-syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\(\s*:\)\@=/
+syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\s*:/he=e-1 nextgroup=javascriptFuncKeyword,javascriptFuncName,javascriptString,javascriptNumber skipwhite
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment break case catch class const continue
@@ -125,7 +125,7 @@ syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment extends finally for function if 
 "import
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment switch this throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment switch throw try typeof var
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment void while with yield
 
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment enum implements package protected static
@@ -134,12 +134,14 @@ syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment long native short synchronized transient
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment volatile
 
+"this
+
 "JavaScript Prototype
 syntax keyword javascriptPrototype             prototype
 
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this let var const void
-syntax keyword javascriptOperator              delete new instanceof typeof
+syntax keyword javascriptOperator              delete new instanceof typeof in
 syntax keyword javascriptBoolean               true false
 syntax keyword javascriptNull                  null undefined
 syntax keyword javascriptMessage               alert confirm prompt status
@@ -216,7 +218,7 @@ syntax match   javascriptMethodName            contained /\k\+\ze\s\?(/
 syntax keyword javascriptAsyncFuncKeyword      async await
 syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
 syntax match   javascriptFuncName              contained /\k\+/ nextgroup=javascriptFuncArg skipwhite
-syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncComma nextgroup=javascriptBlock skipwhite skipempty
+syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncKeyword,javascriptFuncComma nextgroup=javascriptBlock skipwhite skipempty
 syntax match   javascriptFuncComma             contained /,/
 syntax match   javascriptArrowFunc             /=>/
 
@@ -242,7 +244,7 @@ syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|
 syntax keyword javascriptComprehension         for of if
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
-syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols
+syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
 syntax region  javascriptParenExp              contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression,javascriptComprehension
 syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptRegexpString,@javascriptTypes,@javascriptOps
 syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptRegexpString,@javascriptEventTypes,@javascriptOps
