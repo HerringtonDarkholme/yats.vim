@@ -106,6 +106,7 @@ endif
 
 syntax case match
 
+syntax cluster javascriptStatement             contains=javascriptBlock,javascriptFuncKeyword,javascriptFuncName,javascriptString,javascriptNumber,javascriptConditional,javascriptRepeat,javascriptBranch,javascriptLabel,javascriptStatementKeyword,javascriptExceptions
 "Syntax in the JavaScript code
 syntax match   javascriptASCII                 contained /\\\d\d\d/
 syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
@@ -117,7 +118,7 @@ syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
 syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/
 syntax match   javascriptNumber                /\<[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
-syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\s*:/he=e-1 nextgroup=javascriptFuncKeyword,javascriptFuncName,javascriptString,javascriptNumber skipwhite
+syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\s*:/he=e-1 nextgroup=javascriptFuncKeyword,javascriptFuncName,javascriptString,javascriptNumber,@javascriptStatement skipwhite
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment break case catch class const continue
@@ -152,7 +153,7 @@ syntax keyword javascriptConditional           if else switch
 syntax keyword javascriptRepeat                do while for in of
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptLabel                 case default
-syntax keyword javascriptStatement             return with yield
+syntax keyword javascriptStatementKeyword      return with yield
 
 syntax keyword javascriptExceptions            try catch throw finally
 
@@ -286,7 +287,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptIdentifier           Identifier
   HiLink javascriptRepeat               Repeat
   HiLink javascriptComprehension        Repeat
-  HiLink javascriptStatement            Statement
+  HiLink javascriptStatementKeyword     Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Operator
   " HiLink javascriptType                 Type
