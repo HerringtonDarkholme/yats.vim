@@ -106,7 +106,10 @@ endif
 
 syntax case match
 
-syntax cluster javascriptStatement             contains=javascriptBlock,javascriptFuncKeyword,javascriptFuncName,javascriptString,javascriptNumber,javascriptConditional,javascriptRepeat,javascriptBranch,javascriptLabel,javascriptStatementKeyword,javascriptExceptions
+"Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
+
+syntax cluster javascriptStatement             contains=javascriptBlock,javascriptVariable,@javascriptExpression,javascriptConditional,javascriptRepeat,javascriptBranch,javascriptLabel,javascriptStatementKeyword,javascriptTry,javascriptDebugger
+
 "Syntax in the JavaScript code
 syntax match   javascriptASCII                 contained /\\\d\d\d/
 syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
@@ -118,7 +121,12 @@ syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
 syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/
 syntax match   javascriptNumber                /\<[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
-syntax match   javascriptLabel                 /\(?\s*\)\@<!\<\w\+\s*:/he=e-1 nextgroup=javascriptFuncKeyword,javascriptFuncName,javascriptString,javascriptNumber,@javascriptStatement skipwhite
+
+syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
+syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral
+
+syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite
+" Value for object, statement for label statement
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment break case catch class const continue
@@ -141,8 +149,9 @@ syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp
 syntax keyword javascriptPrototype             prototype
 
 "Program Keywords
-syntax keyword javascriptIdentifier            arguments this let var const void
-syntax keyword javascriptOperator              delete new instanceof typeof in
+syntax keyword javascriptIdentifier            arguments this let var const
+syntax keyword javascriptVariable              let var const
+syntax keyword javascriptOperator              delete new instanceof typeof void in of
 syntax keyword javascriptBoolean               true false
 syntax keyword javascriptNull                  null undefined
 syntax keyword javascriptMessage               alert confirm prompt status
@@ -150,12 +159,15 @@ syntax keyword javascriptGlobal                self top parent
 
 "Statement Keywords
 syntax keyword javascriptConditional           if else switch
-syntax keyword javascriptRepeat                do while for in of
+syntax keyword javascriptConditionalElse       else
+syntax keyword javascriptRepeat                do while for
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptLabel                 case default
 syntax keyword javascriptStatementKeyword      return with yield
 
-syntax keyword javascriptExceptions            try catch throw finally
+syntax keyword javascriptTry                   try
+syntax keyword javascriptExceptions            catch throw finally
+syntax keyword javascriptDebugger              debugger
 
 syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*(\?/ contains=@props transparent
 syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp
@@ -232,24 +244,24 @@ syntax region  javascriptClassBLock            contained matchgroup=javascriptBr
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 
 
-syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptMethodDef,@javascriptExpression
+syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptMethodDef
 
 syntax match   javascriptBraces                contained /[{}\[\]]/
 syntax match   javascriptParens                /[()]/
-syntax match   javascriptOpSymbols             /\_[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
+syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
 syntax match   javascriptEndColons             /[;,]/
-syntax match   javascriptLogicSymbols          /\_[^&|]\@<=\(&&\|||\)\ze\_[^&|]/
+syntax match   javascriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/
 
 syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}" oneline
 
 syntax keyword javascriptComprehension         for of if
-syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
 syntax region  javascriptParenExp              contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression,javascriptComprehension
-syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptRegexpString,@javascriptTypes,@javascriptOps
-syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptRegexpString,@javascriptEventTypes,@javascriptOps
+syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptTypes,@javascriptOps
+syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptEventTypes,@javascriptOps
 
+syntax match   javascriptFuncCall              contained /\k\+/ nextgroup=javascriptFuncCallArg skipwhite
 syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/rs=e end=/)/re=s contains=@javascriptExpression
 syntax region  javascriptEventFuncCallArg      contained matchgroup=javascriptParens start=/(/rs=e end=/)/re=s contains=@javascriptEventExpression
 
@@ -283,8 +295,10 @@ if exists("did_javascript_hilink")
   HiLink javascriptCharacter            Character
   HiLink javascriptPrototype            Type
   HiLink javascriptConditional          Conditional
+  HiLink javascriptConditionalElse      Conditional
   HiLink javascriptBranch               Conditional
   HiLink javascriptIdentifier           Identifier
+  HiLink javascriptVariable             Identifier
   HiLink javascriptRepeat               Repeat
   HiLink javascriptComprehension        Repeat
   HiLink javascriptStatementKeyword     Statement
@@ -297,6 +311,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptLabel                Label
   HiLink javascriptImport               Special
   HiLink javascriptExport               Special
+  HiLink javascriptTry                  Special
   HiLink javascriptExceptions           Special
 
   HiLink javascriptMethodName           Function
