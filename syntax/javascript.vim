@@ -129,19 +129,19 @@ syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 nextgroup=@javas
 " Value for object, statement for label statement
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment break case catch class const continue
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment debugger default delete do else export
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment extends finally for function if 
-"import
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment switch throw try typeof var
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString break case catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString extends finally for function if 
+"import,javascriptRegexpString
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString switch throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString void while with yield
 
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment enum implements package protected static
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment interface private public abstract boolean
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment byte char double final float goto int
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment long native short synchronized transient
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString enum implements package protected static
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString interface private public abstract boolean
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString byte char double final float goto int
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString long native short synchronized transient
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString volatile
 
 "this
 
