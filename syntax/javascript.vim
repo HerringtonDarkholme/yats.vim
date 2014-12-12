@@ -111,11 +111,11 @@ syntax case match
 syntax cluster javascriptStatement             contains=javascriptBlock,javascriptVariable,@javascriptExpression,javascriptConditional,javascriptRepeat,javascriptBranch,javascriptLabel,javascriptStatementKeyword,javascriptTry,javascriptDebugger
 
 "Syntax in the JavaScript code
-syntax match   javascriptASCII                 contained /\\\d\d\d/
+" syntax match   javascriptASCII                 contained /\\\d\d\d/
 syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
-syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/ contains=javascriptASCII
-syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/ contains=javascriptASCII
-syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\\\n/  end=/`\|$/ contains=javascriptASCII,javascriptTemplateSubstitution
+syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/
+syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/
+syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\\\n/  end=/`\|$/ contains=javascriptTemplateSubstitution
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
