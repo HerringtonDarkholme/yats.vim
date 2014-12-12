@@ -126,24 +126,24 @@ syntax cluster javascriptTypes                 contains=javascriptString,javascr
 syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral
 
 syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite
-syntax region  javascriptLabelString           contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/":/he=e-1 contains=javascriptASCII nextgroup=@javascriptValue skipwhite
-syntax region  javascriptLabelString           contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/':/he=e-1 contains=javascriptASCII nextgroup=@javascriptValue skipwhite
+syntax region  javascriptPropertyName          contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/":/he=e-1 nextgroup=@javascriptValue skipwhite
+syntax region  javascriptPropertyName          contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/':/he=e-1 nextgroup=@javascriptValue skipwhite
 " Value for object, statement for label statement
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString break case catch class const continue
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString debugger default delete do else export
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString extends finally for function if 
-"import,javascriptRegexpString,javascriptLabelString
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString switch throw try typeof var
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName break case catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName extends finally for function if 
+"import,javascriptRegexpString,javascriptPropertyName
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName switch throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName void while with yield
 
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString enum implements package protected static
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString interface private public abstract boolean
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString byte char double final float goto int
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString long native short synchronized transient
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptLabelString volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName enum implements package protected static
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName interface private public abstract boolean
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName byte char double final float goto int
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName long native short synchronized transient
+syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName volatile
 
 "this
 
@@ -246,7 +246,7 @@ syntax region  javascriptClassBLock            contained matchgroup=javascriptBr
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 
 
-syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptLabelString,javascriptMethodDef
+syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptPropertyName,javascriptMethodDef
 
 syntax match   javascriptBraces                contained /[{}\[\]]/
 syntax match   javascriptParens                /[()]/
@@ -312,7 +312,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptNumber               Number
   HiLink javascriptBoolean              Boolean
   HiLink javascriptLabel                Label
-  HiLink javascriptLabelString          Label
+  HiLink javascriptPropertyName         Label
   HiLink javascriptImport               Special
   HiLink javascriptExport               Special
   HiLink javascriptTry                  Special
