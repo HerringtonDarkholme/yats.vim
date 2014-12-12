@@ -15,7 +15,6 @@ if exists("b:yajs_loaded")
 else
   let b:yajs_loaded = 1
 endif
-
 if !exists("main_syntax")
   if version < 600
     syntax clear
@@ -41,7 +40,8 @@ else
 endif
 
 "Dollar sign is permitted anywhere in an identifier
-if &filetype == 'javascript'
+setlocal iskeyword-=$
+if main_syntax == 'javascript'
   setlocal iskeyword+=$
 endif
 
