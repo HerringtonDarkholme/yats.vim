@@ -130,20 +130,21 @@ syntax region  javascriptPropertyName          contained start=/"/  skip=/\\\\\|
 syntax region  javascriptPropertyName          contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/':/he=e-1 nextgroup=@javascriptValue skipwhite
 " Value for object, statement for label statement
 
+syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName break case catch class const continue
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName debugger default delete do else export
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName extends finally for function if 
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings break case catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings extends finally for function if 
 "import,javascriptRegexpString,javascriptPropertyName
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName switch throw try typeof var
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings switch throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings void while with yield
 
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName enum implements package protected static
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName interface private public abstract boolean
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName byte char double final float goto int
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName long native short synchronized transient
-syntax keyword javascriptReserved              containedin=ALLBUT,javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings enum implements package protected static
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings interface private public abstract boolean
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings byte char double final float goto int
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings long native short synchronized transient
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings volatile
 
 "this
 
