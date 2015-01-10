@@ -126,8 +126,8 @@ syntax cluster javascriptTypes                 contains=javascriptString,javascr
 syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral
 
 syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite
-syntax region  javascriptPropertyName          contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/":/he=e-1 nextgroup=@javascriptValue skipwhite
-syntax region  javascriptPropertyName          contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/':/he=e-1 nextgroup=@javascriptValue skipwhite
+syntax region  javascriptPropertyName          contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\s*:/he=e-1 nextgroup=@javascriptValue skipwhite
+syntax region  javascriptPropertyName          contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\s*:/he=e-1 nextgroup=@javascriptValue skipwhite
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
@@ -247,7 +247,7 @@ syntax region  javascriptClassBLock            contained matchgroup=javascriptBr
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 
 
-syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptPropertyName,javascriptMethodDef
+syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=javascriptLabel,javascriptPropertyName,javascriptMethodDef keepend
 
 syntax match   javascriptBraces                contained /[{}\[\]]/
 syntax match   javascriptParens                /[()]/
