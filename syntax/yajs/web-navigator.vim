@@ -1,6 +1,7 @@
 syntax keyword javascriptBOMNavigatorProp contained battery buildID cookieEnabled
 syntax keyword javascriptBOMNavigatorProp contained doNotTrack maxTouchPoints oscpu
-syntax keyword javascriptBOMNavigatorProp contained productSub push vendor vendorSub
+syntax keyword javascriptBOMNavigatorProp contained productSub push serviceWorker
+syntax keyword javascriptBOMNavigatorProp contained vendor vendorSub
 syntax cluster props add=javascriptBOMNavigatorProp
 if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorProp Keyword
 endif
@@ -12,4 +13,8 @@ syntax keyword javascriptBOMNavigatorMethod contained vibrate watch registerProt
 syntax keyword javascriptBOMNavigatorMethod contained sendBeacon nextgroup=javascriptFuncCallArg
 syntax cluster props add=javascriptBOMNavigatorMethod
 if exists("did_javascript_hilink") | HiLink javascriptBOMNavigatorMethod Keyword
+endif
+syntax keyword javascriptServiceWorkerMethod contained register nextgroup=javascriptFuncCallArg
+syntax cluster props add=javascriptServiceWorkerMethod
+if exists("did_javascript_hilink") | HiLink javascriptServiceWorkerMethod Keyword
 endif

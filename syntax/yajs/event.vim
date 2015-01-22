@@ -153,3 +153,7 @@ syntax keyword javascriptUncategorizedEvent contained beforeunload message open 
 syntax cluster events add=javascriptUncategorizedEvent
 if exists("did_javascript_hilink") | HiLink javascriptUncategorizedEvent Title
 endif
+syntax keyword javascriptServiceWorkerEvent contained install activate fetch
+syntax cluster events add=javascriptServiceWorkerEvent
+if exists("did_javascript_hilink") | HiLink javascriptServiceWorkerEvent Title
+endif

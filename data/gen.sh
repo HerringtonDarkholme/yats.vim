@@ -27,6 +27,7 @@ files='
   web-blob
   web-crypto
   web-fetch
+  web-service-worker
   dom-node
   dom-elem
   dom-event
