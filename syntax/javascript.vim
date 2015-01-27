@@ -10,11 +10,11 @@
 "               IRC Channel in Freenode)
 
 
-if exists("b:yajs_loaded")
-  finish
-else
-  let b:yajs_loaded = 1
-endif
+" if exists("b:yajs_loaded")
+  " finish
+" else
+  " let b:yajs_loaded = 1
+" endif
 if !exists("main_syntax")
   if version < 600
     syntax clear
@@ -116,6 +116,7 @@ syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
 syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/
 syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\\\n/  end=/`\|$/ contains=javascriptTemplateSubstitution
+" syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/
