@@ -41,7 +41,7 @@ javascriptGlobal:
     - Reflect
     - Proxy
     # - Intl
-    - argumrnts
+    - arguments
 
 javascriptGlobalMethod:
     - eval
