@@ -155,7 +155,8 @@ syntax keyword javascriptPrototype             prototype
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this let var const
 syntax keyword javascriptVariable              let var const
-syntax keyword javascriptOperator              delete new instanceof typeof void in of
+syntax keyword javascriptOperator              delete new instanceof typeof void
+syntax keyword javascriptForOperator           in of
 syntax keyword javascriptBoolean               true false
 syntax keyword javascriptNull                  null undefined
 syntax keyword javascriptMessage               alert confirm prompt status
@@ -307,6 +308,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptVariable             Identifier
   HiLink javascriptRepeat               Repeat
   HiLink javascriptComprehension        Repeat
+  HiLink javascriptForOperator          Repeat
   HiLink javascriptStatementKeyword     Statement
   HiLink javascriptMessage              Keyword
   HiLink javascriptOperator             Operator
