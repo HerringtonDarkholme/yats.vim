@@ -3,7 +3,7 @@ syntax keyword javascriptGlobal ReferenceError StopIteration SyntaxError TypeErr
 syntax keyword javascriptGlobal URIError Date RegExp Float32Array Float64Array Int16Array
 syntax keyword javascriptGlobal Int32Array Int8Array Uint16Array Uint32Array Uint8Array
 syntax keyword javascriptGlobal Uint8ClampedArray ParallelArray ArrayBuffer DataView
-syntax keyword javascriptGlobal Iterator Generator Reflect Proxy argumrnts
+syntax keyword javascriptGlobal Iterator Generator Reflect Proxy arguments
 if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
 endif
 syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncCallArg
