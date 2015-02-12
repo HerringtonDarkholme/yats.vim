@@ -115,7 +115,7 @@ syntax cluster javascriptStatement             contains=javascriptBlock,javascri
 syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
 syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/
 syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/
-syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\\\n/  end=/`\|$/ contains=javascriptTemplateSubstitution
+syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/
