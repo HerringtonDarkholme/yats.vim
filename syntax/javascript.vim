@@ -225,9 +225,9 @@ syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
 if main_syntax != 'javascript'
-  syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
+  syntax region  javascriptBlock                 start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 else
-  syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
+  syntax region  javascriptBlock                 start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
 endif
 
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
