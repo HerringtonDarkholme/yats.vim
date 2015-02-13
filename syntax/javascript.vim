@@ -43,6 +43,7 @@ endif
 setlocal iskeyword-=$
 if main_syntax == 'javascript'
   setlocal iskeyword+=$
+  syntax cluster htmlJavScript                 contains=TOP
 endif
 
 syntax sync fromstart
@@ -226,9 +227,6 @@ syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contain
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
-if main_syntax == 'javascript'
-  syntax cluster htmlJavScript                 contains=TOP
-endif
 syntax region  javascriptBlock                 start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
 syntax region  javascriptMethodDef             contained start=/\(\(\(set\|get\)\s\+\)\?\)\k\+\s\?(/ end=/)/ contains=javascriptMethodAccessor,javascriptMethodName,javascriptFuncArg nextgroup=javascriptBlock skipwhite keepend
