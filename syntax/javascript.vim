@@ -258,7 +258,7 @@ syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=
 syntax match   javascriptEndColons             /[;,]/
 syntax match   javascriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/
 
-syntax region  javascriptRegexpString          start="/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}" oneline
+syntax region  javascriptRegexpString          start="\(^\|=\|(\|{\|;\)\@<=\s*/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}" oneline
 
 syntax keyword javascriptComprehension         for of
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
