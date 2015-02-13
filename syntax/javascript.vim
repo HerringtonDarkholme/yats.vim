@@ -49,6 +49,7 @@ syntax sync fromstart
 
 "Syntax coloring for Node.js shebang line
 syntax match   shellbang "^#!.*node\>"
+syntax match   shellbang "^#!.*iojs\>"
 
 
 "JavaScript comments
