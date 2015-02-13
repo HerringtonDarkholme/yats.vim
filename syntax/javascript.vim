@@ -224,7 +224,7 @@ syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contain
 syntax keyword javascriptImport                contained from as import
 syntax keyword javascriptExport                export module
 
-if main_syntax == 'html' || main_syntax == 'eruby' || main_syntax == 'php' || main_syntax == 'haml'
+if main_syntax != 'javascript'
   syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 else
   syntax region  javascriptBlock                 matchgroup=javascriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=TOP
