@@ -48,7 +48,7 @@ endif
 syntax sync fromstart
 
 "Syntax coloring for Node.js shebang line
-syntax match   shellbang "^#!.*/bin/env\s\+node\>"
+syntax match   shellbang "^#!.*node\>"
 
 
 "JavaScript comments
@@ -132,20 +132,21 @@ syntax region  javascriptPropertyName          contained start=/'/  skip=/\\\\\|
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,javascriptComment,javascriptLineComment,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
+syntax cluster javascriptNoReserved            contains=@javascriptStrings,shellbang
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings break case catch class const continue
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings debugger default delete do else export
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings extends finally for function if 
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break case catch class const continue
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved extends finally for function if 
 "import,javascriptRegexpString,javascriptPropertyName
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings in instanceof let new return super
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings switch throw try typeof var
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings void while with yield
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved in instanceof let new return super
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved switch throw try typeof var
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved void while with yield
 
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings enum implements package protected static
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings interface private public abstract boolean
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings byte char double final float goto int
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings long native short synchronized transient
-syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptStrings volatile
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved enum implements package protected static
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved interface private public abstract boolean
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved byte char double final float goto int
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved long native short synchronized transient
+syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved volatile
 
 "this
 
