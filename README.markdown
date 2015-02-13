@@ -7,7 +7,7 @@ Yet Another JavaScript Syntax file for Vim. Key differences:
 * Recognize Web API and DOM keywords. Keep increase.
 * Works perfect with [javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
 * Remove old, unused syntax definitions.
-* Support several ES6 new syntax, ex: arrow function `=>`. 
+* Support ES6 new syntax, ex: arrow function `=>`. 
 
 Credits
 -------
@@ -18,6 +18,18 @@ Credits
 
 Changes
 -------
+
+### Version 1.3
+- Add ServiceWorker
+- Some code refactor
+- Lots of bug fix
+  - Nesting block
+  - Multiline template string
+  - Negative integer
+  - Syntax not load second time
+  - Comment in object literal
+  - Reserved word not in all string type
+
 
 ### Version 1.2
 
