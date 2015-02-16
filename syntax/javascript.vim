@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     JavaScript
 " Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
-" Last Change:  2015-02-05
+" Last Change:  2015-02-17
 " Version:      1.3
 " Changes:      Go to https://github.com/othree/yajs for recent changes.
 " Origin:       https://github.com/jelera/vim-javascript-syntax
