@@ -43,7 +43,7 @@ endif
 setlocal iskeyword-=$
 if main_syntax == 'javascript'
   setlocal iskeyword+=$
-  syntax cluster htmlJavScript                 contains=TOP
+  syntax cluster htmlJavaScript                 contains=TOP
 endif
 
 syntax sync fromstart
