@@ -139,8 +139,9 @@ syntax cluster javascriptValue                 contains=@javascriptTypes,@javasc
 
 syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 contains=javascriptReserved nextgroup=@javascriptValue,@javascriptStatement skipwhite skipnl
 syntax match   javascriptObjectLabel           contained /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite skipnl
-syntax match   javascriptPropertyName          contained /"[^"]\+"\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
-syntax match   javascriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
+" syntax match   javascriptPropertyName          contained /"[^"]\+"\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
+" syntax match   javascriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
+syntax region  javascriptPropertyName          start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\s*:\|$/ nextgroup=@javascriptValue skipwhite skipnl
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
