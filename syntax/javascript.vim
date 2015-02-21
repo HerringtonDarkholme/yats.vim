@@ -123,8 +123,7 @@ syntax cluster javascriptStatement             contains=javascriptBlock,javascri
 "Syntax in the JavaScript code
 " syntax match   javascriptASCII                 contained /\\\d\d\d/
 syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
-syntax region  javascriptString                start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
-syntax region  javascriptString                start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
+syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=javascriptOpSymbols skipwhite skipnl
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
 syntax region  javascriptArray                 start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptOpSymbols skipwhite skipnl
@@ -230,8 +229,7 @@ runtime syntax/yajs/css.vim
 let javascript_props = 1
 
 runtime syntax/yajs/event.vim
-syntax region  javascriptEventString           contained start=/"/  skip=/\\\\\|\\"\|\\\n/  end=/"\|$/ contains=javascriptASCII,@events
-syntax region  javascriptEventString           contained start=/'/  skip=/\\\\\|\\'\|\\\n/  end=/'\|$/ contains=javascriptASCII,@events
+syntax region  javascriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=javascriptASCII,@events
 
 "Import
 syntax region  javascriptImportDef             start=/import/ end=/;\|$/ contains=javascriptImport
