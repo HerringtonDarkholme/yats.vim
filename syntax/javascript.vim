@@ -116,7 +116,7 @@ endif
 
 syntax case match
 
-syntax match   javascriptIdentifierName        /\k[^=<>!+\-*\/%|&]*/
+syntax match   javascriptIdentifierName        /\k[^=<>!+\-*\/%|&,;: \[\]\(\)\{\}]*/
 
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
 
