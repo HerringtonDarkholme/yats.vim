@@ -145,7 +145,7 @@ syntax match   javascriptObjectLabel           contained /\k\+\s*:/he=e-1 nextgr
 syntax region  javascriptPropertyName          contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\s*:\|$/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
 " Value for object, statement for label statement
 
-syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
+syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,javascriptTemplate,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
 syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptObjectLabel
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break case catch class const continue
