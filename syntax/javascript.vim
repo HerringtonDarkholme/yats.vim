@@ -102,6 +102,8 @@ syntax match   javascriptDocNumParam           contained /\d\+/
 syntax match   javascriptDocRef                contained /\%(#\|\w\|\.\|:\|\/\)\+/
 syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start=/{/ end=/}/ contains=javascriptDocTags
 
+syntax cluster javascriptDocType               contains=javascriptDocParamType,javascriptDocNamedParamType
+
 if main_syntax == "javascript"
   syntax sync clear
   syntax sync ccomment javascriptComment minlines=200
@@ -137,7 +139,7 @@ syntax match   javascriptPropertyNameComma     /:/ contained nextgroup=@javascri
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
-syntax cluster javascriptNoReserved            contains=@javascriptStrings,shellbang
+syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocType,shellbang
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break case catch class const continue
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
