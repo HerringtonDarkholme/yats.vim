@@ -132,14 +132,14 @@ syntax match   javascriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull,javascriptArray
 syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral
 
-syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite
-syntax match   javascriptPropertyName          contained /"\k\+":/he=e-1 nextgroup=@javascriptValue skipwhite
-syntax match   javascriptPropertyName          contained /"\k\+":/he=e-1 nextgroup=@javascriptValue skipwhite
-syntax match   javascriptPropertyNameComma     /:/ contained nextgroup=@javascriptValue skipwhite
+syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 contains=javascriptReserved nextgroup=@javascriptValue,@javascriptStatement skipwhite skipnl
+syntax match   javascriptObjectLabel           contained /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite skipnl
+syntax match   javascriptPropertyName          contained /"[^"]\+"\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
+syntax match   javascriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
-syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocType,shellbang
+syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocType,shellbang,javascriptObjectLiteral,javascriptObjectLabel
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break case catch class const continue
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
@@ -254,7 +254,7 @@ syntax region  javascriptClassBLock            contained matchgroup=javascriptBr
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 
 
-syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=@javascriptComments,javascriptLabel,javascriptPropertyName,javascriptMethodDef
+syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=@javascriptComments,javascriptObjectLabel,javascriptPropertyName,javascriptMethodDef
 
 syntax match   javascriptBraces                /[\[\]]/
 syntax match   javascriptParens                /[()]/
@@ -321,6 +321,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptNull                 Boolean
   HiLink javascriptNumber               Number
   HiLink javascriptBoolean              Boolean
+  HiLink javascriptObjectLabel          javascriptLabel
   HiLink javascriptLabel                Label
   HiLink javascriptPropertyName         Label
   HiLink javascriptImport               Special
