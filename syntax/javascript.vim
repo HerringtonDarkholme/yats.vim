@@ -69,9 +69,14 @@ syntax keyword javascriptDocTags               contained constant constructor co
 syntax keyword javascriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
 syntax keyword javascriptDocTags               contained example global
 
+" syntax keyword javascriptDocTags               contained ngdoc nextgroup=javascriptDocNGDirective
+syntax keyword javascriptDocTags               contained ngdoc scope priority animations
+syntax keyword javascriptDocTags               contained ngdoc restrict methodOf propertyOf eventOf eventType nextgroup=javascriptDocParam skipwhite
+syntax keyword javascriptDocNGDirective        contained overview service object function method property event directive filter inputType error
+
 syntax keyword javascriptDocTags               contained abstract virtual access augments
 
-syntax keyword javascriptDocTags               contained arguments callback lends memberOf name type link mixes mixin tutorial nextgroup=javascriptDocParam skipwhite
+syntax keyword javascriptDocTags               contained arguments callback lends memberOf name type kind link mixes mixin tutorial nextgroup=javascriptDocParam skipwhite
 syntax keyword javascriptDocTags               contained variation nextgroup=javascriptDocNumParam skipwhite
 
 syntax keyword javascriptDocTags               contained author class classdesc copyright default defaultvalue nextgroup=javascriptDocDesc skipwhite
@@ -82,7 +87,7 @@ syntax keyword javascriptDocTags               contained summary todo license pr
 syntax keyword javascriptDocTags               contained borrows exports nextgroup=javascriptDocA skipwhite
 syntax keyword javascriptDocTags               contained param arg argument property prop module nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
 syntax keyword javascriptDocTags               contained define enum extends implements this typedef nextgroup=javascriptDocParamType skipwhite
-syntax keyword javascriptDocTags               contained returns throws exception nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
+syntax keyword javascriptDocTags               contained return returns throws exception nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
 syntax keyword javascriptDocTags               contained see nextgroup=javascriptDocRef skipwhite
 
 syntax keyword javascriptDocTags               contained function func method nextgroup=javascriptDocName skipwhite
@@ -102,7 +107,7 @@ syntax match   javascriptDocNumParam           contained /\d\+/
 syntax match   javascriptDocRef                contained /\%(#\|\w\|\.\|:\|\/\)\+/
 syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start=/{/ end=/}/ contains=javascriptDocTags
 
-syntax cluster javascriptDocType               contains=javascriptDocParamType,javascriptDocNamedParamType
+syntax cluster javascriptDocs                  contains=javascriptDocParamType,javascriptDocNamedParamType,javascriptDocParam
 
 if main_syntax == "javascript"
   syntax sync clear
@@ -139,7 +144,7 @@ syntax match   javascriptPropertyName          contained /'[^']\+'\s*:/he=e-1 ne
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
-syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocType,shellbang,javascriptObjectLiteral,javascriptObjectLabel
+syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptObjectLabel
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break case catch class const continue
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved debugger default delete do else export
@@ -290,6 +295,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptCommentTodo          Todo
   HiLink javascriptDocNotation          SpecialComment
   HiLink javascriptDocTags              SpecialComment
+  HiLink javascriptDocNGParam           javascriptDocParam
   HiLink javascriptDocParam             Function
   HiLink javascriptDocNumParam          Function
   HiLink javascriptDocEventRef          Function
