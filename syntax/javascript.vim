@@ -128,7 +128,7 @@ syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=javascriptOpSymbols skipwhite skipnl
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
-syntax region  javascriptArray                 start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptOpSymbols skipwhite skipnl
+syntax region  javascriptArray                 matchgroup=javascriptBraces start=/\[/ end=/]/ contains=@javascriptValue nextgroup=javascriptOpSymbols skipwhite skipnl
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/ nextgroup=javascriptOpSymbols skipwhite skipnl
@@ -136,13 +136,14 @@ syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/ nextgrou
 syntax match   javascriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/ nextgroup=javascriptOpSymbols skipwhite skipnl
 
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull,javascriptArray
-syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral
+syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral,javascriptIdentifierName
 
 syntax match   javascriptLabel                 /\k\+\s*:/he=e-1 contains=javascriptReserved nextgroup=@javascriptValue,@javascriptStatement skipwhite skipnl
 syntax match   javascriptObjectLabel           contained /\k\+\s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite skipnl
 " syntax match   javascriptPropertyName          contained /"[^"]\+"\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
 " syntax match   javascriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
 syntax region  javascriptPropertyName          contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\s*:\|$/he=e-1 nextgroup=@javascriptValue skipwhite skipnl
+syntax region  javascriptComputedPropertyName  contained matchgroup=javascriptPropertyName start=/\[/rs=s+1 end=/]\s*:/he=e-1 contains=@javascriptValue nextgroup=@javascriptValue skipwhite skipnl
 " Value for object, statement for label statement
 
 syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,javascriptTemplate,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
@@ -260,10 +261,10 @@ syntax region  javascriptClassBLock            contained matchgroup=javascriptBr
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 
 
-syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=@javascriptComments,javascriptObjectLabel,javascriptPropertyName,javascriptMethodDef
+syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=@javascriptComments,javascriptObjectLabel,javascriptPropertyName,javascriptMethodDef,javascriptComputedPropertyName
 
-syntax match   javascriptBraces                /[\[\]]/
-syntax match   javascriptParens                /[()]/
+" syntax match   javascriptBraces                /[\[\]]/
+" syntax match   javascriptParens                /[()]/
 " syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|-\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite
 syntax match   javascriptOpSymbols             /[^+\-*/%\^=!<>&|?]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?]/ nextgroup=@javascriptExpression skipwhite skipnl
 syntax match   javascriptEndColons             /[;,]/
