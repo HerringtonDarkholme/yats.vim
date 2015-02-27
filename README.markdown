@@ -22,6 +22,7 @@ Changes
 ### Version 1.4
 - AngularJS JSDoc module
 - Fix object literal syntax
+- Don't break vim-jsx
 
 License
 -------
