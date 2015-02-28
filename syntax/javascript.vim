@@ -124,7 +124,10 @@ syntax cluster javascriptStatement             contains=javascriptBlock,javascri
 
 "Syntax in the JavaScript code
 " syntax match   javascriptASCII                 contained /\\\d\d\d/
-syntax match   javascriptTemplateSubstitution  contained /\${\w\+}/
+syntax region  javascriptTemplateSubstitution  contained matchgroup=javascriptTemplateSB start=/\${/ end=/}/ contains=javascriptTemplateSBlock,javascriptTemplateSString 
+syntax region  javascriptTemplateSBlock        contained start=/{/ end=/}/ contains=javascriptTemplateSBlock,javascriptTemplateSString
+syntax region  javascriptTemplateSString       contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ extend contains=javascriptTemplateSStringRB
+syntax match   javascriptTemplateSStringRB     /}/ contained
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=javascriptOpSymbols skipwhite skipnl
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
@@ -146,7 +149,8 @@ syntax region  javascriptPropertyName          contained start=/\z(["']\)/  skip
 syntax region  javascriptComputedPropertyName  contained matchgroup=javascriptPropertyName start=/\[/rs=s+1 end=/]\s*:/he=e-1 contains=@javascriptValue nextgroup=@javascriptValue skipwhite skipnl
 " Value for object, statement for label statement
 
-syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,javascriptTemplate,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
+syntax cluster javascriptTemplates             contains=javascriptTemplate,javascriptTemplateSubstitution,javascriptTemplateSBlock,javascriptTemplateSString,javascriptTemplateSStringRB,javascriptTemplateSB
+syntax cluster javascriptStrings               contains=javascriptProp,javascriptString,@javascriptTemplates,@javascriptComments,javascriptDocComment,javascriptRegexpString,javascriptPropertyName
 syntax cluster javascriptNoReserved            contains=@javascriptStrings,@javascriptDocs,shellbang,javascriptObjectLiteral,javascriptObjectLabel
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoReserved break case catch class const continue
@@ -309,6 +313,10 @@ if exists("did_javascript_hilink")
   HiLink javascriptEventString          String
   HiLink javascriptASCII                Label
   HiLink javascriptTemplateSubstitution Label
+  HiLink javascriptTemplateSBlock       Label
+  HiLink javascriptTemplateSString      Label
+  HiLink javascriptTemplateSStringRB    Label
+  HiLink javascriptTemplateSB           Label
   HiLink javascriptRegexpString         String
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
