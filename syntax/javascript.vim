@@ -125,9 +125,9 @@ syntax cluster javascriptStatement             contains=javascriptBlock,javascri
 "Syntax in the JavaScript code
 " syntax match   javascriptASCII                 contained /\\\d\d\d/
 syntax region  javascriptTemplateSubstitution  contained matchgroup=javascriptTemplateSB start=/\${/ end=/}/ contains=javascriptTemplateSBlock,javascriptTemplateSString 
-syntax region  javascriptTemplateSBlock        contained start=/{/ end=/}/ contains=javascriptTemplateSBlock,javascriptTemplateSString
-syntax region  javascriptTemplateSString       contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ extend contains=javascriptTemplateSStringRB
-syntax match   javascriptTemplateSStringRB     /}/ contained
+syntax region  javascriptTemplateSBlock        contained start=/{/ end=/}/ contains=javascriptTemplateSBlock,javascriptTemplateSString transparent
+syntax region  javascriptTemplateSString       contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ extend contains=javascriptTemplateSStringRB transparent
+syntax match   javascriptTemplateSStringRB     /}/ contained 
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=javascriptOpSymbols skipwhite skipnl
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
@@ -313,10 +313,10 @@ if exists("did_javascript_hilink")
   HiLink javascriptEventString          String
   HiLink javascriptASCII                Label
   HiLink javascriptTemplateSubstitution Label
-  HiLink javascriptTemplateSBlock       Label
-  HiLink javascriptTemplateSString      Label
-  HiLink javascriptTemplateSStringRB    Label
-  HiLink javascriptTemplateSB           Label
+  " HiLink javascriptTemplateSBlock       Label
+  " HiLink javascriptTemplateSString      Label
+  HiLink javascriptTemplateSStringRB    javascriptTemplateSubstitution
+  HiLink javascriptTemplateSB           javascriptTemplateSubstitution
   HiLink javascriptRegexpString         String
   HiLink javascriptGlobal               Constant
   HiLink javascriptCharacter            Character
