@@ -131,7 +131,7 @@ syntax match   javascriptTemplateSStringRB     /}/ contained
 syntax region  javascriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax region  javascriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=javascriptTemplateSubstitution nextgroup=javascriptOpSymbols skipwhite skipnl
 " syntax match   javascriptTemplateTag           /\k\+/ nextgroup=javascriptTemplate
-syntax region  javascriptArray                 matchgroup=javascriptBraces start=/\[/ end=/]/ contains=@javascriptValue,javascriptComprehension nextgroup=javascriptOpSymbols skipwhite skipnl
+syntax region  javascriptArray                 matchgroup=javascriptBraces start=/\[/ end=/]/ contains=@javascriptValue,javascriptForComprehension nextgroup=javascriptOpSymbols skipwhite skipnl
 
 syntax match   javascriptNumber                /\<0[bB][01]\+\>/ nextgroup=javascriptOpSymbols skipwhite skipnl
 syntax match   javascriptNumber                /\<0[oO][0-7]\+\>/ nextgroup=javascriptOpSymbols skipwhite skipnl
@@ -265,6 +265,12 @@ syntax region  javascriptClassBLock            contained matchgroup=javascriptBr
 syntax keyword javascriptClassStatic           contained static nextgroup=javascriptMethodDef skipwhite
 
 
+syntax keyword javascriptForComprehension      contained for nextgroup=javascriptForComprehensionTail skipwhite skipnl
+syntax region  javascriptForComprehensionTail  contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptOfComprehension,@javascriptExpression nextgroup=javascriptForComprehension,javascriptIfComprehension,@javascriptExpression skipwhite skipnl
+syntax keyword javascriptOfComprehension       contained of
+syntax keyword javascriptIfComprehension       contained if nextgroup=javascriptIfComprehensionTail
+syntax region  javascriptIfComprehensionTail   contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptExpression nextgroup=javascriptForComprehension,javascriptIfComprehension skipwhite skipnl
+
 syntax region  javascriptObjectLiteral         contained matchgroup=javascriptBraces start=/{/ end=/}/ contains=@javascriptComments,javascriptObjectLabel,javascriptPropertyName,javascriptMethodDef,javascriptComputedPropertyName
 
 " syntax match   javascriptBraces                /[\[\]]/
@@ -276,11 +282,10 @@ syntax match   javascriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/
 
 syntax region  javascriptRegexpString          start="\(^\|=\|(\|{\|;\)\@<=\s*/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}" oneline
 
-syntax keyword javascriptComprehension         for of if
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
 syntax region  javascriptParenExp              contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression,javascriptComprehension nextgroup=javascriptOpSymbols skipwhite
-syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptTypes,@javascriptOps,jsxRegion
+syntax cluster javascriptExpression            contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,jsxRegion
 syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptEventTypes,@javascriptOps
 
 syntax match   javascriptFuncCall              contained /[a-zA-Z]\k\+/ nextgroup=javascriptFuncCallArg,javascriptDotNotation skipwhite
@@ -328,7 +333,9 @@ if exists("did_javascript_hilink")
   HiLink javascriptIdentifier           Identifier
   HiLink javascriptVariable             Identifier
   HiLink javascriptRepeat               Repeat
-  HiLink javascriptComprehension        Repeat
+  HiLink javascriptForComprehension     Repeat
+  HiLink javascriptIfComprehension      Repeat
+  HiLink javascriptOfComprehension      Repeat
   HiLink javascriptForOperator          Repeat
   HiLink javascriptStatementKeyword     Statement
   HiLink javascriptMessage              Keyword
