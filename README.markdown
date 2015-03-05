@@ -20,6 +20,8 @@ Changes
 -------
 
 ### Version 1.4
+- Better Array Comprehesion support
+- Better Template highlight
 - AngularJS JSDoc module
 - Fix object literal syntax
 - Don't break vim-jsx
