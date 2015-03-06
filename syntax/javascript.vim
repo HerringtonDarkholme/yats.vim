@@ -252,7 +252,10 @@ syntax keyword javascriptMethodAccessor        contained get set
 syntax match   javascriptMethodName            contained /[a-zA-Z_$]\k*\ze\_s*(/
 
 syntax keyword javascriptAsyncFuncKeyword      async await
-syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
+" syntax keyword javascriptFuncKeyword           function nextgroup=javascriptFuncName,javascriptFuncArg skipwhite
+syntax keyword javascriptFuncKeyword           function nextgroup=javascriptAsyncFunc,javascriptSyncFunc
+syntax match   javascriptSyncFunc              contained // nextgroup=javascriptFuncName,javascriptFuncArg skipempty
+syntax match   javascriptAsyncFunc             contained /*/ nextgroup=javascriptFuncName,javascriptFuncArg skipempty
 syntax match   javascriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=javascriptFuncArg skipwhite
 syntax match   javascriptFuncArg               contained /([^()]*)/ contains=javascriptParens,javascriptFuncKeyword,javascriptFuncComma nextgroup=javascriptBlock skipwhite skipempty
 syntax match   javascriptFuncComma             contained /,/
@@ -367,6 +370,7 @@ if exists("did_javascript_hilink")
 
   HiLink javascriptAsyncFuncKeyword     Keyword
   HiLink javascriptFuncKeyword          Keyword
+  HiLink javascriptAsyncFunc            Keyword
   HiLink javascriptArrowFunc            Type
   HiLink javascriptFuncName             Function
   HiLink javascriptFuncArg              Special
