@@ -185,7 +185,7 @@ syntax keyword javascriptGlobal                self top parent
 "Statement Keywords
 syntax keyword javascriptConditional           if else switch
 syntax keyword javascriptConditionalElse       else
-syntax keyword javascriptRepeat                do while for
+syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipnl
 syntax keyword javascriptBranch                break continue
 syntax keyword javascriptCase                  case default
 syntax keyword javascriptStatementKeyword      return with yield
@@ -285,8 +285,10 @@ syntax region  javascriptRegexpString          start="\(^\|=\|(\|{\|;\)\@<=\s*/[
 syntax cluster javascriptEventTypes            contains=javascriptEventString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull
 syntax cluster javascriptOps                   contains=javascriptOpSymbols,javascriptLogicSymbols,javascriptOperator
 syntax region  javascriptParenExp              matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression nextgroup=javascriptOpSymbols skipwhite
-syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,jsxRegion
+syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,jsxRegion
 syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptEventTypes,@javascriptOps
+
+syntax region  javascriptLoopParen             matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptVariable,javascriptForOperator,javascriptEndColons,@javascriptExpression nextgroup=javascriptBlock skipwhite skipnl
 
 syntax match   javascriptArrowFuncDef          contained /([^)]*)\s*=>/ contains=javascriptFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipnl
 syntax match   javascriptArrowFunc             /=>/
