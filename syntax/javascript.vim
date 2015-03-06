@@ -296,8 +296,8 @@ syntax region  javascriptLoopParen             contained matchgroup=javascriptPa
 syntax region  javascriptFuncCallArg           contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptExpression nextgroup=javascriptOpSymbols,javascriptDotNotation skipwhite skipnl
 syntax region  javascriptEventFuncCallArg      contained matchgroup=javascriptParens start=/(/ end=/)/ contains=@javascriptEventExpression
 
-syntax match   javascriptArrowFuncDef          contained /([^)]*)\s*=>/ contains=javascriptFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipnl
-syntax match   javascriptArrowFuncDef          contained /[a-zA-Z_]\k*\s*=>/ contains=javascriptArrowFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipnl
+syntax match   javascriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=javascriptFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipnl
+syntax match   javascriptArrowFuncDef          contained /[a-zA-Z_]\k*\_s*=>/ contains=javascriptArrowFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipnl
 syntax match   javascriptArrowFunc             /=>/
 syntax match   javascriptArrowFuncArg          contained /[a-zA-Z_]\k*/
 
