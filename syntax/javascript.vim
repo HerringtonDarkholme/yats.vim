@@ -194,8 +194,9 @@ syntax keyword javascriptTry                   try
 syntax keyword javascriptExceptions            catch throw finally
 syntax keyword javascriptDebugger              debugger
 
-syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*(\?/ contains=@props transparent nextgroup=javascriptOpSymbols skipwhite skipnl
-syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp
+syntax match   javascriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props transparent nextgroup=javascriptOpSymbols skipwhite skipnl
+syntax match   javascriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=javascriptFuncCallArg
+syntax match   javascriptDotNotation           /\./ nextgroup=javascriptProp,javascriptMethod
 syntax match   javascriptDotStyleNotation      /\.style\./ nextgroup=javascriptDOMStyle transparent
 
 runtime syntax/yajs/javascript.vim
@@ -288,7 +289,7 @@ syntax region  javascriptParenExp              matchgroup=javascriptParens start
 syntax cluster javascriptExpression            contains=javascriptArrowFuncDef,javascriptParenExp,,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptTypes,@javascriptOps,javascriptGlobal,jsxRegion
 syntax cluster javascriptEventExpression       contains=javascriptParenExp,javascriptObjectLiteral,javascriptFuncKeyword,javascriptFuncCall,javascriptRegexpString,@javascriptEventTypes,@javascriptOps
 
-syntax region  javascriptLoopParen             matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptVariable,javascriptForOperator,javascriptEndColons,@javascriptExpression nextgroup=javascriptBlock skipwhite skipnl
+syntax region  javascriptLoopParen             contained matchgroup=javascriptParens start=/(/ end=/)/ contains=javascriptVariable,javascriptForOperator,javascriptEndColons,@javascriptExpression nextgroup=javascriptBlock skipwhite skipnl
 
 syntax match   javascriptArrowFuncDef          contained /([^)]*)\s*=>/ contains=javascriptFuncArg,javascriptArrowFunc nextgroup=javascriptBlock skipwhite skipnl
 syntax match   javascriptArrowFunc             /=>/
