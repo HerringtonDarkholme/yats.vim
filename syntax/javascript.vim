@@ -187,7 +187,8 @@ syntax keyword javascriptConditional           if else switch
 syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipnl
 syntax keyword javascriptBranch                break continue
-syntax keyword javascriptCase                  case default
+syntax keyword javascriptCase                  case nextgroup=javascriptValue skipwhite
+syntax keyword javascriptDefault               default
 syntax keyword javascriptStatementKeyword      return with yield
 
 syntax keyword javascriptTry                   try
@@ -335,6 +336,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptConditional          Conditional
   HiLink javascriptConditionalElse      Conditional
   HiLink javascriptCase                 Conditional
+  HiLink javascriptDefault              javascriptCase
   HiLink javascriptBranch               Conditional
   HiLink javascriptIdentifier           Identifier
   HiLink javascriptVariable             Identifier
