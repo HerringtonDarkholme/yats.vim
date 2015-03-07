@@ -175,7 +175,7 @@ syntax keyword javascriptPrototype             prototype
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this let var const
 syntax keyword javascriptVariable              let var const
-syntax keyword javascriptOperator              delete new instanceof typeof void
+syntax keyword javascriptOperator              delete new instanceof typeof void in
 syntax keyword javascriptForOperator           contained in of
 syntax keyword javascriptBoolean               true false nextgroup=javascriptOpSymbols skipwhite skipempty
 syntax keyword javascriptNull                  null undefined nextgroup=javascriptOpSymbols skipwhite skipempty
