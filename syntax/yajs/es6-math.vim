@@ -1,4 +1,4 @@
-syntax keyword javascriptGlobal Math nextgroup=javascriptGlobalMathDot
+syntax keyword javascriptGlobal Math nextgroup=javascriptGlobalMathDot,javascriptFuncCallArg
 syntax match   javascriptGlobalMathDot /\./ contained nextgroup=javascriptMathStaticProp,javascriptMathStaticMethod
 syntax keyword javascriptMathStaticProp contained E LN10 LN2 LOG10E LOG2E PI SQRT1_2
 syntax keyword javascriptMathStaticProp contained SQRT2

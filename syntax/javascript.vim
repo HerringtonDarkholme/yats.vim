@@ -139,7 +139,7 @@ syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/ nextgrou
 syntax match   javascriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/ nextgroup=javascriptOpSymbols skipwhite skipempty
 
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull,javascriptArray
-syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral,javascriptIdentifierName
+syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral,javascriptIdentifierName,javascriptOperator,javascriptOpSymbols
 
 syntax match   javascriptLabel                 /[a-zA-Z_$]\k*\_s*:/he=e-1 contains=javascriptReserved nextgroup=@javascriptValue,@javascriptStatement skipwhite skipempty
 syntax match   javascriptObjectLabel           contained /\k\+\_s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite skipempty
@@ -175,7 +175,7 @@ syntax keyword javascriptPrototype             prototype
 "Program Keywords
 syntax keyword javascriptIdentifier            arguments this let var const
 syntax keyword javascriptVariable              let var const
-syntax keyword javascriptOperator              delete new instanceof typeof void in
+syntax keyword javascriptOperator              delete new instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
 syntax keyword javascriptForOperator           contained in of
 syntax keyword javascriptBoolean               true false nextgroup=javascriptOpSymbols skipwhite skipempty
 syntax keyword javascriptNull                  null undefined nextgroup=javascriptOpSymbols skipwhite skipempty
@@ -187,7 +187,7 @@ syntax keyword javascriptConditional           if else switch
 syntax keyword javascriptConditionalElse       else
 syntax keyword javascriptRepeat                do while for nextgroup=javascriptLoopParen skipwhite skipempty
 syntax keyword javascriptBranch                break continue
-syntax keyword javascriptCase                  case nextgroup=javascriptValue skipwhite
+syntax keyword javascriptCase                  case nextgroup=@javascriptTypes skipwhite
 syntax keyword javascriptDefault               default
 syntax keyword javascriptStatementKeyword      return with yield
 

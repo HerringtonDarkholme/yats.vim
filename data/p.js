@@ -65,7 +65,7 @@ try {
       // if (!isUpper(rule.substr(0,1))) {
       statics = globals[rule];
       if (statics && typeof statics !== 'function' && statics.length) {
-        console.log(predef + ' ' + rule + ' nextgroup=' + group + rule + 'Dot');
+        console.log(predef + ' ' + rule + ' nextgroup=' + group + rule + 'Dot,javascriptFuncCallArg');
         console.log('syntax match   ' + group + rule + 'Dot /\\./ contained nextgroup=' + statics.join(','));
       } else {
         if (/Style/.test(group)) {

@@ -16,7 +16,7 @@ javascriptGlobal:
     # - Math
     - Date
     # - String
-    - RegExp
+    # - RegExp
     # - Array
     - Float32Array
     - Float64Array

@@ -1,4 +1,4 @@
-syntax keyword javascriptGlobal Number nextgroup=javascriptGlobalNumberDot
+syntax keyword javascriptGlobal Number nextgroup=javascriptGlobalNumberDot,javascriptFuncCallArg
 syntax match   javascriptGlobalNumberDot /\./ contained nextgroup=javascriptNumberStaticProp,javascriptNumberStaticMethod
 syntax keyword javascriptNumberStaticProp contained EPSILON MAX_SAFE_INTEGER MAX_VALUE
 syntax keyword javascriptNumberStaticProp contained MIN_SAFE_INTEGER MIN_VALUE NEGATIVE_INFINITY
