@@ -139,7 +139,7 @@ syntax match   javascriptNumber                /\<0[xX][0-9a-fA-F]\+\>/ nextgrou
 syntax match   javascriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/ nextgroup=@javascriptSymbols skipwhite skipempty
 
 syntax cluster javascriptTypes                 contains=javascriptString,javascriptTemplate,javascriptNumber,javascriptBoolean,javascriptNull,javascriptArray
-syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral,javascriptIdentifierName,javascriptOperator,@javascriptSymbols
+syntax cluster javascriptValue                 contains=@javascriptTypes,@javascriptExpression,javascriptFuncKeyword,javascriptObjectLiteral,javascriptIdentifier,javascriptIdentifierName,javascriptOperator,@javascriptSymbols
 
 syntax match   javascriptLabel                 /[a-zA-Z_$]\k*\_s*:/he=e-1 contains=javascriptReserved nextgroup=@javascriptValue,@javascriptStatement skipwhite skipempty
 syntax match   javascriptObjectLabel           contained /\k\+\_s*:/he=e-1 nextgroup=@javascriptValue,@javascriptStatement skipwhite skipempty
@@ -174,7 +174,7 @@ syntax keyword javascriptReserved              containedin=ALLBUT,@javascriptNoR
 syntax keyword javascriptPrototype             prototype
 
 "Program Keywords
-syntax keyword javascriptIdentifier            arguments this let var const
+syntax keyword javascriptIdentifier            arguments this
 syntax keyword javascriptVariable              let var const
 syntax keyword javascriptOperator              delete new instanceof typeof void in nextgroup=@javascriptValue,@javascriptTypes skipwhite skipempty
 syntax keyword javascriptForOperator           contained in of
@@ -347,7 +347,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptCase                 Conditional
   HiLink javascriptDefault              javascriptCase
   HiLink javascriptBranch               Conditional
-  HiLink javascriptIdentifier           Identifier
+  HiLink javascriptIdentifier           Structure
   HiLink javascriptVariable             Identifier
   HiLink javascriptRepeat               Repeat
   HiLink javascriptForComprehension     Repeat
@@ -356,7 +356,7 @@ if exists("did_javascript_hilink")
   HiLink javascriptForOperator          Repeat
   HiLink javascriptStatementKeyword     Statement
   HiLink javascriptMessage              Keyword
-  HiLink javascriptOperator             Operator
+  HiLink javascriptOperator             Identifier
   " HiLink javascriptType                 Type
   HiLink javascriptNull                 Boolean
   HiLink javascriptNumber               Number
