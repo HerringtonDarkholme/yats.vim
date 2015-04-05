@@ -138,32 +138,33 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ contained
 
 syntax cluster typescriptType contains=
-  \ @typescriptPrimaryOrUnionType,
-  \ typescriptFunctionType,
+  \ @typescriptCompoundType,
+  \ @typescriptFunctionType,
   \ typescriptConstructorType
 
-syntax cluster typescriptPrimaryOrUnionType contains=
+syntax cluster typescriptCompoundType contains=
   \ @typescriptPrimaryType,
-  \ typescriptUnionType
+  \ typescriptUnionOrArrayType
 
 syntax cluster typescriptPrimaryType contains=
   \ typescriptParenthesizedType,
   \ typescriptPredefinedType,
   \ typescriptTypeReference,
   \ typescriptObjectType,
-  \ typescriptArrayType,
   \ typescriptTupleType,
   \ typescriptTypeQuery
 
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
-  \ nextgroup=
+  \ nextgroup=typescriptUnionOrArrayType
   \ contained
 
 syntax keyword typescriptPredefinedType any number boolean string void
+  \ nextgroup=typescriptUnionOrArrayType
 
 syntax match typescriptTypeReference /[A-Za-z]\w*\(\.[A-Za-z]\w*\)*/
+  \ nextgroup=typescriptUnionOrArrayType
   \ contains=typescriptIdentifierName
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
@@ -178,13 +179,42 @@ syntax cluster typescriptTypeMember contains=
   \ typescriptIndexSignature,
   \ typescriptMethodSignature
 
+syntax region typescriptTupleType matchgroup=typescriptBraces
+  \ start=/\[/ end=/\]/
+  \ contains=@typescriptType
+  \contained
 
-syntax match typescriptUnionType /placeholder/
-syntax match typescriptFunctionType /placeholder/
+syntax match typescriptUnionOrArrayType /\[\]\||/
+  \ nextgroup=@typescriptCompoundType
+  \ contains=typescriptUnion
+  \ contained skipwhite
+
+syntax match typescriptUnion /|/ containedin=typescriptUnionOrArrayType
+
+syntax cluster typescriptFunctionType contains=typescriptGenericFunc,typescriptFuncType
+syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=typescriptTypeParameter
+  \ nextgroup=typescriptFuncType
+  \ containedin=typescriptFunctionType
+  \ contained skipwhite skipnl
+
+syntax region typescriptFuncType matchgroup=typescriptParens
+  \ start=/(/ end=/)/
+  \ contains=@typescriptExpression
+  \ nextgroup=typescriptFuncTypeArrow
+  \ contained skipwhite skipnl
+
+syntax match typescriptFuncTypeArrow /=>/
+  \ nextgroup=@typescriptType
+  \ containedin=typescriptFuncType
+  \ contained skipwhite skipnl
+
+
 syntax match typescriptConstructorType /placeholder/
 
 
-syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptFuncCallArg,typescriptComputedProperty
+syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptParameterList,typescriptComputedProperty
 
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
 
@@ -265,7 +295,7 @@ syntax keyword typescriptExceptions            catch throw finally
 syntax keyword typescriptDebugger              debugger
 
 syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props transparent nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptFuncCallArg
+syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptParameterList
 syntax match   typescriptDotNotation           /\./ nextgroup=typescriptProp,typescriptMethod
 syntax match   typescriptDotStyleNotation      /\.style\./ nextgroup=typescriptDOMStyle transparent
 
@@ -367,8 +397,8 @@ syntax cluster typescriptEventExpression       contains=typescriptArrowFuncDef,t
 
 syntax region  typescriptLoopParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptExpression nextgroup=typescriptBlock skipwhite skipempty
 
-" syntax match   typescriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=typescriptFuncCallArg
-syntax region  typescriptFuncCallArg           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptOpSymbols,typescriptDotNotation skipwhite skipempty
+" syntax match   typescriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=typescriptParameterList
+syntax region  typescriptParameterList           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptOpSymbols,typescriptDotNotation skipwhite skipempty
 syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 
@@ -464,6 +494,8 @@ if exists("did_typescript_hilink")
   HiLink typescriptTypeParameter        Identifier
   HiLink typescriptConstraint           Keyword
   HiLink typescriptPredefinedType       Type
+  HiLink typescriptUnion                Operator
+  HiLink typescriptFuncTypeArrow        Function
 
   highlight link javaScript             NONE
 
