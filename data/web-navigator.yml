@@ -1,4 +1,4 @@
-javascriptBOMNavigatorProp:
+typescriptBOMNavigatorProp:
     - battery
     - buildID
     - cookieEnabled
@@ -27,7 +27,7 @@ javascriptBOMNavigatorProp:
     # - id
     # - mozSocial
 
-javascriptBOMNavigatorMethod:
+typescriptBOMNavigatorMethod:
     - addIdleObserver
     - getDeviceStorage
     - getDeviceStorages
@@ -50,5 +50,5 @@ javascriptBOMNavigatorMethod:
     - registerProtocolHandler
     - sendBeacon
 
-javascriptServiceWorkerMethod:
+typescriptServiceWorkerMethod:
     - register

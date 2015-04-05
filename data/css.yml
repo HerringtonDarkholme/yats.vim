@@ -1,4 +1,4 @@
-javascriptDOMStyle:
+typescriptDOMStyle:
     # - A
     # - :active
     # - ::after (:after)

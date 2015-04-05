@@ -1,11 +1,11 @@
-javascriptGlobal:
+typescriptGlobal:
     - Set
     - WeakSet
 
-javascriptES6SetProp:
+typescriptES6SetProp:
     - size
 
-javascriptES6SetMethod:
+typescriptES6SetMethod:
     - add
     - clear
     - delete

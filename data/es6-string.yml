@@ -1,11 +1,11 @@
-javascriptGlobal:
+typescriptGlobal:
   - String
 
-javascriptStringStaticMethod:
+typescriptStringStaticMethod:
   - fromCharCode
   - fromCodePoint
 
-javascriptStringMethod:
+typescriptStringMethod:
   - anchor
   # - big
   # - blink

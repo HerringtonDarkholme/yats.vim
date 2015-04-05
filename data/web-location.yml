@@ -1,4 +1,4 @@
-javascriptBOMLocationProp:
+typescriptBOMLocationProp:
     - href
     - protocol
     - host
@@ -11,7 +11,7 @@ javascriptBOMLocationProp:
     - password
     - origin
 
-javascriptBOMLocationMethod:
+typescriptBOMLocationMethod:
     - assign
     - reload
     - replace

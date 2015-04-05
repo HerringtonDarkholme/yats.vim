@@ -1,4 +1,4 @@
-javascriptDOMElemProp:
+typescriptDOMElemProp:
     - accessKey
     - clientHeight
     - clientLeft
@@ -24,7 +24,7 @@ javascriptDOMElemProp:
     - outerHTML
     - style
 
-javascriptDOMElemMethod:
+typescriptDOMElemMethod:
     - getAttributeNS
     - getAttributeNode
     - getAttributeNodeNS

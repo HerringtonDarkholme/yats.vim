@@ -1,7 +1,7 @@
-javascriptGlobal:
+typescriptGlobal:
   - Object
 
-javascriptObjectStaticMethod:
+typescriptObjectStaticMethod:
   - create
   - defineProperties
   - defineProperty
@@ -17,7 +17,7 @@ javascriptObjectStaticMethod:
   - keys
   - preventExtensions
 
-javascriptObjectMethod:
+typescriptObjectMethod:
   # - __defineGetter__
   # - __defineSetter__
   # - __lookupGetter__

@@ -1,12 +1,12 @@
-javascriptDOMStorage:
+typescriptDOMStorage:
     - sessionStorage
     - localStorage
     # - globalStorage
 
-javascriptDOMStorageProp:
+typescriptDOMStorageProp:
     - length
 
-javascriptDOMStorageMethod:
+typescriptDOMStorageMethod:
     - getItem
     - key
     - setItem

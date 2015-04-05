@@ -1,4 +1,4 @@
-javascriptAnimationEvent:
+typescriptAnimationEvent:
     - animationend
     - animationiteration
     - animationstart
@@ -6,21 +6,21 @@ javascriptAnimationEvent:
     - endEvent
     - repeatEvent
 
-# javascriptBatteryEvent:
+# typescriptBatteryEvent:
     # - chargingchange
     # - chargingtimechange
     # - dischargingtimechange
     # - levelchange
 
-# javascriptCallEvent:
+# typescriptCallEvent:
 
-javascriptCSSEvent:
+typescriptCSSEvent:
     - CssRuleViewRefreshed
     - CssRuleViewChanged
     - CssRuleViewCSSLinkClicked
     - transitionend
 
-javascriptDatabaseEvent:
+typescriptDatabaseEvent:
     # - abort
     - blocked
     - complete
@@ -29,7 +29,7 @@ javascriptDatabaseEvent:
     - upgradeneeded
     - versionchange
 
-javascriptDocumentEvent:
+typescriptDocumentEvent:
     - DOMLinkAdded
     - DOMLinkRemoved
     - DOMMetaAdded
@@ -38,7 +38,7 @@ javascriptDocumentEvent:
     - DOMModalDialogClosed
     - unload
 
-javascriptDOMMutationEvent:
+typescriptDOMMutationEvent:
     - DOMAttributeNameChanged
     - DOMAttrModified
     - DOMCharacterDataModified
@@ -50,7 +50,7 @@ javascriptDOMMutationEvent:
     - DOMNodeRemovedFromDocument
     - DOMSubtreeModified
 
-javascriptDragEvent:
+typescriptDragEvent:
     - drag
     - dragdrop
     - dragend
@@ -62,7 +62,7 @@ javascriptDragEvent:
     - dragstart
     - drop
 
-javascriptElementEvent:
+typescriptElementEvent:
     - invalid
     - overflow
     - underflow
@@ -70,7 +70,7 @@ javascriptElementEvent:
     - command
     - commandupdate
 
-javascriptFocusEvent:
+typescriptFocusEvent:
     - blur
     - change
     - DOMFocusIn
@@ -79,11 +79,11 @@ javascriptFocusEvent:
     - focusin
     - focusout
 
-javascriptFormEvent:
+typescriptFormEvent:
     - reset
     - submit
 
-javascriptFrameEvent:
+typescriptFrameEvent:
     # - mozbrowserclose
     # - mozbrowsercontextmenu
     # - mozbrowsererror
@@ -97,7 +97,7 @@ javascriptFrameEvent:
     # - mozbrowsertitlechange
     - DOMFrameContentLoaded
 
-javascriptInputDeviceEvent:
+typescriptInputDeviceEvent:
     - click
     - contextmenu
     - DOMMouseScroll
@@ -122,7 +122,7 @@ javascriptInputDeviceEvent:
     - pointerlockerror
     - wheel
 
-javascriptMediaEvent:
+typescriptMediaEvent:
     - audioprocess
     - canplay
     - canplaythrough
@@ -146,11 +146,11 @@ javascriptMediaEvent:
     - waiting
     - complete
 
-javascriptMenuEvent:
+typescriptMenuEvent:
     - DOMMenuItemActive
     - DOMMenuItemInactive
 
-javascriptNetworkEvent:
+typescriptNetworkEvent:
     - datachange
     - dataerror
     - disabled
@@ -160,22 +160,22 @@ javascriptNetworkEvent:
     - statuschange
     - connectionInfoUpdate
 
-# javascriptNotificationEvent:
+# typescriptNotificationEvent:
     # - AlertActive
     # - AlertClose
 
-# javascriptPopupEvent:
+# typescriptPopupEvent:
     # - popuphidden
     # - popuphiding
     # - popupshowing
     # - popupshown
     # - DOMPopupBlocked
 
-# javascriptPrintingEvent:
+# typescriptPrintingEvent:
     # - afterprint
     # - beforeprint
 
-javascriptProgressEvent:
+typescriptProgressEvent:
     - abort
     - error
     - load
@@ -186,17 +186,17 @@ javascriptProgressEvent:
     - timeout
     - uploadprogress
 
-javascriptResourceEvent:
+typescriptResourceEvent:
     # - abort
     - cached
     - error
     - load
 
-javascriptScriptEvent:
+typescriptScriptEvent:
     - afterscriptexecute
     - beforescriptexecute
 
-javascriptSensorEvent:
+typescriptSensorEvent:
     - compassneedscalibration
     - devicelight
     - devicemotion
@@ -206,20 +206,20 @@ javascriptSensorEvent:
     - orientationchange
     - userproximity
 
-javascriptSessionHistoryEvent:
+typescriptSessionHistoryEvent:
     - pagehide
     - pageshow
     - popstate
 
-# javascriptSmartcardEvent:
+# typescriptSmartcardEvent:
 
-# javascriptSMSEvent:
+# typescriptSMSEvent:
 
-javascriptStorageEvent:
+typescriptStorageEvent:
     - change
     - storage
 
-javascriptSVGEvent:
+typescriptSVGEvent:
     - SVGAbort
     - SVGError
     - SVGLoad
@@ -228,7 +228,7 @@ javascriptSVGEvent:
     - SVGUnload
     - SVGZoom
 
-javascriptTabEvent:
+typescriptTabEvent:
     # - tabviewsearchenabled
     # - tabviewsearchdisabled
     # - tabviewframeinitialized
@@ -246,7 +246,7 @@ javascriptTabEvent:
     # - SSTabRestored
     - visibilitychange
 
-javascriptTextEvent:
+typescriptTextEvent:
     - compositionend
     - compositionstart
     - compositionupdate
@@ -256,7 +256,7 @@ javascriptTextEvent:
     - select
     - text
 
-javascriptTouchEvent:
+typescriptTouchEvent:
     # - MozEdgeUIGesture
     # - MozMagnifyGesture
     # - MozMagnifyGestureStart
@@ -277,7 +277,7 @@ javascriptTouchEvent:
     - touchmove
     - touchstart
 
-javascriptUpdateEvent:
+typescriptUpdateEvent:
     - checking
     - downloading
     - error
@@ -285,7 +285,7 @@ javascriptUpdateEvent:
     - obsolete
     - updateready
 
-javascriptValueChangeEvent:
+typescriptValueChangeEvent:
     # - broadcast
     # - CheckboxStateChange
     - hashchange
@@ -294,7 +294,7 @@ javascriptValueChangeEvent:
     - readystatechange
     # - ValueChange
 
-javascriptViewEvent:
+typescriptViewEvent:
     - fullscreen
     - fullscreenchange
     - fullscreenerror
@@ -304,23 +304,23 @@ javascriptViewEvent:
     - scroll
     # - sizemodechange
 
-javascriptWebsocketEvent:
+typescriptWebsocketEvent:
     - close
     - error
     - message
     - open
 
-javascriptWindowEvent:
+typescriptWindowEvent:
     - DOMWindowCreated
     - DOMWindowClose
     - DOMTitleChanged
-    # - MozBeforeResize 
+    # - MozBeforeResize
     # - SSWindowClosing
     # - SSWindowStateReady
     # - SSWindowStateBusy
     # - close
 
-javascriptUncategorizedEvent:
+typescriptUncategorizedEvent:
     - beforeunload
     # - localized
     - message
@@ -331,7 +331,7 @@ javascriptUncategorizedEvent:
     - open
     - show
 
-javascriptServiceWorkerEvent:
+typescriptServiceWorkerEvent:
     - install
     - activate
     - fetch

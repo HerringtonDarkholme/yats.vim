@@ -51,7 +51,7 @@ try {
     if (/Global|Cons/.test(group) || /BOMWindow(Prop|Method)/.test(group) || /BOM$/.test(group)) {
         contained = false;
     }
-    
+
     rules = yml[group];
     rule = rules.shift();
     defs = [];
@@ -65,7 +65,7 @@ try {
       // if (!isUpper(rule.substr(0,1))) {
       statics = globals[rule];
       if (statics && typeof statics !== 'function' && statics.length) {
-        console.log(predef + ' ' + rule + ' nextgroup=' + group + rule + 'Dot,javascriptFuncCallArg');
+        console.log(predef + ' ' + rule + ' nextgroup=' + group + rule + 'Dot,typescriptFuncCallArg');
         console.log('syntax match   ' + group + rule + 'Dot /\\./ contained nextgroup=' + statics.join(','));
       } else {
         if (/Style/.test(group)) {
@@ -79,9 +79,9 @@ try {
         if (def.length > 80) {
           if (/Method/.test(group)) {
             if (/Event/.test(group)) {
-              def = def + ' nextgroup=javascriptEventFuncCallArg';
+              def = def + ' nextgroup=typescriptEventFuncCallArg';
             } else {
-              def = def + ' nextgroup=javascriptFuncCallArg';
+              def = def + ' nextgroup=typescriptFuncCallArg';
             }
           }
           console.log(def);
@@ -93,9 +93,9 @@ try {
     if (def.length > predef.length) {
       if (/Method/.test(group)) {
         if (/Event/.test(group)) {
-          def = def + ' nextgroup=javascriptEventFuncCallArg';
+          def = def + ' nextgroup=typescriptEventFuncCallArg';
         } else {
-          def = def + ' nextgroup=javascriptFuncCallArg';
+          def = def + ' nextgroup=typescriptFuncCallArg';
         }
       }
       console.log(def);
@@ -112,16 +112,16 @@ try {
     }
 
     hilink = true;
-    if (group === 'javascriptGlobal' && file !== 'javascript') {
+    if (group === 'typescriptGlobal' && file !== 'typescript') {
         hilink = false;
     }
     if (hilink) {
       if (file === 'event') {
-        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Title');
+        console.log('if exists("did_typescript_hilink") | HiLink ' + group + ' Title');
       } else if (contained) {
-        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Keyword');
+        console.log('if exists("did_typescript_hilink") | HiLink ' + group + ' Keyword');
       } else {
-        console.log('if exists("did_javascript_hilink") | HiLink ' + group + ' Structure');
+        console.log('if exists("did_typescript_hilink") | HiLink ' + group + ' Structure');
       }
       console.log('endif');
     }

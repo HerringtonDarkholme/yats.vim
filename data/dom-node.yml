@@ -1,4 +1,4 @@
-javascriptDOMNodeProp:
+typescriptDOMNodeProp:
     - attributes
     - baseURI
     - baseURIObject
@@ -19,7 +19,7 @@ javascriptDOMNodeProp:
     - previousSibling
     - textContent
 
-javascriptDOMNodeMethod:
+typescriptDOMNodeMethod:
     - appendChild
     - cloneNode
     - compareDocumentPosition
@@ -39,7 +39,7 @@ javascriptDOMNodeMethod:
     - replaceChild
     - setUserData
 
-javascriptDOMNodeType:
+typescriptDOMNodeType:
     - ELEMENT_NODE
     - ATTRIBUTE_NODE
     - TEXT_NODE

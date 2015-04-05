@@ -1,15 +1,15 @@
-javascriptServiceWorkerProp:
+typescriptServiceWorkerProp:
     - controller
     - ready
 
-javascriptServiceWorkerMethod:
+typescriptServiceWorkerMethod:
     - register
     - getRegistration
 
-javascriptGlobal:
+typescriptGlobal:
     - Cache
 
-javascriptCacheMethod:
+typescriptCacheMethod:
     - match
     - matchAll
     - add

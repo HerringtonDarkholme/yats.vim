@@ -1,11 +1,11 @@
-javascriptBOMHistoryProp:
+typescriptBOMHistoryProp:
   - length
   - current
   - next
   - previous
   - state
 
-javascriptBOMHistoryMethod:
+typescriptBOMHistoryMethod:
   - back
   - forward
   - go

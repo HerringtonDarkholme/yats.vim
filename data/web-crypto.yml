@@ -1,20 +1,20 @@
-javascriptCryptoGlobal:
+typescriptCryptoGlobal:
     - crypto
 
-javascriptSubtleCryptoMethod:
+typescriptSubtleCryptoMethod:
     - encrypt
     - decrypt
     - sign
     - verify
     - digest
 
-javascriptCryptoProp:
+typescriptCryptoProp:
     - subtle
 
-javascriptCryptoMethod:
+typescriptCryptoMethod:
     - getRandomValues
 
-# javascriptCryptoAlgorithm:
+# typescriptCryptoAlgorithm:
     # - RSAES-PKCS1-v1_5
     # - RSASSA-PKCS1-v1_5
     # - RSA-PSS

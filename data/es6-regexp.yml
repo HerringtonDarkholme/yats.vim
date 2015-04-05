@@ -1,16 +1,16 @@
-javascriptGlobal:
+typescriptGlobal:
   - RegExp
 
-javascriptRegExpStaticProp:
+typescriptRegExpStaticProp:
   - lastIndex
 
-javascriptRegExpProp:
+typescriptRegExpProp:
   - global
   - ignoreCase
   - multiline
   - source
   - sticky
 
-javascriptRegExpMethod:
+typescriptRegExpMethod:
   - exec
   - test

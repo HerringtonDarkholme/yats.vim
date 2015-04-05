@@ -1,12 +1,12 @@
-javascriptGlobal:
+typescriptGlobal:
   - Array
 
-javascriptArrayStaticMethod:
+typescriptArrayStaticMethod:
   - from
   - isArray
   - of
 
-javascriptArrayMethod:
+typescriptArrayMethod:
   - concat
   - copyWithin
   - entries

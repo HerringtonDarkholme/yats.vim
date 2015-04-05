@@ -1,12 +1,12 @@
-javascriptGlobal:
+typescriptGlobal:
     - Headers
     - Request
     - Response
 
-javascriptGlobalMethod:
+typescriptGlobalMethod:
     - fetch
 
-javascriptHeadersMethod:
+typescriptHeadersMethod:
     - append
     - delete
     - get
@@ -14,7 +14,7 @@ javascriptHeadersMethod:
     - has
     - set
 
-javascriptRequestProp:
+typescriptRequestProp:
     - method
     - url
     - headers
@@ -24,15 +24,15 @@ javascriptRequestProp:
     - credentials
     - cache
 
-javascriptRequestMethod:
+typescriptRequestMethod:
     - clone
 
-javascriptResponseProp:
+typescriptResponseProp:
     - type
     - url
     - status
     - statusText
     - headers
 
-javascriptResponseMethod:
+typescriptResponseMethod:
     - clone

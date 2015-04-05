@@ -1,11 +1,11 @@
-javascriptGlobal:
+typescriptGlobal:
     - Map
     - WeakMap
 
-javascriptES6MapProp:
+typescriptES6MapProp:
     - size
 
-javascriptES6MapMethod:
+typescriptES6MapMethod:
     - clear
     - delete
     - entries

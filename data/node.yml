@@ -1,4 +1,4 @@
-javascriptNodeGlobal:
+typescriptNodeGlobal:
     - global
     - process
     - console

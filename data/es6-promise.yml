@@ -1,12 +1,12 @@
-javascriptGlobal:
+typescriptGlobal:
   - Promise
 
-javascriptPromiseStaticMethod:
+typescriptPromiseStaticMethod:
   - resolve
   - reject
   - all
   - race
 
-javascriptPromiseMethod:
+typescriptPromiseMethod:
   - then
   - catch

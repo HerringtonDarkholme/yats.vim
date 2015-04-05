@@ -1,6 +1,6 @@
 
 files='
-  javascript
+  typescript
   es6-number
   es6-string
   es6-array

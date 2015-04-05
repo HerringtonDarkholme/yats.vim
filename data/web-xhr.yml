@@ -1,7 +1,7 @@
-javascriptXHRGlobal:
+typescriptXHRGlobal:
   - XMLHttpRequest
 
-javascriptXHRProp:
+typescriptXHRProp:
   - onreadystatechange
   - readyState
   - response
@@ -15,7 +15,7 @@ javascriptXHRProp:
   - upload
   - withCredentials
 
-javascriptXHRMethod:
+typescriptXHRMethod:
   - abort
   - getAllResponseHeaders
   - getResponseHeader

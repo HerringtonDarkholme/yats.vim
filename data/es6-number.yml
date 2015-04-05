@@ -1,7 +1,7 @@
-javascriptGlobal:
+typescriptGlobal:
   - Number
 
-javascriptNumberStaticProp:
+typescriptNumberStaticProp:
   - EPSILON
   - MAX_SAFE_INTEGER
   - MAX_VALUE
@@ -9,9 +9,9 @@ javascriptNumberStaticProp:
   - MIN_VALUE
   - NEGATIVE_INFINITY
   - NaN
-  - POSITIVE_INFINITY 
+  - POSITIVE_INFINITY
 
-javascriptNumberStaticMethod:
+typescriptNumberStaticMethod:
   - isFinite
   - isInteger
   - isNaN
@@ -19,11 +19,11 @@ javascriptNumberStaticMethod:
   - parseFloat
   - parseInt
 
-javascriptNumberMethod:
+typescriptNumberMethod:
   - toExponential
   - toFixed
   - toLocaleString
   - toPrecision
   - toSource
   - toString
-  - valueOf 
+  - valueOf

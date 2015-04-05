@@ -1,7 +1,7 @@
-javascriptGlobal:
+typescriptGlobal:
     - Intl
 
-javascriptIntlMethod:
+typescriptIntlMethod:
     - Collator
     - DateTimeFormat
     - NumberFormat

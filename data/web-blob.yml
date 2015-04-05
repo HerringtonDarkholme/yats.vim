@@ -1,4 +1,4 @@
-javascriptGlobal:
+typescriptGlobal:
     - Blob
     - BlobBuilder
     - File
@@ -7,33 +7,33 @@ javascriptGlobal:
     - URL
     - URLUtils
 
-javascriptFileMethod:
+typescriptFileMethod:
     - readAsArrayBuffer
     - readAsBinaryString
     - readAsDataURL
     - readAsText
 
-javascriptFileReaderProp:
+typescriptFileReaderProp:
     - error
     - readyState
     - result
 
-javascriptFileReaderMethod:
+typescriptFileReaderMethod:
     - abort
     - readAsArrayBuffer
     - readAsBinaryString
     - readAsDataURL
     - readAsText
 
-javascriptFileListMethod:
+typescriptFileListMethod:
     - item
 
-javascriptBlobMethod:
+typescriptBlobMethod:
     - append
     - getBlob
     - getFile
 
-javascriptURLUtilsProp:
+typescriptURLUtilsProp:
     - hash
     - host
     - hostname
@@ -47,6 +47,6 @@ javascriptURLUtilsProp:
     - searchParams
     - username
 
-javascriptURLStaticMethod:
+typescriptURLStaticMethod:
     - createObjectURL
     - revokeObjectURL

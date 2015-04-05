@@ -1,4 +1,4 @@
-javascriptDOMDocProp:
+typescriptDOMDocProp:
     # - URL
     - activeElement
     # - alinkColor
@@ -62,7 +62,7 @@ javascriptDOMDocProp:
     - tooltipNode
     # - xmlVersion
 
-javascriptDOMDocMethod:
+typescriptDOMDocMethod:
     - caretPositionFromPoint
     # - clear
     - close

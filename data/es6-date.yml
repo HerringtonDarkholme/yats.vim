@@ -1,12 +1,12 @@
-javascriptGlobal:
+typescriptGlobal:
   - Date
 
-javascriptDateStaticMethod:
+typescriptDateStaticMethod:
   - UTC
   - now
   - parse
 
-javascriptDateMethod:
+typescriptDateMethod:
   - getDate
   - getDay
   - getFullYear
