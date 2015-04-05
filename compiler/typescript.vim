@@ -11,7 +11,7 @@ endif
 if !exists('g:typescript_compiler_options')
   if exists('g:syntastic_typescript_tsc_args')
     let g:typescript_compiler_options = g:syntastic_typescript_tsc_args
-  elseif
+  else
     let g:typescript_compiler_options = ''
   endif
 endif
