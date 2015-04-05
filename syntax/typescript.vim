@@ -342,6 +342,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptPredefinedType       Type
   HiLink typescriptUnion                Operator
   HiLink typescriptFuncTypeArrow        Function
+  HiLink typescriptConstructorType      Function
 
   highlight link javaScript             NONE
 

@@ -6,7 +6,7 @@ syntax match   shellbang "^#!.*iojs\>"
 "JavaScript comments
 syntax keyword typescriptCommentTodo TODO FIXME XXX TBD
 syntax match   typescriptLineComment "//.*"
-  \contains=@Spell,typescriptCommentTodo,typescriptRef
+  \ contains=@Spell,typescriptCommentTodo,typescriptRef
 syntax region  typescriptComment
   \ start="/\*"  end="\*/"
   \ contains=@Spell,typescriptCommentTodo extend

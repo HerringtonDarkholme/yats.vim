@@ -90,4 +90,6 @@ syntax match typescriptFuncTypeArrow /=>/
   \ contained skipwhite skipnl
 
 
-syntax match typescriptConstructorType /placeholder/
+syntax keyword typescriptConstructorType new
+  \ nextgroup=@typescriptFunctionType
+  \ contained skipwhite skipnl
