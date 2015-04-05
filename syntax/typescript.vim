@@ -119,6 +119,71 @@ endif
 
 syntax case match
 
+" Types
+syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=typescriptTypeParameter
+
+syntax match typescriptTypeParameter /[A-Za-z]\w*/
+  \ nextgroup=typescriptConstraint
+  \ contained skipwhite skipnl
+
+syntax keyword typescriptConstraint extends
+  \ nextgroup=@typescriptType
+  \ contained skipwhite skipnl
+
+syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=@typescriptType
+  \ contained
+
+syntax cluster typescriptType contains=
+  \ @typescriptPrimaryOrUnionType,
+  \ typescriptFunctionType,
+  \ typescriptConstructorType
+
+syntax cluster typescriptPrimaryOrUnionType contains=
+  \ @typescriptPrimaryType,
+  \ typescriptUnionType
+
+syntax cluster typescriptPrimaryType contains=
+  \ typescriptParenthesizedType,
+  \ typescriptPredefinedType,
+  \ typescriptTypeReference,
+  \ typescriptObjectType,
+  \ typescriptArrayType,
+  \ typescriptTupleType,
+  \ typescriptTypeQuery
+
+syntax region typescriptParenthesizedType matchgroup=typescriptParens
+  \ start=/(/ end=/)/
+  \ contains=@typescriptType
+  \ nextgroup=
+  \ contained
+
+syntax keyword typescriptPredefinedType any number boolean string void
+
+syntax match typescriptTypeReference /[A-Za-z]\w*\(\.[A-Za-z]\w*\)*/
+  \ contains=typescriptIdentifierName
+
+syntax region typescriptObjectType matchgroup=typescriptBraces
+  \ start=/{/ end=/}/
+  \ contains=@typescriptTypeMember
+  \ contained
+
+syntax cluster typescriptTypeMember contains=
+  \ typescriptPropertySignature,
+  \ typescriptCallSignature,
+  \ typescriptConstructSignature,
+  \ typescriptIndexSignature,
+  \ typescriptMethodSignature
+
+
+syntax match typescriptUnionType /placeholder/
+syntax match typescriptFunctionType /placeholder/
+syntax match typescriptConstructorType /placeholder/
+
+
 syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptFuncCallArg,typescriptComputedProperty
 
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
@@ -274,6 +339,7 @@ syntax region  typescriptClassBLock            contained matchgroup=typescriptBr
 syntax keyword typescriptClassStatic           contained static nextgroup=typescriptMethodDef skipwhite
 
 
+"For Comprehension
 syntax keyword typescriptForComprehension      contained for nextgroup=typescriptForComprehensionTail skipwhite skipempty
 syntax region  typescriptForComprehensionTail  contained matchgroup=typescriptParens start=/(/ end=/)/ contains=typescriptOfComprehension,@typescriptExpression nextgroup=typescriptForComprehension,typescriptIfComprehension,@typescriptExpression skipwhite skipempty
 syntax keyword typescriptOfComprehension       contained of
@@ -363,7 +429,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptStatementKeyword     Statement
   HiLink typescriptMessage              Keyword
   HiLink typescriptOperator             Identifier
-  " HiLink typescriptType                 Type
+  HiLink typescriptType                 Type
   HiLink typescriptNull                 Boolean
   HiLink typescriptNumber               Number
   HiLink typescriptBoolean              Boolean
@@ -394,6 +460,10 @@ if exists("did_typescript_hilink")
   HiLink typescriptClassSuper           keyword
 
   HiLink shellbang                      Comment
+
+  HiLink typescriptTypeParameter        Identifier
+  HiLink typescriptConstraint           Keyword
+  HiLink typescriptPredefinedType       Type
 
   highlight link javaScript             NONE
 
