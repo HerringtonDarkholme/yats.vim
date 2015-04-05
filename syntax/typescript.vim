@@ -55,9 +55,12 @@ syntax match   shellbang "^#!.*iojs\>"
 
 "JavaScript comments
 syntax keyword typescriptCommentTodo           contained TODO FIXME XXX TBD
-syntax match   typescriptLineComment           "//.*" contains=@Spell,typescriptCommentTodo
+syntax match   typescriptLineComment           "//.*" contains=@Spell,typescriptCommentTodo,typescriptRef
 syntax region  typescriptComment               start="/\*"  end="\*/" contains=@Spell,typescriptCommentTodo extend
 syntax cluster typescriptComments              contains=typescriptComment,typescriptLineComment
+syn match typescriptRef +///\s*<reference\s\+.*\/>$+ contains=typescriptRefD,typescriptRefS
+syn region typescriptRefD start=+"+ skip=+\\\\\|\\"+ end=+"\|$+
+syn region typescriptRefS start=+'+ skip=+\\\\\|\\'+ end=+'\|$+
 
 "JSDoc
 syntax case ignore
@@ -320,6 +323,9 @@ if exists("did_typescript_hilink")
   HiLink typescriptLineComment          Comment
   HiLink typescriptDocComment           Comment
   HiLink typescriptCommentTodo          Todo
+  HiLink typescriptRef                  Include
+  HiLink typescriptRefS                 String
+  HiLink typescriptRefD                 String
   HiLink typescriptDocNotation          SpecialComment
   HiLink typescriptDocTags              SpecialComment
   HiLink typescriptDocNGParam           typescriptDocParam
