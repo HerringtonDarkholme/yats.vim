@@ -37,6 +37,6 @@ files='
   css'
 
 for file in $files; do
-  node p.js $file > ../syntax/yajs/$file.vim
+  node p.js $file > ../syntax/yats/$file.vim
 done
 
