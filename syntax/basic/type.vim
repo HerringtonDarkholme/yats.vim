@@ -93,3 +93,7 @@ syntax match typescriptFuncTypeArrow /=>/
 syntax keyword typescriptConstructorType new
   \ nextgroup=@typescriptFunctionType
   \ contained skipwhite skipnl
+
+syntax keyword typescriptTypeQuery typeof
+  \ nextgroup=typescriptTypeReference
+  \ contained skipwhite skipnl
