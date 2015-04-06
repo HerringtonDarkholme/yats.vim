@@ -3,7 +3,7 @@ syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=typescriptTypeParameter
 
-syntax match typescriptTypeParameter /[A-Za-z]\w*/
+syntax match typescriptTypeParameter /[A-Za-z_$]\w*/
   \ nextgroup=typescriptConstraint
   \ contained skipwhite skipnl
 
@@ -42,7 +42,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
 syntax keyword typescriptPredefinedType any number boolean string void
   \ nextgroup=typescriptUnionOrArrayType
 
-syntax match typescriptTypeReference /[A-Za-z]\w*\(\.[A-Za-z]\w*\)*/
+syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
   \ nextgroup=typescriptUnionOrArrayType
   \ contains=typescriptIdentifierName
 
@@ -53,7 +53,7 @@ syntax region typescriptObjectType matchgroup=typescriptBraces
 
 syntax cluster typescriptTypeMember contains=
   \ typescriptPropertySignature,
-  \ typescriptCallSignature,
+  \ @typescriptCallSignature,
   \ typescriptConstructSignature,
   \ typescriptIndexSignature,
   \ typescriptMethodSignature
@@ -80,7 +80,7 @@ syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
 
 syntax region typescriptFuncType matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=@typescriptExpression
+  \ contains=@typescriptParameterList
   \ nextgroup=typescriptFuncTypeArrow
   \ contained skipwhite skipnl
 
@@ -97,3 +97,42 @@ syntax keyword typescriptConstructorType new
 syntax keyword typescriptTypeQuery typeof
   \ nextgroup=typescriptTypeReference
   \ contained skipwhite skipnl
+
+syntax region typescriptPropertySignature
+  \ start=/[A-Za-z_$'"]\|\d/ end=/:\@=/
+  \ contains=typescriptIdentifierName,typescriptNumber,typescriptString,typescriptOptionalMark
+  \ nextgroup=typescriptTypeAnnotation
+  \ containedin=typescriptTypeMember
+  \ contained skipwhite
+
+syntax cluster typescriptCallSignature contains=typescriptGenericCall,typescriptCall
+syntax region typescriptGenericCall matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=typescriptTypeParameter
+  \ nextgroup=typescriptCall
+  \ containedin=typescriptCallSignature
+  \ contained skipwhite skipnl
+syntax region typescriptCall matchgroup=typescriptParens
+  \ start=/(/ end=/)/
+  \ contains=@typescriptParameterList
+  \ nextgroup=typescriptTypeAnnotation
+  \ contained skipwhite skipnl
+
+syntax match typescriptTypeAnnotation /:/
+  \ nextgroup=@typescriptType
+  \ contained skipwhite skipnl
+
+syntax cluster typescriptParameterList contains=
+  \ typescriptIdentifierName,
+  \ typescriptFuncComma,
+  \ typescriptTypeAnnotation,
+  \ typescriptAccessibilityModifier,
+  \ typescriptOptionalMark,
+  \ typescriptRestOrSpread,
+  \ typescriptDefaultParam
+
+syntax keyword typescriptAccessibilityModifier public private protected contained
+
+syntax match typescriptDefaultParam /=/
+  \ nextgroup=@typescriptExpression
+  \ contained skipwhite

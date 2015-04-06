@@ -60,7 +60,10 @@ syntax case match
 
 runtime syntax/basic/type.vim
 
-syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptParameterList,typescriptComputedProperty
+syntax match typescriptOptionalMark /?/ contained
+syntax match typescriptRestOrSpread /\.\.\./ contained
+
+syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptArgumentList,typescriptComputedProperty
 
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
 
@@ -96,7 +99,7 @@ syntax region  typescriptComputedProperty      contained matchgroup=typescriptPr
 
 syntax cluster typescriptTemplates             contains=typescriptTemplate,typescriptTemplateSubstitution,typescriptTemplateSBlock,typescriptTemplateSString,typescriptTemplateSStringRB,typescriptTemplateSB
 syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,@typescriptTemplates,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
-syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel
+syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,@typescriptType
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved break case catch class const continue
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved debugger default delete do else export
@@ -141,7 +144,7 @@ syntax keyword typescriptExceptions            catch throw finally
 syntax keyword typescriptDebugger              debugger
 
 syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props transparent nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptParameterList
+syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptArgumentList
 syntax match   typescriptDotNotation           /\./ nextgroup=typescriptProp,typescriptMethod
 syntax match   typescriptDotStyleNotation      /\.style\./ nextgroup=typescriptDOMStyle transparent
 
@@ -243,8 +246,8 @@ syntax cluster typescriptEventExpression       contains=typescriptArrowFuncDef,t
 
 syntax region  typescriptLoopParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptExpression nextgroup=typescriptBlock skipwhite skipempty
 
-" syntax match   typescriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=typescriptParameterList
-syntax region  typescriptParameterList           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptOpSymbols,typescriptDotNotation skipwhite skipempty
+" syntax match   typescriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=typescriptArgumentList
+syntax region  typescriptArgumentList           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptOpSymbols,typescriptDotNotation skipwhite skipempty
 syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 
@@ -344,6 +347,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptFuncTypeArrow        Function
   HiLink typescriptConstructorType      Function
   HiLink typescriptTypeQuery            Keyword
+  HiLink typescriptOptionalMark         Keyword
 
   highlight link javaScript             NONE
 
