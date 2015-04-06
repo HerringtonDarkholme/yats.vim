@@ -83,8 +83,7 @@ syntax region  typescriptComputedPropertyName  contained matchgroup=typescriptPr
 syntax region  typescriptComputedProperty      contained matchgroup=typescriptProperty start=/\[/rs=s+1 end=/]/he=e-1 contains=@typescriptValue,@typescriptSymbols nextgroup=@typescriptValue skipwhite skipempty
 " Value for object, statement for label statement
 
-syntax cluster typescriptTemplates             contains=typescriptTemplate,typescriptTemplateSubstitution,typescriptTemplateSBlock,typescriptTemplateSString,typescriptTemplateSStringRB,typescriptTemplateSB
-syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,@typescriptTemplates,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
+syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,typescriptTemplate,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
 syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,typescriptClassBlock,typescriptMethodDef,typescriptMethodName,@typescriptType
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved break case catch class const continue
@@ -259,12 +258,8 @@ if exists("did_typescript_hilink")
   HiLink typescriptString               String
   HiLink typescriptTemplate             String
   HiLink typescriptEventString          String
-  HiLink typescriptASCII                Label
-  HiLink typescriptTemplateSubstitution Label
-  " HiLink typescriptTemplateSBlock       Label
-  " HiLink typescriptTemplateSString      Label
-  HiLink typescriptTemplateSStringRB    typescriptTemplateSubstitution
-  HiLink typescriptTemplateSB           typescriptTemplateSubstitution
+  HiLink typescriptASCII                Special
+  HiLink typescriptTemplateSB           Label
   HiLink typescriptTemplateTag          Identifier
   HiLink typescriptRegexpString         String
   HiLink typescriptGlobal               Constant
