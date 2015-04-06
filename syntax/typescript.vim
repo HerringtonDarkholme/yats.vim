@@ -84,7 +84,7 @@ syntax region  typescriptComputedProperty      contained matchgroup=typescriptPr
 " Value for object, statement for label statement
 
 syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,typescriptTemplate,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
-syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,typescriptClassBlock,typescriptMethodDef,typescriptMethodName,@typescriptType
+syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,typescriptClassBlock,typescriptMethodDef,typescriptMethodName,@typescriptType,typescriptCall
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved break case catch class const continue
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved debugger default delete do else export
@@ -154,8 +154,8 @@ syntax keyword typescriptExport                export module
 
 syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
-syntax region  typescriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=typescriptMethodAccessor,typescriptMethodName nextgroup=typescriptBlock skipwhite keepend
-syntax region  typescriptMethodArgs            contained start=/(\|</ end=/{\@=/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite keepend
+syntax region  typescriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/\ze{\|$\|;/ contains=typescriptMethodAccessor,typescriptMethodName nextgroup=typescriptBlock skipwhite keepend
+syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\ze{\|$\|;/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite keepend
 syntax keyword typescriptMethodAccessor        contained get set
 syntax match   typescriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=typescriptMethodArgs skipwhite skipempty
 syntax region  typescriptMethodName            contained matchgroup=typescriptPropertyName start=/\[/ end=/]/ contains=@typescriptValue nextgroup=typescriptMethodArgs skipwhite skipempty
@@ -166,7 +166,7 @@ syntax keyword typescriptFuncKeyword           function nextgroup=typescriptAsyn
 syntax match   typescriptSyncFunc              contained // nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptAsyncFunc             contained /*/ nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=typescriptFuncArg skipwhite
-syntax match   typescriptFuncArg               contained /([^()]*)/ contains=typescriptParens,typescriptFuncKeyword,typescriptFuncComma nextgroup=typescriptBlock skipwhite skipwhite skipempty
+syntax region   typescriptFuncArg              contained start=/<\|(/ end=/\ze{/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite skipwhite skipempty
 syntax match   typescriptFuncComma             contained /,/
 
 
