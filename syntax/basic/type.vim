@@ -38,7 +38,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
   \ nextgroup=typescriptUnionOrArrayType
-  \ contained
+  \ contained skipwhite
 
 syntax keyword typescriptPredefinedType any number boolean string void
   \ nextgroup=typescriptUnionOrArrayType
@@ -50,7 +50,8 @@ syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
   \ contains=@typescriptTypeMember
-  \ contained
+  \ nextgroup=typescriptUnionOrArrayType
+  \ contained skipwhite
 
 syntax cluster typescriptTypeMember contains=
   \ typescriptPropertySignature,
@@ -142,6 +143,12 @@ syntax keyword typescriptConstructSignature new
   \ nextgroup=@typescriptCallSignature
   \ contained skipwhite
 
+syntax region typescriptIndexSignature matchgroup=typescriptBraces
+  \ start=/\[/ end=/\]/
+  \ contains=typescriptTypeAnnotation
+  \ nextgroup=typescriptTypeAnnotation
+  \ contained skipwhite oneline
+
 syntax keyword typescriptAliasKeyword type
   \ nextgroup=typescriptAliasDeclaration
   \ skipwhite skipnl skipempty
@@ -150,3 +157,4 @@ syntax region typescriptAliasDeclaration matchgroup=typescriptOpSymbols
   \ start=/ / end=/=/
   \ nextgroup=@typescriptType
   \ contained skipwhite skipnl skipempty
+
