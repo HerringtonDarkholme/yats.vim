@@ -99,7 +99,7 @@ syntax region  typescriptComputedProperty      contained matchgroup=typescriptPr
 
 syntax cluster typescriptTemplates             contains=typescriptTemplate,typescriptTemplateSubstitution,typescriptTemplateSBlock,typescriptTemplateSString,typescriptTemplateSStringRB,typescriptTemplateSB
 syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,@typescriptTemplates,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
-syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,javascriptClassBlock,javascriptMethodDef,javascriptMethodName,@typescriptType
+syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,typescriptClassBlock,typescriptMethodDef,typescriptMethodName,@typescriptType
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved break case catch class const continue
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved debugger default delete do else export
@@ -196,8 +196,10 @@ syntax keyword typescriptExport                export module
 syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
 syntax region  typescriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=typescriptMethodAccessor,typescriptMethodName,typescriptFuncArg nextgroup=typescriptBlock skipwhite keepend
+syntax region  typescriptMethodArgs            contained start=/(/ end=/)/ contains=typescriptFuncArg nextgroup=typescriptBlock skipwhite keepend
 syntax keyword typescriptMethodAccessor        contained get set
-syntax match   typescriptMethodName            contained /[a-zA-Z_$]\k*\ze\_s*(/
+syntax match   typescriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=typescriptMethodArgs skipwhite skipempty
+syntax region  typescriptMethodName            contained matchgroup=typescriptPropertyName start=/\[/ end=/]/ contains=@typescriptValue nextgroup=typescriptMethodArgs skipwhite skipempty
 
 syntax keyword typescriptAsyncFuncKeyword      async await
 " syntax keyword typescriptFuncKeyword           function nextgroup=typescriptFuncName,typescriptFuncArg skipwhite
@@ -214,8 +216,9 @@ syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassNa
 syntax keyword typescriptClassSuper            super
 syntax match   typescriptClassName             contained /\k\+/ nextgroup=typescriptClassBlock,typescriptClassExtends skipwhite
 syntax keyword typescriptClassExtends          contained extends nextgroup=typescriptClassName skipwhite
-syntax region  typescriptClassBLock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=typescriptMethodDef,typescriptClassStatic
-syntax keyword typescriptClassStatic           contained static nextgroup=typescriptMethodDef skipwhite
+syntax region  typescriptClassBLock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=typescriptMethodName,typescriptMethodAccessor,typescriptClassStatic
+syntax keyword typescriptClassStatic           contained static nextgroup=typescriptMethodName,typescriptMethodAccessor skipwhite
+
 
 
 "For Comprehension
