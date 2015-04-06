@@ -12,3 +12,4 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
   \ contains=typescriptTypeAnnotation
+  \ contained
