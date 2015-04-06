@@ -5,7 +5,14 @@ syntax keyword typescriptPrototype             prototype
 
 "Program Keywords
 syntax keyword typescriptIdentifier            arguments this
-syntax keyword typescriptVariable              let var const
+syntax keyword typescriptVariable              let var const enum
+  \ nextgroup=typescriptVariableDeclaration
+  \ skipwhite skipempty skipnl
+
+syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
+  \ nextgroup=typescriptTypeAnnotation
+  \ contained skipwhite skipempty skipnl
+
 syntax keyword typescriptOperator              delete new instanceof typeof void in
   \ nextgroup=@typescriptValue,@typescriptTypes
   \ skipwhite skipempty
