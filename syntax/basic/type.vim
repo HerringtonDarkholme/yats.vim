@@ -14,7 +14,8 @@ syntax keyword typescriptConstraint extends
 syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
-  \ contained
+  \ nextgroup=typescriptUnionOrArrayType
+  \ contained skipwhite
 
 syntax cluster typescriptType contains=
   \ @typescriptCompoundType,
@@ -44,7 +45,7 @@ syntax keyword typescriptPredefinedType any number boolean string void
   \ contained skipwhite
 
 syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
-  \ nextgroup=typescriptUnionOrArrayType
+  \ nextgroup=typescriptTypeArguments,typescriptUnionOrArrayType
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
