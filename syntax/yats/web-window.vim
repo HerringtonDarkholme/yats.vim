@@ -1,41 +1,41 @@
-syntax keyword javascriptBOMWindowProp applicationCache closed Components controllers
-syntax keyword javascriptBOMWindowProp dialogArguments document frameElement frames
-syntax keyword javascriptBOMWindowProp fullScreen history innerHeight innerWidth length
-syntax keyword javascriptBOMWindowProp location locationbar menubar messageManager
-syntax keyword javascriptBOMWindowProp name navigator opener outerHeight outerWidth
-syntax keyword javascriptBOMWindowProp pageXOffset pageYOffset parent performance
-syntax keyword javascriptBOMWindowProp personalbar returnValue screen screenX screenY
-syntax keyword javascriptBOMWindowProp scrollbars scrollMaxX scrollMaxY scrollX scrollY
-syntax keyword javascriptBOMWindowProp self sidebar status statusbar toolbar top window
-syntax cluster props add=javascriptBOMWindowProp
-if exists("did_javascript_hilink") | HiLink javascriptBOMWindowProp Structure
+syntax keyword typescriptBOMWindowProp applicationCache closed Components controllers
+syntax keyword typescriptBOMWindowProp dialogArguments document frameElement frames
+syntax keyword typescriptBOMWindowProp fullScreen history innerHeight innerWidth length
+syntax keyword typescriptBOMWindowProp location locationbar menubar messageManager
+syntax keyword typescriptBOMWindowProp name navigator opener outerHeight outerWidth
+syntax keyword typescriptBOMWindowProp pageXOffset pageYOffset parent performance
+syntax keyword typescriptBOMWindowProp personalbar returnValue screen screenX screenY
+syntax keyword typescriptBOMWindowProp scrollbars scrollMaxX scrollMaxY scrollX scrollY
+syntax keyword typescriptBOMWindowProp self sidebar status statusbar toolbar top window
+syntax cluster props add=typescriptBOMWindowProp
+if exists("did_typescript_hilink") | HiLink typescriptBOMWindowProp Structure
 endif
-syntax keyword javascriptBOMWindowMethod alert atob blur btoa clearImmediate clearInterval nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod clearTimeout close confirm dispatchEvent nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod find focus getAttention getAttentionWithCycleCount nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod getComputedStyle getDefaulComputedStyle getSelection nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod matchMedia maximize moveBy moveTo open openDialog nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod postMessage print prompt removeEventListener nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod resizeBy resizeTo restore scroll scrollBy nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod scrollByLines scrollByPages scrollTo setCursor nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod setImmediate setInterval setResizable setTimeout nextgroup=javascriptFuncCallArg
-syntax keyword javascriptBOMWindowMethod showModalDialog sizeToContent stop updateCommands nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptBOMWindowMethod
-if exists("did_javascript_hilink") | HiLink javascriptBOMWindowMethod Structure
+syntax keyword typescriptBOMWindowMethod alert atob blur btoa clearImmediate clearInterval nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod clearTimeout close confirm dispatchEvent nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod find focus getAttention getAttentionWithCycleCount nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod getComputedStyle getDefaulComputedStyle getSelection nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod matchMedia maximize moveBy moveTo open openDialog nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod postMessage print prompt removeEventListener nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod resizeBy resizeTo restore scroll scrollBy nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod scrollByLines scrollByPages scrollTo setCursor nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod setImmediate setInterval setResizable setTimeout nextgroup=typescriptFuncCallArg
+syntax keyword typescriptBOMWindowMethod showModalDialog sizeToContent stop updateCommands nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptBOMWindowMethod
+if exists("did_typescript_hilink") | HiLink typescriptBOMWindowMethod Structure
 endif
-syntax keyword javascriptBOMWindowEvent contained onabort onbeforeunload onblur onchange
-syntax keyword javascriptBOMWindowEvent contained onclick onclose oncontextmenu ondevicelight
-syntax keyword javascriptBOMWindowEvent contained ondevicemotion ondeviceorientation
-syntax keyword javascriptBOMWindowEvent contained ondeviceproximity ondragdrop onerror
-syntax keyword javascriptBOMWindowEvent contained onfocus onhashchange onkeydown onkeypress
-syntax keyword javascriptBOMWindowEvent contained onkeyup onload onmousedown onmousemove
-syntax keyword javascriptBOMWindowEvent contained onmouseout onmouseover onmouseup
-syntax keyword javascriptBOMWindowEvent contained onmozbeforepaint onpaint onpopstate
-syntax keyword javascriptBOMWindowEvent contained onreset onresize onscroll onselect
-syntax keyword javascriptBOMWindowEvent contained onsubmit onunload onuserproximity
-syntax keyword javascriptBOMWindowEvent contained onpageshow onpagehide
-if exists("did_javascript_hilink") | HiLink javascriptBOMWindowEvent Keyword
+syntax keyword typescriptBOMWindowEvent contained onabort onbeforeunload onblur onchange
+syntax keyword typescriptBOMWindowEvent contained onclick onclose oncontextmenu ondevicelight
+syntax keyword typescriptBOMWindowEvent contained ondevicemotion ondeviceorientation
+syntax keyword typescriptBOMWindowEvent contained ondeviceproximity ondragdrop onerror
+syntax keyword typescriptBOMWindowEvent contained onfocus onhashchange onkeydown onkeypress
+syntax keyword typescriptBOMWindowEvent contained onkeyup onload onmousedown onmousemove
+syntax keyword typescriptBOMWindowEvent contained onmouseout onmouseover onmouseup
+syntax keyword typescriptBOMWindowEvent contained onmozbeforepaint onpaint onpopstate
+syntax keyword typescriptBOMWindowEvent contained onreset onresize onscroll onselect
+syntax keyword typescriptBOMWindowEvent contained onsubmit onunload onuserproximity
+syntax keyword typescriptBOMWindowEvent contained onpageshow onpagehide
+if exists("did_typescript_hilink") | HiLink typescriptBOMWindowEvent Keyword
 endif
-syntax keyword javascriptBOMWindowCons DOMParser QueryInterface XMLSerializer
-if exists("did_javascript_hilink") | HiLink javascriptBOMWindowCons Structure
+syntax keyword typescriptBOMWindowCons DOMParser QueryInterface XMLSerializer
+if exists("did_typescript_hilink") | HiLink typescriptBOMWindowCons Structure
 endif

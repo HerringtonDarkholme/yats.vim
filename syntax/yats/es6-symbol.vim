@@ -1,10 +1,10 @@
-syntax keyword javascriptGlobal Symbol nextgroup=javascriptGlobalSymbolDot,javascriptFuncCallArg
-syntax match   javascriptGlobalSymbolDot /\./ contained nextgroup=javascriptSymbolStaticProp,javascriptSymbolStaticMethod
-syntax keyword javascriptSymbolStaticProp contained create hasInstance isConcatSpreadable
-syntax keyword javascriptSymbolStaticProp contained isRegExp iterator toPrimitive
-syntax keyword javascriptSymbolStaticProp contained toStringTag unscopables
-if exists("did_javascript_hilink") | HiLink javascriptSymbolStaticProp Keyword
+syntax keyword typescriptGlobal Symbol nextgroup=typescriptGlobalSymbolDot,typescriptFuncCallArg
+syntax match   typescriptGlobalSymbolDot /\./ contained nextgroup=typescriptSymbolStaticProp,typescriptSymbolStaticMethod
+syntax keyword typescriptSymbolStaticProp contained create hasInstance isConcatSpreadable
+syntax keyword typescriptSymbolStaticProp contained isRegExp iterator toPrimitive
+syntax keyword typescriptSymbolStaticProp contained toStringTag unscopables
+if exists("did_typescript_hilink") | HiLink typescriptSymbolStaticProp Keyword
 endif
-syntax keyword javascriptSymbolStaticMethod contained for keyFor nextgroup=javascriptFuncCallArg
-if exists("did_javascript_hilink") | HiLink javascriptSymbolStaticMethod Keyword
+syntax keyword typescriptSymbolStaticMethod contained for keyFor nextgroup=typescriptFuncCallArg
+if exists("did_typescript_hilink") | HiLink typescriptSymbolStaticMethod Keyword
 endif

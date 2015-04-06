@@ -1,16 +1,16 @@
-syntax keyword javascriptCryptoGlobal crypto
-if exists("did_javascript_hilink") | HiLink javascriptCryptoGlobal Structure
+syntax keyword typescriptCryptoGlobal crypto
+if exists("did_typescript_hilink") | HiLink typescriptCryptoGlobal Structure
 endif
-syntax keyword javascriptSubtleCryptoMethod contained encrypt decrypt sign verify nextgroup=javascriptFuncCallArg
-syntax keyword javascriptSubtleCryptoMethod contained digest nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptSubtleCryptoMethod
-if exists("did_javascript_hilink") | HiLink javascriptSubtleCryptoMethod Keyword
+syntax keyword typescriptSubtleCryptoMethod contained encrypt decrypt sign verify nextgroup=typescriptFuncCallArg
+syntax keyword typescriptSubtleCryptoMethod contained digest nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptSubtleCryptoMethod
+if exists("did_typescript_hilink") | HiLink typescriptSubtleCryptoMethod Keyword
 endif
-syntax keyword javascriptCryptoProp contained subtle
-syntax cluster props add=javascriptCryptoProp
-if exists("did_javascript_hilink") | HiLink javascriptCryptoProp Keyword
+syntax keyword typescriptCryptoProp contained subtle
+syntax cluster props add=typescriptCryptoProp
+if exists("did_typescript_hilink") | HiLink typescriptCryptoProp Keyword
 endif
-syntax keyword javascriptCryptoMethod contained getRandomValues nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptCryptoMethod
-if exists("did_javascript_hilink") | HiLink javascriptCryptoMethod Keyword
+syntax keyword typescriptCryptoMethod contained getRandomValues nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptCryptoMethod
+if exists("did_typescript_hilink") | HiLink typescriptCryptoMethod Keyword
 endif

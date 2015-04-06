@@ -1,26 +1,26 @@
-syntax keyword javascriptGlobal Headers Request Response
-syntax keyword javascriptGlobalMethod fetch nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptGlobalMethod
-if exists("did_javascript_hilink") | HiLink javascriptGlobalMethod Structure
+syntax keyword typescriptGlobal Headers Request Response
+syntax keyword typescriptGlobalMethod fetch nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptGlobalMethod
+if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
 endif
-syntax keyword javascriptHeadersMethod contained append delete get getAll has set nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptHeadersMethod
-if exists("did_javascript_hilink") | HiLink javascriptHeadersMethod Keyword
+syntax keyword typescriptHeadersMethod contained append delete get getAll has set nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptHeadersMethod
+if exists("did_typescript_hilink") | HiLink typescriptHeadersMethod Keyword
 endif
-syntax keyword javascriptRequestProp contained method url headers context referrer
-syntax keyword javascriptRequestProp contained mode credentials cache
-syntax cluster props add=javascriptRequestProp
-if exists("did_javascript_hilink") | HiLink javascriptRequestProp Keyword
+syntax keyword typescriptRequestProp contained method url headers context referrer
+syntax keyword typescriptRequestProp contained mode credentials cache
+syntax cluster props add=typescriptRequestProp
+if exists("did_typescript_hilink") | HiLink typescriptRequestProp Keyword
 endif
-syntax keyword javascriptRequestMethod contained clone nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptRequestMethod
-if exists("did_javascript_hilink") | HiLink javascriptRequestMethod Keyword
+syntax keyword typescriptRequestMethod contained clone nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptRequestMethod
+if exists("did_typescript_hilink") | HiLink typescriptRequestMethod Keyword
 endif
-syntax keyword javascriptResponseProp contained type url status statusText headers
-syntax cluster props add=javascriptResponseProp
-if exists("did_javascript_hilink") | HiLink javascriptResponseProp Keyword
+syntax keyword typescriptResponseProp contained type url status statusText headers
+syntax cluster props add=typescriptResponseProp
+if exists("did_typescript_hilink") | HiLink typescriptResponseProp Keyword
 endif
-syntax keyword javascriptResponseMethod contained clone nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptResponseMethod
-if exists("did_javascript_hilink") | HiLink javascriptResponseMethod Keyword
+syntax keyword typescriptResponseMethod contained clone nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptResponseMethod
+if exists("did_typescript_hilink") | HiLink typescriptResponseMethod Keyword
 endif

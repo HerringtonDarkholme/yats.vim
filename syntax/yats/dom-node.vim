@@ -1,25 +1,25 @@
-syntax keyword javascriptDOMNodeProp contained attributes baseURI baseURIObject childNodes
-syntax keyword javascriptDOMNodeProp contained firstChild lastChild localName namespaceURI
-syntax keyword javascriptDOMNodeProp contained nextSibling nodeName nodePrincipal
-syntax keyword javascriptDOMNodeProp contained nodeType nodeValue ownerDocument parentElement
-syntax keyword javascriptDOMNodeProp contained parentNode prefix previousSibling textContent
-syntax cluster props add=javascriptDOMNodeProp
-if exists("did_javascript_hilink") | HiLink javascriptDOMNodeProp Keyword
+syntax keyword typescriptDOMNodeProp contained attributes baseURI baseURIObject childNodes
+syntax keyword typescriptDOMNodeProp contained firstChild lastChild localName namespaceURI
+syntax keyword typescriptDOMNodeProp contained nextSibling nodeName nodePrincipal
+syntax keyword typescriptDOMNodeProp contained nodeType nodeValue ownerDocument parentElement
+syntax keyword typescriptDOMNodeProp contained parentNode prefix previousSibling textContent
+syntax cluster props add=typescriptDOMNodeProp
+if exists("did_typescript_hilink") | HiLink typescriptDOMNodeProp Keyword
 endif
-syntax keyword javascriptDOMNodeMethod contained appendChild cloneNode compareDocumentPosition nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMNodeMethod contained getUserData hasAttributes hasChildNodes nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMNodeMethod contained insertBefore isDefaultNamespace isEqualNode nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMNodeMethod contained isSameNode isSupported lookupNamespaceURI nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMNodeMethod contained lookupPrefix normalize removeChild nextgroup=javascriptFuncCallArg
-syntax keyword javascriptDOMNodeMethod contained replaceChild setUserData nextgroup=javascriptFuncCallArg
-syntax match javascriptDOMNodeMethod contained /contains/
-syntax cluster props add=javascriptDOMNodeMethod
-if exists("did_javascript_hilink") | HiLink javascriptDOMNodeMethod Keyword
+syntax keyword typescriptDOMNodeMethod contained appendChild cloneNode compareDocumentPosition nextgroup=typescriptFuncCallArg
+syntax keyword typescriptDOMNodeMethod contained getUserData hasAttributes hasChildNodes nextgroup=typescriptFuncCallArg
+syntax keyword typescriptDOMNodeMethod contained insertBefore isDefaultNamespace isEqualNode nextgroup=typescriptFuncCallArg
+syntax keyword typescriptDOMNodeMethod contained isSameNode isSupported lookupNamespaceURI nextgroup=typescriptFuncCallArg
+syntax keyword typescriptDOMNodeMethod contained lookupPrefix normalize removeChild nextgroup=typescriptFuncCallArg
+syntax keyword typescriptDOMNodeMethod contained replaceChild setUserData nextgroup=typescriptFuncCallArg
+syntax match typescriptDOMNodeMethod contained /contains/
+syntax cluster props add=typescriptDOMNodeMethod
+if exists("did_typescript_hilink") | HiLink typescriptDOMNodeMethod Keyword
 endif
-syntax keyword javascriptDOMNodeType contained ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE
-syntax keyword javascriptDOMNodeType contained CDATA_SECTION_NODEN_NODE ENTITY_REFERENCE_NODE
-syntax keyword javascriptDOMNodeType contained ENTITY_NODE PROCESSING_INSTRUCTION_NODEN_NODE
-syntax keyword javascriptDOMNodeType contained COMMENT_NODE DOCUMENT_NODE DOCUMENT_TYPE_NODE
-syntax keyword javascriptDOMNodeType contained DOCUMENT_FRAGMENT_NODE NOTATION_NODE
-if exists("did_javascript_hilink") | HiLink javascriptDOMNodeType Keyword
+syntax keyword typescriptDOMNodeType contained ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE
+syntax keyword typescriptDOMNodeType contained CDATA_SECTION_NODEN_NODE ENTITY_REFERENCE_NODE
+syntax keyword typescriptDOMNodeType contained ENTITY_NODE PROCESSING_INSTRUCTION_NODEN_NODE
+syntax keyword typescriptDOMNodeType contained COMMENT_NODE DOCUMENT_NODE DOCUMENT_TYPE_NODE
+syntax keyword typescriptDOMNodeType contained DOCUMENT_FRAGMENT_NODE NOTATION_NODE
+if exists("did_typescript_hilink") | HiLink typescriptDOMNodeType Keyword
 endif

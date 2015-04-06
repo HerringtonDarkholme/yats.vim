@@ -1,5 +1,5 @@
-syntax keyword javascriptGlobal Function
-syntax keyword javascriptFunctionMethod contained apply bind call nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptFunctionMethod
-if exists("did_javascript_hilink") | HiLink javascriptFunctionMethod Keyword
+syntax keyword typescriptGlobal Function
+syntax keyword typescriptFunctionMethod contained apply bind call nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptFunctionMethod
+if exists("did_typescript_hilink") | HiLink typescriptFunctionMethod Keyword
 endif

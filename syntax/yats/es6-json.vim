@@ -1,5 +1,5 @@
-syntax keyword javascriptGlobal JSON nextgroup=javascriptGlobalJSONDot,javascriptFuncCallArg
-syntax match   javascriptGlobalJSONDot /\./ contained nextgroup=javascriptJSONStaticMethod
-syntax keyword javascriptJSONStaticMethod contained parse stringify nextgroup=javascriptFuncCallArg
-if exists("did_javascript_hilink") | HiLink javascriptJSONStaticMethod Keyword
+syntax keyword typescriptGlobal JSON nextgroup=typescriptGlobalJSONDot,typescriptFuncCallArg
+syntax match   typescriptGlobalJSONDot /\./ contained nextgroup=typescriptJSONStaticMethod
+syntax keyword typescriptJSONStaticMethod contained parse stringify nextgroup=typescriptFuncCallArg
+if exists("did_typescript_hilink") | HiLink typescriptJSONStaticMethod Keyword
 endif

@@ -1,15 +1,15 @@
-syntax keyword javascriptGlobal String nextgroup=javascriptGlobalStringDot,javascriptFuncCallArg
-syntax match   javascriptGlobalStringDot /\./ contained nextgroup=javascriptStringStaticMethod
-syntax keyword javascriptStringStaticMethod contained fromCharCode fromCodePoint nextgroup=javascriptFuncCallArg
-if exists("did_javascript_hilink") | HiLink javascriptStringStaticMethod Keyword
+syntax keyword typescriptGlobal String nextgroup=typescriptGlobalStringDot,typescriptFuncCallArg
+syntax match   typescriptGlobalStringDot /\./ contained nextgroup=typescriptStringStaticMethod
+syntax keyword typescriptStringStaticMethod contained fromCharCode fromCodePoint nextgroup=typescriptFuncCallArg
+if exists("did_typescript_hilink") | HiLink typescriptStringStaticMethod Keyword
 endif
-syntax keyword javascriptStringMethod contained anchor charAt charCodeAt codePointAt nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained concat endsWith includes indexOf lastIndexOf nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained link localeCompare match normalize nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained repeat replace search slice split nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained startsWith substr substring toLocaleLowerCase nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained toLocaleUpperCase toLowerCase toString nextgroup=javascriptFuncCallArg
-syntax keyword javascriptStringMethod contained toUpperCase trim valueOf nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptStringMethod
-if exists("did_javascript_hilink") | HiLink javascriptStringMethod Keyword
+syntax keyword typescriptStringMethod contained anchor charAt charCodeAt codePointAt nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained concat endsWith includes indexOf lastIndexOf nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained link localeCompare match normalize nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained repeat replace search slice split nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained startsWith substr substring toLocaleLowerCase nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained toLocaleUpperCase toLowerCase toString nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained toUpperCase trim valueOf nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptStringMethod
+if exists("did_typescript_hilink") | HiLink typescriptStringMethod Keyword
 endif

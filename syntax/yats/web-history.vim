@@ -1,8 +1,8 @@
-syntax keyword javascriptBOMHistoryProp contained length current next previous state
-syntax cluster props add=javascriptBOMHistoryProp
-if exists("did_javascript_hilink") | HiLink javascriptBOMHistoryProp Keyword
+syntax keyword typescriptBOMHistoryProp contained length current next previous state
+syntax cluster props add=typescriptBOMHistoryProp
+if exists("did_typescript_hilink") | HiLink typescriptBOMHistoryProp Keyword
 endif
-syntax keyword javascriptBOMHistoryMethod contained back forward go pushState replaceState nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptBOMHistoryMethod
-if exists("did_javascript_hilink") | HiLink javascriptBOMHistoryMethod Keyword
+syntax keyword typescriptBOMHistoryMethod contained back forward go pushState replaceState nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptBOMHistoryMethod
+if exists("did_typescript_hilink") | HiLink typescriptBOMHistoryMethod Keyword
 endif

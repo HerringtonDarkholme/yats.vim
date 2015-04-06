@@ -1,13 +1,16 @@
-syntax keyword javascriptGlobal Function Boolean Error EvalError InternalError RangeError
-syntax keyword javascriptGlobal ReferenceError StopIteration SyntaxError TypeError
-syntax keyword javascriptGlobal URIError Date Float32Array Float64Array Int16Array
-syntax keyword javascriptGlobal Int32Array Int8Array Uint16Array Uint32Array Uint8Array
-syntax keyword javascriptGlobal Uint8ClampedArray ParallelArray ArrayBuffer DataView
-syntax keyword javascriptGlobal Iterator Generator Reflect Proxy arguments
-if exists("did_javascript_hilink") | HiLink javascriptGlobal Structure
+syntax keyword typescriptGlobal Object Function Boolean Symbol Error EvalError InternalError
+syntax keyword typescriptGlobal RangeError ReferenceError StopIteration SyntaxError
+syntax keyword typescriptGlobal TypeError URIError Number Math Date String RegExp
+syntax keyword typescriptGlobal Array Float32Array Float64Array Int16Array Int32Array
+syntax keyword typescriptGlobal Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray
+syntax keyword typescriptGlobal ParallelArray Map Set WeakMap WeakSet ArrayBuffer
+syntax keyword typescriptGlobal DataView JSON Iterator Generator Promise Reflect Proxy
+syntax keyword typescriptGlobal Intl arguments
+if exists("did_typescript_hilink") | HiLink typescriptGlobal Structure
 endif
-syntax keyword javascriptGlobalMethod eval uneval isFinite isNaN parseFloat parseInt nextgroup=javascriptFuncCallArg
-syntax keyword javascriptGlobalMethod decodeURI decodeURIComponent encodeURI encodeURIComponent nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptGlobalMethod
-if exists("did_javascript_hilink") | HiLink javascriptGlobalMethod Structure
+syntax keyword typescriptGlobalMethod eval fetch uneval isFinite isNaN parseFloat nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod parseInt decodeURI decodeURIComponent encodeURI nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod encodeURIComponent nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptGlobalMethod
+if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
 endif

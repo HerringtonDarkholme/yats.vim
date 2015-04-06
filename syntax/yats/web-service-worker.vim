@@ -1,14 +1,14 @@
-syntax keyword javascriptServiceWorkerProp contained controller ready
-syntax cluster props add=javascriptServiceWorkerProp
-if exists("did_javascript_hilink") | HiLink javascriptServiceWorkerProp Keyword
+syntax keyword typescriptServiceWorkerProp contained controller ready
+syntax cluster props add=typescriptServiceWorkerProp
+if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerProp Keyword
 endif
-syntax keyword javascriptServiceWorkerMethod contained register getRegistration nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptServiceWorkerMethod
-if exists("did_javascript_hilink") | HiLink javascriptServiceWorkerMethod Keyword
+syntax keyword typescriptServiceWorkerMethod contained register getRegistration nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptServiceWorkerMethod
+if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerMethod Keyword
 endif
-syntax keyword javascriptGlobal Cache
-syntax keyword javascriptCacheMethod contained match matchAll add addAll put delete nextgroup=javascriptFuncCallArg
-syntax keyword javascriptCacheMethod contained keys nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptCacheMethod
-if exists("did_javascript_hilink") | HiLink javascriptCacheMethod Keyword
+syntax keyword typescriptGlobal Cache
+syntax keyword typescriptCacheMethod contained match matchAll add addAll put delete nextgroup=typescriptFuncCallArg
+syntax keyword typescriptCacheMethod contained keys nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptCacheMethod
+if exists("did_typescript_hilink") | HiLink typescriptCacheMethod Keyword
 endif

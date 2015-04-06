@@ -1,4 +1,4 @@
-syntax keyword javascriptNodeGlobal global process console Buffer module exports setTimeout
-syntax keyword javascriptNodeGlobal clearTimeout setInterval clearInterval
-if exists("did_javascript_hilink") | HiLink javascriptNodeGlobal Structure
+syntax keyword typescriptNodeGlobal global process console Buffer module exports setTimeout
+syntax keyword typescriptNodeGlobal clearTimeout setInterval clearInterval
+if exists("did_typescript_hilink") | HiLink typescriptNodeGlobal Structure
 endif

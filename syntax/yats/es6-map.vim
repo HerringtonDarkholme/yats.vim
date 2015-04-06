@@ -1,10 +1,10 @@
-syntax keyword javascriptGlobal Map WeakMap
-syntax keyword javascriptES6MapProp contained size
-syntax cluster props add=javascriptES6MapProp
-if exists("did_javascript_hilink") | HiLink javascriptES6MapProp Keyword
+syntax keyword typescriptGlobal Map WeakMap
+syntax keyword typescriptES6MapProp contained size
+syntax cluster props add=typescriptES6MapProp
+if exists("did_typescript_hilink") | HiLink typescriptES6MapProp Keyword
 endif
-syntax keyword javascriptES6MapMethod contained clear delete entries forEach get has nextgroup=javascriptFuncCallArg
-syntax keyword javascriptES6MapMethod contained keys set values nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptES6MapMethod
-if exists("did_javascript_hilink") | HiLink javascriptES6MapMethod Keyword
+syntax keyword typescriptES6MapMethod contained clear delete entries forEach get has nextgroup=typescriptFuncCallArg
+syntax keyword typescriptES6MapMethod contained keys set values nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptES6MapMethod
+if exists("did_typescript_hilink") | HiLink typescriptES6MapMethod Keyword
 endif

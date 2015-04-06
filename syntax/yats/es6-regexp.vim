@@ -1,13 +1,13 @@
-syntax keyword javascriptGlobal RegExp nextgroup=javascriptGlobalRegExpDot,javascriptFuncCallArg
-syntax match   javascriptGlobalRegExpDot /\./ contained nextgroup=javascriptRegExpStaticProp
-syntax keyword javascriptRegExpStaticProp contained lastIndex
-if exists("did_javascript_hilink") | HiLink javascriptRegExpStaticProp Keyword
+syntax keyword typescriptGlobal RegExp nextgroup=typescriptGlobalRegExpDot,typescriptFuncCallArg
+syntax match   typescriptGlobalRegExpDot /\./ contained nextgroup=typescriptRegExpStaticProp
+syntax keyword typescriptRegExpStaticProp contained lastIndex
+if exists("did_typescript_hilink") | HiLink typescriptRegExpStaticProp Keyword
 endif
-syntax keyword javascriptRegExpProp contained global ignoreCase multiline source sticky
-syntax cluster props add=javascriptRegExpProp
-if exists("did_javascript_hilink") | HiLink javascriptRegExpProp Keyword
+syntax keyword typescriptRegExpProp contained global ignoreCase multiline source sticky
+syntax cluster props add=typescriptRegExpProp
+if exists("did_typescript_hilink") | HiLink typescriptRegExpProp Keyword
 endif
-syntax keyword javascriptRegExpMethod contained exec test nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptRegExpMethod
-if exists("did_javascript_hilink") | HiLink javascriptRegExpMethod Keyword
+syntax keyword typescriptRegExpMethod contained exec test nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptRegExpMethod
+if exists("did_typescript_hilink") | HiLink typescriptRegExpMethod Keyword
 endif

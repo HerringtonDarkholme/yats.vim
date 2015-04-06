@@ -1,14 +1,14 @@
-syntax keyword javascriptGlobal Array nextgroup=javascriptGlobalArrayDot,javascriptFuncCallArg
-syntax match   javascriptGlobalArrayDot /\./ contained nextgroup=javascriptArrayStaticMethod
-syntax keyword javascriptArrayStaticMethod contained from isArray of nextgroup=javascriptFuncCallArg
-if exists("did_javascript_hilink") | HiLink javascriptArrayStaticMethod Keyword
+syntax keyword typescriptGlobal Array nextgroup=typescriptGlobalArrayDot,typescriptFuncCallArg
+syntax match   typescriptGlobalArrayDot /\./ contained nextgroup=typescriptArrayStaticMethod
+syntax keyword typescriptArrayStaticMethod contained from isArray of nextgroup=typescriptFuncCallArg
+if exists("did_typescript_hilink") | HiLink typescriptArrayStaticMethod Keyword
 endif
-syntax keyword javascriptArrayMethod contained concat copyWithin entries every fill nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained filter find findIndex forEach indexOf nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained join keys lastIndexOf map pop push nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained reduce reduceRight reverse shift slice nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained some sort splice toLocaleString toSource nextgroup=javascriptFuncCallArg
-syntax keyword javascriptArrayMethod contained toString unshift nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptArrayMethod
-if exists("did_javascript_hilink") | HiLink javascriptArrayMethod Keyword
+syntax keyword typescriptArrayMethod contained concat copyWithin entries every fill nextgroup=typescriptFuncCallArg
+syntax keyword typescriptArrayMethod contained filter find findIndex forEach indexOf nextgroup=typescriptFuncCallArg
+syntax keyword typescriptArrayMethod contained join keys lastIndexOf map pop push nextgroup=typescriptFuncCallArg
+syntax keyword typescriptArrayMethod contained reduce reduceRight reverse shift slice nextgroup=typescriptFuncCallArg
+syntax keyword typescriptArrayMethod contained some sort splice toLocaleString toSource nextgroup=typescriptFuncCallArg
+syntax keyword typescriptArrayMethod contained toString unshift nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptArrayMethod
+if exists("did_typescript_hilink") | HiLink typescriptArrayMethod Keyword
 endif

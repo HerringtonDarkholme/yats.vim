@@ -1,10 +1,10 @@
-syntax keyword javascriptGlobal Set WeakSet
-syntax keyword javascriptES6SetProp contained size
-syntax cluster props add=javascriptES6SetProp
-if exists("did_javascript_hilink") | HiLink javascriptES6SetProp Keyword
+syntax keyword typescriptGlobal Set WeakSet
+syntax keyword typescriptES6SetProp contained size
+syntax cluster props add=typescriptES6SetProp
+if exists("did_typescript_hilink") | HiLink typescriptES6SetProp Keyword
 endif
-syntax keyword javascriptES6SetMethod contained add clear delete entries forEach has nextgroup=javascriptFuncCallArg
-syntax keyword javascriptES6SetMethod contained values nextgroup=javascriptFuncCallArg
-syntax cluster props add=javascriptES6SetMethod
-if exists("did_javascript_hilink") | HiLink javascriptES6SetMethod Keyword
+syntax keyword typescriptES6SetMethod contained add clear delete entries forEach has nextgroup=typescriptFuncCallArg
+syntax keyword typescriptES6SetMethod contained values nextgroup=typescriptFuncCallArg
+syntax cluster props add=typescriptES6SetMethod
+if exists("did_typescript_hilink") | HiLink typescriptES6SetMethod Keyword
 endif
