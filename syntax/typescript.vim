@@ -262,6 +262,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptLabel                Label
   HiLink typescriptPropertyName         Label
   HiLink typescriptImport               Special
+  HiLink typescriptDeclare              Special
   HiLink typescriptExport               Special
   HiLink typescriptTry                  Special
   HiLink typescriptExceptions           Special
@@ -283,6 +284,9 @@ if exists("did_typescript_hilink")
   HiLink typescriptClassName            Function
   HiLink typescriptClassStatic          StorageClass
   HiLink typescriptClassSuper           keyword
+  HiLink typescriptInterfaceKeyword     Keyword
+  HiLink typescriptInterfaceExtends     Keyword
+  HiLink typescriptInterfaceName        Function
 
   HiLink shellbang                      Comment
 

@@ -1,5 +1,5 @@
 "Class
-syntax keyword typescriptClassKeyword          class interface nextgroup=typescriptClassName skipwhite
+syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
 syntax keyword typescriptClassSuper            super
 syntax match   typescriptClassName             contained /\k\+/ nextgroup=typescriptClassBlock,typescriptClassExtends skipwhite
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassName skipwhite
@@ -13,3 +13,7 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
   \ contains=typescriptTypeAnnotation
   \ contained
+
+syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
+syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
+syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceName skipwhite

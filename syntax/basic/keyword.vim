@@ -27,3 +27,5 @@ syntax keyword typescriptStatementKeyword      return with yield
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
 syntax keyword typescriptDebugger              debugger
+
+syntax keyword typescriptDeclare               declare
