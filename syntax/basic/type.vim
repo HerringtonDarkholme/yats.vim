@@ -41,6 +41,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
 
 syntax keyword typescriptPredefinedType any number boolean string void
   \ nextgroup=typescriptUnionOrArrayType
+  \ contained skipwhite
 
 syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
   \ nextgroup=typescriptUnionOrArrayType
@@ -61,7 +62,7 @@ syntax cluster typescriptTypeMember contains=
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
   \ contains=@typescriptType
-  \contained
+  \ contained skipwhite oneline
 
 syntax match typescriptUnionOrArrayType /\[\]\||/
   \ nextgroup=@typescriptCompoundType
