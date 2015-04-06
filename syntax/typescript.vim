@@ -69,14 +69,7 @@ syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\
 
 syntax cluster typescriptStatement             contains=typescriptBlock,typescriptVariable,@typescriptExpression,typescriptConditional,typescriptRepeat,typescriptBranch,typescriptLabel,typescriptStatementKeyword,typescriptTry,typescriptDebugger
 
-runtime syntax/basic/string.vim
-
-syntax region  typescriptArray                 matchgroup=typescriptBraces start=/\[/ end=/]/ contains=@typescriptValue,typescriptForComprehension nextgroup=@typescriptSymbols,@typescriptComments skipwhite skipempty
-
-syntax match   typescriptNumber                /\<0[bB][01]\+\>/ nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match   typescriptNumber                /\<0[oO][0-7]\+\>/ nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match   typescriptNumber                /\<0[xX][0-9a-fA-F]\+\>/ nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match   typescriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/ nextgroup=@typescriptSymbols skipwhite skipempty
+runtime syntax/basic/literal.vim
 
 syntax cluster typescriptTypes                 contains=typescriptString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 syntax cluster typescriptValue                 contains=@typescriptTypes,@typescriptExpression,typescriptFuncKeyword,typescriptObjectLiteral,typescriptIdentifier,typescriptIdentifierName,typescriptOperator,@typescriptSymbols
