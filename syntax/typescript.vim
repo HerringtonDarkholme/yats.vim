@@ -340,14 +340,22 @@ if exists("did_typescript_hilink")
 
   HiLink shellbang                      Comment
 
-  HiLink typescriptTypeParameter        Identifier
-  HiLink typescriptConstraint           Keyword
-  HiLink typescriptPredefinedType       Type
-  HiLink typescriptUnion                Operator
-  HiLink typescriptFuncTypeArrow        Function
-  HiLink typescriptConstructorType      Function
-  HiLink typescriptTypeQuery            Keyword
-  HiLink typescriptOptionalMark         Keyword
+  HiLink typescriptTypeParameter         Identifier
+  HiLink typescriptConstraint            Keyword
+  HiLink typescriptPredefinedType        Type
+  HiLink typescriptUnion                 Operator
+  HiLink typescriptFuncTypeArrow         Function
+  HiLink typescriptConstructorType       Function
+  HiLink typescriptTypeQuery             Keyword
+  HiLink typescriptAccessibilityModifier Keyword
+  HiLink typescriptOptionalMark          Special
+  HiLink typescriptFuncType              Special
+  HiLink typescriptCall                  Special
+  HiLink typescriptConstructSignature    Identifier
+  HiLink typescriptPropertySignature     Statement
+  HiLink typescriptAliasDeclaration      Identifier
+  HiLink typescriptAliasKeyword          Keyword
+  HiLink typescriptTypeReference         Identifier
 
   highlight link javaScript             NONE
 

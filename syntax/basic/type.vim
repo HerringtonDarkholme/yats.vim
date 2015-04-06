@@ -44,7 +44,6 @@ syntax keyword typescriptPredefinedType any number boolean string void
 
 syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
   \ nextgroup=typescriptUnionOrArrayType
-  \ contains=typescriptIdentifierName
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
@@ -56,7 +55,8 @@ syntax cluster typescriptTypeMember contains=
   \ @typescriptCallSignature,
   \ typescriptConstructSignature,
   \ typescriptIndexSignature,
-  \ typescriptMethodSignature
+  \ typescriptMethodSignature,
+  \ typescripEndColons
 
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
@@ -100,7 +100,7 @@ syntax keyword typescriptTypeQuery typeof
 
 syntax region typescriptPropertySignature
   \ start=/[A-Za-z_$'"]\|\d/ end=/:\@=/
-  \ contains=typescriptIdentifierName,typescriptNumber,typescriptString,typescriptOptionalMark
+  \ contains=@typescriptCallSignature,typescriptNumber,typescriptString,typescriptOptionalMark
   \ nextgroup=typescriptTypeAnnotation
   \ containedin=typescriptTypeMember
   \ contained skipwhite
@@ -123,7 +123,6 @@ syntax match typescriptTypeAnnotation /:/
   \ contained skipwhite skipnl
 
 syntax cluster typescriptParameterList contains=
-  \ typescriptIdentifierName,
   \ typescriptFuncComma,
   \ typescriptTypeAnnotation,
   \ typescriptAccessibilityModifier,
@@ -136,3 +135,16 @@ syntax keyword typescriptAccessibilityModifier public private protected containe
 syntax match typescriptDefaultParam /=/
   \ nextgroup=@typescriptExpression
   \ contained skipwhite
+
+syntax keyword typescriptConstructSignature new
+  \ nextgroup=@typescriptCallSignature
+  \ contained skipwhite
+
+syntax keyword typescriptAliasKeyword type
+  \ nextgroup=typescriptAliasDeclaration
+  \ skipwhite skipnl skipempty
+
+syntax region typescriptAliasDeclaration matchgroup=typescriptOpSymbols
+  \ start=/ / end=/=/
+  \ nextgroup=@typescriptType
+  \ contained skipwhite skipnl skipempty
