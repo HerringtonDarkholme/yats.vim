@@ -69,15 +69,8 @@ syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\
 
 syntax cluster typescriptStatement             contains=typescriptBlock,typescriptVariable,@typescriptExpression,typescriptConditional,typescriptRepeat,typescriptBranch,typescriptLabel,typescriptStatementKeyword,typescriptTry,typescriptDebugger
 
-"Syntax in the JavaScript code
-" syntax match   typescriptASCII                 contained /\\\d\d\d/
-syntax region  typescriptTemplateSubstitution  contained matchgroup=typescriptTemplateSB start=/\${/ end=/}/ contains=typescriptTemplateSBlock,typescriptTemplateSString
-syntax region  typescriptTemplateSBlock        contained start=/{/ end=/}/ contains=typescriptTemplateSBlock,typescriptTemplateSString transparent
-syntax region  typescriptTemplateSString       contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ extend contains=typescriptTemplateSStringRB transparent
-syntax match   typescriptTemplateSStringRB     /}/ contained
-syntax region  typescriptString                start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ nextgroup=@typescriptSymbols skipwhite skipempty
-syntax region  typescriptTemplate              start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/ contains=typescriptTemplateSubstitution nextgroup=@typescriptSymbols skipwhite skipempty
-" syntax match   typescriptTemplateTag           /\k\+/ nextgroup=typescriptTemplate
+runtime syntax/basic/string.vim
+
 syntax region  typescriptArray                 matchgroup=typescriptBraces start=/\[/ end=/]/ contains=@typescriptValue,typescriptForComprehension nextgroup=@typescriptSymbols,@typescriptComments skipwhite skipempty
 
 syntax match   typescriptNumber                /\<0[bB][01]\+\>/ nextgroup=@typescriptSymbols skipwhite skipempty
@@ -279,6 +272,7 @@ if exists("did_typescript_hilink")
   " HiLink typescriptTemplateSString      Label
   HiLink typescriptTemplateSStringRB    typescriptTemplateSubstitution
   HiLink typescriptTemplateSB           typescriptTemplateSubstitution
+  HiLink typescriptTemplateTag          Identifier
   HiLink typescriptRegexpString         String
   HiLink typescriptGlobal               Constant
   HiLink typescriptCharacter            Character

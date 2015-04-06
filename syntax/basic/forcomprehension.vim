@@ -18,4 +18,3 @@ syntax region  typescriptIfComprehensionTail   matchgroup=typescriptParens
   \ contains=typescriptExpression
   \ nextgroup=typescriptForComprehension,typescriptIfComprehension
   \ contained skipwhite skipempty
-
