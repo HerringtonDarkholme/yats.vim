@@ -59,6 +59,7 @@ endif
 syntax case match
 
 runtime syntax/basic/type.vim
+runtime syntax/basic/literal.vim
 
 syntax match typescriptOptionalMark /?/ contained
 syntax match typescriptRestOrSpread /\.\.\./ contained
@@ -69,7 +70,6 @@ syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\
 
 syntax cluster typescriptStatement             contains=typescriptBlock,typescriptVariable,@typescriptExpression,typescriptConditional,typescriptRepeat,typescriptBranch,typescriptLabel,typescriptStatementKeyword,typescriptTry,typescriptDebugger
 
-runtime syntax/basic/literal.vim
 
 syntax cluster typescriptTypes                 contains=typescriptString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 syntax cluster typescriptValue                 contains=@typescriptTypes,@typescriptExpression,typescriptFuncKeyword,typescriptObjectLiteral,typescriptIdentifier,typescriptIdentifierName,typescriptOperator,@typescriptSymbols
@@ -100,33 +100,7 @@ syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoR
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved long native short synchronized transient
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved volatile
 
-"this
-
-"JavaScript Prototype
-syntax keyword typescriptPrototype             prototype
-
-"Program Keywords
-syntax keyword typescriptIdentifier            arguments this
-syntax keyword typescriptVariable              let var const
-syntax keyword typescriptOperator              delete new instanceof typeof void in nextgroup=@typescriptValue,@typescriptTypes skipwhite skipempty
-syntax keyword typescriptForOperator           contained in of
-syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty
-syntax keyword typescriptNull                  null undefined nextgroup=@typescriptSymbols skipwhite skipempty
-syntax keyword typescriptMessage               alert confirm prompt status
-syntax keyword typescriptGlobal                self top parent
-
-"Statement Keywords
-syntax keyword typescriptConditional           if else switch
-syntax keyword typescriptConditionalElse       else
-syntax keyword typescriptRepeat                do while for nextgroup=typescriptLoopParen skipwhite skipempty
-syntax keyword typescriptBranch                break continue
-syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
-syntax keyword typescriptDefault               default
-syntax keyword typescriptStatementKeyword      return with yield
-
-syntax keyword typescriptTry                   try
-syntax keyword typescriptExceptions            catch throw finally
-syntax keyword typescriptDebugger              debugger
+runtime syntax/basic/keyword.vim
 
 syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props transparent nextgroup=@typescriptSymbols skipwhite skipempty
 syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptArgumentList
