@@ -211,22 +211,9 @@ syntax match   typescriptFuncArg               contained /([^()]*)/ contains=typ
 syntax match   typescriptFuncComma             contained /,/
 
 
-"Class
-syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
-syntax keyword typescriptClassSuper            super
-syntax match   typescriptClassName             contained /\k\+/ nextgroup=typescriptClassBlock,typescriptClassExtends skipwhite
-syntax keyword typescriptClassExtends          contained extends nextgroup=typescriptClassName skipwhite
-syntax region  typescriptClassBLock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=typescriptMethodName,typescriptMethodAccessor,typescriptClassStatic
-syntax keyword typescriptClassStatic           contained static nextgroup=typescriptMethodName,typescriptMethodAccessor skipwhite
+runtime syntax/basic/class.vim
+runtime syntax/basic/forcomprehension.vim
 
-
-
-"For Comprehension
-syntax keyword typescriptForComprehension      contained for nextgroup=typescriptForComprehensionTail skipwhite skipempty
-syntax region  typescriptForComprehensionTail  contained matchgroup=typescriptParens start=/(/ end=/)/ contains=typescriptOfComprehension,@typescriptExpression nextgroup=typescriptForComprehension,typescriptIfComprehension,@typescriptExpression skipwhite skipempty
-syntax keyword typescriptOfComprehension       contained of
-syntax keyword typescriptIfComprehension       contained if nextgroup=typescriptIfComprehensionTail
-syntax region  typescriptIfComprehensionTail   contained matchgroup=typescriptParens start=/(/ end=/)/ contains=typescriptExpression nextgroup=typescriptForComprehension,typescriptIfComprehension skipwhite skipempty
 
 syntax region  typescriptObjectLiteral         contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptMethodDef,typescriptComputedPropertyName,@typescriptValue
 
