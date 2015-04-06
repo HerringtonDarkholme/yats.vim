@@ -88,7 +88,7 @@ syntax match   typescriptNumber                /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\
 syntax cluster typescriptTypes                 contains=typescriptString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 syntax cluster typescriptValue                 contains=@typescriptTypes,@typescriptExpression,typescriptFuncKeyword,typescriptObjectLiteral,typescriptIdentifier,typescriptIdentifierName,typescriptOperator,@typescriptSymbols
 
-syntax match   typescriptLabel                 /[a-zA-Z_$]\k*\_s*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptValue,@typescriptStatement skipwhite skipempty
+syntax match   typescriptLabel                 /\v(^\s*|;)[a-zA-Z_$]\k*\_s*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptValue,@typescriptStatement skipwhite skipempty
 syntax match   typescriptObjectLabel           contained /\k\+\_s*:/he=e-1 nextgroup=@typescriptValue,@typescriptStatement skipwhite skipempty
 " syntax match   typescriptPropertyName          contained /"[^"]\+"\s*:/he=e-1 nextgroup=@typescriptValue skipwhite skipempty
 " syntax match   typescriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@typescriptValue skipwhite skipempty
@@ -195,8 +195,8 @@ syntax keyword typescriptExport                export module
 
 syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
-syntax region  typescriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=typescriptMethodAccessor,typescriptMethodName,typescriptFuncArg nextgroup=typescriptBlock skipwhite keepend
-syntax region  typescriptMethodArgs            contained start=/(/ end=/)/ contains=typescriptFuncArg nextgroup=typescriptBlock skipwhite keepend
+syntax region  typescriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/)/ contains=typescriptMethodAccessor,typescriptMethodName nextgroup=typescriptBlock skipwhite keepend
+syntax region  typescriptMethodArgs            contained start=/(\|</ end=/{\@=/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite keepend
 syntax keyword typescriptMethodAccessor        contained get set
 syntax match   typescriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=typescriptMethodArgs skipwhite skipempty
 syntax region  typescriptMethodName            contained matchgroup=typescriptPropertyName start=/\[/ end=/]/ contains=@typescriptValue nextgroup=typescriptMethodArgs skipwhite skipempty
