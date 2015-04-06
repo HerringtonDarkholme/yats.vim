@@ -99,7 +99,7 @@ syntax region  typescriptComputedProperty      contained matchgroup=typescriptPr
 
 syntax cluster typescriptTemplates             contains=typescriptTemplate,typescriptTemplateSubstitution,typescriptTemplateSBlock,typescriptTemplateSString,typescriptTemplateSStringRB,typescriptTemplateSB
 syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,@typescriptTemplates,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
-syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,@typescriptType
+syntax cluster typescriptNoReserved            contains=@typescriptStrings,@typescriptDocs,shellbang,typescriptObjectLiteral,typescriptObjectLabel,javascriptClassBlock,javascriptMethodDef,javascriptMethodName,@typescriptType
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved break case catch class const continue
 syntax keyword typescriptReserved              containedin=ALLBUT,@typescriptNoReserved debugger default delete do else export
