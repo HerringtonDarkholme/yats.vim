@@ -200,10 +200,11 @@ syntax region  typescriptArgumentList           contained matchgroup=typescriptP
 syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 
-syntax match   typescriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=typescriptFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
+syntax match   typescriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
 syntax match   typescriptArrowFuncDef          contained /[a-zA-Z_]\k*\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
 syntax match   typescriptArrowFunc             /=>/
 syntax match   typescriptArrowFuncArg          contained /[a-zA-Z_]\k*/
+syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
 
 if exists("did_typescript_hilink")
   HiLink typescriptReserved             Error
