@@ -5,7 +5,11 @@ syntax match   typescriptClassName             contained /\k\+/ nextgroup=typesc
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassName skipwhite
 syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptMethodAccessor,typescriptClassSuper
 
-syntax keyword typescriptClassStatic           contained static nextgroup=typescriptIdentifierName,typescriptMethodDef,typescriptMethodAccessor,typescriptMemberVariableDeclaration skipwhite
+syntax keyword typescriptClassStatic static nextgroup=
+  \ typescriptMethodDef,
+  \ typescriptMethodAccessor,
+  \ @typescriptMemberDeclaration
+  \ skipwhite contained
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,
@@ -15,6 +19,11 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
   \ contains=typescriptTypeAnnotation
   \ contained
+
+syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:\?\s*=/
+  \ contains=typescriptTypeAnnotation
+  \ nextgroup=@typescriptExpression
+  \ contained skipwhite
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
