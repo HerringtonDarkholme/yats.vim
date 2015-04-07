@@ -82,10 +82,10 @@ syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
   \ contained skipwhite skipnl
 
 syntax region typescriptFuncType matchgroup=typescriptParens
-  \ start=/(/ end=/)\%(\s*=>\)\@=/
+  \ start=/(/ end=/)\ze\s*=>/
   \ contains=@typescriptParameterList
   \ nextgroup=typescriptFuncTypeArrow
-  \ contained oneline skipwhite skipnl
+  \ contained skipwhite skipnl
 
 syntax match typescriptFuncTypeArrow /=>/
   \ nextgroup=@typescriptType

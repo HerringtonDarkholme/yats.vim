@@ -154,11 +154,7 @@ syntax keyword typescriptExport                export module
 
 syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
 
-syntax region  typescriptMethodDef             contained start=/\(\(\(set\|get\)\_s\+\)\?\)[a-zA-Z_$]\k*\_s*(/ end=/\ze{\|$\|;/ contains=typescriptMethodAccessor,typescriptMethodName nextgroup=typescriptBlock skipwhite keepend
-syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\ze{\|$\|;/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite keepend
-syntax keyword typescriptMethodAccessor        contained get set
-syntax match   typescriptMethodName            contained /[a-zA-Z_$]\k*/ nextgroup=typescriptMethodArgs skipwhite skipempty
-syntax region  typescriptMethodName            contained matchgroup=typescriptPropertyName start=/\[/ end=/]/ contains=@typescriptValue nextgroup=typescriptMethodArgs skipwhite skipempty
+runtime syntax/basic/method.vim
 
 syntax keyword typescriptAsyncFuncKeyword      async await
 " syntax keyword typescriptFuncKeyword           function nextgroup=typescriptFuncName,typescriptFuncArg skipwhite
@@ -166,7 +162,7 @@ syntax keyword typescriptFuncKeyword           function nextgroup=typescriptAsyn
 syntax match   typescriptSyncFunc              contained // nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptAsyncFunc             contained /*/ nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=typescriptFuncArg skipwhite
-syntax region   typescriptFuncArg              contained start=/<\|(/ end=/\ze{/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite skipwhite skipempty
+syntax region   typescriptFuncArg              contained start=/<\|(/ end=/\ze{\|;\|$/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite skipwhite skipempty
 syntax match   typescriptFuncComma             contained /,/
 
 
