@@ -1,12 +1,14 @@
 "Class
 syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
-syntax keyword typescriptClassSuper            super
+syntax keyword typescriptClassSuper            super contained containedin=typescriptMethodBlock
 syntax match   typescriptClassName             contained /\k\+/ nextgroup=typescriptClassBlock,typescriptClassExtends skipwhite
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassName skipwhite
-syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=typescriptMethodDef,typescriptMethodAccessor,typescriptClassStatic,typescriptClassSuper,@typescriptPropertyMemberDeclaration
-syntax keyword typescriptClassStatic           contained static nextgroup=typescriptMethodName,typescriptMethodAccessor skipwhite
+syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptMethodAccessor,typescriptClassSuper
+
+syntax keyword typescriptClassStatic           contained static nextgroup=typescriptIdentifierName,typescriptMethodDef,typescriptMethodAccessor,typescriptMemberVariableDeclaration skipwhite
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
+  \ typescriptClassStatic,
   \ typescriptAccessibilityModifier,
   \ typescriptMemberVariableDeclaration
 
