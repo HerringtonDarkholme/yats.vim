@@ -1,6 +1,6 @@
 syntax region  typescriptMethodDef             start=/\v((set|get)\_s+)?[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/}/
   \ contains=typescriptMethodAccessor,typescriptMethodName
-  \ skipwhite contained
+  \ skipwhite contained keepend
 
 syntax keyword typescriptMethodAccessor        contained get set
 
@@ -20,5 +20,5 @@ syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\ze{/
   \ skipwhite
 
 syntax region  typescriptMethodBlock matchgroup=typescriptBraces
-  \ start=/\([\^:]\s\*\)\=\zs{/ end=/\ze}/
+  \ start=/\([\^:]\s\*\)\=\zs{/ end=/}/
   \ contains=@htmlJavaScript
