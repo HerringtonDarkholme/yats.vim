@@ -5,9 +5,17 @@ syntax keyword typescriptPrototype             prototype
 
 "Program Keywords
 syntax keyword typescriptIdentifier            arguments this
-syntax keyword typescriptVariable              let var const enum
+syntax keyword typescriptVariable              let var const
   \ nextgroup=typescriptVariableDeclaration
   \ skipwhite skipempty skipnl
+
+syntax keyword typescriptEnumKeyword const
+  \ nextgroup=typescriptEnum
+  \ skipwhite
+
+syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum/ end=/\ze{/
+  \ nextgroup=typescriptBlock
+  \ skipwhite
 
 syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ nextgroup=typescriptTypeAnnotation
@@ -37,4 +45,3 @@ syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
 syntax keyword typescriptDebugger              debugger
 
-syntax keyword typescriptDeclare               declare
