@@ -26,5 +26,15 @@ syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:\?\s*=/
   \ contained skipwhite
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
-syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
+syntax match   typescriptInterfaceName             contained /\k\+\ze\s*</
+  \ nextgroup=typescriptInterfaceTypeParameter
+  \ contained
+  \ skipwhite
+syntax region typescriptInterfaceTypeParameter
+  \ start=/</ end=/>/
+  \ contains=typescriptTypeParameter
+  \ nextgroup=typescriptObjectType,typescriptInterfaceExtends
+  \ contained
+  \ skipwhite
+syntax match   typescriptInterfaceName             contained /\k\+\ze\_s*{/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
 syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceName skipwhite

@@ -1,4 +1,4 @@
-syntax region  typescriptMethodDef             start=/\v((set|get)\_s+)?[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
+syntax region  typescriptMethodDef  start=/\v(^|}|;|,)\s*\zs((set|get)\_s+)?[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
   \ contains=typescriptMethodAccessor,typescriptMethodName
   \ nextgroup=typescriptMethodBlock
   \ skipwhite contained keepend

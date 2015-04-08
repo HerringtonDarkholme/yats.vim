@@ -312,6 +312,8 @@ if exists("did_typescript_hilink")
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          Keyword
   HiLink typescriptTypeReference         Identifier
+  HiLink typescriptAmbientModifier       Keyword
+  HiLink typescriptAmbientName           Identifier
 
   highlight link javaScript             NONE
 

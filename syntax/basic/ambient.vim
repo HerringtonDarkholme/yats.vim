@@ -28,12 +28,13 @@ syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
   \ contained
 
 syntax region typescriptAmbientPropertyMemberDeclaration
-  \ start=/\v(get|set)?(static)?[A-Za-z_$]\k*/ end=/:\|;\|$/
+  \ start=/\v(get|set)?(static)?[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
   \ nextgroup=typescriptTypeAnnotation
-  \ contains=typescriptAmbientModifier,@typescriptCallSignature
+  \ contains=typescriptAmbientName,typescriptAmbientModifier,@typescriptCallSignature
   \ contained skipwhite
 
 syntax keyword typescriptAmbientModifier static get set contained
+syntax match   typescriptAmbientName /\k\+/ contained
 
 syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport
   \ start=/module/ end=/\ze{/
