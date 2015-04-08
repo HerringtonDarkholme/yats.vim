@@ -39,7 +39,8 @@ syntax keyword typescriptRepeat                do while for nextgroup=typescript
 syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
 syntax keyword typescriptDefault               default
-syntax keyword typescriptStatementKeyword      return with yield
+syntax keyword typescriptStatementKeyword      with yield
+syntax keyword typescriptStatementKeyword      return nextgroup=typescriptObjectLiteral skipwhite
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally

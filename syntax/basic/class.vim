@@ -1,7 +1,7 @@
 "Class
 syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
 syntax keyword typescriptClassSuper            super contained containedin=typescriptMethodBlock
-syntax match   typescriptClassName             contained /\k\+/ nextgroup=typescriptClassBlock,typescriptClassExtends skipwhite
+syntax match   typescriptClassName             contained /\v(\k|\.)+/ nextgroup=typescriptClassBlock,typescriptClassExtends skipwhite
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassName skipwhite
 syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptMethodAccessor,typescriptClassSuper,@typescriptComments
 
