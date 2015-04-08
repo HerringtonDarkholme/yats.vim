@@ -1,5 +1,6 @@
-syntax region  typescriptMethodDef             start=/\v((set|get)\_s+)?[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/}/
+syntax region  typescriptMethodDef             start=/\v((set|get)\_s+)?[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
   \ contains=typescriptMethodAccessor,typescriptMethodName
+  \ nextgroup=typescriptMethodBlock
   \ skipwhite contained keepend
 
 syntax keyword typescriptMethodAccessor        contained get set
@@ -16,7 +17,6 @@ syntax region  typescriptMethodName            matchgroup=typescriptPropertyName
 
 syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\ze{/
   \ contains=@typescriptCallSignature
-  \ nextgroup=typescriptMethodBlock
   \ skipwhite
 
 syntax region  typescriptMethodBlock matchgroup=typescriptBraces

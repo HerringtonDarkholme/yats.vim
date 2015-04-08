@@ -23,7 +23,9 @@ syntax keyword typescriptMessage               alert confirm prompt status
 syntax keyword typescriptGlobal                self top parent
 
 "Statement Keywords
-syntax keyword typescriptConditional           if else switch
+syntax keyword typescriptConditional           if else Switch
+  \ nextgroup=typescriptConditionalParen
+  \ skipwhite skipempty skipnl
 syntax keyword typescriptConditionalElse       else
 syntax keyword typescriptRepeat                do while for nextgroup=typescriptLoopParen skipwhite skipempty
 syntax keyword typescriptBranch                break continue
