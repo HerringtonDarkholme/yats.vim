@@ -36,7 +36,7 @@ syntax keyword typescriptGlobal                self top parent
   \ nextgroup=typescriptDotNotation
 
 "Statement Keywords
-syntax keyword typescriptConditional           if else Switch
+syntax keyword typescriptConditional           if else switch
   \ nextgroup=typescriptConditionalParen
   \ skipwhite skipempty skipnl
 syntax keyword typescriptConditionalElse       else
