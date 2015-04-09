@@ -2,9 +2,12 @@
 
 "JavaScript Prototype
 syntax keyword typescriptPrototype             prototype
+  \ nextgroup=typescriptDotNotation
 
 "Program Keywords
 syntax keyword typescriptIdentifier            arguments this
+  \ nextgroup=typescriptDotNotation
+
 syntax keyword typescriptVariable              let var const
   \ nextgroup=typescriptVariableDeclaration
   \ skipwhite skipempty skipnl
@@ -28,7 +31,9 @@ syntax keyword typescriptForOperator           contained in of
 syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty
 syntax keyword typescriptNull                  null undefined nextgroup=@typescriptSymbols skipwhite skipempty
 syntax keyword typescriptMessage               alert confirm prompt status
+  \ nextgroup=typescriptDotNotation,typescriptArgumentList
 syntax keyword typescriptGlobal                self top parent
+  \ nextgroup=typescriptDotNotation
 
 "Statement Keywords
 syntax keyword typescriptConditional           if else Switch
