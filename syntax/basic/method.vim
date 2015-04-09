@@ -2,7 +2,7 @@ syntax region  typescriptMethodDef  start=/\v((set|get)\_s+)?[a-zA-Z_$]\k*\_s*(\
   \ contains=typescriptMethodAccessor,typescriptMethodName
   \ containedin=typescriptClassBlock,typescriptObjectLiteral
   \ nextgroup=typescriptMethodBlock
-  \ skipwhite contained keepend
+  \ skipwhite contained
 
 syntax keyword typescriptMethodAccessor        contained get set
 
