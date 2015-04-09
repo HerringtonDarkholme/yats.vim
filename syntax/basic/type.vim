@@ -49,7 +49,7 @@ syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=@typescriptTypeMember
+  \ contains=@typescriptTypeMember,@typescriptComments
   \ nextgroup=typescriptUnionOrArrayType
   \ contained skipwhite
 
