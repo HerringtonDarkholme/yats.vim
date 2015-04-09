@@ -187,9 +187,9 @@ syntax cluster typescriptSymbols               contains=typescriptOpSymbols,type
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 
 syntax match   typescriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
-syntax match   typescriptArrowFuncDef          contained /[a-zA-Z_]\k*\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
+syntax match   typescriptArrowFuncDef          contained /[a-zA-Z_$]\k*\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
 syntax match   typescriptArrowFunc             /=>/
-syntax match   typescriptArrowFuncArg          contained /[a-zA-Z_]\k*/
+syntax match   typescriptArrowFuncArg          contained /[a-zA-Z_$]\k*/
 syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
 
 runtime syntax/basic/ambient.vim
