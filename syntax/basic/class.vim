@@ -50,5 +50,5 @@ syntax region typescriptInterfaceTypeParameter
   \ nextgroup=typescriptObjectType,typescriptInterfaceExtends
   \ contained
   \ skipwhite
-syntax match   typescriptInterfaceName             contained /\k\+\ze\_s*{/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
+syntax match   typescriptInterfaceName             contained /\k\+\ze/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
 syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceName skipwhite
