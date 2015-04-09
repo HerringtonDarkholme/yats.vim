@@ -13,8 +13,9 @@ syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
   \ contains=typescriptTypeAnnotation
   \ contained oneline
 
-syntax region typescriptAmbientFunctionDeclaration start=/function/ end=/;\|$/
-  \ contains=typescriptTypeAnnotation
+syntax region typescriptAmbientFunctionDeclaration matchgroup=typescriptFuncKeyword
+  \ start=/function/ end=/\ze;\|$/
+  \ contains=@typescriptCallSignature
   \ contained
 
 syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeyword start=/class/ end=/\ze{/
@@ -37,12 +38,13 @@ syntax keyword typescriptAmbientModifier static get set contained
 syntax match   typescriptAmbientName /\k\+/ contained
 
 syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module/ end=/\ze{/
+  \ contains=typescriptString
   \ nextgroup=typescriptAmbientModuleBlock
   \ contained
 
 
 syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
-  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptAmbientExport
+  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport
   \ contained
 
 syntax keyword typescriptAmbientExport export
