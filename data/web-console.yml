@@ -1,7 +1,7 @@
 typescriptGlobal:
     - console
 
-typescriptConsoleMethod:
+typescriptConsoleStaticMethod:
     - count
     - dir
     - error

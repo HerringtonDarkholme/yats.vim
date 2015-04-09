@@ -1,6 +1,7 @@
-syntax keyword typescriptGlobal console
-syntax keyword typescriptConsoleMethod count dir error group groupCollapsed groupEnd nextgroup=typescriptFuncCallArg
-syntax keyword typescriptConsoleMethod info log time timeEnd trace warn nextgroup=typescriptFuncCallArg
-syntax cluster props add=typescriptConsoleMethod
-if exists("did_typescript_hilink") | HiLink typescriptConsoleMethod Structure
+syntax keyword typescriptGlobal console nextgroup=typescriptGlobalconsoleDot,typescriptFuncCallArg
+syntax match   typescriptGlobalconsoleDot /\./ contained nextgroup=typescriptConsoleStaticMethod
+syntax keyword typescriptConsoleStaticMethod contained count dir error group groupCollapsed nextgroup=typescriptFuncCallArg
+syntax keyword typescriptConsoleStaticMethod contained groupEnd info log time timeEnd nextgroup=typescriptFuncCallArg
+syntax keyword typescriptConsoleStaticMethod contained trace warn nextgroup=typescriptFuncCallArg
+if exists("did_typescript_hilink") | HiLink typescriptConsoleStaticMethod Keyword
 endif
