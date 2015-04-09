@@ -91,9 +91,9 @@ runtime syntax/basic/reserved.vim
 
 runtime syntax/basic/keyword.vim
 
-syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props transparent nextgroup=@typescriptSymbols skipwhite skipempty
+syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props transparent nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty
 syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptArgumentList
-syntax match   typescriptDotNotation           /\./ nextgroup=typescriptProp,typescriptMethod
+syntax match   typescriptDotNotation           /\./ nextgroup=typescriptProp,typescriptMethod contained
 syntax match   typescriptDotStyleNotation      /\.style\./ nextgroup=typescriptDOMStyle transparent
 
 runtime syntax/yats/typescript.vim
