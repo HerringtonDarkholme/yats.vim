@@ -131,8 +131,8 @@ try {
         console.log('if exists("did_typescript_hilink") | HiLink ' +
             group + ' Keyword');
       } else {
-        console.log('if exists("did_typescript_hilink") | HiLink '
-            + group + ' Structure');
+        console.log('if exists("did_typescript_hilink") | HiLink ' +
+            group + ' Structure');
       }
       console.log('endif');
     }
