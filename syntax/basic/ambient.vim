@@ -36,14 +36,13 @@ syntax region typescriptAmbientPropertyMemberDeclaration
 syntax keyword typescriptAmbientModifier static get set contained
 syntax match   typescriptAmbientName /\k\+/ contained
 
-syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport
-  \ start=/module/ end=/\ze{/
+syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module/ end=/\ze{/
   \ nextgroup=typescriptAmbientModuleBlock
   \ contained
 
 
 syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
-  \ contains=@typescriptAmbients,typescriptAmbientExport
+  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptAmbientExport
   \ contained
 
 syntax keyword typescriptAmbientExport export
