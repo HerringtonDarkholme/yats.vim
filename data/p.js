@@ -2,7 +2,7 @@
 var yaml    = require('js-yaml');
 var fs      = require('fs');
 var camel   = require('camel-case');
-var isUpper = require('is-upper-case');
+// var isUpper = require('is-upper-case');
 
 
 // Get document, or throw exception on error
@@ -25,7 +25,10 @@ try {
 
   var globals = {};
   for (group in yml) {
-    if (/Global/.test(group) || /Cons/.test(group) || /BOMWindow(Prop|Method)/.test(group) || /BOM$/.test(group)) {
+    if (/Global/.test(group) ||
+        /Cons/.test(group) ||
+        /BOMWindow(Prop|Method)/.test(group) ||
+        /BOM$/.test(group)) {
       rules = yml[group];
       for (i in rules) {
         rule = rules[i];
@@ -48,7 +51,9 @@ try {
     contains = false;
     statics = [];
 
-    if (/Global|Cons/.test(group) || /BOMWindow(Prop|Method)/.test(group) || /BOM$/.test(group)) {
+    if (/Global|Cons/.test(group) ||
+        /BOMWindow(Prop|Method)/.test(group) ||
+        /BOM$/.test(group)) {
         contained = false;
     }
 
@@ -65,8 +70,10 @@ try {
       // if (!isUpper(rule.substr(0,1))) {
       statics = globals[rule];
       if (statics && typeof statics !== 'function' && statics.length) {
-        console.log(predef + ' ' + rule + ' nextgroup=' + group + rule + 'Dot,typescriptFuncCallArg');
-        console.log('syntax match   ' + group + rule + 'Dot /\\./ contained nextgroup=' + statics.join(','));
+        console.log(predef + ' ' + rule +
+            ' nextgroup=' + group + rule + 'Dot,typescriptFuncCallArg');
+        console.log('syntax match   ' + group + rule +
+            'Dot /\\./ contained nextgroup=' + statics.join(','));
       } else {
         if (/Style/.test(group)) {
           rule = camel(rule);
@@ -117,11 +124,15 @@ try {
     }
     if (hilink) {
       if (file === 'event') {
-        console.log('if exists("did_typescript_hilink") | HiLink ' + group + ' Title');
+        console.log('if exists("did_typescript_hilink") | HiLink ' +
+            group +
+            ' Title');
       } else if (contained) {
-        console.log('if exists("did_typescript_hilink") | HiLink ' + group + ' Keyword');
+        console.log('if exists("did_typescript_hilink") | HiLink ' +
+            group + ' Keyword');
       } else {
-        console.log('if exists("did_typescript_hilink") | HiLink ' + group + ' Structure');
+        console.log('if exists("did_typescript_hilink") | HiLink '
+            + group + ' Structure');
       }
       console.log('endif');
     }
