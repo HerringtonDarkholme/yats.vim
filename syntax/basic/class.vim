@@ -2,10 +2,10 @@
 syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
 syntax keyword typescriptClassSuper            super contained containedin=typescriptMethodBlock
 
-syntax match   typescriptClassName             contained /\v(\k|\.)+/
+syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends
   \ skipwhite
-syntax match   typescriptClassName             contained /\v(\k|\.)+\ze\s*\</
+syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*\ze\s*\</
   \ nextgroup=typescriptClassTypeParameter
   \ contained skipwhite
 
@@ -16,7 +16,22 @@ syntax region typescriptClassTypeParameter
   \ contained
   \ skipwhite
 
-syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassName skipwhite
+syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite
+
+syntax match   typescriptClassHeritage         contained /\v(\k|\.)+/
+  \ nextgroup=typescriptClassBlock,typescriptClassExtends
+  \ skipwhite
+  \ contained
+syntax match   typescriptClassHeritage         contained /\v(\k|\.)+\ze\s*\</
+  \ nextgroup=typescriptClassTypeArguments
+  \ contained skipwhite
+
+syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=@typescriptType
+  \ nextgroup=typescriptClassBlock,typescriptClassExtends
+  \ contained skipwhite
+
 syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptMethodAccessor,typescriptClassSuper,@typescriptComments
 
 syntax keyword typescriptClassStatic static nextgroup=
@@ -40,6 +55,7 @@ syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:\?\s*=/
   \ contained skipwhite
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
+syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+\ze\s*</
   \ nextgroup=typescriptInterfaceTypeParameter
   \ contained
@@ -50,5 +66,15 @@ syntax region typescriptInterfaceTypeParameter
   \ nextgroup=typescriptObjectType,typescriptInterfaceExtends
   \ contained
   \ skipwhite
-syntax match   typescriptInterfaceName             contained /\k\+\ze/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
-syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceName skipwhite
+
+syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceHeritage skipwhite
+
+syntax match typescriptInterfaceHeritage contained /\v(\k|\.)+/ nextgroup=typescriptObjectType
+syntax match typescriptInterfaceHeritage contained /\v(\k|\.)+\ze\s*\</
+  \ nextgroup=typescriptInterfaceTypeArguments
+
+syntax region typescriptInterfaceTypeArguments matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=@typescriptType
+  \ nextgroup=typescriptObjectType
+  \ contained skipwhite
