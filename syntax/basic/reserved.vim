@@ -1,6 +1,7 @@
 syntax cluster typescriptNoReserved contains=
   \ @typescriptStrings,
   \ @typescriptDocs,
+  \ @typescriptComments,
   \ shellbang,
   \ typescriptObjectLiteral,
   \ typescriptObjectLabel,
@@ -8,7 +9,9 @@ syntax cluster typescriptNoReserved contains=
   \ typescriptMethodDef,
   \ typescriptMethodName,
   \ @typescriptType,
-  \ typescriptCall
+  \ typescriptCall,
+  \ typescriptAmbientModuleBlock,
+  \ typescriptPropertySignature
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved break case catch const continue
@@ -29,4 +32,4 @@ syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientClassDecla
 syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientVariableDeclaration,@typescriptNoReserved var
 syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientModifier,@typescriptNoReserved static
 syntax keyword typescriptReserved containedin=ALLBUT,
-  \ typescriptAmbientModuleBlock,typescriptAmbientFunctionDeclaration function
+  \ @typescriptNoReserved,typescriptAmbientFunctionDeclaration function

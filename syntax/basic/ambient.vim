@@ -25,7 +25,7 @@ syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeywor
 
 syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptIndexSignature
+  \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptIndexSignature,@typescriptComments
   \ contained
 
 syntax region typescriptAmbientPropertyMemberDeclaration
@@ -44,7 +44,7 @@ syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport sta
 
 
 syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
-  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport
+  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport,@typescriptComments
   \ contained
 
 syntax keyword typescriptAmbientExport export
