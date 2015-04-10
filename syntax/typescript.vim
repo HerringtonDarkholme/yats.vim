@@ -193,6 +193,7 @@ syntax match   typescriptArrowFuncArg          contained /[a-zA-Z_$]\k*/
 syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
 
 runtime syntax/basic/ambient.vim
+runtime syntax/basic/decorator.vim
 
 if exists("did_typescript_hilink")
   HiLink typescriptReserved             Error
@@ -301,6 +302,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptTypeReference         Identifier
   HiLink typescriptAmbientModifier       Keyword
   HiLink typescriptAmbientName           Identifier
+  HiLink typescriptDecorator             Special
 
   highlight link javaScript             NONE
 
