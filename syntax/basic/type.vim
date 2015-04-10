@@ -104,7 +104,7 @@ syntax keyword typescriptTypeQuery typeof
   \ contained skipwhite skipnl
 
 syntax region typescriptPropertySignature
-  \ start=/[A-Za-z_$'"]\|\d/ end=/:\@=/
+  \ start=/[A-Za-z_$'"]\|\d/ end=/;\|$\|:\@=/
   \ contains=@typescriptCallSignature,typescriptNumber,typescriptString,typescriptOptionalMark
   \ nextgroup=typescriptTypeAnnotation
   \ containedin=typescriptTypeMember
