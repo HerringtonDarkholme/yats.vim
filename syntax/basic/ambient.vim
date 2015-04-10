@@ -25,8 +25,13 @@ syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeywor
 
 syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptIndexSignature,@typescriptComments
+  \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptAmbientModifier,typescriptIndexSignature,@typescriptComments
   \ contained
+
+syntax keyword typescriptAmbientModifier public private protected
+  \ nextgroup=typescriptAmbientPropertyMemberDeclaration
+  \ contained
+  \ skipwhite
 
 syntax region typescriptAmbientPropertyMemberDeclaration
   \ start=/\v[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
