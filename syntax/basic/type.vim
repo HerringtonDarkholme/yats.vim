@@ -2,6 +2,7 @@
 syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=typescriptTypeParameter
+  \ contained
 
 syntax match typescriptTypeParameter /[A-Za-z_$]\w*/
   \ nextgroup=typescriptConstraint
@@ -38,14 +39,15 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
   \ nextgroup=typescriptUnionOrArrayType
-  \ contained skipwhite
+  \ contained skipwhite skipempty
 
 syntax keyword typescriptPredefinedType any number boolean string void
   \ nextgroup=typescriptUnionOrArrayType
-  \ contained skipwhite
+  \ contained skipwhite skipempty
 
 syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
   \ nextgroup=typescriptTypeArguments,typescriptUnionOrArrayType
+  \ skipwhite contained skipempty
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
@@ -85,7 +87,7 @@ syntax region typescriptFuncType matchgroup=typescriptParens
   \ start=/(/ end=/)\ze\s*=>/
   \ contains=@typescriptParameterList
   \ nextgroup=typescriptFuncTypeArrow
-  \ contained skipwhite skipnl
+  \ contained skipwhite skipnl oneline
 
 syntax match typescriptFuncTypeArrow /=>/
   \ nextgroup=@typescriptType
