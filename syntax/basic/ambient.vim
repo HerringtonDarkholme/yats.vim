@@ -31,7 +31,7 @@ syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
 syntax region typescriptAmbientPropertyMemberDeclaration
   \ start=/\v[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
   \ nextgroup=typescriptTypeAnnotation
-  \ contains=typescriptAmbientName,@typescriptCallSignature
+  \ contains=typescriptAmbientCtor,typescriptAmbientName,@typescriptCallSignature
   \ contained skipwhite
 
 syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
@@ -47,6 +47,7 @@ syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAm
   \ contained skipwhite
 
 syntax match   typescriptAmbientName /\k\+/ contained
+syntax keyword typescriptAmbientCtor constructor contained
 
 syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module/ end=/\ze{/
   \ contains=typescriptString
