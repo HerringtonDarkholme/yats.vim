@@ -41,6 +41,12 @@ syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAm
   \ contained skipwhite
 
 syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
+  \ start=/\vstatic\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
+  \ nextgroup=typescriptTypeAnnotation
+  \ contains=typescriptAmbientName,@typescriptCallSignature
+  \ contained skipwhite
+
+syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
   \ start=/\v(get|set)\s+static\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
   \ nextgroup=typescriptTypeAnnotation
   \ contains=typescriptAmbientName,@typescriptCallSignature

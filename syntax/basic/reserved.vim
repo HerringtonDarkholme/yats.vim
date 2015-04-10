@@ -6,6 +6,7 @@ syntax cluster typescriptNoReserved contains=
   \ typescriptObjectLiteral,
   \ typescriptObjectLabel,
   \ typescriptClassBlock,
+  \ typescriptAmbientClassBody,
   \ typescriptMethodDef,
   \ typescriptMethodName,
   \ @typescriptType,
@@ -19,7 +20,7 @@ syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved debug
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved extends finally for if
 "import,typescriptRegexpString,typescriptPropertyName
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved in instanceof let new return super
-syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved switch throw try typeof
+syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved static switch throw try typeof
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved void while with yield
 
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved implements package protected
@@ -30,6 +31,5 @@ syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved volat
 
 syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientClassDeclaration,@typescriptNoReserved class
 syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientVariableDeclaration,@typescriptNoReserved var
-syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientModifier,@typescriptNoReserved static
 syntax keyword typescriptReserved containedin=ALLBUT,
   \ @typescriptNoReserved,typescriptAmbientFunctionDeclaration function
