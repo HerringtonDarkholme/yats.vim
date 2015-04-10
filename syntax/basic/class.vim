@@ -69,7 +69,7 @@ syntax region typescriptInterfaceTypeParameter
 
 syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceHeritage skipwhite
 
-syntax match typescriptInterfaceHeritage contained /\v(\k|\.)+/ nextgroup=typescriptObjectType
+syntax match typescriptInterfaceHeritage contained /\v(\k|\.)+/ nextgroup=typescriptObjectType skipwhite
 syntax match typescriptInterfaceHeritage contained /\v(\k|\.)+\ze\s*\</
   \ nextgroup=typescriptInterfaceTypeArguments
 
