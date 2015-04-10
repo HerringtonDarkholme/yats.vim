@@ -266,7 +266,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptAsyncFunc            Keyword
   HiLink typescriptArrowFunc            Type
   HiLink typescriptFuncName             Function
-  HiLink typescriptFuncArg              Special
+  HiLink typescriptFuncArg              PreProc
   HiLink typescriptArrowFuncArg         typescriptFuncArg
   HiLink typescriptFuncComma            Operator
 
@@ -291,9 +291,9 @@ if exists("did_typescript_hilink")
   HiLink typescriptConstructorType       Function
   HiLink typescriptTypeQuery             Keyword
   HiLink typescriptAccessibilityModifier Keyword
-  HiLink typescriptOptionalMark          Special
+  HiLink typescriptOptionalMark          PreProc
   HiLink typescriptFuncType              Special
-  HiLink typescriptCall                  Special
+  HiLink typescriptCall                  PreProc
   HiLink typescriptConstructSignature    Identifier
   HiLink typescriptPropertySignature     Statement
   HiLink typescriptAliasDeclaration      Identifier
