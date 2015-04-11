@@ -151,7 +151,7 @@ syntax keyword typescriptFuncKeyword           function nextgroup=typescriptAsyn
 syntax match   typescriptSyncFunc              contained // nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptAsyncFunc             contained /*/ nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=typescriptFuncArg skipwhite
-syntax region   typescriptFuncArg              contained start=/<\|(/ end=/\ze{\|;\|$/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite skipwhite skipempty
+syntax region   typescriptFuncArg              contained start=/<\|(/ end=/\%(:\s*\)\@<!\ze{\|;\|$/ contains=@typescriptCallSignature nextgroup=typescriptBlock skipwhite skipwhite skipempty
 syntax match   typescriptFuncComma             contained /,/
 
 
@@ -193,6 +193,7 @@ syntax match   typescriptArrowFuncArg          contained /[a-zA-Z_$]\k*/
 syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
 
 runtime syntax/basic/ambient.vim
+runtime syntax/basic/decorator.vim
 
 if exists("did_typescript_hilink")
   HiLink typescriptReserved             Error
@@ -303,6 +304,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptAmbientName           Identifier
   HiLink typescriptAmbientCtor           Keyword
   HiLink typescriptConstructor           Keyword
+  HiLink typescriptDecorator             Special
 
   highlight link javaScript             NONE
 

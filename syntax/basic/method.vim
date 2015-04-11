@@ -25,7 +25,7 @@ syntax region  typescriptMethodName            matchgroup=typescriptPropertyName
   \ nextgroup=typescriptMethodArgs
   \ skipwhite skipempty contained
 
-syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\ze{/
+syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\%(:\s*\)\@<!{/me=e-1
   \ contains=@typescriptCallSignature
   \ skipwhite
 
