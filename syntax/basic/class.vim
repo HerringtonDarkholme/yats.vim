@@ -19,7 +19,7 @@ syntax region typescriptClassTypeParameter
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite
 
 syntax match   typescriptClassHeritage         contained /\v(\k|\.)+/
-  \ nextgroup=typescriptClassBlock,typescriptClassExtends
+  \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
   \ skipwhite
   \ contained
 syntax match   typescriptClassHeritage         contained /\v(\k|\.)+\ze\s*\</
@@ -29,8 +29,10 @@ syntax match   typescriptClassHeritage         contained /\v(\k|\.)+\ze\s*\</
 syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
-  \ nextgroup=typescriptClassBlock,typescriptClassExtends
+  \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
   \ contained skipwhite
+
+syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite
 
 syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptMethodAccessor,typescriptClassSuper,@typescriptComments
 
