@@ -16,7 +16,7 @@ syntax keyword typescriptEnumKeyword const
   \ nextgroup=typescriptEnum
   \ skipwhite
 
-syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum/ end=/\ze{/
+syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
   \ nextgroup=typescriptBlock
   \ skipwhite
 
