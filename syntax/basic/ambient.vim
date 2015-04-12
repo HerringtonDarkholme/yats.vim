@@ -5,7 +5,7 @@ syntax cluster typescriptAmbients contains=
   \ typescriptAmbientVariableDeclaration,
   \ typescriptAmbientFunctionDeclaration,
   \ typescriptAmbientClassDeclaration,
-  \ typescriptEnumDeclaration,
+  \ typescriptEnumKeyword,typescriptEnum,
   \ typescriptAmbientModuleDeclaration
 
 syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
