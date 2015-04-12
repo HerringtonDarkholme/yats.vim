@@ -19,3 +19,39 @@ setlocal foldmethod=syntax
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
+
+"
+" TagBar
+"
+let g:tagbar_type_typescript = {
+    \ 'ctagstype' : 'typescript',
+    \ 'kinds'     : [
+      \ 'c:classes',
+      \ 'n:modules:1',
+      \ 'f:functions',
+      \ 'v:variables',
+      \ 'l:varlambdas',
+      \ 'm:members',
+      \ 'i:interfaces',
+      \ 'e:enums'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+      \ 'c' : 'classes',
+      \ 'f' : 'functions',
+      \ 'v' : 'variables',
+      \ 'l' : 'varlambdas',
+      \ 'm' : 'members',
+      \ 'i' : 'interfaces',
+      \ 'e' : 'enums'
+    \ },
+    \ 'scope2kind' : {
+      \ 'classes'    : 'c',
+      \ 'functions'  : 'f',
+      \ 'variables'  : 'v',
+      \ 'varlambdas' : 'l',
+      \ 'members'    : 'm',
+      \ 'interfaces' : 'i',
+      \ 'enums'      : 'e'
+    \ }
+\ }
