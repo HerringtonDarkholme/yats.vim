@@ -26,7 +26,7 @@ syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeywor
 syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
   \ start=/{/ end=/}/
   \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptAmbientModifier,typescriptIndexSignature,@typescriptComments
-  \ contained
+  \ contained fold
 
 syntax keyword typescriptAmbientModifier public private protected
   \ nextgroup=typescriptAmbientPropertyMemberDeclaration
