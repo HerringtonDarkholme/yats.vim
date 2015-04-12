@@ -159,7 +159,7 @@ runtime syntax/basic/class.vim
 runtime syntax/basic/forcomprehension.vim
 
 
-syntax region  typescriptObjectLiteral         contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptMethodDef,typescriptComputedPropertyName,@typescriptValue
+syntax region  typescriptObjectLiteral         contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptMethodDef,typescriptComputedPropertyName,@typescriptValue fold
 
 " syntax match   typescriptBraces                /[\[\]]/
 " syntax match   typescriptParens                /[()]/
