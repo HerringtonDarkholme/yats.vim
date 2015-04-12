@@ -141,7 +141,7 @@ syntax region  typescriptImportDef             start=/import/ end=/;\|$/ contain
 syntax keyword typescriptImport                contained from as import
 syntax keyword typescriptExport                export module
 
-syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript
+syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
 
 runtime syntax/basic/method.vim
 

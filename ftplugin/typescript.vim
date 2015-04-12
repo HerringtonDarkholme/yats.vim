@@ -15,5 +15,7 @@ setlocal commentstring=//\ %s
 " " and insert the comment leader when hitting <CR> or using "o".
 setlocal formatoptions-=t formatoptions+=croql
 
+setlocal foldmethod=syntax
+
 let &cpo = s:cpo_save
 unlet s:cpo_save

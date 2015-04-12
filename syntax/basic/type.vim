@@ -53,7 +53,7 @@ syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
   \ contains=@typescriptTypeMember,@typescriptComments
   \ nextgroup=typescriptUnionOrArrayType
-  \ contained skipwhite
+  \ contained skipwhite fold
 
 syntax cluster typescriptTypeMember contains=
   \ typescriptPropertySignature,

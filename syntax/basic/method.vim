@@ -33,4 +33,4 @@ syntax region  typescriptMethodBlock matchgroup=typescriptBraces
   \ start=/\([\^:]\s\*\)\=\zs{/ end=/}/
   \ contains=@htmlJavaScript
   \ containedin=typescriptClassBlock,typescriptObjectLiteral
-  \ contained
+  \ contained fold
