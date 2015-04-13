@@ -1,3 +1,17 @@
 snippet /// "import reference" b
 /// <reference path='${0: file}' />
 endsnippet
+
+snippet ctor "constructor" b
+constructor(${0}) {
+	${1: // code}
+}
+endsnippet
+
+snippet cls "class .." b
+class ${1: ClassName}${2: extends ${3: ParentClass}} {
+  ${4: constructor(${5: args}) {
+    ${6: //code...}
+  }}
+}
+endsnippet
