@@ -4,7 +4,7 @@ endsnippet
 
 snippet ctor "constructor" b
 constructor(${0}) {
-	${1: // code}
+	${1:// code}
 }
 endsnippet
 
@@ -13,6 +13,12 @@ class ${1:ClassName}${2: extends ${3:ParentClass}} {
 	${4: constructor(${5:args}) {
     ${6://code...}
   }}
+}
+endsnippet
+
+snippet itf "interface .." b
+interface ${1:InterfaceName}${2: extends ${3:Parent}} {
+	${4://code...}
 }
 endsnippet
 
@@ -63,4 +69,10 @@ snippet timeout "setTimeout function"
 setTimeout(function() {
 	${VISUAL}$0
 }${2:.bind(${3:this})}, ${1:10});
+endsnippet
+
+snippet dclm "declare module" b
+declare module ${1:name} {
+	${VISUAL}$0
+}
 endsnippet
