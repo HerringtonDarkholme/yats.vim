@@ -9,7 +9,7 @@ syntax cluster typescriptAmbients contains=
   \ typescriptAmbientModuleDeclaration
 
 syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
-  \ start=/var\|let/ end=/\ze;\|$/
+  \ start=/var\>\|let\>/ end=/\ze;\|$/
   \ contains=typescriptTypeAnnotation
   \ contained oneline
 
