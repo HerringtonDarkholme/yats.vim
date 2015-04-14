@@ -14,11 +14,11 @@ syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
   \ contained oneline
 
 syntax region typescriptAmbientFunctionDeclaration matchgroup=typescriptFuncKeyword
-  \ start=/function/ end=/\ze;\|$/
+  \ start=/function\>/ end=/\ze;\|$/
   \ contains=@typescriptCallSignature
   \ contained
 
-syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeyword start=/class/ end=/\ze{/
+syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeyword start=/class\>/ end=/\ze{/
   \ contains=typescriptClassExtends
   \ nextgroup=typescriptAmbientClassBody
   \ contained skipwhite skipnl skipempty
@@ -60,7 +60,7 @@ syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAm
 syntax match   typescriptAmbientName /\k\+/ contained
 syntax keyword typescriptAmbientCtor constructor contained
 
-syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module/ end=/\ze{/
+syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/\ze{/
   \ contains=typescriptString
   \ nextgroup=typescriptAmbientModuleBlock
   \ contained
