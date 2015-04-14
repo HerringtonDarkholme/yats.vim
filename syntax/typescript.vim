@@ -186,8 +186,10 @@ syntax region  typescriptArgumentList           contained matchgroup=typescriptP
 syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 
-syntax match   typescriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
-syntax match   typescriptArrowFuncDef          contained /[a-zA-Z_$]\k*\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
+syntax match   typescriptArrowFuncDef          contained /([^)]*)\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=@typescriptExpression skipwhite skipempty
+syntax region  typescriptArrowFuncDef          contained start=/[a-zA-Z_$]\k*\_s*=>/ end=/;\|$/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=@typescriptExpression skipwhite skipempty
+syntax match   typescriptArrowFuncDef          contained /([^)]*)\_s*=>\s*{/me=e-1 contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
+syntax match   typescriptArrowFuncDef          contained /[a-zA-Z_$]\k*\_s*=>\s*{/me=e-1 contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=typescriptBlock skipwhite skipempty
 syntax match   typescriptArrowFunc             /=>/
 syntax match   typescriptArrowFuncArg          contained /[a-zA-Z_$]\k*/
 syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
