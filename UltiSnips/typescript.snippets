@@ -1,0 +1,78 @@
+snippet /// "import reference" b
+/// <reference path='${0: file}' />
+endsnippet
+
+snippet ctor "constructor" b
+constructor(${0}) {
+	${1:// code}
+}
+endsnippet
+
+snippet cls "class .." b
+class ${1:ClassName}${2: extends ${3:ParentClass}} {
+	${4: constructor(${5:args}) {
+    ${6://code...}
+  }}
+}
+endsnippet
+
+snippet itf "interface .." b
+interface ${1:InterfaceName}${2: extends ${3:Parent}} {
+	${4://code...}
+}
+endsnippet
+
+snippet import "imports a module" b
+import $1 = require('$2')
+endsnippet
+
+snippet for "for (...) {...} (counting up)" b
+for (var ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fun "function (fun)"
+function ${1:function_name}(${2:argument}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if ___ else"
+if (${1:condition}) {
+	${2://code}
+}
+else {
+	${3://code}
+}
+endsnippet
+
+snippet cl "console.log" b
+console.log(${1:"${2:value}"});
+endsnippet
+
+snippet meth "class/object method" b
+${2:methodName}(${3:args}): ${4:void} {
+		${0://code}
+}
+endsnippet
+
+snippet fi "for prop in obj using hasOwnProperty" b
+for (${1:prop} in ${2:obj}){
+	if ($2.hasOwnProperty($1)) {
+		${VISUAL}$0
+	}
+}
+endsnippet
+
+snippet timeout "setTimeout function"
+setTimeout(function() {
+	${VISUAL}$0
+}${2:.bind(${3:this})}, ${1:10});
+endsnippet
+
+snippet dclm "declare module" b
+declare module ${1:name} {
+	${VISUAL}$0
+}
+endsnippet

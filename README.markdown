@@ -6,13 +6,12 @@ Yet Another TypeScript Syntax file for Vim, adapted from [YAJS](https://github.c
 Key differences:
 
 * Exuberant Highlighting. The most elaborate or byzatine syntax highlighting for TypeScript.
+* Bundled with snippets for UltiSnips!
+* Builtin Support for tagbar!
 * Use 'typescript' as group name's prefix, not 'typeScript' nor 'TypeScript'. Works great with [SyntaxComplete](https://github.com/vim-scripts/SyntaxComplete).
 * Inherit Web API and DOM keywords from YAJS
 * Syntax fold. Fold long code block, semantically!
 * Remove old, unused syntax definitions.
-
-Todo:
-* Add more snippets
 
 Credits
 -------
