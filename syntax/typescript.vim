@@ -171,7 +171,7 @@ syntax match   typescriptEndColons             /[;,]/
 syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
 syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 
-syntax region  typescriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\)\@<=\_s*/[^/*]"me=e-1 skip="\\\\\|\\/" end="/[gimy]\{0,2\}" oneline
+syntax region  typescriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\)\@<=\_s*/[^/*]"me=e-1 skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline
 
 syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
 syntax cluster typescriptOps                   contains=typescriptOpSymbols,typescriptLogicSymbols,typescriptOperator
