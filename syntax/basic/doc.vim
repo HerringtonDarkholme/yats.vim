@@ -61,7 +61,7 @@ syntax keyword typescriptDocTags               contained fires event nextgroup=t
 syntax match   typescriptDocEventRef           contained /\h\w*#\(\h\w*\:\)\?\h\w*/
 
 syntax match   typescriptDocNamedParamType     contained /{.\+}/ nextgroup=typescriptDocParamName skipwhite
-syntax match   typescriptDocParamName          contained /\[\?\w\+\]\?/ nextgroup=typescriptDocDesc skipwhite
+syntax match   typescriptDocParamName          contained /\[\?0-9a-zA-Z_\.]\+\]\?/ nextgroup=typescriptDocDesc skipwhite
 syntax match   typescriptDocParamType          contained /{.\+}/ nextgroup=typescriptDocDesc skipwhite
 syntax match   typescriptDocA                  contained /\%(#\|\w\|\.\|:\|\/\)\+/ nextgroup=typescriptDocAs skipwhite
 syntax match   typescriptDocAs                 contained /\s*as\s*/ nextgroup=typescriptDocB skipwhite
