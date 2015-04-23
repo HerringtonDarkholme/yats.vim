@@ -1,3 +1,4 @@
 syntax match typescriptDecorator /@\k\+/
-syntax region typescriptDecorator start=/@\k\+(/ end=/)/
+syntax region typescriptDecorator start=/@\k\+\ze(/ end=/)/
+  \ keepend
   \ contains=typescriptParenExp
