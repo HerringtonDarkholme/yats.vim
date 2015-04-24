@@ -1,4 +1,4 @@
-syntax match typescriptDecorator /@\k\+/ contains=_semantic
-syntax region typescriptDecorator start=/@\k\+\ze(/ end=/)/
+syntax match typescriptDecorator /@\([_$a-zA-Z][_$a-zA-Z0-9]*\.\)*[_$a-zA-Z][_$a-zA-Z0-9]*\>/ contains=_semantic,typescriptDotNotation
+syntax region typescriptDecorator start=/@\([_$a-zA-Z][_$a-zA-Z0-9]*\.\)*[_$a-zA-Z][_$a-zA-Z0-9]*\ze(/ end=/)/
   \ keepend
-  \ contains=typescriptParenExp
+  \ contains=_semantic,typescriptParenExp,typescriptDotNotation
