@@ -45,7 +45,7 @@ syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
 syntax keyword typescriptDefault               default
 syntax keyword typescriptStatementKeyword      with yield
-syntax keyword typescriptStatementKeyword      return nextgroup=typescriptObjectLiteral skipwhite
+syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
