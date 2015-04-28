@@ -74,15 +74,15 @@ syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\
 syntax cluster typescriptStatement             contains=typescriptBlock,typescriptVariable,@typescriptExpression,typescriptConditional,typescriptRepeat,typescriptBranch,typescriptLabel,typescriptStatementKeyword,typescriptTry,typescriptDebugger
 
 
-syntax cluster typescriptTypes                 contains=typescriptString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
+syntax cluster typescriptTypes                 contains=typescriptString,typescriptTemplate,typescriptRegexpString,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 syntax cluster typescriptValue                 contains=@typescriptTypes,@typescriptExpression,typescriptFuncKeyword,typescriptObjectLiteral,typescriptIdentifier,typescriptIdentifierName,typescriptOperator,@typescriptSymbols
 
 syntax match   typescriptObjectLabel           contained /\(^\|,\|{\)\@<=\s*\zs\k\+\_s*:/he=e-1 nextgroup=@typescriptValue,@typescriptStatement skipwhite skipempty
 " syntax match   typescriptPropertyName          contained /"[^"]\+"\s*:/he=e-1 nextgroup=@typescriptValue skipwhite skipempty
 " syntax match   typescriptPropertyName          contained /'[^']\+'\s*:/he=e-1 nextgroup=@typescriptValue skipwhite skipempty
 syntax region  typescriptPropertyName          contained start=/\(^\|,\|{\)\@<=\s*\zs\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\_s*:\|$/he=e-1 nextgroup=@typescriptValue skipwhite skipempty
-syntax region  typescriptComputedPropertyName  contained matchgroup=typescriptPropertyName start=/\(^\|,\|{\)\@<=\s*\zs\[/rs=s+1 end=/]\_s*:/he=e-1 contains=@typescriptValue nextgroup=@typescriptValue skipwhite skipempty
-syntax region  typescriptComputedProperty      contained matchgroup=typescriptProperty start=/\(^\|,\|{\)\@<=\s*\zs\[/rs=s+1 end=/]/he=e-1 contains=@typescriptValue,@typescriptSymbols nextgroup=@typescriptValue skipwhite skipempty
+syntax region  typescriptComputedPropertyName  contained matchgroup=typescriptPropertyName start=/\(^\|,\|{\)\@<=\s*\zs\[/rs=s+1 end=/]\_s*:/he=e-1 contains=@typescriptExpression nextgroup=@typescriptValue skipwhite skipempty
+syntax region  typescriptComputedProperty      contained matchgroup=typescriptProperty start=/\(^\|,\|{\)\@<=\s*\zs\[/rs=s+1 end=/]/he=e-1 contains=@typescriptExpression nextgroup=@typescriptValue skipwhite skipempty
 " Value for object, statement for label statement
 
 syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,typescriptTemplate,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
@@ -171,7 +171,7 @@ syntax match   typescriptEndColons             /[;,]/
 syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
 syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 
-syntax region  typescriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\)\@<=\_s*/[^/*]"me=e-1 skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline
+syntax region  typescriptRegexpString          start="\(^\|&\||\|=\|(\|{\|;\|:\|\[\)\@<=\_s*/[^/*]"me=e-1 skip="\\\\\|[^\\]\@<=\\/" end="/[gimy]\{0,2\}" oneline
 
 syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
 syntax cluster typescriptOps                   contains=typescriptOpSymbols,typescriptLogicSymbols,typescriptOperator
