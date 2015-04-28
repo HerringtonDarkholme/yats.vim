@@ -11,7 +11,7 @@ syntax region  typescriptComment
   \ start="/\*"  end="\*/"
   \ contains=@Spell,typescriptCommentTodo extend
 syntax cluster typescriptComments
-  \ contains=typescriptComment,typescriptLineComment
+  \ contains=typescriptDocComment,typescriptComment,typescriptLineComment
 
 syntax match   typescriptRef  +///\s*<reference\s\+.*\/>$+
   \ contains=typescriptRefD,typescriptRefS
@@ -26,7 +26,7 @@ syntax case ignore
 syntax region  typescriptDocComment            matchgroup=typescriptComment
   \ start="/\*\*"  end="\*/"
   \ contains=typescriptDocNotation,typescriptCommentTodo,@Spell
-  \ fold keepend
+  \ fold keepend contained
 syntax match   typescriptDocNotation           contained /@/ nextgroup=typescriptDocTags
 
 syntax keyword typescriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
