@@ -20,6 +20,10 @@ syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=
   \ nextgroup=typescriptBlock
   \ skipwhite
 
+syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/namespace / end=/\ze{/
+  \ nextgroup=typescriptBlock
+  \ skipwhite
+
 syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite skipempty skipnl
