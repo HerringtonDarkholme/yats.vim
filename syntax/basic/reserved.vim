@@ -16,7 +16,7 @@ syntax cluster typescriptNoReserved contains=
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved break case catch const continue
-syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved debugger default delete do else export
+syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved debugger delete do else export
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved extends finally for if
 "import,typescriptRegexpString,typescriptPropertyName
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved in instanceof let new return super
