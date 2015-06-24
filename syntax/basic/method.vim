@@ -10,7 +10,7 @@ syntax region  typescriptMethodDef  start=/\v[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{
   \ nextgroup=typescriptMethodBlock
   \ skipwhite contained
 
-syntax keyword typescriptMethodAccessor        contained get set
+syntax keyword typescriptMethodAccessor        contained get set containedin=typescriptMethodDef
 syntax keyword typescriptConstructor           contained constructor
   \ nextgroup=typescriptMethodArgs
   \ skipwhite skipempty
