@@ -99,6 +99,12 @@ syntax keyword typescriptConstructorType new
   \ nextgroup=@typescriptFunctionType
   \ contained skipwhite skipnl
 
+syntax match typescriptUserDefinedType /[a-zA-Z_$]\w*\s\+is\s\+.*\ze\($\|{\)/
+  \ contained
+  \ contains=@typescriptType,typescriptUserDefinedKeyword
+
+syntax keyword typescriptUserDefinedKeyword is contained
+
 syntax keyword typescriptTypeQuery typeof
   \ nextgroup=typescriptTypeReference
   \ contained skipwhite skipnl
@@ -124,7 +130,7 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ contained skipwhite skipnl
 
 syntax match typescriptTypeAnnotation /:/
-  \ nextgroup=@typescriptType
+  \ nextgroup=typescriptUserDefinedType,@typescriptType
   \ contained skipwhite skipnl
 
 syntax cluster typescriptParameterList contains=
