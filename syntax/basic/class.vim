@@ -1,5 +1,5 @@
 "Class
-syntax keyword typescriptAbstract              abstract nextgroup=typescriptClassKeyword skipwhite skipnl
+syntax keyword typescriptAbstract              abstract nextgroup=typescriptClassKeyword,typescriptPropertySignature skipwhite skipnl
 syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
 syntax keyword typescriptClassSuper            super contained containedin=typescriptMethodBlock
 
