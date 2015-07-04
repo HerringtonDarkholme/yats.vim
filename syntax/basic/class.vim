@@ -1,4 +1,5 @@
 "Class
+syntax keyword typescriptAbstract              abstract nextgroup=typescriptClassKeyword skipwhite skipnl
 syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
 syntax keyword typescriptClassSuper            super contained containedin=typescriptMethodBlock
 
@@ -34,7 +35,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite
 
-syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptClassSuper,typescriptDecorator,@typescriptComments fold
+syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptClassSuper,typescriptDecorator,typescriptAbstract,@typescriptComments fold
 
 syntax keyword typescriptClassStatic static nextgroup=
   \ typescriptMethodDef,
