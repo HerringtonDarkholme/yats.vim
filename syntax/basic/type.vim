@@ -68,12 +68,12 @@ syntax region typescriptTupleType matchgroup=typescriptBraces
   \ contains=@typescriptType
   \ contained skipwhite oneline
 
-syntax match typescriptUnionOrArrayType /\[\]\||/
+syntax match typescriptUnionOrArrayType /\[\]\||\|&/
   \ nextgroup=@typescriptCompoundType
   \ contains=typescriptUnion
   \ contained skipwhite
 
-syntax match typescriptUnion /|/ containedin=typescriptUnionOrArrayType
+syntax match typescriptUnion /|\|&/ containedin=typescriptUnionOrArrayType
 
 syntax cluster typescriptFunctionType contains=typescriptGenericFunc,typescriptFuncType
 syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
