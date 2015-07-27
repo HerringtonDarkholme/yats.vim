@@ -20,6 +20,20 @@ setlocal foldmethod=syntax
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
+function! TsIncludeExpr(file)
+  if (filereadable(a:file))
+    return l:file
+  else
+    let l:file2=substitute(a:file,'$','/index.ts','g')
+    return l:file2
+  endif
+endfunction
+
+set path+=./node_modules/**,node_modules/**
+set include=import\_s.\\zs[^'\"]*\\ze
+set includeexpr=TsIncludeExpr(v:fname)
+set suffixesadd=.ts
+
 "
 " TagBar
 "
