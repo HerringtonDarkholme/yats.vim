@@ -5,12 +5,12 @@ syntax region  typescriptMethodDef  start=/\v(set|get)\_s+[a-zA-Z_$]\k*\_s*(\(|\
   \ skipwhite contained
 
 syntax region  typescriptMethodDef  start=/\v[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
-  \ contains=typescriptMethodAccessor,typescriptMethodName,typescriptConstructor
+  \ contains=typescriptMethodName,typescriptConstructor
   \ containedin=typescriptClassBlock,typescriptObjectLiteral
   \ nextgroup=typescriptMethodBlock
   \ skipwhite contained
 
-syntax keyword typescriptMethodAccessor        contained get set containedin=typescriptMethodDef
+syntax keyword typescriptMethodAccessor        contained get set
 syntax keyword typescriptConstructor           contained constructor
   \ nextgroup=typescriptMethodArgs
   \ skipwhite skipempty

@@ -39,7 +39,6 @@ syntax region  typescriptClassBlock            contained matchgroup=typescriptBr
 
 syntax keyword typescriptClassStatic static nextgroup=
   \ typescriptMethodDef,
-  \ typescriptMethodAccessor,
   \ @typescriptMemberDeclaration
   \ skipwhite contained
 
