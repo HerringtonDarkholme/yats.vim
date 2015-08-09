@@ -24,7 +24,7 @@ syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved stati
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved void while with yield
 
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved implements package protected
-syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved interface private public abstract boolean
+syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved interface private public abstract
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved byte char double final float goto int
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved long native short synchronized transient
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved volatile
