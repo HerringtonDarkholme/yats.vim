@@ -1,7 +1,7 @@
 "Class
 syntax keyword typescriptAbstract              abstract nextgroup=typescriptClassKeyword,typescriptPropertySignature skipwhite skipnl
 syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName skipwhite
-syntax keyword typescriptClassSuper            super contained containedin=typescriptMethodBlock
+syntax keyword typescriptClassSuper            super
 
 syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends
