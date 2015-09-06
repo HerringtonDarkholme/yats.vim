@@ -4,6 +4,10 @@
 syntax keyword typescriptPrototype             prototype
   \ nextgroup=typescriptDotNotation
 
+syntax keyword typescriptCastKeyword           as
+  \ nextgroup=@typescriptType
+  \ skipwhite
+
 "Program Keywords
 syntax keyword typescriptIdentifier            arguments this
   \ nextgroup=typescriptDotNotation
