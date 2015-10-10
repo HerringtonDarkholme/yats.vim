@@ -248,6 +248,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptStatementKeyword     Statement
   HiLink typescriptMessage              Keyword
   HiLink typescriptOperator             Identifier
+  HiLink typescriptCastKeyword          Special
   HiLink typescriptType                 Type
   HiLink typescriptNull                 Boolean
   HiLink typescriptNumber               Number
