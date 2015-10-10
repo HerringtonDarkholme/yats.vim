@@ -41,6 +41,8 @@ let g:tagbar_type_typescript = {
     \ 'ctagstype' : 'typescript',
     \ 'kinds'     : [
       \ 'c:classes',
+      \ 'a:abstract classes',
+      \ 't:types',
       \ 'n:modules',
       \ 'f:functions',
       \ 'v:variables',
@@ -52,6 +54,8 @@ let g:tagbar_type_typescript = {
     \ 'sro'        : '.',
     \ 'kind2scope' : {
       \ 'c' : 'classes',
+      \ 'a' : 'abstract classes',
+      \ 't' : 'types',
       \ 'f' : 'functions',
       \ 'v' : 'variables',
       \ 'l' : 'varlambdas',
@@ -61,6 +65,8 @@ let g:tagbar_type_typescript = {
     \ },
     \ 'scope2kind' : {
       \ 'classes'    : 'c',
+      \ 'abstract classes'    : 'a',
+      \ 'types'      : 't',
       \ 'functions'  : 'f',
       \ 'variables'  : 'v',
       \ 'varlambdas' : 'l',
