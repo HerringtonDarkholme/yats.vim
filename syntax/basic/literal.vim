@@ -22,7 +22,7 @@ syntax region  typescriptTemplate matchgroup=typescriptTemplateTag
 "Array
 syntax region  typescriptArray matchgroup=typescriptBraces
   \ start=/\[/ end=/]/
-  \ contains=@typescriptValue,typescriptForComprehension
+  \ contains=@typescriptValue,typescriptForComprehension,@typescriptComments
   \ nextgroup=@typescriptSymbols,@typescriptComments
   \ skipwhite skipempty
 
