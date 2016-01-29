@@ -28,7 +28,7 @@ syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
   \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptAmbientModifier,typescriptIndexSignature,@typescriptComments
   \ contained fold
 
-syntax keyword typescriptAmbientModifier public private protected
+syntax keyword typescriptAmbientModifier public private protected readonly
   \ nextgroup=typescriptAmbientPropertyMemberDeclaration
   \ contained
   \ skipwhite
