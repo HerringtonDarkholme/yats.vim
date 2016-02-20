@@ -17,7 +17,7 @@ syntax keyword typescriptVariable              let var const
   \ skipwhite skipempty skipnl
 
 syntax keyword typescriptEnumKeyword const
-  \ nextgroup=typescriptEnum
+  \ nextgroup=typescriptEnum,typescriptVariableDeclaration
   \ skipwhite
 
 syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
@@ -53,7 +53,7 @@ syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
 syntax keyword typescriptDefault               default
 syntax keyword typescriptStatementKeyword      with yield
-syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite
+syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite contained containedin=typescriptBlock
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
