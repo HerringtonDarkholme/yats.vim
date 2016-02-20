@@ -61,7 +61,6 @@ syntax case match
 " lowest priority on least used feature
 syntax match   typescriptLabel                 /\v(^\s*|;)[a-zA-Z_$]\k*\_s*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptValue,@typescriptStatement skipwhite skipempty
 
-runtime syntax/basic/type.vim
 runtime syntax/basic/literal.vim
 
 syntax match typescriptOptionalMark /?/ contained
@@ -90,6 +89,7 @@ syntax cluster typescriptStrings               contains=typescriptProp,typescrip
 runtime syntax/basic/reserved.vim
 
 runtime syntax/basic/keyword.vim
+runtime syntax/basic/type.vim
 
 syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*/ contains=@props,@_semantic transparent nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty
 syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*\ze(/ contains=@props transparent nextgroup=typescriptArgumentList
