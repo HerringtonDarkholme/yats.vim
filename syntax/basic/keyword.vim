@@ -53,7 +53,7 @@ syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
 syntax keyword typescriptDefault               default
 syntax keyword typescriptStatementKeyword      with yield
-syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite contained containedin=typescriptBlock
+syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite contained containedin=typescriptBlock,typescriptMethodBlock
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally

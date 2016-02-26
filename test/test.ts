@@ -11,3 +11,8 @@ function commentInFuncParam(/*test*/ a) {
 
 const COMPILER_PROVIDERS: Array<any[]> = null
 
+class Foo {
+  bar() {
+    return this
+  }
+}
