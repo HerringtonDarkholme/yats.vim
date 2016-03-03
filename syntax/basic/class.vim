@@ -53,12 +53,12 @@ syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
   \ nextgroup=@typescriptExpression
-  \ contained skipwhite
+  \ contained skipwhite skipnl
 
-syntax region typescriptMemberVariableDeclaration start=/[A-Za-z_$]\k*:/ end=/=/
+syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:[^=]\+=/
   \ contains=typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression
-  \ contained skipwhite oneline
+  \ contained skipwhite skipnl
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite

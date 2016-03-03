@@ -24,7 +24,9 @@ b = k < 123
 
 class K<T> {
 	private a = new K<Array<number>>()
-	private b = 123
+	private b: K<Array<number>> =
+    new K<Array<number>>()
+	private c = 123
 }
 
 interface A {
