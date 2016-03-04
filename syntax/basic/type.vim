@@ -18,6 +18,12 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ nextgroup=typescriptUnionOrArrayType
   \ contained skipwhite
 
+syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ contains=@typescriptType
+  \ nextgroup=@typescriptExpression
+  \ contained skipwhite
+
 syntax cluster typescriptType contains=
   \ @typescriptCompoundType,
   \ @typescriptFunctionType,
