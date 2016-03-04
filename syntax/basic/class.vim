@@ -55,7 +55,7 @@ syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
   \ nextgroup=@typescriptExpression
   \ contained skipwhite skipnl
 
-syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:[^=]\+=/
+syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:.\+=>\@!/
   \ contains=typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression
   \ contained skipwhite skipnl

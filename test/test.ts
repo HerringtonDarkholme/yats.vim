@@ -29,6 +29,7 @@ class K<T> {
 	private c: K<Array<number>> =
     <K<Array<number>>> new K()
 	private d = 123
+  private e: () => number = 123
 }
 
 interface A {
