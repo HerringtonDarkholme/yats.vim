@@ -22,7 +22,7 @@ syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
   \ nextgroup=@typescriptExpression
-  \ contained skipwhite
+  \ contained skipwhite oneline
 
 syntax cluster typescriptType contains=
   \ @typescriptCompoundType,
