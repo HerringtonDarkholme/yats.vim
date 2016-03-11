@@ -17,6 +17,8 @@ syntax match   typescriptRef  +///\s*<reference\s\+.*\/>$+
   \ contains=typescriptRefD,typescriptRefS
 syntax match   typescriptRef  +///\s*<amd-dependency\s\+.*\/>$+
   \ contains=typescriptRefD,typescriptRefS
+syntax match   typescriptRef  +///\s*<amd-module\s\+.*\/>$+
+  \ contains=typescriptRefD,typescriptRefS
 syntax region  typescriptRefD
   \ start=+"+ skip=+\\\\\|\\"+ end=+"\|$+
 syntax region  typescriptRefS
