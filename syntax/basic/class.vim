@@ -17,7 +17,7 @@ syntax region typescriptClassTypeParameter
   \ contained
   \ skipwhite
 
-syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite
+syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax match   typescriptClassHeritage         contained /\v(\k|\.)+/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
@@ -73,7 +73,7 @@ syntax region typescriptInterfaceTypeParameter
   \ contained
   \ skipwhite
 
-syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceHeritage skipwhite
+syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceHeritage skipwhite skipnl
 
 syntax match typescriptInterfaceHeritage contained /\v(\k|\.)+/
   \ nextgroup=typescriptObjectType,typescriptInterfaceComma
