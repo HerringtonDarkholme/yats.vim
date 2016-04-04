@@ -141,7 +141,7 @@ runtime syntax/yats/event.vim
 syntax region  typescriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=typescriptASCII,@events
 
 "Import
-syntax region  typescriptImportDef             start=/import/ end=/;\|['"])\?\s*$/ contains=typescriptImport,typescriptString keepend
+syntax region  typescriptImportDef             start=/import/ end=/;\|['"])\?\s*$/ contains=typescriptImport,typescriptString,typescriptBlock keepend
 syntax keyword typescriptImport                contained from as import
 syntax keyword typescriptExport                export module
 
