@@ -23,6 +23,7 @@ var k =  new K<Array<number>>()
 var d = 33<333
 
 class K<T> {
+  private m: Map<string, Promimse<string>> = new Map<string, Promise<string>>()
 	private a = new K<Array<number>>()
 	private b: K<Array<number>> =
     new K<Array<number>>()
@@ -30,6 +31,7 @@ class K<T> {
     <K<Array<number>>> new K()
 	private d = 123
   private e: () => number = 123
+
 }
 
 interface A {

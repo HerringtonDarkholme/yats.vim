@@ -134,6 +134,8 @@ runtime syntax/yats/dom-document.vim
 runtime syntax/yats/dom-event.vim
 runtime syntax/yats/dom-storage.vim
 runtime syntax/yats/css.vim
+" patch
+runtime syntax/basic/patch.vim
 
 let typescript_props = 1
 
