@@ -36,3 +36,5 @@ class K<T> {
 
 interface A {
 }
+
+var a = [/\/\//, 123]
