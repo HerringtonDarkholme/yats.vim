@@ -30,7 +30,7 @@ syntax case ignore
 syntax region  typescriptDocComment            matchgroup=typescriptComment
   \ start="/\*\*"  end="\*/"
   \ contains=typescriptDocNotation,typescriptCommentTodo,@Spell
-  \ fold keepend contained
+  \ fold keepend
 syntax match   typescriptDocNotation           contained /@/ nextgroup=typescriptDocTags
 
 syntax keyword typescriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
