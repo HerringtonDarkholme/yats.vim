@@ -131,7 +131,7 @@ syntax region typescriptGenericCall matchgroup=typescriptTypeBrackets
   \ contained skipwhite skipnl
 syntax region typescriptCall matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=typescriptDecorator,@typescriptParameterList
+  \ contains=typescriptDecorator,@typescriptParameterList,@typescriptComments
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite skipnl
 
