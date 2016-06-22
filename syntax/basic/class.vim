@@ -5,7 +5,7 @@ syntax keyword typescriptClassSuper            super
 
 syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends
-  \ skipwhite
+  \ skipwhite skipnl
 syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*\ze\s*\</
   \ nextgroup=typescriptClassTypeParameter
   \ contained skipwhite
@@ -15,13 +15,13 @@ syntax region typescriptClassTypeParameter
   \ contains=typescriptTypeParameter
   \ nextgroup=typescriptClassBlock,typescriptClassExtends
   \ contained
-  \ skipwhite
+  \ skipwhite skipnl
 
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax match   typescriptClassHeritage         contained /\v(\k|\.)+/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
-  \ skipwhite
+  \ skipwhite skipnl
   \ contained
 syntax match   typescriptClassHeritage         contained /\v(\k|\.)+\ze\s*\</
   \ nextgroup=typescriptClassTypeArguments
@@ -31,7 +31,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
-  \ contained skipwhite
+  \ contained skipwhite skipnl
 
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite
 

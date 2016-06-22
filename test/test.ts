@@ -38,3 +38,8 @@ interface A {
 }
 
 var a = [/\/\//, 123]
+
+class A extends B implements C
+{
+	private a = 123
+}
