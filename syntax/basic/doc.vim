@@ -34,7 +34,7 @@ syntax region  typescriptDocComment            matchgroup=typescriptComment
 syntax match   typescriptDocNotation           contained /@/ nextgroup=typescriptDocTags
 
 syntax keyword typescriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
-syntax keyword typescriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
+syntax keyword typescriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct internal
 syntax keyword typescriptDocTags               contained example global
 
 " syntax keyword typescriptDocTags               contained ngdoc nextgroup=typescriptDocNGDirective
