@@ -33,7 +33,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
   \ contained skipwhite
 
-syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite
+syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptClassSuper,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments fold
 
@@ -88,4 +88,4 @@ syntax region typescriptInterfaceTypeArguments matchgroup=typescriptTypeBrackets
   \ nextgroup=typescriptObjectType,typescriptInterfaceComma
   \ contained skipwhite
 
-syntax match typescriptInterfaceComma /,/ contained nextgroup=typescriptInterfaceHeritage skipwhite
+syntax match typescriptInterfaceComma /,/ contained nextgroup=typescriptInterfaceHeritage skipwhite skipnl
