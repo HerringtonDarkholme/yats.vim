@@ -19,8 +19,9 @@ syntax region typescriptClassTypeParameter
 
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite skipnl
 
-syntax match   typescriptClassHeritage         contained /\v(\k|\.)+/
+syntax match   typescriptClassHeritage         contained /\v(\k|\.|\(|\))+/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
+  \ contains=typescriptExpression
   \ skipwhite skipnl
   \ contained
 syntax match   typescriptClassHeritage         contained /\v(\k|\.)+\ze\s*\</
