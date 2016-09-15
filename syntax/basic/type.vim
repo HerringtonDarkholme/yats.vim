@@ -4,7 +4,7 @@ syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
   \ contains=typescriptTypeParameter
   \ contained
 
-syntax match typescriptTypeParameter /[A-Za-z_$]\+/
+syntax match typescriptTypeParameter /[A-Za-z_$]\w*/
   \ nextgroup=typescriptConstraint
   \ contained skipwhite skipnl
 
@@ -51,7 +51,7 @@ syntax keyword typescriptPredefinedType any number boolean string void
   \ nextgroup=typescriptUnionOrArrayType
   \ contained skipwhite skipempty
 
-syntax match typescriptTypeReference /[A-Za-z_$]\+\(\.[A-Za-z_$]\w*\)*/
+syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
   \ nextgroup=typescriptTypeArguments,typescriptUnionOrArrayType
   \ skipwhite contained skipempty
 
