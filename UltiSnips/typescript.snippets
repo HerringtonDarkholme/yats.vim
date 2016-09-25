@@ -38,6 +38,18 @@ function ${1:function_name}(${2:argument}) {
 }
 endsnippet
 
+snippet fn "function literal (fn)"
+function (${1:argument}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet af "arrow function (af)"
+(${1:argument}) => {
+	${VISUAL}$0
+}
+endsnippet
+
 snippet ife "if ___ else"
 if (${1:condition}) {
 	${2://code}
