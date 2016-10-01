@@ -39,7 +39,8 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptTypeReference,
   \ typescriptObjectType,
   \ typescriptTupleType,
-  \ typescriptTypeQuery
+  \ typescriptTypeQuery,
+  \ typescriptString
 
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
