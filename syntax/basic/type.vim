@@ -112,7 +112,7 @@ syntax match typescriptUserDefinedType /[a-zA-Z_$]\w*\s\+is\s\+.*\ze\($\|{\)/
 
 syntax keyword typescriptUserDefinedKeyword is contained
 
-syntax keyword typescriptTypeQuery typeof
+syntax keyword typescriptTypeQuery typeof keyof partial
   \ nextgroup=typescriptTypeReference
   \ contained skipwhite skipnl
 

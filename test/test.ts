@@ -32,6 +32,14 @@ class K<T> {
 	private d = 123
   private e: () => number = 123
 
+  method() {
+      var a = this.e!
+      var b
+  }
+
+}
+
+function prop<T, K extends keyof T>(t: T, k: K): T[K] {
 }
 
 interface A {
@@ -43,3 +51,4 @@ class A extends B implements C
 {
 	private a = 123
 }
+
