@@ -305,6 +305,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptAccessibilityModifier Keyword
   HiLink typescriptOptionalMark          PreProc
   HiLink typescriptFuncType              Special
+  HiLink typescriptMappedIn              Special
   HiLink typescriptCall                  PreProc
   HiLink typescriptConstructSignature    Identifier
   HiLink typescriptPropertySignature     Statement

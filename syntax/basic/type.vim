@@ -112,7 +112,7 @@ syntax match typescriptUserDefinedType /[a-zA-Z_$]\w*\s\+is\s\+.*\ze\($\|{\)/
 
 syntax keyword typescriptUserDefinedKeyword is contained
 
-syntax keyword typescriptTypeQuery typeof keyof partial
+syntax keyword typescriptTypeQuery typeof keyof
   \ nextgroup=typescriptTypeReference
   \ contained skipwhite skipnl
 
@@ -136,7 +136,7 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite skipnl
 
-syntax match typescriptTypeAnnotation /:/
+syntax match typescriptTypeAnnotation /?\?:/
   \ nextgroup=typescriptUserDefinedType,@typescriptType
   \ contained skipwhite skipnl
 
@@ -160,9 +160,13 @@ syntax keyword typescriptConstructSignature new
 
 syntax region typescriptIndexSignature matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
-  \ contains=typescriptTypeAnnotation
+  \ contains=typescriptTypeAnnotation,typescriptMappedIn
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite oneline
+
+syntax keyword typescriptMappedIn in
+  \ nextgroup=@typescriptType
+  \ contained skipwhite skipnl skipempty
 
 syntax keyword typescriptAliasKeyword type
   \ nextgroup=typescriptAliasDeclaration
