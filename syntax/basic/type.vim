@@ -180,5 +180,6 @@ syntax keyword typescriptAliasKeyword type
 syntax region typescriptAliasDeclaration matchgroup=typescriptOpSymbols
   \ start=/ / end=/=/
   \ nextgroup=@typescriptType
+  \ contains=typescriptConstraint
   \ contained skipwhite skipnl skipempty
 
