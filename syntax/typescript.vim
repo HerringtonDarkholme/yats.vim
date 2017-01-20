@@ -65,6 +65,7 @@ runtime syntax/basic/literal.vim
 
 syntax match typescriptOptionalMark /?/ contained
 syntax match typescriptRestOrSpread /\.\.\./ contained
+syntax match typescriptRestOrSpread /\.\.\./ contained containedin=typescriptObjectLiteral nextgroup=@typescriptExpression
 
 syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptArgumentList,typescriptComputedProperty contains=@_semantic skipnl skipwhite
 syntax region   typescriptIdentifierName        start=/\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*</ end=/>\ze(/ nextgroup=typescriptDotNotation,typescriptArgumentList,typescriptComputedProperty contains=@_semantic,typescriptTypeArguments oneline skipnl skipwhite
