@@ -117,11 +117,16 @@ syntax keyword typescriptTypeQuery typeof keyof
   \ contained skipwhite skipnl
 
 syntax region typescriptPropertySignature
-  \ start=/[A-Za-z_$'"]\|\d/ end=/;\|$\|:\@=/
-  \ contains=@typescriptCallSignature,typescriptNumber,typescriptString,typescriptOptionalMark
+  \ start=/[A-Za-z_$'"]\|\d/ end=/ \|,\|;\|$\|:\@=/
+  \ contains=typescriptString,typescriptObjectLabel,typescriptOptionalMark
   \ nextgroup=typescriptTypeAnnotation
   \ containedin=typescriptTypeMember
-  \ contained skipwhite
+  \ contained skipwhite oneline
+
+syntax region typescriptMethodSignature start=/[A-Za-z_$]\w*/ end=/<\@=\|(\@=/
+  \ nextgroup=@typescriptCallSignature
+  \ containedin=typescriptTypeMember
+  \ contained skipwhite oneline
 
 syntax cluster typescriptCallSignature contains=typescriptGenericCall,typescriptCall
 syntax region typescriptGenericCall matchgroup=typescriptTypeBrackets
