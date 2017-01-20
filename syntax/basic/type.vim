@@ -48,7 +48,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ nextgroup=typescriptUnionOrArrayType
   \ contained skipwhite skipempty
 
-syntax keyword typescriptPredefinedType any number boolean string void
+syntax keyword typescriptPredefinedType any number boolean string void never undefined null object
   \ nextgroup=typescriptUnionOrArrayType
   \ contained skipwhite skipempty
 
