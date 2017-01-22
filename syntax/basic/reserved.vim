@@ -9,6 +9,7 @@ syntax cluster typescriptNoReserved contains=
   \ typescriptAmbientClassBody,
   \ typescriptMethodDef,
   \ typescriptMethodName,
+  \ typescriptMethodSignature,
   \ @typescriptType,
   \ typescriptCall,
   \ typescriptAmbientModuleBlock,
