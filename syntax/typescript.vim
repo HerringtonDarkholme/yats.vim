@@ -312,6 +312,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptCall                  PreProc
   HiLink typescriptConstructSignature    Identifier
   HiLink typescriptPropertySignature     Statement
+  HiLink typescriptMethodSignature       Statement
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          Keyword
   HiLink typescriptUserDefinedKeyword    Keyword

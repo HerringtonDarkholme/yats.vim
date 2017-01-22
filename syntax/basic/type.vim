@@ -118,7 +118,7 @@ syntax keyword typescriptTypeQuery typeof keyof
 
 syntax region typescriptPropertySignature
   \ start=/[A-Za-z_$'"]\|\d/ end=/ \|,\|;\|$\|:\@=/
-  \ contains=typescriptString,typescriptObjectLabel,typescriptOptionalMark
+  \ contains=typescriptString,typescriptOptionalMark
   \ nextgroup=typescriptTypeAnnotation
   \ containedin=typescriptTypeMember
   \ contained skipwhite oneline
