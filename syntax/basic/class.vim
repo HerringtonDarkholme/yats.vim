@@ -53,6 +53,7 @@ syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
   \ contained
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
+  \ contains=typescriptOpSymbols
   \ nextgroup=@typescriptExpression
   \ contained skipwhite skipnl
 
