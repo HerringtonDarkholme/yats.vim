@@ -60,7 +60,7 @@ syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAm
 syntax match   typescriptAmbientName /\k\+/ contained
 syntax keyword typescriptAmbientCtor constructor contained
 
-syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/\ze{/
+syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/\zs{/
   \ contains=typescriptString
   \ nextgroup=typescriptAmbientModuleBlock
   \ contained
