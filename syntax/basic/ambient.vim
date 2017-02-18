@@ -67,7 +67,7 @@ syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport sta
 
 
 syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
-  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport,@typescriptComments
+  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport,@typescriptComments,typescriptAliasKeyword
   \ contained fold
 
 syntax keyword typescriptAmbientExport export
