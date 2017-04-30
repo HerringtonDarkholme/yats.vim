@@ -51,7 +51,7 @@ syntax keyword typescriptConditionalElse       else
 syntax keyword typescriptRepeat                do while for nextgroup=typescriptLoopParen skipwhite skipempty
 syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
-syntax keyword typescriptDefault               default
+syntax keyword typescriptDefault               default nextgroup=@typescriptExpression skipwhite oneline
 syntax keyword typescriptStatementKeyword      with yield
 syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite contained containedin=typescriptBlock,typescriptMethodBlock
 

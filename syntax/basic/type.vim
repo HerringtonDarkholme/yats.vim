@@ -19,7 +19,7 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ contained skipwhite
 
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
-  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ start=/< \@!/ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
   \ nextgroup=@typescriptExpression
   \ contained skipwhite oneline

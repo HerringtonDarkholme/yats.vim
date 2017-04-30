@@ -50,5 +50,11 @@ var a = [/\/\//, 123]
 class A extends B implements C
 {
 	private a = 123
+    b
 }
 
+
+
+if (a < (<number>b)) {
+    a
+}
