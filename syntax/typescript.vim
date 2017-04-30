@@ -180,7 +180,6 @@ syntax cluster typescriptSymbols               contains=typescriptOpSymbols,type
 
 " From vim runtime
 " <https://github.com/vim/vim/blob/master/runtime/syntax/javascript.vim#L48>
-syntax region  typescriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gimuy]\{0,5\}\s*$+ end=+/[gimuy]\{0,5\}\s*[;.,)\]}]+me=e-1 oneline
 
 syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
 syntax cluster typescriptOps                   contains=typescriptOpSymbols,typescriptLogicSymbols,typescriptOperator
