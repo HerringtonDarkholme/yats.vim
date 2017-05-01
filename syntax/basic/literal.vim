@@ -32,10 +32,3 @@ syntax match typescriptNumber /\<0[oO][0-7]\+\>/       nextgroup=@typescriptSymb
 syntax match typescriptNumber /\<0[xX][0-9a-fA-F]\+\>/ nextgroup=@typescriptSymbols skipwhite skipempty
 syntax match typescriptNumber /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
   \ nextgroup=@typescriptSymbols skipwhite skipempty
-
-
-syntax region  typescriptRegexpString
-  \ start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+
-  \ end=+/[gimuy]\{0,5\}\s*$+ end=+/[gimuy]\{0,5\}\s*[;.,)\]}]+me=e-1
-  \ nextgroup=typescriptDotNotation
-  \ oneline
