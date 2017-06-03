@@ -46,13 +46,15 @@ syntax keyword typescriptClassStatic static nextgroup=
 syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,
   \ typescriptAccessibilityModifier,
-  \ typescriptMemberVariableDeclaration
+  \ typescriptMemberVariableDeclaration,
+  \ typescriptEndColons
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
-  \ contains=typescriptTypeAnnotation
+  \ contains=typescriptTypeAnnotation,typescriptEndColons
   \ contained
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
+  \ contains=typescriptOpSymbols
   \ nextgroup=@typescriptExpression
   \ contained skipwhite skipnl
 
