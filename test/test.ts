@@ -58,3 +58,5 @@ class A extends B implements C
 if (a < (<number>b)) {
     a
 }
+
+var a = 123

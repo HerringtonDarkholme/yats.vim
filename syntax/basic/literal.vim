@@ -27,8 +27,8 @@ syntax region  typescriptArray matchgroup=typescriptBraces
   \ skipwhite skipempty
 
 " Number
-syntax match typescriptNumber /\<0[bB][01]\+\>/        nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match typescriptNumber /\<0[oO][0-7]\+\>/       nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match typescriptNumber /\<0[xX][0-9a-fA-F]\+\>/ nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match typescriptNumber /[+-]\=\%(\d\+\.\d\+\|\d\+\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
+syntax match typescriptNumber /\<0[bB][01][01_]*\>/        nextgroup=@typescriptSymbols skipwhite skipempty
+syntax match typescriptNumber /\<0[oO][0-7][0-7_]*\>/       nextgroup=@typescriptSymbols skipwhite skipempty
+syntax match typescriptNumber /\<0[xX][0-9a-fA-F][0-9a-fA-F_]*\>/ nextgroup=@typescriptSymbols skipwhite skipempty
+syntax match typescriptNumber /[+-]\=\%(\d[0-9_]*\.\d[0-9_]*\|\d[0-9_]*\|\.\d[0-9]*\)\%([eE][+-]\=\d[0-9]*\)\=\>/
   \ nextgroup=@typescriptSymbols skipwhite skipempty
