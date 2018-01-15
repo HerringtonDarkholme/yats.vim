@@ -55,8 +55,13 @@ class A extends B implements C
 
 
 
-if (a < (<number>b)) {
+if (a < (<number>b))
     a
 }
 
 var a = 123
+
+abstract classinterface Comp {
+    abstract up(): Promimse<void>
+    abstract down(): Promimse<void>
+}
