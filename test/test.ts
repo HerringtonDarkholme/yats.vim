@@ -65,3 +65,8 @@ abstract classinterface Comp {
     abstract up(): Promimse<void>
     abstract down(): Promimse<void>
 }
+
+class MyClass {
+    noed // ewewe
+    a = '3' // ewew
+}

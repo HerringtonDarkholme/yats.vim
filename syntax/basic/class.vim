@@ -48,9 +48,9 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptAccessibilityModifier,
   \ typescriptMemberVariableDeclaration
 
-syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*:.*\($\|;\)/
-  \ contains=typescriptTypeAnnotation
-  \ contained
+syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*\ze:/
+  \ nextgroup=typescriptTypeAnnotation
+  \ contained skipwhite
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
   \ nextgroup=@typescriptExpression
