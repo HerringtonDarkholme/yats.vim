@@ -75,3 +75,16 @@ filter((test
 ) => {
     const name = 33
 })
+
+class A {
+    test?: string
+    readonly emails?: Array<string>
+    readonly photos?: Array<string>
+    readonly photos!: Array<string>
+    method?(): string
+
+    abstract test()
+
+    constructor() {
+    }
+}
