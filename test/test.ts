@@ -70,3 +70,7 @@ class MyClass {
     noed // ewewe
     a = '3' // ewew
 }
+
+filter((test): string => {
+    const name = 33
+})
