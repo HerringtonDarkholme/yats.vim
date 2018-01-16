@@ -71,6 +71,7 @@ class MyClass {
     a = '3' // ewew
 }
 
-filter((test): string => {
+filter((test
+) => {
     const name = 33
 })
