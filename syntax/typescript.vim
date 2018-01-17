@@ -11,28 +11,16 @@
 
 
 if !exists("main_syntax")
-  if version < 600
-    syntax clear
-  elseif exists("b:current_syntax")
+  if exists("b:current_syntax")
     finish
   endif
   let main_syntax = 'typescript'
 endif
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_typescript_syn_inits")
-  let did_typescript_hilink = 1
-  if version < 508
-    let did_typescript_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
-else
-  finish
-endif
+let did_typescript_hilink = 1
+command -nargs=+ HiLink hi def link <args>
 
 "Dollar sign is permitted anywhere in an identifier
 setlocal iskeyword-=$
@@ -323,4 +311,3 @@ let b:current_syntax = "typescript"
 if main_syntax == 'typescript'
   unlet main_syntax
 endif
-
