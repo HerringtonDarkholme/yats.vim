@@ -33,7 +33,7 @@ syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ contained skipwhite skipempty skipnl
 
 syntax keyword typescriptOperator              delete new instanceof typeof void in
-  \ nextgroup=@typescriptValue,@typescriptTypes
+  \ nextgroup=@typescriptValue,@typescriptPrimitive
   \ skipwhite skipempty
 syntax keyword typescriptForOperator           contained in of
 syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty
@@ -51,7 +51,7 @@ syntax keyword typescriptConditionalElse       else
 syntax keyword typescriptRepeat                do while for nextgroup=typescriptLoopParen skipwhite skipempty
 syntax keyword typescriptRepeat                for nextgroup=typescriptLoopParen,typescriptAsyncFor skipwhite skipempty
 syntax keyword typescriptBranch                break continue
-syntax keyword typescriptCase                  case nextgroup=@typescriptTypes skipwhite
+syntax keyword typescriptCase                  case nextgroup=@typescriptPrimitive skipwhite
 syntax keyword typescriptDefault               default nextgroup=@typescriptExpression,typescriptClassKeyword skipwhite oneline
 syntax keyword typescriptStatementKeyword      with yield
 syntax keyword typescriptStatementKeyword      return nextgroup=@typescriptValue skipwhite contained containedin=typescriptBlock,typescriptMethodBlock
