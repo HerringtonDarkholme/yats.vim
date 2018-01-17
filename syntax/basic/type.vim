@@ -133,7 +133,6 @@ syntax region typescriptGenericCall matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=typescriptTypeParameter
   \ nextgroup=typescriptCall
-  \ containedin=typescriptCallSignature
   \ contained skipwhite skipnl
 syntax region typescriptCall matchgroup=typescriptParens
   \ start=/(/ end=/)/
