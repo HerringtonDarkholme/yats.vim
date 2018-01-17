@@ -164,7 +164,7 @@ syntax keyword typescriptConstructSignature new
 
 syntax region typescriptIndexSignature matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
-  \ contains=typescriptTypeAnnotation,typescriptMappedIn
+  \ contains=typescriptTypeAnnotation,typescriptMappedIn,typescriptString
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite oneline
 
