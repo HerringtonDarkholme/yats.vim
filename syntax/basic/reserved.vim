@@ -1,3 +1,5 @@
+syntax cluster typescriptStrings               contains=typescriptProp,typescriptString,typescriptTemplate,@typescriptComments,typescriptDocComment,typescriptRegexpString,typescriptPropertyName
+
 syntax cluster typescriptNoReserved contains=
   \ @typescriptStrings,
   \ @typescriptDocs,
