@@ -61,9 +61,10 @@ if (a < (<number>b))
 
 var a = 123
 
-abstract classinterface Comp {
-    abstract up(): Promimse<void>
-    abstract down(): Promimse<void>
+abstract class Comp {
+    context: any;
+    abstract up(db: IBaseProtocol<any>): Promimse<void>;
+    abstract down(db: IBaseProtocol<any>): Promimse<void>;
 }
 
 class MyClass {
