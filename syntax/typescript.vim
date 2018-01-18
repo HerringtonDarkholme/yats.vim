@@ -31,9 +31,6 @@ endif
 
 syntax sync fromstart
 
-" load doc first because they are case insensitive
-runtime syntax/basic/doc.vim
-
 if main_syntax == "typescript"
   syntax sync clear
   syntax sync ccomment typescriptComment minlines=200
@@ -67,11 +64,9 @@ syntax region  typescriptComputedPropertyName  contained matchgroup=typescriptPr
 syntax region  typescriptComputedProperty      contained matchgroup=typescriptProperty start=/\(^\|,\|{\)\@<=\s*\zs\[/rs=s+1 end=/]/he=e-1 contains=@typescriptExpression nextgroup=@typescriptValue skipwhite skipempty
 " Value for object, statement for label statement
 
-syntax match   typescriptOpSymbols             /[^+\-*/%\^=!<>&|?:]\@<=\(<\|>\|<=\|>=\|==\|!=\|===\|!==\|+\|*\|%\|++\|--\|<<\|>>\|>>>\|&\||\|^\|!\|\~\|&&\|||\|?\|=\|+=\|-=\|*=\|%=\|<<=\|>>=\|>>>=\|&=\||=\|^=\|\/\|\/=\)\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@typescriptExpression skipwhite skipempty
-syntax match   typescriptOpSymbols             /[^+\-*/%\^=!<>&|?:]\@<=\(++\|--\)$/
-syntax match   typescriptOpSymbols             /[^+\-*/%\^=!<>&|?:]\@<=\(:\)\ze\_[^+\-*/%\^=!<>&|?:]/ nextgroup=@typescriptStatement,typescriptCase skipwhite skipempty
+runtime syntax/basic/symbols.vim
+runtime syntax/basic/doc.vim
 runtime syntax/basic/reserved.vim
-
 runtime syntax/basic/keyword.vim
 runtime syntax/basic/type.vim
 
