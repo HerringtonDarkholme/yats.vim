@@ -52,8 +52,6 @@ syntax region   typescriptIdentifierName        start=/\<[^=<>!?+\-*\/%|&,;:. ~@
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
 
 syntax cluster typescriptStatement             contains=typescriptBlock,typescriptVariable,@typescriptExpression,typescriptConditional,typescriptRepeat,typescriptBranch,typescriptLabel,typescriptStatementKeyword,typescriptTry,typescriptDebugger
-
-
 syntax cluster typescriptPrimitive                 contains=typescriptString,typescriptTemplate,typescriptRegexpString,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 syntax cluster typescriptValue                 contains=@typescriptPrimitive,@typescriptExpression,typescriptFuncKeyword,typescriptObjectLiteral,typescriptIdentifier,typescriptIdentifierName,typescriptOperator,@typescriptSymbols
 
@@ -145,8 +143,6 @@ runtime syntax/basic/forcomprehension.vim
 syntax region  typescriptObjectLiteral         contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptMethodDef,typescriptComputedPropertyName,@typescriptValue fold
 
 syntax match   typescriptEndColons             /[;,]/
-syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
-syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
 
 " From vim runtime
 " <https://github.com/vim/vim/blob/master/runtime/syntax/javascript.vim#L48>

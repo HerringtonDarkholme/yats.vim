@@ -25,3 +25,6 @@ syntax match   typescriptOpSymbols /-\(-\|=\)\?/ nextgroup=typescriptRegexpStrin
 
 " exponentiation operator
 syntax match typescriptOpSymbol contained /\(**\|**=\)/ " 2: **, **=
+
+syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
+syntax cluster typescriptSymbols               contains=typescriptOpSymbols,typescriptLogicSymbols
