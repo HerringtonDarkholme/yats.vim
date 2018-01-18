@@ -31,13 +31,6 @@ endif
 
 syntax sync fromstart
 
-if main_syntax == "typescript"
-  syntax sync clear
-  syntax sync ccomment typescriptComment minlines=200
-endif
-
-syntax case match
-
 " lowest priority on least used feature
 syntax match   typescriptLabel                 /\v(^\s*|;)[a-zA-Z_$]\k*\_s*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement skipwhite skipempty
 

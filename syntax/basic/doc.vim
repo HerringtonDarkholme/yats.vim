@@ -76,3 +76,10 @@ syntax match   typescriptDocRef                contained /\%(#\|\w\|\.\|:\|\/\)\
 syntax region  typescriptDocLinkTag            contained matchgroup=typescriptDocLinkTag start=/{/ end=/}/ contains=typescriptDocTags
 
 syntax cluster typescriptDocs                  contains=typescriptDocParamType,typescriptDocNamedParamType,typescriptDocParam
+
+if main_syntax == "typescript"
+  syntax sync clear
+  syntax sync ccomment typescriptComment minlines=200
+endif
+
+syntax case match
