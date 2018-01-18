@@ -1,4 +1,6 @@
 " Types
+syntax match typescriptOptionalMark /?/ contained
+
 syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
   \ contains=typescriptTypeParameter

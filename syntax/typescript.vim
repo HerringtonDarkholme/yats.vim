@@ -46,7 +46,6 @@ syntax match   typescriptLabel                 /\v(^\s*|;)[a-zA-Z_$]\k*\_s*:/he=
 
 runtime syntax/basic/literal.vim
 
-syntax match typescriptOptionalMark /?/ contained
 syntax match typescriptRestOrSpread /\.\.\./ contained
 syntax match typescriptObjectSpread /\.\.\./ contained containedin=typescriptObjectLiteral nextgroup=@typescriptExpression
 
