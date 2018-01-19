@@ -34,7 +34,8 @@ class K<T> {
 
   method() {
       var a = this.e!
-      var b
+      var a = super
+      return super
   }
 
 }

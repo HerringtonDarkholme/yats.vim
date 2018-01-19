@@ -1,13 +1,12 @@
 syntax match   typescriptOpSymbols             /[+\-*/%\^~=<>&|?]\+/
   \ contains=typescriptOpSymbol,typescriptInvalidOp
-  \ nextgroup=@typescriptComments,@typescriptExpression
   \ skipwhite skipempty
 
 syntax match   typescriptInvalidOp contained /[+\-*/%\^~=!<>&|?:]\+/
 
 syntax match   typescriptOpSymbol  contained /\(=\|?\)/
-  \ nextgroup=@typescriptExpression
   \ skipwhite skipempty
+
 syntax match   typescriptOpSymbol  contained /===\?/ " 2: ==, ===
 syntax match   typescriptOpSymbol  contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ " 6: >>>=, >>>, >>=, >>, >=, >
 syntax match   typescriptOpSymbol  contained /\(<<=\|<<\|<=\|<\)/ " 4: <<=, <<, <=, <
