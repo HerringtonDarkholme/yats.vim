@@ -1,3 +1,8 @@
+"Import
+" syntax region  typescriptImportDef             start=/\<import\>/ end=/;\|['"])\?\s*$/ contains=typescriptImport,typescriptString,typescriptBlock keepend
+syntax keyword typescriptImport                from as import
+syntax keyword typescriptExport                export module
+
 "this
 
 "JavaScript Prototype
