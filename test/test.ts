@@ -78,6 +78,9 @@ filter((test
     const name = 33
 })
 
+process.stdout
+function test({a = process.stdout})
+
 class A {
     test?: string
     readonly emails?: Array<string>

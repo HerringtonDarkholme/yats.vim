@@ -11,10 +11,17 @@ Given typescript (Export from):
 Execute:
   AssertEqual 'typescriptImport', SyntaxAt(1, 23)
 
-Given typescript (Export from):
+Given typescript (interface property):
   export interface Animation {
     name: string;
   }
 Execute:
   AssertEqual 'typescriptPropertySignature', SyntaxAt(2, 3)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 9)
+
+Given typescript (function default param):
+  function test({a = test.eee}) {}
+Execute:
+  AssertEqual 'typescriptCall', SyntaxAt(1, 16)
+  AssertEqual 'typescriptProp', SyntaxAt(1, 25)
+
