@@ -5,3 +5,8 @@ Given typescript (Comment in interface):
 
 Execute:
   AssertEqual 'typescriptComment', SyntaxAt(2, 3)
+
+Given typescript (Export from):
+  export {ChangeDector} from './change_detection';
+Execute:
+  AssertEqual 'typescriptImport', SyntaxAt(1, 23)
