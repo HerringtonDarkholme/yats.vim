@@ -32,7 +32,7 @@ endif
 syntax sync fromstart
 
 " lowest priority on least used feature
-syntax match   typescriptLabel                /\v(^\s*|;)[a-zA-Z_$]\k*\_s*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement containedin=ALLBUT,typescriptObjectLiteral skipwhite skipempty
+syntax match   typescriptLabel                /\v(^\s*|;)[a-zA-Z_$]\k*\_s*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement containedin=ALLBUT,typescriptObjectLiteral,typescriptObjectType skipwhite skipempty
 
 runtime syntax/basic/literal.vim
 

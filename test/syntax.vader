@@ -10,3 +10,11 @@ Given typescript (Export from):
   export {ChangeDector} from './change_detection';
 Execute:
   AssertEqual 'typescriptImport', SyntaxAt(1, 23)
+
+Given typescript (Export from):
+  export interface Animation {
+    name: string;
+  }
+Execute:
+  AssertEqual 'typescriptPropertySignature', SyntaxAt(2, 3)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 9)
