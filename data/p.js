@@ -63,6 +63,8 @@ try {
     predef = 'syntax keyword ' + group;
     if (contained) {
         predef += ' contained';
+    } else {
+      predef += ' containedin=@typescriptExpression';
     }
     def = predef;
 
