@@ -79,7 +79,7 @@ filter((test
 })
 
 process.stdout
-function test({a = process.stdout})
+function test({a = process.stdout}) {}
 
 class A {
     test?: string

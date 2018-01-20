@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal Map WeakMap
+syntax keyword typescriptGlobal containedin=@typescriptExpression Map WeakMap
 syntax keyword typescriptES6MapProp contained size
 syntax cluster props add=typescriptES6MapProp
 if exists("did_typescript_hilink") | HiLink typescriptES6MapProp Keyword

@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal Math nextgroup=typescriptGlobalMathDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=@typescriptExpression Math nextgroup=typescriptGlobalMathDot,typescriptFuncCallArg
 syntax match   typescriptGlobalMathDot /\./ contained nextgroup=typescriptMathStaticProp,typescriptMathStaticMethod
 syntax keyword typescriptMathStaticProp contained E LN10 LN2 LOG10E LOG2E PI SQRT1_2
 syntax keyword typescriptMathStaticProp contained SQRT2

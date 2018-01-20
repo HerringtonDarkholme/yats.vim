@@ -20,8 +20,8 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 9)
 
 Given typescript (function default param):
-  function test({a = test.eee}) {}
+  function test({a = process.stdout}) {}
 Execute:
   AssertEqual 'typescriptCall', SyntaxAt(1, 16)
-  AssertEqual 'typescriptProp', SyntaxAt(1, 25)
+  AssertEqual 'typescriptNodeGlobal', SyntaxAt(1, 25)
 

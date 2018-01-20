@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal Symbol nextgroup=typescriptGlobalSymbolDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=@typescriptExpression Symbol nextgroup=typescriptGlobalSymbolDot,typescriptFuncCallArg
 syntax match   typescriptGlobalSymbolDot /\./ contained nextgroup=typescriptSymbolStaticProp,typescriptSymbolStaticMethod
 syntax keyword typescriptSymbolStaticProp contained create hasInstance isConcatSpreadable
 syntax keyword typescriptSymbolStaticProp contained isRegExp iterator toPrimitive

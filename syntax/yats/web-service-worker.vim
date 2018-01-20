@@ -6,7 +6,7 @@ syntax keyword typescriptServiceWorkerMethod contained register getRegistration 
 syntax cluster props add=typescriptServiceWorkerMethod
 if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerMethod Keyword
 endif
-syntax keyword typescriptGlobal Cache
+syntax keyword typescriptGlobal containedin=@typescriptExpression Cache
 syntax keyword typescriptCacheMethod contained match matchAll add addAll put delete nextgroup=typescriptFuncCallArg
 syntax keyword typescriptCacheMethod contained keys nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptCacheMethod

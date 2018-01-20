@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal Object nextgroup=typescriptGlobalObjectDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=@typescriptExpression Object nextgroup=typescriptGlobalObjectDot,typescriptFuncCallArg
 syntax match   typescriptGlobalObjectDot /\./ contained nextgroup=typescriptObjectStaticMethod
 syntax keyword typescriptObjectStaticMethod contained create defineProperties defineProperty nextgroup=typescriptFuncCallArg
 syntax keyword typescriptObjectStaticMethod contained freeze getOwnPropertyDescriptor nextgroup=typescriptFuncCallArg

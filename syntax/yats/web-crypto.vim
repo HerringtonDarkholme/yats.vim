@@ -1,4 +1,4 @@
-syntax keyword typescriptCryptoGlobal crypto
+syntax keyword typescriptCryptoGlobal containedin=@typescriptExpression crypto
 if exists("did_typescript_hilink") | HiLink typescriptCryptoGlobal Structure
 endif
 syntax keyword typescriptSubtleCryptoMethod contained encrypt decrypt sign verify nextgroup=typescriptFuncCallArg

@@ -1,4 +1,4 @@
-syntax keyword typescriptXHRGlobal XMLHttpRequest
+syntax keyword typescriptXHRGlobal containedin=@typescriptExpression XMLHttpRequest
 if exists("did_typescript_hilink") | HiLink typescriptXHRGlobal Structure
 endif
 syntax keyword typescriptXHRProp contained onreadystatechange readyState response

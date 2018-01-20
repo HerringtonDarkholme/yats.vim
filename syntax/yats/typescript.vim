@@ -1,16 +1,31 @@
-syntax keyword typescriptGlobal Object Function Boolean Symbol Error EvalError InternalError
-syntax keyword typescriptGlobal RangeError ReferenceError StopIteration SyntaxError
-syntax keyword typescriptGlobal TypeError URIError Number Math Date String RegExp
-syntax keyword typescriptGlobal Array Float32Array Float64Array Int16Array Int32Array
-syntax keyword typescriptGlobal Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray
-syntax keyword typescriptGlobal ParallelArray Map Set WeakMap WeakSet ArrayBuffer
-syntax keyword typescriptGlobal DataView JSON Iterator Generator Promise Reflect Proxy
-syntax keyword typescriptGlobal Intl arguments
+syntax keyword typescriptGlobal containedin=@typescriptExpression Object Function
+syntax keyword typescriptGlobal containedin=@typescriptExpression Boolean Symbol Error
+syntax keyword typescriptGlobal containedin=@typescriptExpression EvalError InternalError
+syntax keyword typescriptGlobal containedin=@typescriptExpression RangeError ReferenceError
+syntax keyword typescriptGlobal containedin=@typescriptExpression StopIteration SyntaxError
+syntax keyword typescriptGlobal containedin=@typescriptExpression TypeError URIError
+syntax keyword typescriptGlobal containedin=@typescriptExpression Number Math Date
+syntax keyword typescriptGlobal containedin=@typescriptExpression String RegExp Array
+syntax keyword typescriptGlobal containedin=@typescriptExpression Float32Array Float64Array
+syntax keyword typescriptGlobal containedin=@typescriptExpression Int16Array Int32Array
+syntax keyword typescriptGlobal containedin=@typescriptExpression Int8Array Uint16Array
+syntax keyword typescriptGlobal containedin=@typescriptExpression Uint32Array Uint8Array
+syntax keyword typescriptGlobal containedin=@typescriptExpression Uint8ClampedArray
+syntax keyword typescriptGlobal containedin=@typescriptExpression ParallelArray Map
+syntax keyword typescriptGlobal containedin=@typescriptExpression Set WeakMap WeakSet
+syntax keyword typescriptGlobal containedin=@typescriptExpression ArrayBuffer DataView
+syntax keyword typescriptGlobal containedin=@typescriptExpression JSON Iterator Generator
+syntax keyword typescriptGlobal containedin=@typescriptExpression Promise Reflect
+syntax keyword typescriptGlobal containedin=@typescriptExpression Proxy Intl arguments
 if exists("did_typescript_hilink") | HiLink typescriptGlobal Structure
 endif
-syntax keyword typescriptGlobalMethod eval fetch uneval isFinite isNaN parseFloat nextgroup=typescriptFuncCallArg
-syntax keyword typescriptGlobalMethod parseInt decodeURI decodeURIComponent encodeURI nextgroup=typescriptFuncCallArg
-syntax keyword typescriptGlobalMethod encodeURIComponent nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression eval fetch nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression uneval isFinite nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression isNaN parseFloat nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression parseInt decodeURI nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression decodeURIComponent nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression encodeURI nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobalMethod containedin=@typescriptExpression encodeURIComponent nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptGlobalMethod
 if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
 endif
