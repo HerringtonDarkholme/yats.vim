@@ -1,0 +1,6 @@
+set nocompatible
+filetype off
+let &rtp = &rtp.','.expand('%:p:h').'/vader.vim'
+let &rtp = &rtp.','.expand('%:p:h:h')
+filetype plugin indent on
+syntax enable

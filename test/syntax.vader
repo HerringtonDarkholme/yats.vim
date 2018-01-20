@@ -1,0 +1,7 @@
+Given typescript (Comment in interface):
+  interface Promise<T> {
+    /*comment in interface*/
+  }
+
+Execute:
+  AssertEqual 'typescriptComment', SyntaxAt(2, 3)
