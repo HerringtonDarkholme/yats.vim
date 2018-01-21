@@ -137,7 +137,7 @@ syntax region  typescriptLoopParen             contained matchgroup=typescriptPa
 syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptBlock skipwhite skipempty
 
 " syntax match   typescriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=typescriptArgumentList
-syntax region  typescriptArgumentList           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression,@typescriptComments nextgroup=typescriptOpSymbols,typescriptDotNotation skipwhite skipempty skipnl
+syntax region  typescriptArgumentList           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression,@typescriptComments nextgroup=typescriptBinaryOp,typescriptDotNotation skipwhite skipempty skipnl
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 
 syntax match   typescriptArrowFuncDef          contained /(\_[^)]*)\_s*=>/ contains=typescriptArrowFuncArg,typescriptArrowFunc nextgroup=@typescriptExpression skipwhite skipempty
@@ -155,7 +155,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptReserved             Error
 
   HiLink typescriptEndColons            Exception
-  HiLink typescriptOpSymbols            Normal
+  HiLink typescriptSymbols              Normal
   HiLink typescriptLogicSymbols         Boolean
   HiLink typescriptBraces               Function
   HiLink typescriptParens               Normal
