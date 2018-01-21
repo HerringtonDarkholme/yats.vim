@@ -26,5 +26,6 @@ syntax match typescriptBinaryOp contained /\(**\|**=\)/ nextgroup=@typescriptExp
 " syntax match   typescriptOpSymbols /!\+/ nextgroup=typescriptRegexpString " 1: !
 
 
-syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
-syntax cluster typescriptSymbols               contains=typescriptUnaryOp,typescriptBinaryOp,typescriptLogicSymbols
+" syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
+" syntax cluster typescriptSymbols               contains=typescriptUnaryOp,typescriptBinaryOp,typescriptLogicSymbols
+syntax cluster typescriptSymbols               contains=typescriptBinaryOp
