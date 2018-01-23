@@ -92,3 +92,5 @@ class A {
     constructor() {
     }
 }
+@Inject()
+export class Test {}

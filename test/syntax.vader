@@ -25,3 +25,8 @@ Execute:
   AssertEqual 'typescriptCall', SyntaxAt(1, 16)
   AssertEqual 'typescriptNodeGlobal', SyntaxAt(1, 25)
 
+Given typescript (export after decorator):
+  @Inject()
+  export class Test {}
+Execute:
+  AssertEqual 'typescriptExport', SyntaxAt(2, 1)
