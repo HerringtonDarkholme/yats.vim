@@ -19,7 +19,7 @@ syntax match   typescriptBinaryOp contained /+\(+\|=\)\?/ nextgroup=@typescriptE
 syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptExpression " 3: -, --, -=
 
 " exponentiation operator
-syntax match typescriptBinaryOp contained /\(**\|**=\)/ nextgroup=@typescriptExpression " 2: **, **=
+syntax match typescriptBinaryOp contained /\(\*\*\|\*\*=\)/ nextgroup=@typescriptExpression " 2: **, **=
 
 " syntax match   typescriptOpSymbol  contained /\(\^\|\~\)/ " 2: ^, ~
 
