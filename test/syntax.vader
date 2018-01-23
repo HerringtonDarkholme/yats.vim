@@ -30,3 +30,9 @@ Given typescript (export after decorator):
   export class Test {}
 Execute:
   AssertEqual 'typescriptExport', SyntaxAt(2, 1)
+
+Given typescript (declare after var):
+  var b = (123) && 123
+  var k =  new K<Array<number>>()
+Execute:
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
