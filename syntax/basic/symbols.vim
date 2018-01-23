@@ -1,5 +1,5 @@
 " + - ^ ~
-syntax match typescriptUnaryOp /[+-\^~!]/
+syntax match typescriptUnaryOp /[+\-\^~!]/
  \ nextgroup=@typescriptExpression
  \ skipwhite
 
