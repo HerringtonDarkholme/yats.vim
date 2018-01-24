@@ -79,6 +79,7 @@ filter((test
 })
 
 process.stdout
+documenti.createElement
 function test({a = process.stdout}) {}
 
 class A {
@@ -87,10 +88,11 @@ class A {
     readonly photos?: Array<string>
     readonly photos!: Array<string>
     method?(): string
-    abstract async test();
+    abstract test();
 
     constructor() {
     }
 }
 @Inject()
 export class Test {}
+

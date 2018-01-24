@@ -56,7 +56,7 @@ runtime syntax/basic/reserved.vim
 runtime syntax/basic/keyword.vim
 runtime syntax/basic/type.vim
 
-syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*!\?/ nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty
+syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*!\?/ transparent contains=@props nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty
 syntax match   typescriptProp                  contained /[a-zA-Z_$]\w*\ze(/ nextgroup=typescriptArgumentList oneline
 syntax region  typescriptProp                  contained start=/[a-zA-Z_$][a-zA-Z0-9_$]*</ end=/>\ze(/ nextgroup=typescriptArgumentList contains=typescriptTypeArguments oneline
 syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*@!\?\ze(/ contains=@props transparent nextgroup=typescriptArgumentList

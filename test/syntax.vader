@@ -36,3 +36,9 @@ Given typescript (declare after var):
   var k =  new K<Array<number>>()
 Execute:
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
+Given typescript (predefined props):
+  document.createElement
+Execute:
+  AssertEqual 'typescriptBomWindowProp', SyntaxAt(1, 1)
+  AssertEqual 'typescriptDomDocMethod', SyntaxAt(1, 12)
