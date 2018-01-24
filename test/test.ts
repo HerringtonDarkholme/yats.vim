@@ -79,7 +79,9 @@ filter((test
 })
 
 process.stdout
-documenti.createElement
+document
+    /* test */
+    .createElement
 function test({a = process.stdout}) {}
 
 class A {

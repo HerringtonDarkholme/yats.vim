@@ -40,5 +40,5 @@ Execute:
 Given typescript (predefined props):
   document.createElement
 Execute:
-  AssertEqual 'typescriptBomWindowProp', SyntaxAt(1, 1)
+  AssertEqual 'typescriptBOMWindowProp', SyntaxAt(1, 1)
   AssertEqual 'typescriptDomDocMethod', SyntaxAt(1, 12)
