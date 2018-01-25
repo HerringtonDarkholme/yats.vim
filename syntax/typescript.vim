@@ -165,8 +165,6 @@ if exists("did_typescript_hilink")
   HiLink typescriptDocComment           Comment
   HiLink typescriptCommentTodo          Todo
   HiLink typescriptRef                  Include
-  HiLink typescriptRefS                 String
-  HiLink typescriptRefD                 String
   HiLink typescriptDocNotation          SpecialComment
   HiLink typescriptDocTags              SpecialComment
   HiLink typescriptDocNGParam           typescriptDocParam
