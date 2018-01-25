@@ -23,6 +23,7 @@ syntax region  typescriptRefD
   \ start=+"+ skip=+\\\\\|\\"+ end=+"\|$+
 syntax region  typescriptRefS
   \ start=+'+ skip=+\\\\\|\\'+ end=+'\|$+
+  \ contained
 
 "JSDoc
 syntax case ignore

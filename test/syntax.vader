@@ -36,3 +36,8 @@ Given typescript (declare after var):
   var k =  new K<Array<number>>()
 Execute:
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
+Given typescript (plain string):
+  a = 'static-native'
+Execute:
+  AssertEqual 'typescriptString', SyntaxAt(1, 5)

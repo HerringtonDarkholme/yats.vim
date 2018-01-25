@@ -94,3 +94,7 @@ class A {
 }
 @Inject()
 export class Test {}
+
+a = ' static-native'
+function goto() {}
+
