@@ -125,7 +125,7 @@ syntax region typescriptPropertySignature
   \ containedin=typescriptTypeMember
   \ contained skipwhite oneline
 
-syntax match typescriptMethodSignature /\v[A-Za-z_$]\w*\??\ze(<|\()/
+syntax match typescriptMethodSignature /\v[A-Za-z_$]\w*\??\_s*\ze(<|\()/
   \ nextgroup=@typescriptCallSignature
   \ containedin=typescriptTypeMember
   \ contained skipwhite oneline

@@ -99,4 +99,9 @@ class A {
 export class Test {}
 
 a = 'static-native'
-function goto() {}
+
+type A =42
+abstract class BadClass {
+  abstract method1 (): Promise<number>;
+  abstract method2 (): Promise<string>;
+}
