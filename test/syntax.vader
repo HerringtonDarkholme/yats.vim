@@ -41,3 +41,8 @@ Given typescript (plain string):
   a = 'static-native'
 Execute:
   AssertEqual 'typescriptString', SyntaxAt(1, 5)
+
+Given typescript (reference directive):
+  /// <reference path='file' />
+Execute:
+  AssertEqual 'typescriptString', SyntaxAt(1, 24)

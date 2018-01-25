@@ -14,16 +14,11 @@ syntax cluster typescriptComments
   \ contains=typescriptDocComment,typescriptComment,typescriptLineComment
 
 syntax match   typescriptRef  +///\s*<reference\s\+.*\/>$+
-  \ contains=typescriptRefD,typescriptRefS
+  \ contains=typescriptString
 syntax match   typescriptRef  +///\s*<amd-dependency\s\+.*\/>$+
-  \ contains=typescriptRefD,typescriptRefS
+  \ contains=typescriptString
 syntax match   typescriptRef  +///\s*<amd-module\s\+.*\/>$+
-  \ contains=typescriptRefD,typescriptRefS
-syntax region  typescriptRefD
-  \ start=+"+ skip=+\\\\\|\\"+ end=+"\|$+
-syntax region  typescriptRefS
-  \ start=+'+ skip=+\\\\\|\\'+ end=+'\|$+
-  \ contained
+  \ contains=typescriptString
 
 "JSDoc
 syntax case ignore
