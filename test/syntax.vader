@@ -46,3 +46,9 @@ Given typescript (reference directive):
   /// <reference path='file' />
 Execute:
   AssertEqual 'typescriptString', SyntaxAt(1, 24)
+
+Given typescript (predefined props):
+  document.createElement
+Execute:
+  AssertEqual 'typescriptBOMWindowProp', SyntaxAt(1, 1)
+  AssertEqual 'typescriptDOMDocMethod', SyntaxAt(1, 12)
