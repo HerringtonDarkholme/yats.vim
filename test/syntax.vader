@@ -60,3 +60,10 @@ Given typescript (return object):
 Execute:
   AssertEqual 'typescriptStatementKeyword', SyntaxAt(2, 3)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 14)
+
+Given typescript (double ambient declare):
+  declare module 'eslint-plugin-vue'
+  declare module 'vscode-emmet-helper'
+Execute:
+  AssertEqual 'typescriptAmbientDeclaration', SyntaxAt(1, 1)
+  AssertEqual 'typescriptAmbientDeclaration', SyntaxAt(2, 1)
