@@ -52,3 +52,11 @@ Given typescript (predefined props):
 Execute:
   AssertEqual 'typescriptBOMWindowProp', SyntaxAt(1, 1)
   AssertEqual 'typescriptDOMDocMethod', SyntaxAt(1, 12)
+
+Given typescript (return object):
+  function test() {
+    return { test: 123}
+  }
+Execute:
+  AssertEqual 'typescriptStatementKeyword', SyntaxAt(2, 3)
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 14)
