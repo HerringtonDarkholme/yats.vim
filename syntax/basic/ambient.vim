@@ -60,10 +60,10 @@ syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAm
 syntax match   typescriptAmbientName /\k\+/ contained
 syntax keyword typescriptAmbientCtor constructor contained
 
-syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/\ze{/
+syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/;\|$\|{/me=e-1
   \ contains=typescriptString
   \ nextgroup=typescriptAmbientModuleBlock
-  \ contained
+  \ contained keepend
 
 
 syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
