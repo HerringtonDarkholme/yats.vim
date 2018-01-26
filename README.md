@@ -1,5 +1,8 @@
 YATS: Yet Another TypeScript Syntax
 ===================================
+
+[![Build Status](https://travis-ci.org/HerringtonDarkholme/yats.vim.svg?branch=master)](https://travis-ci.org/HerringtonDarkholme/yats.vim)
+
 ![screenshot](https://raw.githubusercontent.com/HerringtonDarkholme/yats.vim/master/screenshot.png)
 
 Yet Another TypeScript Syntax file for Vim, adapted from [YAJS](https://github.com/othree/yajs.vim).
