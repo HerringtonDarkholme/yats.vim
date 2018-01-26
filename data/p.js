@@ -64,7 +64,7 @@ try {
     if (contained) {
         predef += ' contained';
     } else {
-      predef += ' containedin=@typescriptExpression';
+      predef += ' containedin=typescriptIdentifierName';
     }
     def = predef;
 

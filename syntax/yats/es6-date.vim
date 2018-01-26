@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal containedin=@typescriptExpression Date nextgroup=typescriptGlobalDateDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName Date nextgroup=typescriptGlobalDateDot,typescriptFuncCallArg
 syntax match   typescriptGlobalDateDot /\./ contained nextgroup=typescriptDateStaticMethod
 syntax keyword typescriptDateStaticMethod contained UTC now parse nextgroup=typescriptFuncCallArg
 if exists("did_typescript_hilink") | HiLink typescriptDateStaticMethod Keyword

@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal containedin=@typescriptExpression Array nextgroup=typescriptGlobalArrayDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName Array nextgroup=typescriptGlobalArrayDot,typescriptFuncCallArg
 syntax match   typescriptGlobalArrayDot /\./ contained nextgroup=typescriptArrayStaticMethod
 syntax keyword typescriptArrayStaticMethod contained from isArray of nextgroup=typescriptFuncCallArg
 if exists("did_typescript_hilink") | HiLink typescriptArrayStaticMethod Keyword

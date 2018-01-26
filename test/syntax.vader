@@ -67,3 +67,10 @@ Given typescript (double ambient declare):
 Execute:
   AssertEqual 'typescriptAmbientDeclaration', SyntaxAt(1, 1)
   AssertEqual 'typescriptAmbientDeclaration', SyntaxAt(2, 1)
+
+Given typescript (double ambient declare):
+  function test() {
+    return { name: 123, }
+  }
+Execute:
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 12)

@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal containedin=@typescriptExpression RegExp nextgroup=typescriptGlobalRegExpDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName RegExp nextgroup=typescriptGlobalRegExpDot,typescriptFuncCallArg
 syntax match   typescriptGlobalRegExpDot /\./ contained nextgroup=typescriptRegExpStaticProp
 syntax keyword typescriptRegExpStaticProp contained lastIndex
 if exists("did_typescript_hilink") | HiLink typescriptRegExpStaticProp Keyword

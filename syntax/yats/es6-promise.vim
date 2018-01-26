@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal containedin=@typescriptExpression Promise nextgroup=typescriptGlobalPromiseDot,typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName Promise nextgroup=typescriptGlobalPromiseDot,typescriptFuncCallArg
 syntax match   typescriptGlobalPromiseDot /\./ contained nextgroup=typescriptPromiseStaticMethod
 syntax keyword typescriptPromiseStaticMethod contained resolve reject all race nextgroup=typescriptFuncCallArg
 if exists("did_typescript_hilink") | HiLink typescriptPromiseStaticMethod Keyword

@@ -1,4 +1,4 @@
-syntax keyword typescriptGlobal containedin=@typescriptExpression Set WeakSet
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName Set WeakSet
 syntax keyword typescriptES6SetProp contained size
 syntax cluster props add=typescriptES6SetProp
 if exists("did_typescript_hilink") | HiLink typescriptES6SetProp Keyword

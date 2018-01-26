@@ -1,8 +1,9 @@
-syntax keyword typescriptNodeGlobal containedin=@typescriptExpression global process
-syntax keyword typescriptNodeGlobal containedin=@typescriptExpression console Buffer
-syntax keyword typescriptNodeGlobal containedin=@typescriptExpression module exports
-syntax keyword typescriptNodeGlobal containedin=@typescriptExpression setTimeout clearTimeout
-syntax keyword typescriptNodeGlobal containedin=@typescriptExpression setInterval
-syntax keyword typescriptNodeGlobal containedin=@typescriptExpression clearInterval
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName global process
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName console Buffer
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName module exports
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName setTimeout
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName clearTimeout
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName setInterval
+syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName clearInterval
 if exists("did_typescript_hilink") | HiLink typescriptNodeGlobal Structure
 endif

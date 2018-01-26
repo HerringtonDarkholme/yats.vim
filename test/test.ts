@@ -105,3 +105,7 @@ abstract class BadClass {
   abstract method1 (): Promise<number>;
   abstract method2 (): Promise<string>;
 }
+
+function test() {
+  return { name: 123, }
+}

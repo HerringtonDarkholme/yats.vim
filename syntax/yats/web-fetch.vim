@@ -1,6 +1,6 @@
-syntax keyword typescriptGlobal containedin=@typescriptExpression Headers Request
-syntax keyword typescriptGlobal containedin=@typescriptExpression Response
-syntax keyword typescriptGlobalMethod containedin=@typescriptExpression fetch nextgroup=typescriptFuncCallArg
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName Headers Request
+syntax keyword typescriptGlobal containedin=typescriptIdentifierName Response
+syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName fetch nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptGlobalMethod
 if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
 endif
