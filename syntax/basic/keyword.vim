@@ -68,3 +68,9 @@ syntax keyword typescriptExceptions            catch throw finally
 syntax keyword typescriptDebugger              debugger
 
 syntax keyword typescriptAsyncFor              await nextgroup=typescriptLoopParen skipwhite skipempty contained
+
+syntax region  typescriptLoopParen             contained matchgroup=typescriptParens
+  \ start=/(/ end=/)/
+  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptExpression nextgroup=typescriptBlock
+  \ skipwhite skipempty
+syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptBlock skipwhite skipempty
