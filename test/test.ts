@@ -111,3 +111,8 @@ abstract class BadClass {
 function test() {
   return { name: 123, }
 }
+class A {
+  test(): void
+  test(s: string): void
+  test(s?: string): void
+}
