@@ -39,7 +39,7 @@ runtime syntax/basic/literal.vim
 syntax match typescriptRestOrSpread /\.\.\./ contained
 syntax match typescriptObjectSpread /\.\.\./ contained containedin=typescriptObjectLiteral nextgroup=@typescriptExpression
 
-syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptArgumentList,typescriptComputedProperty transparent contains=@_semantic skipnl skipwhite
+syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/ nextgroup=typescriptDotNotation,typescriptArgumentList,typescriptComputedProperty,@typescriptSymbols transparent contains=@_semantic skipnl skipwhite
 syntax region   typescriptIdentifierName        start=/\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*</ end=/>\ze(/ nextgroup=typescriptArgumentList contains=@_semantic,typescriptTypeArguments oneline skipnl skipwhite
 
 
@@ -200,6 +200,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptStatementKeyword     Statement
   HiLink typescriptMessage              Keyword
   HiLink typescriptOperator             Identifier
+  HiLink typescriptKeywordOp            Identifier
   HiLink typescriptCastKeyword          Special
   HiLink typescriptType                 Type
   HiLink typescriptNull                 Boolean

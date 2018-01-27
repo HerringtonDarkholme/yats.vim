@@ -37,8 +37,10 @@ syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite skipempty skipnl
 
-syntax keyword typescriptOperator              delete new instanceof typeof void in
-  \ nextgroup=@typescriptValue,@typescriptPrimitive
+syntax keyword typescriptKeywordOp
+  \ contained in instanceof nextgroup=@typescriptExpression
+syntax keyword typescriptOperator              delete new typeof void
+  \ nextgroup=@typescriptExpression
   \ skipwhite skipempty
 syntax keyword typescriptForOperator           contained in of
 syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty

@@ -18,6 +18,8 @@ class Foo {
   }
 }
 
+var a = key in test
+
 var b = (123) && 123
 var k =  new K<Array<number>>()
 var d = 33<333
