@@ -18,8 +18,6 @@ class Foo {
   }
 }
 
-var a = key in test
-
 var b = (123) && 123
 var k =  new K<Array<number>>()
 var d = 33<333
@@ -97,8 +95,6 @@ class A {
     constructor() {
     }
 }
-@Inject()
-export class Test {}
 
 a = 'static-native'
 
@@ -108,9 +104,6 @@ abstract class BadClass {
   abstract method2 (): Promise<string>;
 }
 
-function test() {
-  return { name: 123, }
-}
 class A {
   test(): void
   test(s: string): void

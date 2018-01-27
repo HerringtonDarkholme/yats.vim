@@ -74,3 +74,15 @@ Given typescript (double ambient declare):
   }
 Execute:
   AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 12)
+
+Given typescript (abstract generic method):
+  abstract class ComponentFactoryResolver {
+    abstract resolveComponentFactory<T>(component: Type<T>): ComponentFactory<T>;
+  }
+Execute:
+  AssertEqual 'typescriptMethodSignature', SyntaxAt(2, 12)
+
+Given typescript (binary in keyword):
+  var a = a in b
+Execute:
+  AssertEqual 'typescriptKeywordOp', SyntaxAt(1, 11)
