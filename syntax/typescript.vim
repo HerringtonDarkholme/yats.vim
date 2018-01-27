@@ -43,6 +43,7 @@ syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\
 syntax region   typescriptIdentifierName        start=/\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*</ end=/>\ze(/ nextgroup=typescriptArgumentList contains=@_semantic,typescriptTypeArguments oneline skipnl skipwhite
 
 
+syntax region  typescriptObjectLiteral         contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptMethodDef,typescriptComputedPropertyName,@typescriptValue fold
 syntax match   typescriptObjectLabel           contained /\(^\|,\|{\)\@<=\s*\zs\k\+\_s*:/he=e-1 nextgroup=@typescriptValue,@typescriptStatement skipwhite skipempty
 syntax region  typescriptPropertyName   contained start=/\(^\|,\|{\)\@<=\s*\zs\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\_s*:\|$/he=e-1 nextgroup=@typescriptValue skipwhite skipempty
 syntax region  typescriptPropertyName    contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\ze(/ nextgroup=typescriptFuncArg skipwhite skipempty oneline
@@ -109,7 +110,7 @@ syntax region  typescriptBlock                 matchgroup=typescriptBraces start
 
 runtime syntax/basic/method.vim
 
-syntax keyword typescriptAsyncFuncKeyword      async await nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef skipwhite skipnl skipnl
+syntax keyword typescriptAsyncFuncKeyword      async await nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef skipwhite
 syntax keyword typescriptFuncKeyword           function nextgroup=typescriptAsyncFunc,typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptAsyncFunc             contained /*/ nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=typescriptFuncArg skipwhite
@@ -120,8 +121,6 @@ syntax match   typescriptFuncComma             contained /,/
 runtime syntax/basic/class.vim
 runtime syntax/basic/forcomprehension.vim
 
-
-syntax region  typescriptObjectLiteral         contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptMethodDef,typescriptComputedPropertyName,@typescriptValue fold
 
 syntax match   typescriptEndColons             /[;,]/
 
