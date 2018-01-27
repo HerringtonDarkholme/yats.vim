@@ -178,7 +178,7 @@ syntax keyword typescriptAliasKeyword type
   \ nextgroup=typescriptAliasDeclaration
   \ skipwhite skipnl skipempty
 
-syntax region typescriptAliasDeclaration matchgroup=typescriptOpSymbols
+syntax region typescriptAliasDeclaration
   \ start=/ / end=/=/
   \ nextgroup=@typescriptType
   \ contains=typescriptConstraint
