@@ -74,3 +74,4 @@ syntax region  typescriptLoopParen             contained matchgroup=typescriptPa
   \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptExpression nextgroup=typescriptBlock
   \ skipwhite skipempty
 syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptBlock skipwhite skipempty
+syntax match   typescriptEndColons             /[;,]/
