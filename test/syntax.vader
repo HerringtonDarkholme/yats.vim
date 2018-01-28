@@ -86,3 +86,8 @@ Given typescript (binary in keyword):
   var a = a in b
 Execute:
   AssertEqual 'typescriptKeywordOp', SyntaxAt(1, 11)
+
+Given typescript (comment in func param):
+  function commentInFuncParam(/*test*/ a) { }
+Execute:
+  AssertEqual 'typescriptComment', SyntaxAt(1, 30)
