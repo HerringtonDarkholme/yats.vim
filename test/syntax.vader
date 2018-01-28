@@ -91,3 +91,13 @@ Given typescript (comment in func param):
   function commentInFuncParam(/*test*/ a) { }
 Execute:
   AssertEqual 'typescriptComment', SyntaxAt(1, 30)
+
+Given typescript(handle comment and divide):
+  var a = 'static-native'
+  // test
+  var a = 1/3
+  /* test */
+Execute:
+  AssertEqual 'typescriptLineComment', SyntaxAt(2, 1)
+  AssertEqual 'typescriptNumber', SyntaxAt(3, 11)
+  AssertEqual 'typescriptComment', SyntaxAt(4, 1)

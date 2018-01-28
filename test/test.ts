@@ -90,8 +90,10 @@ class A {
 }
 
 a = 'static-native'
-
-type A =42
+// test
+var a = 1/3
+/* test*/
+type A = 42
 abstract class BadClass {
   abstract method1 (): Promise<number>;
   abstract method2 (): Promise<string>;
