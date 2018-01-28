@@ -7,7 +7,7 @@ syntax match   typescriptBinaryOp  contained /\(=\|?\)/ nextgroup=@typescriptExp
   \ skipwhite skipempty
 
 syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptExpression " 2: ==, ===
-syntax match   typescriptBinaryOp contained /\(>>>=\|>>>\|>>=\|>>\|>=\|>\)/ nextgroup=@typescriptExpression " 6: >>>=, >>>, >>=, >>, >=, >
+syntax match   typescriptBinaryOp contained />\(>>=\|>>\|>=\|>\|=\)\=/ nextgroup=@typescriptExpression " 6: >>>=, >>>, >>=, >>, >=, >
 syntax match   typescriptBinaryOp contained /\(<<=\|<<\|<=\|<\)/ nextgroup=@typescriptExpression " 4: <<=, <<, <=, <
 syntax match   typescriptBinaryOp contained /\(||\||=\||\)/ nextgroup=@typescriptExpression " 3: ||, |=, |
 syntax match   typescriptBinaryOp contained /\(&&\|&=\|&\)/ nextgroup=@typescriptExpression " 3: &&, &=, &
