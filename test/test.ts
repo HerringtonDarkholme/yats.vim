@@ -2,17 +2,6 @@ var p: Promise<void>
 
 const COMPILER_PROVIDERS: Array<any[]> = null
 
-class Foo {
-
-  bar() {
-    return this
-  }
-}
-
-var b = (123) && 123
-var k =  new K<Array<number>>()
-var d = 33<333
-
 class K<T> {
   private m: Map<string, Promimse<string>> = new Map<string, Promise<string>>()
 	private a = new K<Array<number>>()
@@ -39,25 +28,12 @@ interface A {
 
 var a = [/\/\//, 123]
 
-class A extends B implements C
-{
-	private a = 123
-    b
-}
-
-
 
 if (a < (<number>b))
     a
 }
 
 var a = 123
-
-abstract class Comp {
-    context: any;
-    abstract up(db: IBaseProtocol<any>): Promimse<void>;
-    abstract down(db: IBaseProtocol<any>): Promimse<void>;
-}
 
 class MyClass {
     noed // ewewe
@@ -105,7 +81,6 @@ test({
 })
 
 {
-    (this as{collection: V[] | Iterable<V>}).collection = collection;
     this._addAfter(new IterableChangeRecord_<V>(item, itemTrackBy), previousRecord, index);
     return this.isDirty;
 }

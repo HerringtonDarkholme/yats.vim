@@ -113,3 +113,8 @@ Given typescript (ambiguous label):
   })
 Execute:
   AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 3)
+
+Given typescript (as in paren):
+  (this as number)
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 12)
