@@ -34,7 +34,7 @@ syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/namespace /
   \ skipwhite
 
 syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
-  \ nextgroup=typescriptTypeAnnotation
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
   \ contained skipwhite skipempty skipnl
 
 syntax keyword typescriptKeywordOp

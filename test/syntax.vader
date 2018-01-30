@@ -124,3 +124,8 @@ Given typescript (access property):
   const index = offset + i;
 Execute:
   AssertEqual 'typescriptEnumKeyword', SyntaxAt(2, 1)
+
+Given typescript (initialize object):
+  const obj = { }
+Execute:
+  AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 14)

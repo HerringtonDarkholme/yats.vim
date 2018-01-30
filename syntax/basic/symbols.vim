@@ -5,7 +5,7 @@ syntax match typescriptUnaryOp /[+\-\^~!]/
 
 syntax region  typescriptTernaryOp start=/?/  end=/:/ contained contains=@typescriptExpression,@typescriptComments nextgroup=@typescriptExpression skipwhite skipempty
 
-syntax match   typescriptBinaryOp  contained /=/ nextgroup=@typescriptExpression
+syntax match   typescriptAssign  contained /=/ nextgroup=@typescriptExpression
   \ skipwhite skipempty
 
 syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptExpression " 2: ==, ===
@@ -30,4 +30,4 @@ syntax match typescriptBinaryOp contained /\(\*\*\|\*\*=\)/ nextgroup=@typescrip
 
 " syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptExpression skipwhite skipempty
 " syntax cluster typescriptSymbols               contains=typescriptUnaryOp,typescriptBinaryOp,typescriptLogicSymbols
-syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernaryOp
+syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernaryOp,typescriptAssign
