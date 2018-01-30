@@ -99,6 +99,13 @@ abstract class BadClass {
   abstract method2 (): Promise<string>;
 }
 
+const a = <number>123
+
+var a = {
+  a: test ? // test
+    test: ee
+}
+
 {
     (this as{collection: V[] | Iterable<V>}).collection = collection;
     this._addAfter(new IterableChangeRecord_<V>(item, itemTrackBy), previousRecord, index);
@@ -119,5 +126,17 @@ class A {
 
 
 export class QueryList<T>/* implements Iterable<T> */ {
-}
   public readonly dirty = true;
+}
+
+export function isFormattedError(error: Error): error is FormattedError {
+  return !!(error as any)[FORMATTED_MESSAGE];
+}
+
+
+list.reduce((flat: any[], item: T | T[]): T[] => {
+  const flatItem = Array.isArray(item) ? flatten(item) : item;
+  return (<T[]>flat).concat(flatItem);
+}, []);
+
+
