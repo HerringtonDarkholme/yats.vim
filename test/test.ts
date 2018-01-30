@@ -101,10 +101,10 @@ abstract class BadClass {
 
 const a = <number>123
 
-var a = {
+test({
   a: test ? // test
-    test: ee
-}
+  test: ee
+})
 
 {
     (this as{collection: V[] | Iterable<V>}).collection = collection;

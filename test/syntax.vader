@@ -101,3 +101,10 @@ Execute:
   AssertEqual 'typescriptLineComment', SyntaxAt(2, 1)
   AssertEqual 'typescriptNumber', SyntaxAt(3, 11)
   AssertEqual 'typescriptComment', SyntaxAt(4, 1)
+
+Given typescript (ambiguous label):
+  test({
+    a: test ? test: ee
+  })
+Execute:
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 3)
