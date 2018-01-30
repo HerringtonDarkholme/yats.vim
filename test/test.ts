@@ -99,8 +99,25 @@ abstract class BadClass {
   abstract method2 (): Promise<string>;
 }
 
+{
+    (this as{collection: V[] | Iterable<V>}).collection = collection;
+    this._addAfter(new IterableChangeRecord_<V>(item, itemTrackBy), previousRecord, index);
+    return this.isDirty;
+}
+
+
+getSymbolIterator(3) in obj;
+
+class B {
+  abstract get parent(): Injector|null;
+}
 class A {
   test(): void
   test(s: string): void
   test(s?: string): void
 }
+
+
+export class QueryList<T>/* implements Iterable<T> */ {
+}
+  public readonly dirty = true;
