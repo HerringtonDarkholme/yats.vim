@@ -75,11 +75,6 @@ abstract class BadClass {
 
 
 var a = {
-  queries: this.queries,
-  guards: this.guards,
-  viewQueries: this.viewQueries,
-  entryComponents: this.entryComponents,
-  changeDetection: this.changeDetection,
   template: this.template && this.template.toSummary()
 }
 

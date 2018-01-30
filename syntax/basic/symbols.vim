@@ -9,26 +9,26 @@ syntax match   typescriptAssign  contained /=/ nextgroup=@typescriptExpression
   \ skipwhite skipempty
 
 " 2: ==, ===
-syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptExpression skipwhite skipempty
 " 6: >>>=, >>>, >>=, >>, >=, >
-syntax match   typescriptBinaryOp contained />\(>>=\|>>\|>=\|>\|=\)\=/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained />\(>>=\|>>\|>=\|>\|=\)\=/ nextgroup=@typescriptExpression skipwhite skipempty
 " 4: <<=, <<, <=, <
-syntax match   typescriptBinaryOp contained /\(<<=\|<<\|<=\|<\)/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /\(<<=\|<<\|<=\|<\)/ nextgroup=@typescriptExpression skipwhite skipempty
 " 3: ||, |=, |
-syntax match   typescriptBinaryOp contained /\(||\||=\||\)/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /\(||\||=\||\)/ nextgroup=@typescriptExpression skipwhite skipempty
 " 3: &&, &=, &
-syntax match   typescriptBinaryOp contained /\(&&\|&=\|&\)/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /\(&&\|&=\|&\)/ nextgroup=@typescriptExpression skipwhite skipempty
 " 2: *=, *
-syntax match   typescriptBinaryOp contained /\(*=\|*\)/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /\(*=\|*\)/ nextgroup=@typescriptExpression skipwhite skipempty
 " 2: %=, %
-syntax match   typescriptBinaryOp contained /\(%=\|%\)/ nextgroup=@typescriptExpression
-syntax match   typescriptBinaryOp contained +/\(=\|[^\*/]\@=\)+ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /\(%=\|%\)/ nextgroup=@typescriptExpression skipwhite skipempty
+syntax match   typescriptBinaryOp contained +/\(=\|[^\*/]\@=\)+ nextgroup=@typescriptExpression skipwhite skipempty
 " 2: /=, /
-syntax match   typescriptBinaryOp contained /!==\?/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /!==\?/ nextgroup=@typescriptExpression skipwhite skipempty
 " 2: !=, !==
-syntax match   typescriptBinaryOp contained /+\(+\|=\)\?/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /+\(+\|=\)\?/ nextgroup=@typescriptExpression skipwhite skipempty
 " 3: +, ++, +=
-syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptExpression skipwhite skipempty
 " 3: -, --, -=
 
 " exponentiation operator

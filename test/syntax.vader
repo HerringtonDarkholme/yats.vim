@@ -129,3 +129,12 @@ Given typescript (initialize object):
   const obj = { }
 Execute:
   AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 14)
+
+Given typescript (consistent value highlight):
+  var a = {
+    template: this.template && this.template.toSummary()
+  }
+  var b
+Execute:
+  AssertEqual 'typescriptProp', SyntaxAt(2, 44)
+  AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
