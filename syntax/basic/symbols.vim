@@ -8,20 +8,32 @@ syntax region  typescriptTernaryOp start=/?/  end=/:/ contained contains=@typesc
 syntax match   typescriptAssign  contained /=/ nextgroup=@typescriptExpression
   \ skipwhite skipempty
 
-syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptExpression " 2: ==, ===
-syntax match   typescriptBinaryOp contained />\(>>=\|>>\|>=\|>\|=\)\=/ nextgroup=@typescriptExpression " 6: >>>=, >>>, >>=, >>, >=, >
-syntax match   typescriptBinaryOp contained /\(<<=\|<<\|<=\|<\)/ nextgroup=@typescriptExpression " 4: <<=, <<, <=, <
-syntax match   typescriptBinaryOp contained /\(||\||=\||\)/ nextgroup=@typescriptExpression " 3: ||, |=, |
-syntax match   typescriptBinaryOp contained /\(&&\|&=\|&\)/ nextgroup=@typescriptExpression " 3: &&, &=, &
-syntax match   typescriptBinaryOp contained /\(*=\|*\)/ nextgroup=@typescriptExpression " 2: *=, *
-syntax match   typescriptBinaryOp contained /\(%=\|%\)/ nextgroup=@typescriptExpression " 2: %=, %
-syntax match   typescriptBinaryOp contained +/\(=\|[^\*/]\@=\)+ nextgroup=@typescriptExpression " 2: /=, /
-syntax match   typescriptBinaryOp contained /!==\?/ nextgroup=@typescriptExpression " 2: !=, !==
-syntax match   typescriptBinaryOp contained /+\(+\|=\)\?/ nextgroup=@typescriptExpression " 3: +, ++, +=
-syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptExpression " 3: -, --, -=
+" 2: ==, ===
+syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptExpression
+" 6: >>>=, >>>, >>=, >>, >=, >
+syntax match   typescriptBinaryOp contained />\(>>=\|>>\|>=\|>\|=\)\=/ nextgroup=@typescriptExpression
+" 4: <<=, <<, <=, <
+syntax match   typescriptBinaryOp contained /\(<<=\|<<\|<=\|<\)/ nextgroup=@typescriptExpression
+" 3: ||, |=, |
+syntax match   typescriptBinaryOp contained /\(||\||=\||\)/ nextgroup=@typescriptExpression
+" 3: &&, &=, &
+syntax match   typescriptBinaryOp contained /\(&&\|&=\|&\)/ nextgroup=@typescriptExpression
+" 2: *=, *
+syntax match   typescriptBinaryOp contained /\(*=\|*\)/ nextgroup=@typescriptExpression
+" 2: %=, %
+syntax match   typescriptBinaryOp contained /\(%=\|%\)/ nextgroup=@typescriptExpression
+syntax match   typescriptBinaryOp contained +/\(=\|[^\*/]\@=\)+ nextgroup=@typescriptExpression
+" 2: /=, /
+syntax match   typescriptBinaryOp contained /!==\?/ nextgroup=@typescriptExpression
+" 2: !=, !==
+syntax match   typescriptBinaryOp contained /+\(+\|=\)\?/ nextgroup=@typescriptExpression
+" 3: +, ++, +=
+syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptExpression
+" 3: -, --, -=
 
 " exponentiation operator
-syntax match typescriptBinaryOp contained /\(\*\*\|\*\*=\)/ nextgroup=@typescriptExpression " 2: **, **=
+" 2: **, **=
+syntax match typescriptBinaryOp contained /\(\*\*\|\*\*=\)/ nextgroup=@typescriptExpression
 
 " syntax match   typescriptOpSymbol  contained /\(\^\|\~\)/ " 2: ^, ~
 
