@@ -118,3 +118,9 @@ Given typescript (as in paren):
   (this as number)
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 12)
+
+Given typescript (access property):
+  const offset = abc[i]
+  const index = offset + i;
+Execute:
+  AssertEqual 'typescriptEnumKeyword', SyntaxAt(2, 1)
