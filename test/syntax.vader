@@ -6,6 +6,11 @@ Given typescript (Comment in interface):
 Execute:
   AssertEqual 'typescriptComment', SyntaxAt(2, 3)
 
+Given typescript (Comment in array):
+  [/*comment in array*/]
+Execute:
+  AssertEqual 'typescriptComment', SyntaxAt(1, 2)
+
 Given typescript (Export from):
   export {ChangeDector} from './change_detection';
 Execute:

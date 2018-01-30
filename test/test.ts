@@ -1,7 +1,5 @@
 var p: Promise<void>
 
-[/*comment in array*/]
-
 const COMPILER_PROVIDERS: Array<any[]> = null
 
 class Foo {
