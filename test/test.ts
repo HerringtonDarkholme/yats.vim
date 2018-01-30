@@ -73,6 +73,16 @@ abstract class BadClass {
   abstract method2 (): Promise<string>;
 }
 
+
+var a = {
+  queries: this.queries,
+  guards: this.guards,
+  viewQueries: this.viewQueries,
+  entryComponents: this.entryComponents,
+  changeDetection: this.changeDetection,
+  template: this.template && this.template.toSummary()
+}
+
 const a = <number>123
 
 test({
