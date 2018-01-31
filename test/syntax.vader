@@ -138,3 +138,10 @@ Given typescript (consistent value highlight):
 Execute:
   AssertEqual 'typescriptProp', SyntaxAt(2, 44)
   AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
+
+Given typescript (consistent value highlight):
+  profileData = {
+    value: Object.values(UserEmailType)
+  }
+Execute:
+  AssertEqual 'typescriptES6SetMethod', SyntaxAt(2, 20)

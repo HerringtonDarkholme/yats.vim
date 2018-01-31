@@ -117,7 +117,3 @@ list.reduce((flat: any[], item: T | T[]): T[] => {
   return (<T[]>flat).concat(flatItem);
 }, []);
 
-
-profileData = {
-  value: Object.values(UserEmailType)
-}
