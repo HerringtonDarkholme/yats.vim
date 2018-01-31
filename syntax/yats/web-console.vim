@@ -1,5 +1,5 @@
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName console nextgroup=typescriptGlobalconsoleDot,typescriptFuncCallArg
-syntax match   typescriptGlobalconsoleDot /\./ contained nextgroup=typescriptConsoleStaticMethod
+syntax match   typescriptGlobalconsoleDot /\./ contained nextgroup=typescriptConsoleStaticMethod,typescriptProp,typescriptMethod
 syntax keyword typescriptConsoleStaticMethod contained count dir error group groupCollapsed nextgroup=typescriptFuncCallArg
 syntax keyword typescriptConsoleStaticMethod contained groupEnd info log time timeEnd nextgroup=typescriptFuncCallArg
 syntax keyword typescriptConsoleStaticMethod contained trace warn nextgroup=typescriptFuncCallArg

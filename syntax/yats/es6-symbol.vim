@@ -1,5 +1,5 @@
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Symbol nextgroup=typescriptGlobalSymbolDot,typescriptFuncCallArg
-syntax match   typescriptGlobalSymbolDot /\./ contained nextgroup=typescriptSymbolStaticProp,typescriptSymbolStaticMethod
+syntax match   typescriptGlobalSymbolDot /\./ contained nextgroup=typescriptSymbolStaticProp,typescriptSymbolStaticMethod,typescriptProp,typescriptMethod
 syntax keyword typescriptSymbolStaticProp contained create hasInstance isConcatSpreadable
 syntax keyword typescriptSymbolStaticProp contained isRegExp iterator toPrimitive
 syntax keyword typescriptSymbolStaticProp contained toStringTag unscopables

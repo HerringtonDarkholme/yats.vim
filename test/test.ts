@@ -118,3 +118,6 @@ list.reduce((flat: any[], item: T | T[]): T[] => {
 }, []);
 
 
+profileData = {
+  value: Object.values(UserEmailType)
+}

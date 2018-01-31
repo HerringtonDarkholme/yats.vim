@@ -1,5 +1,5 @@
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName String nextgroup=typescriptGlobalStringDot,typescriptFuncCallArg
-syntax match   typescriptGlobalStringDot /\./ contained nextgroup=typescriptStringStaticMethod
+syntax match   typescriptGlobalStringDot /\./ contained nextgroup=typescriptStringStaticMethod,typescriptProp,typescriptMethod
 syntax keyword typescriptStringStaticMethod contained fromCharCode fromCodePoint nextgroup=typescriptFuncCallArg
 if exists("did_typescript_hilink") | HiLink typescriptStringStaticMethod Keyword
 endif

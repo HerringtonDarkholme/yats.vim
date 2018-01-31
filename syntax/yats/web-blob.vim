@@ -2,7 +2,7 @@ syntax keyword typescriptGlobal containedin=typescriptIdentifierName Blob BlobBu
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName File FileReader
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName FileReaderSync
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName URL nextgroup=typescriptGlobalURLDot,typescriptFuncCallArg
-syntax match   typescriptGlobalURLDot /\./ contained nextgroup=typescriptURLStaticMethod
+syntax match   typescriptGlobalURLDot /\./ contained nextgroup=typescriptURLStaticMethod,typescriptProp,typescriptMethod
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName URLUtils
 syntax keyword typescriptFileMethod contained readAsArrayBuffer readAsBinaryString nextgroup=typescriptFuncCallArg
 syntax keyword typescriptFileMethod contained readAsDataURL readAsText nextgroup=typescriptFuncCallArg
