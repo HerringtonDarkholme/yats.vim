@@ -1,0 +1,16 @@
+typescriptDOMFormProp:
+    - acceptCharset
+    - action
+    - elements
+    - encoding
+    - enctype
+    - length
+    - method
+    - name
+    - target
+
+typescriptDOMFormMethod:
+    - reportValidity
+    - reset
+    - submit
+

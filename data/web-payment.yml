@@ -1,0 +1,48 @@
+typescriptGlobal:
+    - PaymentRequest
+
+typescriptPaymentMethod:
+    - show
+    - abort
+    - canMakePayment
+
+typescriptPaymentProp:
+    - shippingAddress
+    - shippingOption
+    - result
+
+typescriptPaymentEvent:
+    - onshippingaddresschange
+    - onshippingoptionchange
+
+typescriptPaymentResponseMethod:
+    - complete
+
+typescriptPaymentResponseProp:
+    - details
+    - methodName
+    - payerEmail
+    - payerPhone
+    - shippingAddress
+    - shippingOption
+
+typescriptPaymentAddressProp:
+    - addressLine
+    - careOf
+    - city
+    - country
+    - country
+    - dependentLocality
+    - languageCode
+    - organization
+    - phone
+    - postalCode
+    - recipient
+    - region
+    - sortingCode
+
+typescriptPaymentShippingOptionProp:
+    - id
+    - label
+    - amount
+    - selected

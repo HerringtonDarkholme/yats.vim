@@ -1,0 +1,12 @@
+typescriptEncodingGlobal:
+  - TextEncoder
+  - TextDecoder
+
+typescriptEncodingProp:
+  - encoding
+  - fatal
+  - ignoreBOM
+
+typescriptEncodingMethod:
+  - encode
+  - decode

@@ -1,0 +1,9 @@
+typescriptGlobal:
+    - NetworkInformation
+
+typescriptBOMNetworkProp:
+    - downlink
+    - downlinkMax
+    - effectiveType
+    - rtt
+    - type
