@@ -34,6 +34,7 @@ if (a < (<number>b))
 }
 
 var a = 123
+var b = class extends B {}
 
 class MyClass {
     noed // ewewe

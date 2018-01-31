@@ -4,6 +4,10 @@ syntax cluster typescriptPrimitive                 contains=typescriptString,typ
 syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
 " syntax cluster typescriptOps                   contains=typescriptLogicSymbols,typescriptOperator
 " syntax cluster typescriptOps                   contains=typescriptOperator
-syntax cluster typescriptValue                 contains=@typescriptPrimitive,@typescriptExpression,typescriptFuncKeyword,typescriptObjectLiteral,typescriptIdentifier,typescriptIdentifierName,typescriptOperator,typescriptUnaryOp
-syntax cluster typescriptExpression            contains=typescriptArrowFuncDef,typescriptParenExp,@typescriptValue,typescriptObjectLiteral,typescriptFuncKeyword,typescriptIdentifierName,typescriptRegexpString,@typescriptPrimitive,typescriptOperator,typescriptGlobal,jsxRegion,typescriptAsyncFuncKeyword,typescriptTypeCast
-syntax cluster typescriptEventExpression       contains=typescriptArrowFuncDef,typescriptParenExp,@typescriptValue,typescriptObjectLiteral,typescriptFuncKeyword,typescriptIdentifierName,typescriptRegexpString,@typescriptEventTypes,typescriptOperator,typescriptGlobal,jsxRegion
+syntax cluster typescriptValue
+  \ contains=@typescriptPrimitive,typescriptFuncKeyword,typescriptObjectLiteral,
+  \ typescriptIdentifier,typescriptIdentifierName,typescriptOperator,typescriptUnaryOp,@typescriptExpression
+
+syntax cluster typescriptExpression
+  \ contains=typescriptArrowFuncDef,typescriptParenExp,@typescriptValue,typescriptRegexpString,typescriptGlobal,jsxRegion,typescriptAsyncFuncKeyword,typescriptTypeCast
+syntax cluster typescriptEventExpression       contains=typescriptArrowFuncDef,typescriptParenExp,@typescriptValue,typescriptRegexpString,@typescriptEventTypes,typescriptOperator,typescriptGlobal,jsxRegion
