@@ -1,3 +1,4 @@
+syntax keyword typescriptBOM containedin=typescriptIdentifierName AbortController
 syntax keyword typescriptBOM containedin=typescriptIdentifierName AbstractWorker AnalyserNode
 syntax keyword typescriptBOM containedin=typescriptIdentifierName App Apps ArrayBuffer
 syntax keyword typescriptBOM containedin=typescriptIdentifierName ArrayBufferView
@@ -139,7 +140,6 @@ syntax keyword typescriptBOM containedin=typescriptIdentifierName Navigator Navi
 syntax keyword typescriptBOM containedin=typescriptIdentifierName NavigatorID NavigatorLanguage
 syntax keyword typescriptBOM containedin=typescriptIdentifierName NavigatorOnLine
 syntax keyword typescriptBOM containedin=typescriptIdentifierName NavigatorPlugins
-syntax keyword typescriptBOM containedin=typescriptIdentifierName NetworkInformation
 syntax keyword typescriptBOM containedin=typescriptIdentifierName Node NodeFilter
 syntax keyword typescriptBOM containedin=typescriptIdentifierName NodeIterator NodeList
 syntax keyword typescriptBOM containedin=typescriptIdentifierName Notification OfflineAudioContext

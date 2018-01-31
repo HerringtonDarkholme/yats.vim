@@ -1,8 +1,8 @@
 typescriptGlobal:
-    - Object
+    # - Object
     - Function
     - Boolean
-    - Symbol
+    # - Symbol
     - Error
     - EvalError
     - InternalError
@@ -12,12 +12,12 @@ typescriptGlobal:
     - SyntaxError
     - TypeError
     - URIError
-    - Number
-    - Math
+    # - Number
+    # - Math
     - Date
-    - String
-    - RegExp
-    - Array
+    # - String
+    # - RegExp
+    # - Array
     - Float32Array
     - Float64Array
     - Int16Array
@@ -28,24 +28,24 @@ typescriptGlobal:
     - Uint8Array
     - Uint8ClampedArray
     - ParallelArray
-    - Map
-    - Set
-    - WeakMap
-    - WeakSet
+    # - Map
+    # - Set
+    # - WeakMap
+    # - WeakSet
     - ArrayBuffer
     - DataView
-    - JSON
+    # - JSON
     - Iterator
     - Generator
-    - Promise
+    # - Promise
     - Reflect
     - Proxy
-    - Intl
+    # - Intl
     - arguments
 
 typescriptGlobalMethod:
     - eval
-    - fetch
+    # - fetch
     - uneval
     - isFinite
     - isNaN

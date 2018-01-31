@@ -1,4 +1,5 @@
 syntax keyword typescriptBOMHistoryProp contained length current next previous state
+syntax keyword typescriptBOMHistoryProp contained scrollRestoration
 syntax cluster props add=typescriptBOMHistoryProp
 if exists("did_typescript_hilink") | HiLink typescriptBOMHistoryProp Keyword
 endif

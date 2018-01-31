@@ -1,8 +1,9 @@
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Symbol nextgroup=typescriptGlobalSymbolDot,typescriptFuncCallArg
 syntax match   typescriptGlobalSymbolDot /\./ contained nextgroup=typescriptSymbolStaticProp,typescriptSymbolStaticMethod,typescriptProp,typescriptMethod
-syntax keyword typescriptSymbolStaticProp contained create hasInstance isConcatSpreadable
-syntax keyword typescriptSymbolStaticProp contained isRegExp iterator toPrimitive
-syntax keyword typescriptSymbolStaticProp contained toStringTag unscopables
+syntax keyword typescriptSymbolStaticProp contained length iterator match replace
+syntax keyword typescriptSymbolStaticProp contained search split hasInstance isConcatSpreadable
+syntax keyword typescriptSymbolStaticProp contained unscopables species toPrimitive
+syntax keyword typescriptSymbolStaticProp contained toStringTag
 if exists("did_typescript_hilink") | HiLink typescriptSymbolStaticProp Keyword
 endif
 syntax keyword typescriptSymbolStaticMethod contained for keyFor nextgroup=typescriptFuncCallArg

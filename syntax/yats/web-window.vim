@@ -37,7 +37,8 @@ syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName self
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName status
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName statusbar
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName toolbar
-syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName top window
+syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName top visualViewport
+syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName window
 syntax cluster props add=typescriptBOMWindowProp
 if exists("did_typescript_hilink") | HiLink typescriptBOMWindowProp Structure
 endif
