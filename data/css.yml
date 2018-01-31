@@ -16,6 +16,7 @@ typescriptDOMStyle:
     - animation-name
     - animation-play-state
     - animation-timing-function
+    - appearance
     # - attr()
     # - auto
     # - B
@@ -78,6 +79,9 @@ typescriptDOMStyle:
     # - C
     # - calc()
     - caption-side
+    - caret-color
+    - caret-shape
+    - caret
     # - ch
     # - @charset
     # - :checked
@@ -405,6 +409,8 @@ typescriptDOMStyle:
     # - <uri>
     # - url()
     # - <user-ident>
+    - user-select
+    - user-zoom
     # - V
     # - :valid
     # - ::value

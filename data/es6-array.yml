@@ -17,6 +17,7 @@ typescriptArrayMethod:
   - findIndex
   - forEach
   - indexOf
+  - includes
   - join
   - keys
   - lastIndexOf

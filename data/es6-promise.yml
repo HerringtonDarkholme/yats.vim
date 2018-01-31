@@ -10,3 +10,4 @@ typescriptPromiseStaticMethod:
 typescriptPromiseMethod:
   - then
   - catch
+  - finally

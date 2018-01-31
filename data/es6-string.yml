@@ -4,6 +4,7 @@ typescriptGlobal:
 typescriptStringStaticMethod:
   - fromCharCode
   - fromCodePoint
+  - raw
 
 typescriptStringMethod:
   - anchor
@@ -28,6 +29,8 @@ typescriptStringMethod:
   - match
   - normalize
   # - quote
+  - padStart
+  - padEnd
   - repeat
   - replace
   - search

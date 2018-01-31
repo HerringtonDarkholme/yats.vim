@@ -4,6 +4,7 @@ typescriptBOMHistoryProp:
   - next
   - previous
   - state
+  - scrollRestoration
 
 typescriptBOMHistoryMethod:
   - back

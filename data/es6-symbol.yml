@@ -2,14 +2,18 @@ typescriptGlobal:
   - Symbol
 
 typescriptSymbolStaticProp:
-  - create
+  - length
+  - iterator
+  - match
+  - replace
+  - search
+  - split
   - hasInstance
   - isConcatSpreadable
-  - isRegExp
-  - iterator
+  - unscopables
+  - species
   - toPrimitive
   - toStringTag
-  - unscopables
 
 typescriptSymbolStaticMethod:
   - for

@@ -1,6 +1,7 @@
 # https://developer.mozilla.org/en-US/docs/Web/API
 typescriptBOM:
     # - A
+    - AbortController
     - AbstractWorker
     - AnalyserNode
     # - AnimationEvent
@@ -315,7 +316,6 @@ typescriptBOM:
     - NavigatorLanguage
     - NavigatorOnLine
     - NavigatorPlugins
-    - NetworkInformation
     - Node
     - NodeFilter
     - NodeIterator

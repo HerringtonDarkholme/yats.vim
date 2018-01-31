@@ -55,6 +55,7 @@ typescriptBOMWindowProp:
     - statusbar
     - toolbar
     - top
+    - visualViewport
     - window
 
 typescriptBOMWindowMethod:

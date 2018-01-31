@@ -5,6 +5,7 @@ typescriptIntlMethod:
     - Collator
     - DateTimeFormat
     - NumberFormat
+    - PluralRules
     # - CanonicalizeLocaleList
     # - BestAvailableLocale
     # - LookupMatcher

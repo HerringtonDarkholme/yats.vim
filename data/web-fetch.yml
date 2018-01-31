@@ -33,6 +33,7 @@ typescriptResponseProp:
     - status
     - statusText
     - headers
+    - redirected
 
 typescriptResponseMethod:
     - clone

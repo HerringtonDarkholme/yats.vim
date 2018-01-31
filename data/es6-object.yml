@@ -5,7 +5,9 @@ typescriptObjectStaticMethod:
   - create
   - defineProperties
   - defineProperty
+  - entries
   - freeze
+  - getOwnPropertyDescriptors
   - getOwnPropertyDescriptor
   - getOwnPropertyNames
   - getOwnPropertySymbols
@@ -16,6 +18,7 @@ typescriptObjectStaticMethod:
   - isSealed
   - keys
   - preventExtensions
+  - values
 
 typescriptObjectMethod:
   # - __defineGetter__
@@ -23,6 +26,7 @@ typescriptObjectMethod:
   # - __lookupGetter__
   # - __lookupSetter__
   # - eval
+  - getOwnPropertyDescriptors
   - hasOwnProperty
   - isPrototypeOf
   - propertyIsEnumerable
