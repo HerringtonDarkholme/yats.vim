@@ -144,4 +144,4 @@ Given typescript (consistent value highlight):
     value: Object.values(UserEmailType)
   }
 Execute:
-  AssertEqual 'typescriptES6SetMethod', SyntaxAt(2, 20)
+  AssertEqual 'typescriptObjectStaticMethod', SyntaxAt(2, 20)
