@@ -145,3 +145,8 @@ Given typescript (consistent value highlight):
   }
 Execute:
   AssertEqual 'typescriptObjectStaticMethod', SyntaxAt(2, 20)
+
+Given typescript (class expression):
+  var a = class extends Object {}
+Execute:
+  AssertEqual 'typescriptClassKeyword', SyntaxAt(1, 9)
