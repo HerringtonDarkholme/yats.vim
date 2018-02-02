@@ -35,7 +35,7 @@ if (a < (<number>b))
 
 var a = 123
 
-class MyClass {
+class MyClass extends Mixin({test: 123}) {
     noed // ewewe
     a = '3' // ewew
 }

@@ -13,19 +13,15 @@ syntax region typescriptClassTypeParameter
   \ start=/</ end=/>/
   \ contains=typescriptTypeParameter
   \ nextgroup=typescriptClassBlock,typescriptClassExtends
-  \ contained
-  \ skipwhite skipnl
+  \ contained skipwhite skipnl
 
 syntax keyword typescriptClassExtends          contained extends implements nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax match   typescriptClassHeritage         contained /\v(\k|\.|\(|\))+/
-  \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
+  \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma,typescriptClassTypeArguments
   \ contains=typescriptExpression
   \ skipwhite skipnl
   \ contained
-syntax match   typescriptClassHeritage         contained /\v(\k|\.)+\ze\s*\</
-  \ nextgroup=typescriptClassTypeArguments
-  \ contained skipwhite
 
 syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/
