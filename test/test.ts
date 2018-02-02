@@ -2,17 +2,6 @@ var p: Promise<void>
 
 const COMPILER_PROVIDERS: Array<any[]> = null
 
-class K<T> {
-  private m: Map<string, Promimse<string>> = new Map<string, Promise<string>>()
-	private a = new K<Array<number>>()
-	private b: K<Array<number>> =
-    new K<Array<number>>()
-	private c: K<Array<number>> =
-    <K<Array<number>>> new K()
-	private d = 123
-  private e: () => number = 123
-
-}
 
 function prop<T, K extends keyof T>(t: T, k: K): T[K] {
 }

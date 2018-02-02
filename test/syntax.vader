@@ -156,3 +156,22 @@ Given typescript (class expression):
   class A { d = super.d }
 Execute:
   AssertEqual 'typescriptIdentifier', SyntaxAt(1, 16)
+
+Given typescript (class property):
+  class K<T> {
+  private m: Map<string, Promimse<string>> = new Map<string, Promise<string>>()
+  private a = new K<Array<number>>()
+  private b: K<Array<number>> =
+    new K<Array<number>>()
+  private c: K<Array<number>> =
+    <K<Array<number>>> new K()
+  private d = 123
+  private e: () => number = 123
+  }
+Execute:
+  AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(2, 1)
+  AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(3, 1)
+  AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(4, 1)
+  AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(6, 1)
+  AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(8, 1)
+  AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(9, 1)
