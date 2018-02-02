@@ -1,9 +1,10 @@
 "Class
 syntax keyword typescriptAbstract              abstract
-  \ nextgroup=typescriptClassKeyword,typescriptMethodSignature,typescriptPropertySignature skipwhite skipnl
+  \ nextgroup=typescriptClassKeyword,typescriptMethodSignature,typescriptPropertySignature
+  \ skipwhite skipnl
 syntax keyword typescriptClassKeyword          class
-  \ nextgroup=typescriptClassName,typescriptClassExtends,typescriptClassBlock skipwhite
-syntax keyword typescriptClassSuper            super
+  \ nextgroup=typescriptClassName,typescriptClassExtends,typescriptClassBlock
+  \ skipwhite
 
 syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptClassTypeParameter
@@ -32,7 +33,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptClassSuper,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature
   \ contained fold
 
 syntax keyword typescriptClassStatic static

@@ -14,7 +14,7 @@ syntax keyword typescriptCastKeyword           as
   \ skipwhite
 
 "Program Keywords
-syntax keyword typescriptIdentifier            arguments this
+syntax keyword typescriptIdentifier            arguments this super
   \ nextgroup=typescriptDotNotation
 
 syntax keyword typescriptVariable              let var const

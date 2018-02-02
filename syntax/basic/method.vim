@@ -31,6 +31,6 @@ syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\%(:\
 
 syntax region  typescriptMethodBlock matchgroup=typescriptBraces
   \ start=/\([\^:]\s\*\)\=\zs{/ end=/}/
-  \ contains=@htmlJavaScript,typescriptClassSuper
+  \ contains=@htmlJavaScript
   \ containedin=typescriptClassBlock,typescriptObjectLiteral
   \ contained fold

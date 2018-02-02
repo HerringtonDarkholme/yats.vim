@@ -144,7 +144,6 @@ if exists("did_typescript_hilink")
   HiLink typescriptClassHeritage        Function
   HiLink typescriptInterfaceHeritage    Function
   HiLink typescriptClassStatic          StorageClass
-  HiLink typescriptClassSuper           keyword
   HiLink typescriptInterfaceKeyword     Keyword
   HiLink typescriptInterfaceExtends     Keyword
   HiLink typescriptInterfaceName        Function
