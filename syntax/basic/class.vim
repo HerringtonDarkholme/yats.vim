@@ -1,14 +1,13 @@
 "Class
-syntax keyword typescriptAbstract              abstract nextgroup=typescriptClassKeyword,typescriptMethodSignature,typescriptPropertySignature skipwhite skipnl
-syntax keyword typescriptClassKeyword          class nextgroup=typescriptClassName,typescriptClassExtends skipwhite
+syntax keyword typescriptAbstract              abstract
+  \ nextgroup=typescriptClassKeyword,typescriptMethodSignature,typescriptPropertySignature skipwhite skipnl
+syntax keyword typescriptClassKeyword          class
+  \ nextgroup=typescriptClassName,typescriptClassExtends skipwhite
 syntax keyword typescriptClassSuper            super
 
 syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
-  \ nextgroup=typescriptClassBlock,typescriptClassExtends
+  \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptClassTypeParameter
   \ skipwhite skipnl
-syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*\ze\s*\</
-  \ nextgroup=typescriptClassTypeParameter
-  \ contained skipwhite
 
 syntax region typescriptClassTypeParameter
   \ start=/</ end=/>/
