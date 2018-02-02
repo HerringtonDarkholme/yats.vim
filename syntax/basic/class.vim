@@ -2,7 +2,7 @@
 syntax keyword typescriptAbstract              abstract
   \ nextgroup=typescriptClassKeyword,typescriptMethodSignature,typescriptPropertySignature skipwhite skipnl
 syntax keyword typescriptClassKeyword          class
-  \ nextgroup=typescriptClassName,typescriptClassExtends skipwhite
+  \ nextgroup=typescriptClassName,typescriptClassExtends,typescriptClassBlock skipwhite
 syntax keyword typescriptClassSuper            super
 
 syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
