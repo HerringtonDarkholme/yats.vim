@@ -57,12 +57,6 @@ abstract class BadClass {
 }
 
 
-var a = {
-  template: this.template && this.template.toSummary()
-}
-
-const a = <number>123
-
 test({
   a: test ? // test
   test: ee

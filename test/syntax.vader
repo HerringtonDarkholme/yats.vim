@@ -157,7 +157,7 @@ Given typescript (class expression):
 Execute:
   AssertEqual 'typescriptIdentifier', SyntaxAt(1, 16)
 
-Given typescript (class property):
+Given typescript (complex class property):
   class K<T> {
   private m: Map<string, Promimse<string>> = new Map<string, Promise<string>>()
   private a = new K<Array<number>>()
@@ -175,3 +175,9 @@ Execute:
   AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(6, 1)
   AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(8, 1)
   AssertEqual 'typescriptAccessibilityModifier', SyntaxAt(9, 1)
+
+
+Given typescript (type cast as expression):
+  var a = <number>123
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 14)
