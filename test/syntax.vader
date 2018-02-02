@@ -150,3 +150,4 @@ Given typescript (class expression):
   var a = class extends Object {}
 Execute:
   AssertEqual 'typescriptClassKeyword', SyntaxAt(1, 9)
+  AssertEqual 'typescriptClassExtends', SyntaxAt(1, 15)
