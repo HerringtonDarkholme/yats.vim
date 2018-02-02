@@ -31,11 +31,12 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
-syntax region  typescriptClassBlock            contained matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptClassSuper,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature fold
+syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptClassSuper,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature
+  \ contained fold
 
-syntax keyword typescriptClassStatic static nextgroup=
-  \ typescriptMethodDef,
-  \ @typescriptMemberDeclaration
+syntax keyword typescriptClassStatic static
+  \ nextgroup=typescriptMethodDef,@typescriptMemberDeclaration
   \ skipwhite contained
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
