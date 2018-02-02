@@ -12,12 +12,6 @@ class K<T> {
 	private d = 123
   private e: () => number = 123
 
-  method() {
-      var a = this.e!
-      var a = super
-      return super
-  }
-
 }
 
 function prop<T, K extends keyof T>(t: T, k: K): T[K] {

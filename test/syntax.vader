@@ -151,3 +151,8 @@ Given typescript (class expression):
 Execute:
   AssertEqual 'typescriptClassKeyword', SyntaxAt(1, 9)
   AssertEqual 'typescriptClassExtends', SyntaxAt(1, 15)
+
+Given typescript (class expression):
+  class A { d = super.d }
+Execute:
+  AssertEqual 'typescriptIdentifier', SyntaxAt(1, 16)
