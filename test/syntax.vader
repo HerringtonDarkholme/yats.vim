@@ -181,3 +181,8 @@ Given typescript (type cast as expression):
   var a = <number>123
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 14)
+
+Given typescript (await keyword):
+  await { test: 123}
+Execute:
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(1, 9)
