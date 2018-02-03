@@ -18,7 +18,7 @@ if (a < (<number>b))
 
 var a = 123
 
-class MyClass extends Mixin({test: 123}) {
+class MyClass<string> extends Mixin({test: 123}) {
     noed // ewewe
     a = '3' // ewew
 }
