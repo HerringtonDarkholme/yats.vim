@@ -2,6 +2,7 @@ var p: Promise<void>
 
 const COMPILER_PROVIDERS: Array<any[]> = null
 
+type D<A, B=string> = string
 
 function prop<T, K extends keyof T>(t: T, k: K): T[K] {
 }
