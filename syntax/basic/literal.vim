@@ -5,7 +5,7 @@ syntax match   typescriptASCII                 contained /\\\d\d\d/
 
 syntax region  typescriptTemplateSubstitution matchgroup=typescriptTemplateSB
   \ start=/\${/ end=/}/
-  \ contains=@typescriptExpression
+  \ contains=@typescriptValue
   \ contained
 
 syntax region  typescriptString

@@ -38,9 +38,9 @@ syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ contained skipwhite skipempty skipnl
 
 syntax keyword typescriptKeywordOp
-  \ contained in instanceof nextgroup=@typescriptExpression
+  \ contained in instanceof nextgroup=@typescriptValue
 syntax keyword typescriptOperator              delete new typeof void
-  \ nextgroup=@typescriptExpression
+  \ nextgroup=@typescriptValue
   \ skipwhite skipempty
 syntax keyword typescriptForOperator           contained in of
 syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty
@@ -59,9 +59,9 @@ syntax keyword typescriptRepeat                do while for nextgroup=typescript
 syntax keyword typescriptRepeat                for nextgroup=typescriptLoopParen,typescriptAsyncFor skipwhite skipempty
 syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptPrimitive skipwhite
-syntax keyword typescriptDefault               default nextgroup=@typescriptExpression,typescriptClassKeyword skipwhite oneline
+syntax keyword typescriptDefault               default nextgroup=@typescriptValue,typescriptClassKeyword skipwhite oneline
 syntax keyword typescriptStatementKeyword      with yield
-syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptExpression containedin=typescriptBlock,typescriptMethodBlock
+syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock,typescriptMethodBlock
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
@@ -71,7 +71,7 @@ syntax keyword typescriptAsyncFor              await nextgroup=typescriptLoopPar
 
 syntax region  typescriptLoopParen             contained matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptExpression nextgroup=typescriptBlock
+  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptValue nextgroup=typescriptBlock
   \ skipwhite skipempty
-syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptExpression nextgroup=typescriptBlock skipwhite skipempty
+syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptValue nextgroup=typescriptBlock skipwhite skipempty
 syntax match   typescriptEndColons             /[;,]/

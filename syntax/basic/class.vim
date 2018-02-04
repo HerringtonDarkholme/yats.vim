@@ -20,7 +20,7 @@ syntax keyword typescriptClassExtends          contained extends implements next
 
 syntax match   typescriptClassHeritage         contained /\v(\k|\.|\(|\))+/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma,typescriptClassTypeArguments
-  \ contains=typescriptExpression
+  \ contains=@typescriptValue
   \ skipwhite skipnl
   \ contained
 
@@ -50,12 +50,12 @@ syntax match typescriptMemberVariableDeclaration /\v[A-Za-z_$]\k*(\?|\!)?\s*\ze:
   \ contained skipwhite
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
-  \ nextgroup=@typescriptExpression
+  \ nextgroup=@typescriptValue
   \ contained skipwhite skipnl
 
 syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:.\+=>\@!/
   \ contains=typescriptTypeAnnotation
-  \ nextgroup=@typescriptExpression
+  \ nextgroup=@typescriptValue
   \ contained skipwhite skipnl
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite

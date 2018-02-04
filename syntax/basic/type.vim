@@ -23,7 +23,7 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
   \ start=/< \@!/ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
-  \ nextgroup=@typescriptExpression
+  \ nextgroup=@typescriptValue
   \ contained skipwhite oneline
 
 syntax cluster typescriptType contains=
@@ -157,7 +157,7 @@ syntax cluster typescriptParameterList contains=
 syntax keyword typescriptAccessibilityModifier public private protected readonly contained
 
 syntax match typescriptDefaultParam /=/
-  \ nextgroup=@typescriptExpression
+  \ nextgroup=@typescriptValue
   \ contained skipwhite
 
 syntax keyword typescriptConstructSignature new

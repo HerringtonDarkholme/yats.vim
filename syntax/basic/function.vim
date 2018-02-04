@@ -1,5 +1,5 @@
 syntax keyword typescriptAsyncFuncKeyword      async nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef skipwhite
-syntax keyword typescriptAsyncFuncKeyword      await nextgroup=@typescriptExpression skipwhite
+syntax keyword typescriptAsyncFuncKeyword      await nextgroup=@typescriptValue skipwhite
 syntax keyword typescriptFuncKeyword           function nextgroup=typescriptAsyncFunc,typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptAsyncFunc             contained /*/ nextgroup=typescriptFuncName,typescriptFuncArg skipwhite skipempty
 syntax match   typescriptFuncName              contained /[a-zA-Z_$]\k*/ nextgroup=typescriptFuncArg skipwhite

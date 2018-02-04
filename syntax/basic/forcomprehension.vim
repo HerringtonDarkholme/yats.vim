@@ -6,8 +6,8 @@ syntax keyword typescriptForComprehension for
 
 syntax region  typescriptForComprehensionTail  matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=typescriptOfComprehension,@typescriptExpression
-  \ nextgroup=typescriptForComprehension,typescriptIfComprehension,@typescriptExpression
+  \ contains=typescriptOfComprehension,@typescriptValue
+  \ nextgroup=typescriptForComprehension,typescriptIfComprehension,@typescriptValue
   \ contained skipwhite skipempty
 
 syntax keyword typescriptOfComprehension       contained of
@@ -15,6 +15,6 @@ syntax keyword typescriptIfComprehension       contained if nextgroup=typescript
 
 syntax region  typescriptIfComprehensionTail   matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=typescriptExpression
+  \ contains=@typescriptValue
   \ nextgroup=typescriptForComprehension,typescriptIfComprehension
   \ contained skipwhite skipempty
