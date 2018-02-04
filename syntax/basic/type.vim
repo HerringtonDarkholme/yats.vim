@@ -142,8 +142,13 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite skipnl
 
-syntax match typescriptTypeAnnotation /?\?:/
-  \ nextgroup=typescriptUserDefinedType,@typescriptType
+syntax region typescriptTypeAnnotation start=/:/ end=/\v;|{|$/me=e-1
+  \ contains=typescriptUserDefinedType,@typescriptType
+  \ nextgroup=typescriptBlock
+  \ contained skipwhite skipnl
+syntax region typescriptTypeAnnotation start=/:/ end=/=/me=e-1
+  \ contains=typescriptUserDefinedType,@typescriptType
+  \ nextgroup=@typescriptExpression
   \ contained skipwhite skipnl
 
 syntax cluster typescriptParameterList contains=
