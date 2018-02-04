@@ -186,3 +186,8 @@ Given typescript (await keyword):
   await { test: 123}
 Execute:
   AssertEqual 'typescriptObjectLabel', SyntaxAt(1, 9)
+
+Given typescript (template tag string):
+  var a = test`teweww`
+Execute:
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 16)
