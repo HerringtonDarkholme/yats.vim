@@ -17,8 +17,8 @@ syntax region  typescriptString
 " <https://github.com/vim/vim/blob/master/runtime/syntax/javascript.vim#L48>
 syntax region  typescriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gimuy]\{0,5\}\s*$+ end=+/[gimuy]\{0,5\}\s*[;.,)\]}]+me=e-1 nextgroup=typescriptDotNotation oneline
 
-syntax region  typescriptTemplate matchgroup=typescriptTemplateTag
-  \ start=/\k*`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
+syntax region  typescriptTemplate
+  \ start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
   \ contains=typescriptTemplateSubstitution
   \ nextgroup=@typescriptSymbols
   \ skipwhite skipempty
