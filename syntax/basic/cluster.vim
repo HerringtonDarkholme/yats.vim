@@ -9,5 +9,5 @@ syntax cluster typescriptExpression
   \ typescriptIdentifier,typescriptIdentifierName,typescriptOperator,typescriptUnaryOp,typescriptArrowFuncDef,typescriptParenExp,typescriptRegexpString,typescriptGlobal,jsxRegion,typescriptAsyncFuncKeyword,typescriptClassKeyword,typescriptTypeCast
 
 syntax cluster typescriptValue
-  \ contains=@typescriptValue,typescriptObjectLiteral
+  \ contains=@typescriptExpression,typescriptObjectLiteral
 syntax cluster typescriptEventExpression       contains=typescriptArrowFuncDef,typescriptParenExp,@typescriptValue,typescriptRegexpString,@typescriptEventTypes,typescriptOperator,typescriptGlobal,jsxRegion
