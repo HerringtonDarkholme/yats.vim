@@ -14,8 +14,9 @@ syntax keyword typescriptConstraint extends
   \ nextgroup=@typescriptType
   \ contained skipwhite skipnl
 
+"><
 syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
-  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ start=/\></ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
   \ nextgroup=typescriptUnionOrArrayType,typescriptArgumentList
   \ contained skipwhite
