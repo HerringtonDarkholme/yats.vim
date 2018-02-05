@@ -191,3 +191,11 @@ Given typescript (template tag string):
   var a = test`teweww`
 Execute:
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 16)
+
+Given typescript (multi line arrow func):
+  filter((test
+  ) => {
+      const name = 33
+  })
+Execute:
+  AssertEqual 'typescriptBlock', SyntaxAt(3, 1)
