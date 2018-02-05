@@ -61,7 +61,7 @@ syntax keyword typescriptBranch                break continue
 syntax keyword typescriptCase                  case nextgroup=@typescriptPrimitive skipwhite
 syntax keyword typescriptDefault               default nextgroup=@typescriptValue,typescriptClassKeyword skipwhite oneline
 syntax keyword typescriptStatementKeyword      with yield
-syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock,typescriptMethodBlock
+syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
