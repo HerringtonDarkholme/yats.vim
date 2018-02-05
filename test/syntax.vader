@@ -199,3 +199,19 @@ Given typescript (multi line arrow func):
   })
 Execute:
   AssertEqual 'typescriptBlock', SyntaxAt(3, 1)
+
+Given typescript (generic arrow func call):
+  []
+  .map(x => foo<number>(a))
+  var a
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 15)
+  AssertEqual 'typescriptVariable', SyntaxAt(3, 1)
+
+Given typescript (nested generic method call):
+  {
+    this._addAfter(new IterableChangeRecord_<V>(item, itemTrackBy), previousRecord, index);
+    return this.isDirty;
+  }
+Execute:
+  AssertEqual 'typescriptStatementKeyword', SyntaxAt(3, 3)

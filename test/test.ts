@@ -24,11 +24,6 @@ class MyClass<string> extends Mixin({test: 123}) {
     a = '3' // ewew
 }
 
-filter((test
-) => {
-    const name = 33
-})
-
 process.stdout
 document
     /* test */
@@ -62,12 +57,6 @@ test({
   a: test ? // test
   test: ee
 })
-
-{
-    this._addAfter(new IterableChangeRecord_<V>(item, itemTrackBy), previousRecord, index);
-    return this.isDirty;
-}
-
 
 getSymbolIterator(3) in obj;
 
