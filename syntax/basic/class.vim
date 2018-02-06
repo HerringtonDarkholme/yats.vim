@@ -43,20 +43,25 @@ syntax keyword typescriptClassStatic static
 syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,
   \ typescriptAccessibilityModifier,
-  \ typescriptMemberVariableDeclaration
+  \ typescriptMembers
+  " \ typescriptMemberVariableDeclaration
 
-syntax match typescriptMemberVariableDeclaration /\v[A-Za-z_$]\k*(\?|\!)?\s*\ze:/
-  \ nextgroup=typescriptTypeAnnotation
+syntax match typescriptMembers /\v[A-Za-z_$]\k*(\?|\!)?/
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign,@typescriptCallSignature
   \ contained skipwhite
 
-syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
-  \ nextgroup=@typescriptValue
-  \ contained skipwhite skipnl
+" syntax match typescriptMemberVariableDeclaration /\v[A-Za-z_$]\k*(\?|\!)?\s*\ze:/
+"   \ nextgroup=typescriptTypeAnnotation
+"   \ contained skipwhite
 
-syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:.\+=>\@!/
-  \ contains=typescriptTypeAnnotation
-  \ nextgroup=@typescriptValue
-  \ contained skipwhite skipnl
+" syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
+"   \ nextgroup=@typescriptValue
+"   \ contained skipwhite skipnl
+
+" syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:.\+=>\@!/
+"   \ contains=typescriptTypeAnnotation
+"   \ nextgroup=@typescriptValue
+"   \ contained skipwhite skipnl
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
