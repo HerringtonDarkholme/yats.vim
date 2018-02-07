@@ -223,3 +223,8 @@ Execute:
   AssertEqual 'typescriptTypeBrackets', SyntaxAt(1, 4)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 5)
   AssertEqual 'typescriptBinaryOp', SyntaxAt(2, 5)
+
+Given typescript (object label):
+  var a = { test: { }}
+Execute:
+  AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 18)
