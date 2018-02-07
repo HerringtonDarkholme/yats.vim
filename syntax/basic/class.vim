@@ -33,7 +33,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature,typescriptBlock,typescriptAssign
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptBlock,typescriptAssign
   \ contained fold
 
 syntax keyword typescriptClassStatic static

@@ -21,7 +21,7 @@ Given typescript (interface property):
     name: string;
   }
 Execute:
-  AssertEqual 'typescriptPropertySignature', SyntaxAt(2, 3)
+  AssertEqual 'typescriptMembers', SyntaxAt(2, 3)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 9)
 
 Given typescript (function default param):
@@ -228,3 +228,22 @@ Given typescript (object label):
   var a = { test: { }}
 Execute:
   AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 18)
+
+Given typescript (abstract getter):
+  class B {
+    abstract get parent(): Injector|null;
+  }
+Execute:
+  AssertEqual 'typescriptMembers', SyntaxAt(2, 20)
+
+Given typescript (class method overload):
+  class A {
+    test(): void
+    test(s: string): void
+    test(s?: string): void { }
+  }
+Execute:
+  AssertEqual 'typescriptMembers', SyntaxAt(2, 3)
+  AssertEqual 'typescriptMembers', SyntaxAt(3, 3)
+  AssertEqual 'typescriptMembers', SyntaxAt(4, 3)
+  AssertEqual 'typescriptBlock', SyntaxAt(4, 27)

@@ -70,8 +70,9 @@ syntax cluster typescriptTypeMember contains=
   \ @typescriptCallSignature,
   \ typescriptConstructSignature,
   \ typescriptIndexSignature,
-  \ typescriptMethodSignature,
+  \ typescriptMembers,
   \ typescripEndColons
+  " \ typescriptMethodSignature,
 
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/

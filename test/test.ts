@@ -60,16 +60,6 @@ test({
 
 getSymbolIterator(3) in obj;
 
-class B {
-  abstract get parent(): Injector|null;
-}
-class A {
-  test(): void
-  test(s: string): void
-  test(s?: string): void
-}
-
-
 export function isFormattedError(error: Error): error is FormattedError {
   return !!(error as any)[FORMATTED_MESSAGE];
 }
