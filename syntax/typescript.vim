@@ -34,7 +34,7 @@ syntax sync fromstart
 " lowest priority on least used feature
 syntax match   typescriptLabel                /[a-zA-Z_$]\k*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement skipwhite skipempty
 " syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
-syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/{/ end=/}/ contains=@htmlJavaScript fold
+syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptStatement fold
 
 
 runtime syntax/basic/identifiers.vim
