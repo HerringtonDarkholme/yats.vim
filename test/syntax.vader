@@ -215,3 +215,11 @@ Given typescript (nested generic method call):
   }
 Execute:
   AssertEqual 'typescriptStatementKeyword', SyntaxAt(3, 3)
+
+Given typescript (generic call and arithmetic):
+  foo<string>(2)
+  foo < string > (2)
+Execute:
+  AssertEqual 'typescriptTypeBrackets', SyntaxAt(1, 4)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 5)
+  AssertEqual 'typescriptBinaryOp', SyntaxAt(2, 5)
