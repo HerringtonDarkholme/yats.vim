@@ -13,8 +13,7 @@ syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
   \ contains=typescriptTypeAnnotation
   \ contained oneline
 
-syntax region typescriptAmbientFunctionDeclaration matchgroup=typescriptFuncKeyword
-  \ start=/function\>/ end=/\ze;\|$/
+syntax keyword typescriptAmbientFunctionDeclaration function
   \ contains=@typescriptCallSignature
   \ contained
 
