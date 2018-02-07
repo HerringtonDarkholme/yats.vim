@@ -18,7 +18,7 @@ syntax keyword typescriptConstraint extends
 syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/\></ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
-  \ nextgroup=typescriptUnionOrArrayType,typescriptArgumentList
+  \ nextgroup=typescriptUnionOrArrayType,typescriptFuncCallArg
   \ contained skipwhite
 
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets

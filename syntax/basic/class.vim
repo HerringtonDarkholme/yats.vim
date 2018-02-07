@@ -46,22 +46,6 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptMembers
   " \ typescriptMemberVariableDeclaration
 
-syntax match typescriptMembers /\v[A-Za-z_$]\k*(\?|\!)?/
-  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
-  \ contained skipwhite
-
-" syntax match typescriptMemberVariableDeclaration /\v[A-Za-z_$]\k*(\?|\!)?\s*\ze:/
-"   \ nextgroup=typescriptTypeAnnotation
-"   \ contained skipwhite
-
-" syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*\s*=/
-"   \ nextgroup=@typescriptValue
-"   \ contained skipwhite skipnl
-
-" syntax match typescriptMemberVariableDeclaration /[A-Za-z_$]\k*:.\+=>\@!/
-"   \ contains=typescriptTypeAnnotation
-"   \ nextgroup=@typescriptValue
-"   \ contained skipwhite skipnl
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
