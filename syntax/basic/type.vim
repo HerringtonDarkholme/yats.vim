@@ -140,7 +140,7 @@ syntax region typescriptGenericCall matchgroup=typescriptTypeBrackets
 syntax region typescriptCall matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=typescriptDecorator,@typescriptParameterList,@typescriptComments
-  \ nextgroup=typescriptTypeAnnotation,typescriptBlock
+  \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite skipnl
 
 syntax match typescriptTypeAnnotation /?\?:/
