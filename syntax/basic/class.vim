@@ -33,11 +33,11 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptMethodDef,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptMethodSignature,typescriptBlock,typescriptAssign
   \ contained fold
 
 syntax keyword typescriptClassStatic static
-  \ nextgroup=typescriptMethodDef,@typescriptMemberDeclaration
+  \ nextgroup=typescriptMethodDef
   \ skipwhite contained
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
@@ -47,7 +47,7 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   " \ typescriptMemberVariableDeclaration
 
 syntax match typescriptMembers /\v[A-Za-z_$]\k*(\?|\!)?/
-  \ nextgroup=typescriptTypeAnnotation,typescriptAssign,@typescriptCallSignature
+  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ contained skipwhite
 
 " syntax match typescriptMemberVariableDeclaration /\v[A-Za-z_$]\k*(\?|\!)?\s*\ze:/
