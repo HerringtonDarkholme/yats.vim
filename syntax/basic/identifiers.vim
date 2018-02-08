@@ -1,5 +1,5 @@
 syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/
-  \ nextgroup=typescriptDotNotation,typescriptFuncCallArg,typescriptComputedProperty,@typescriptSymbols,typescriptTypeArguments
+  \ nextgroup=typescriptDotNotation,typescriptFuncCallArg,typescriptIndexExpr,@typescriptSymbols,typescriptTypeArguments
   \ transparent
   \ contains=@_semantic
   \ skipnl skipwhite
@@ -7,6 +7,7 @@ syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\
 syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*!\?/ transparent contains=@props nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty
 syntax match   typescriptProp                  contained /[a-zA-Z_$]\w*\ze(/ contains=@props nextgroup=typescriptFuncCallArg oneline
 syntax region  typescriptProp                  contained start=/[a-zA-Z_$][a-zA-Z0-9_$]*</ end=/>\ze(/ nextgroup=typescriptFuncCallArg contains=typescriptTypeArguments oneline
+syntax region  typescriptIndexExpr      contained matchgroup=typescriptProperty start=/\[/rs=s+1 end=/]/he=e-1 contains=@typescriptValue nextgroup=@typescriptSymbols,typescriptDotNotation,typescriptFuncCallArg skipwhite skipempty
 syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*@!\?\ze(/ contains=@props transparent nextgroup=typescriptFuncCallArg
 syntax match   typescriptDotNotation           /\./ nextgroup=typescriptProp,typescriptMethod skipnl
 syntax match   typescriptDotStyleNotation      /\.style\./ nextgroup=typescriptDOMStyle transparent
