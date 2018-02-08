@@ -85,7 +85,7 @@ Given typescript (abstract generic method):
     abstract resolveComponentFactory<T>(component: Type<T>): ComponentFactory<T>;
   }
 Execute:
-  AssertEqual 'typescriptMethodSignature', SyntaxAt(2, 12)
+  AssertEqual 'typescriptMembers', SyntaxAt(2, 12)
 
 Given typescript (binary in keyword):
   var a = a in b
