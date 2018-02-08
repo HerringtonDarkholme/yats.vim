@@ -247,3 +247,27 @@ Execute:
   AssertEqual 'typescriptMembers', SyntaxAt(3, 3)
   AssertEqual 'typescriptMembers', SyntaxAt(4, 3)
   AssertEqual 'typescriptBlock', SyntaxAt(4, 27)
+
+Given typescript (object literal method):
+  var a = {
+    test(a) {}
+  }
+Execute:
+  AssertEqual 'typescriptMethodName', SyntaxAt(2, 3)
+  AssertEqual 'typescriptCall', SyntaxAt(2, 8)
+
+Given typescript (object literal getter):
+  var a = {
+    get test() {}
+  }
+Execute:
+  AssertEqual 'typescriptMethodName', SyntaxAt(2, 7)
+  AssertEqual 'typescriptMethodAccessor', SyntaxAt(2, 3)
+
+Given typescript (object literal generic method):
+  var a = {
+    test<T>() {}
+  }
+Execute:
+  AssertEqual 'typescriptMethodName', SyntaxAt(2, 3)
+  AssertEqual 'typescriptTypeParameter', SyntaxAt(2, 8)

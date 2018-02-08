@@ -1,6 +1,6 @@
 "Class
 syntax keyword typescriptAbstract              abstract
-  \ nextgroup=typescriptClassKeyword,typescriptMembers
+  \ nextgroup=typescriptClassKeyword,typescriptMembers,typescriptMethodAccessor
   \ skipwhite skipnl
 syntax keyword typescriptClassKeyword          class
   \ nextgroup=typescriptClassName,typescriptClassExtends,typescriptClassBlock
@@ -33,7 +33,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptBlock,typescriptAssign
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptBlock,typescriptAssign,typescriptMethodAccessor
   \ contained fold
 
 syntax keyword typescriptClassStatic static

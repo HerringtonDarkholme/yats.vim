@@ -10,6 +10,12 @@ function prop<T, K extends keyof T>(t: T, k: K): T[K] {
 interface A {
 }
 
+var a = {
+  test: 123,
+  method<T>(a) {
+  }
+}
+
 var a = [/\/\//, 123]
 
 
@@ -48,7 +54,7 @@ var a = 1/3
 /* test*/
 type A = 42
 abstract class BadClass {
-  abstract method1 (): Promise<number>;
+  abstract get method1 (): Promise<number>;
   abstract method2 (): Promise<string>;
 }
 

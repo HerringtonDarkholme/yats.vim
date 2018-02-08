@@ -1,33 +1,31 @@
-syntax region  typescriptMethodDef  start=/\v(set|get)\_s+[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
+syntax match  typescriptMethodDef  /\v(set|get)?\s+[a-zA-Z_$]\k*\_s*(\(|\<)/me=e-1
   \ contains=typescriptMethodAccessor,typescriptMethodName
-  \ containedin=typescriptClassBlock,typescriptObjectLiteral
-  \ nextgroup=typescriptBlock
+  \ containedin=typescriptObjectLiteral
+  \ nextgroup=@typescriptCallSignature
   \ skipwhite contained
 
-syntax region  typescriptMethodDef  start=/\v[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
-  \ contains=typescriptMethodName,typescriptConstructor
-  \ containedin=typescriptClassBlock,typescriptObjectLiteral
-  \ nextgroup=typescriptBlock
-  \ skipwhite contained
+" syntax region  typescriptMethodDef  start=/\v[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
+"   \ contains=typescriptMethodName,typescriptConstructor
+"   \ containedin=typescriptClassBlock,typescriptObjectLiteral
+"   \ nextgroup=typescriptBlock
+"   \ skipwhite contained
 
-syntax keyword typescriptMethodAccessor        contained get set
 syntax keyword typescriptConstructor           contained constructor
-  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+  \ nextgroup=@typescriptCallSignature
   \ skipwhite skipempty
 
 syntax match   typescriptMethodName            contained /[a-zA-Z_$]\k*/
-  \ nextgroup=typescriptMethodArgs
-  \ containedin=typescriptMethodDef
-  \ skipwhite skipempty
-syntax region  typescriptMethodName            matchgroup=typescriptPropertyName
-  \ start=/\[/ end=/]/
-  \ contains=@typescriptValue
-  \ nextgroup=typescriptMethodArgs
-  \ skipwhite skipempty contained
+" syntax region  typescriptMethodName            matchgroup=typescriptPropertyName
+"   \ start=/\[/ end=/]/
+"   \ contains=@typescriptValue
+"   \ nextgroup=typescriptMethodArgs
+"   \ skipwhite skipempty contained
 
-syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\%(:\s*\)\@<!{/me=e-1
-  \ contains=@typescriptCallSignature
-  \ skipwhite
+syntax keyword typescriptMethodAccessor        contained get set
+
+" syntax region  typescriptMethodArgs            contained start=/(\|</ end=/\%(:\s*\)\@<!{/me=e-1
+"   \ contains=@typescriptCallSignature
+"   \ skipwhite
 
 syntax match typescriptMembers /\v[A-Za-z_$]\k*(\?|\!)?/
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
