@@ -272,3 +272,10 @@ Given typescript (object literal generic method):
 Execute:
   AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 3)
   AssertEqual 'typescriptTypeParameter', SyntaxAt(2, 8)
+
+Given typescript (string literal type):
+  interface a {
+    test: 'test' | number
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 23)

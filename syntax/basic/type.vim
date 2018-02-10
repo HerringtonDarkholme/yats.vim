@@ -43,7 +43,12 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptObjectType,
   \ typescriptTupleType,
   \ typescriptTypeQuery,
-  \ typescriptString
+  \ typescriptStringLiteralType
+
+syntax region  typescriptStringLiteralType contained
+  \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
+  \ nextgroup=typescriptUnion
+  \ skipwhite skipempty
 
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
@@ -84,7 +89,7 @@ syntax match typescriptUnionOrArrayType /\[\]\||\|&/
   \ contains=typescriptUnion
   \ contained skipwhite
 
-syntax match typescriptUnion /|\|&/ containedin=typescriptUnionOrArrayType
+syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
 
 syntax cluster typescriptFunctionType contains=typescriptGenericFunc,typescriptFuncType
 syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
