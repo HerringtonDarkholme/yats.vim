@@ -15,7 +15,7 @@ interface A {
 
 var a = {
   test: 123,
-  method<T>(a) {
+  get method<T>(a) {
   }
 }
 

@@ -23,5 +23,5 @@ syntax region typescriptGenericImpl matchgroup=typescriptTypeBrackets
 syntax region typescriptParamImpl matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=typescriptDecorator,@typescriptParameterList,@typescriptComments
-  \ nextgroup=typescriptReturnAnnotation
+  \ nextgroup=typescriptReturnAnnotation,typescriptBlock
   \ contained skipwhite skipnl

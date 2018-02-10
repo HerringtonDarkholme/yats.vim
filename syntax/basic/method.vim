@@ -1,8 +1,7 @@
-syntax match  typescriptMethodDef  /\v(set|get)?\s+[a-zA-Z_$]\k*\_s*(\(|\<)/me=e-1
-  \ contains=typescriptMethodAccessor,typescriptMethodName
-  \ containedin=typescriptObjectLiteral
-  \ nextgroup=@typescriptCallSignature
-  \ skipwhite contained
+" syntax match  typescriptMethodDef  /\v(set|get)?\s+[a-zA-Z_$]\k*\_s*(\(|\<)/me=e-1
+"   \ contains=typescriptMethodAccessor,typescriptMethodName
+"   \ nextgroup=@typescriptCallSignature
+"   \ skipwhite contained
 
 " syntax region  typescriptMethodDef  start=/\v[a-zA-Z_$]\k*\_s*(\(|\<)/ end=/\ze{/
 "   \ contains=typescriptMethodName,typescriptConstructor
