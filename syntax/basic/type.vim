@@ -76,12 +76,12 @@ syntax region typescriptObjectType matchgroup=typescriptBraces
   \ contained skipwhite fold
 
 syntax cluster typescriptTypeMember contains=
-  \ typescriptPropertySignature,
   \ @typescriptCallSignature,
   \ typescriptConstructSignature,
   \ typescriptIndexSignature,
   \ typescriptMembers,
   " \ typescriptMethodSignature,
+  " \ typescriptPropertySignature,
 
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
@@ -127,12 +127,12 @@ syntax keyword typescriptTypeQuery typeof keyof
   \ nextgroup=typescriptTypeReference
   \ contained skipwhite skipnl
 
-syntax region typescriptPropertySignature
-  \ start=/[A-Za-z_$'"]\|\d/ end=/\k\@!/
-  \ contains=typescriptString,typescriptOptionalMark
-  \ nextgroup=typescriptTypeAnnotation
-  \ containedin=typescriptTypeMember
-  \ contained skipwhite oneline
+" syntax region typescriptPropertySignature
+"   \ start=/[A-Za-z_$'"]\|\d/ end=/\k\@!/
+"   \ contains=typescriptString,typescriptOptionalMark
+"   \ nextgroup=typescriptTypeAnnotation
+"   \ containedin=typescriptTypeMember
+"   \ contained skipwhite oneline
 
 " syntax match typescriptMethodSignature /\v[A-Za-z_$]\w*\??\_s*\ze(\<|\()/
 "   \ nextgroup=@typescriptCallSignature
