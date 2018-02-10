@@ -31,7 +31,7 @@ syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
 
 syntax cluster typescriptType contains=
   \ @typescriptPrimaryType,
-  \ typescriptUnion
+  \ typescriptUnion,
   \ @typescriptFunctionType,
   \ typescriptConstructorType
 
