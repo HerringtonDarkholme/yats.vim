@@ -37,7 +37,7 @@ syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}
   \ contained fold
 
 syntax keyword typescriptClassStatic static
-  \ nextgroup=typescriptMethodDef
+  \ nextgroup=typescriptMembers
   \ skipwhite contained
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
