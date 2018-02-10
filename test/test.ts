@@ -1,4 +1,7 @@
 var p: Promise<void>
+  var a = {
+    template: /*eee*/ this.template
+  }
 
 const COMPILER_PROVIDERS: Array<any[]> = null
 
