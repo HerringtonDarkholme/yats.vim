@@ -279,3 +279,10 @@ Given typescript (string literal type):
   }
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 23)
+
+Given typescript (array return type):
+  function prop<T>(t: T): T[] {
+    let a = 123
+  }
+Execute:
+  AssertEqual 'typescriptBlock', SyntaxAt(2, 1)

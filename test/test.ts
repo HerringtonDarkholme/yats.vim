@@ -7,10 +7,6 @@ const COMPILER_PROVIDERS: Array<any[]> = null
 
 type D<A, B=string> = string
 
-function prop<T>(t: T): T[] {
-  let a = 123
-}
-
 
 var a = {
   test: 123,
