@@ -253,21 +253,22 @@ Given typescript (object literal method):
     test(a) {}
   }
 Execute:
-  AssertEqual 'typescriptMethodName', SyntaxAt(2, 3)
-  AssertEqual 'typescriptCall', SyntaxAt(2, 8)
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 3)
+  AssertEqual 'typescriptParamImpl', SyntaxAt(2, 8)
 
 Given typescript (object literal getter):
   var a = {
     get test() {}
   }
 Execute:
-  AssertEqual 'typescriptMethodName', SyntaxAt(2, 7)
-  AssertEqual 'typescriptMethodAccessor', SyntaxAt(2, 3)
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 7)
+  " TODO
+  " AssertEqual 'typescriptMethodAccessor', SyntaxAt(2, 3)
 
 Given typescript (object literal generic method):
   var a = {
     test<T>() {}
   }
 Execute:
-  AssertEqual 'typescriptMethodName', SyntaxAt(2, 3)
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(2, 3)
   AssertEqual 'typescriptTypeParameter', SyntaxAt(2, 8)
