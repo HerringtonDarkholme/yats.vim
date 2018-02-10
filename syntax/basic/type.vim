@@ -2,7 +2,7 @@
 syntax match typescriptOptionalMark /?/ contained
 
 syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
-  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ start=/</ end=/>/
   \ contains=typescriptTypeParameter
   \ contained
 
@@ -30,13 +30,10 @@ syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
   \ contained skipwhite oneline
 
 syntax cluster typescriptType contains=
-  \ @typescriptCompoundType,
-  \ @typescriptFunctionType,
-  \ typescriptConstructorType
-
-syntax cluster typescriptCompoundType contains=
   \ @typescriptPrimaryType,
   \ typescriptUnion
+  \ @typescriptFunctionType,
+  \ typescriptConstructorType
 
 syntax region typescriptTypeBracket contained
   \ start=/\[/ end=/\]/
@@ -84,7 +81,6 @@ syntax cluster typescriptTypeMember contains=
   \ typescriptConstructSignature,
   \ typescriptIndexSignature,
   \ typescriptMembers,
-  \ typescripEndColons
   " \ typescriptMethodSignature,
 
 syntax region typescriptTupleType matchgroup=typescriptBraces
