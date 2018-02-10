@@ -25,6 +25,8 @@ if (a < (<number>b))
     a
 }
 
+var a: T[K] = 1213
+
 var a = 123
 
 class MyClass<string> extends Mixin({test: 123}) {

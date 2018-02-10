@@ -15,10 +15,12 @@ syntax keyword typescriptConstraint extends
   \ contained skipwhite skipnl
 
 "><
+" class A extend B<T> {} // ClassBlock
+" func<T>() // FuncCallArg
 syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/\></ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
-  \ nextgroup=typescriptUnionOrArrayType,typescriptFuncCallArg
+  \ nextgroup=typescriptFuncCallArg
   \ contained skipwhite
 
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
@@ -34,7 +36,13 @@ syntax cluster typescriptType contains=
 
 syntax cluster typescriptCompoundType contains=
   \ @typescriptPrimaryType,
-  \ typescriptUnionOrArrayType
+  \ typescriptUnion
+
+syntax region typescriptTypeBracket contained
+  \ start=/\[/ end=/\]/
+  \ contains=typescriptString,typescriptNumber
+  \ nextgroup=@typescriptTypeOperator
+  \ skipwhite skipempty
 
 syntax cluster typescriptPrimaryType contains=
   \ typescriptParenthesizedType,
@@ -53,21 +61,21 @@ syntax region  typescriptStringLiteralType contained
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
-  \ nextgroup=typescriptUnionOrArrayType
+  \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite skipempty
 
 syntax keyword typescriptPredefinedType any number boolean string void never undefined null object
-  \ nextgroup=typescriptUnionOrArrayType
+  \ nextgroup=typescriptUnion
   \ contained skipwhite skipempty
 
 syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
-  \ nextgroup=typescriptTypeArguments,typescriptUnionOrArrayType
+  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator
   \ skipwhite contained skipempty
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
   \ contains=@typescriptTypeMember,@typescriptComments,typescriptAccessibilityModifier
-  \ nextgroup=typescriptUnionOrArrayType
+  \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite fold
 
 syntax cluster typescriptTypeMember contains=
@@ -84,10 +92,8 @@ syntax region typescriptTupleType matchgroup=typescriptBraces
   \ contains=@typescriptType
   \ contained skipwhite oneline
 
-syntax match typescriptUnionOrArrayType /\[\]\||\|&/
-  \ nextgroup=@typescriptCompoundType
-  \ contains=typescriptUnion
-  \ contained skipwhite
+syntax cluster typescriptTypeOperator
+  \ contains=typescriptUnion,typescriptTypeBracket
 
 syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
 
