@@ -166,7 +166,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptCall                  PreProc
   HiLink typescriptConstructSignature    Identifier
   HiLink typescriptPropertySignature     Label
-  HiLink typescriptMethodSignature       Label
+  " HiLink typescriptMethodSignature       Label
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          TypeDef
   HiLink typescriptUserDefinedKeyword    Keyword
