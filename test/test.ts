@@ -7,12 +7,10 @@ const COMPILER_PROVIDERS: Array<any[]> = null
 
 type D<A, B=string> = string
 
-function prop<T, K extends keyof T>(t: T, k: K): T[K] {
+function prop<T>(t: T): T[] {
+  let a = 123
 }
 
-interface A {
-  test: 'test' | number
-}
 
 var a = {
   test: 123,
