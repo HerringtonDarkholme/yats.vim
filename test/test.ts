@@ -11,6 +11,7 @@ function prop<T, K extends keyof T>(t: T, k: K): T[K] {
 }
 
 interface A {
+  test: 'test' | number
 }
 
 var a = {
