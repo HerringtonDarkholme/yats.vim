@@ -25,7 +25,7 @@ syntax match   typescriptClassHeritage         contained /\v(\k|\.|\(|\))+/
   \ contained
 
 syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
-  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ start=/</ end=/>/
   \ contains=@typescriptType
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
   \ contained skipwhite skipnl
@@ -33,7 +33,7 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptDecorator,typescriptAbstract,typescriptAsyncFuncKeyword,@typescriptComments,typescriptBlock,typescriptAssign,typescriptMethodAccessor
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword,typescriptMethodAccessor
   \ contained fold
 
 syntax keyword typescriptClassStatic static
