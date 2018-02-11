@@ -66,7 +66,7 @@ syntax keyword typescriptPredefinedType any number boolean string void never und
   \ contained skipwhite skipempty
 
 syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
-  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator
+  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType
   \ skipwhite contained skipempty
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
@@ -117,11 +117,8 @@ syntax keyword typescriptConstructorType new
   \ nextgroup=@typescriptFunctionType
   \ contained skipwhite skipnl
 
-syntax match typescriptUserDefinedType /[a-zA-Z_$]\w*\s\+is\s\+.*\ze\($\|{\)/
-  \ contained
-  \ contains=@typescriptType,typescriptUserDefinedKeyword
-
-syntax keyword typescriptUserDefinedKeyword is contained
+syntax keyword typescriptUserDefinedType is
+  \ contained nextgroup=@typescriptType skipwhite skipempty
 
 syntax keyword typescriptTypeQuery typeof keyof
   \ nextgroup=typescriptTypeReference
@@ -152,7 +149,7 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ contained skipwhite skipnl
 
 syntax match typescriptTypeAnnotation /:/
-  \ nextgroup=typescriptUserDefinedType,@typescriptType
+  \ nextgroup=@typescriptType
   \ contained skipwhite skipnl
 
 syntax cluster typescriptParameterList contains=

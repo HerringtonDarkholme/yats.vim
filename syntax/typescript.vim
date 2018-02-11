@@ -169,7 +169,7 @@ if exists("did_typescript_hilink")
   " HiLink typescriptMethodSignature       Label
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          TypeDef
-  HiLink typescriptUserDefinedKeyword    Keyword
+  HiLink typescriptUserDefinedType       Keyword
   HiLink typescriptTypeReference         Identifier
   HiLink typescriptAmbientModifier       Keyword
   HiLink typescriptAmbientName           Identifier
