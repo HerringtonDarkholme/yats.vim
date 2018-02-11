@@ -292,3 +292,9 @@ Given typescript (user defined type):
 Execute:
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 35)
   AssertEqual 'typescriptBlock', SyntaxAt(1, 39)
+
+Given typescript (type alias with default generic):
+  type D<A, B=string> = string
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 16)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 28)

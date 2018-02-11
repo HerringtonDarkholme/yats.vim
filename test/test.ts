@@ -11,10 +11,6 @@ function buildTimelines(
       subInstructions?: ElementInstructionMap): AnimationTimelineInstruction[] {
 }
 
-
-type D<A, B=string> = string
-
-
 var a = {
   test: 123,
   get method<T>(a) {

@@ -7,12 +7,16 @@ syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
   \ contained
 
 syntax match typescriptTypeParameter /\K\k*/
-  \ nextgroup=typescriptConstraint
+  \ nextgroup=typescriptConstraint,typescriptGenericDefault
   \ contained skipwhite skipnl
 
 syntax keyword typescriptConstraint extends
   \ nextgroup=@typescriptType
   \ contained skipwhite skipnl
+
+syntax match typescriptGenericDefault /=/
+  \ nextgroup=@typescriptType
+  \ contained skipwhite
 
 "><
 " class A extend B<T> {} // ClassBlock
