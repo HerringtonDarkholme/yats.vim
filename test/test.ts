@@ -5,6 +5,13 @@ var p: Promise<void>
 
 const COMPILER_PROVIDERS: Array<any[]> = null
 
+function buildTimelines(
+      element: any, startingStyles: ɵStyleData|ɵStyleData[],
+      destinationStyles: ɵStyleData|ɵStyleData[], options: AnimationOptions,
+      subInstructions?: ElementInstructionMap): AnimationTimelineInstruction[] {
+}
+
+
 type D<A, B=string> = string
 
 
