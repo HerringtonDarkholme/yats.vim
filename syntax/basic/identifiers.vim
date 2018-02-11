@@ -1,4 +1,10 @@
-syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/
+" syntax match   typescriptIdentifierName        /\<[^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^0-9][^=<>!?+\-*\/%|&,;:. ~@#`"'\[\]\(\)\{\}\^]*/
+"   \ nextgroup=typescriptDotNotation,typescriptFuncCallArg,typescriptIndexExpr,@typescriptSymbols,typescriptTypeArguments
+"   \ transparent
+"   \ contains=@_semantic
+"   \ skipnl skipwhite
+
+syntax match   typescriptIdentifierName        /\<\K\k*/
   \ nextgroup=typescriptDotNotation,typescriptFuncCallArg,typescriptIndexExpr,@typescriptSymbols,typescriptTypeArguments
   \ transparent
   \ contains=@_semantic
