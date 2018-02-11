@@ -286,3 +286,9 @@ Given typescript (array return type):
   }
 Execute:
   AssertEqual 'typescriptBlock', SyntaxAt(2, 1)
+
+Given typescript (user defined type):
+  function isError(e: any): e is Error { }
+Execute:
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 35)
+  AssertEqual 'typescriptBlock', SyntaxAt(1, 39)

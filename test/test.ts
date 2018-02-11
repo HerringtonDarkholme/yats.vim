@@ -73,10 +73,6 @@ test({
 
 getSymbolIterator(3) in obj;
 
-export function isFormattedError(error: Error): error is FormattedError {
-  return !!(error as any)[FORMATTED_MESSAGE];
-}
-
 
 list.reduce((flat: any[], item: T | T[]): T[] => {
   const flatItem = Array.isArray(item) ? flatten(item) : item;
