@@ -6,7 +6,7 @@ syntax region typescriptTypeParameters matchgroup=typescriptTypeBrackets
   \ contains=typescriptTypeParameter
   \ contained
 
-syntax match typescriptTypeParameter /[A-Za-z_$]\w*/
+syntax match typescriptTypeParameter /\K\k*/
   \ nextgroup=typescriptConstraint
   \ contained skipwhite skipnl
 
@@ -18,13 +18,14 @@ syntax keyword typescriptConstraint extends
 " class A extend B<T> {} // ClassBlock
 " func<T>() // FuncCallArg
 syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
-  \ start=/\></ end=/>/ skip=/\s*,\s*/
+  \ start=/\></ end=/>/
   \ contains=@typescriptType
   \ nextgroup=typescriptFuncCallArg
   \ contained skipwhite
 
+" nextgroup doesn't contain objectLiteral, let outer region contains it
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
-  \ start=/< \@!/ end=/>/ skip=/\s*,\s*/
+  \ start=/< \@!/ end=/>/
   \ contains=@typescriptType
   \ nextgroup=@typescriptExpression
   \ contained skipwhite oneline
@@ -35,6 +36,8 @@ syntax cluster typescriptType contains=
   \ @typescriptFunctionType,
   \ typescriptConstructorType
 
+" array type: A[]
+" type indexing A['key']
 syntax region typescriptTypeBracket contained
   \ start=/\[/ end=/\]/
   \ contains=typescriptString,typescriptNumber
@@ -65,7 +68,7 @@ syntax keyword typescriptPredefinedType any number boolean string void never und
   \ nextgroup=typescriptUnion
   \ contained skipwhite skipempty
 
-syntax match typescriptTypeReference /[A-Za-z_$]\w*\(\.[A-Za-z_$]\w*\)*/
+syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
   \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType
   \ skipwhite contained skipempty
 
@@ -95,7 +98,7 @@ syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType s
 
 syntax cluster typescriptFunctionType contains=typescriptGenericFunc,typescriptFuncType
 syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
-  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ start=/</ end=/>/
   \ contains=typescriptTypeParameter
   \ nextgroup=typescriptFuncType
   \ containedin=typescriptFunctionType
@@ -172,7 +175,7 @@ syntax keyword typescriptConstructSignature new
 
 syntax region typescriptIndexSignature matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
-  \ contains=typescriptTypeAnnotation,typescriptMappedIn,typescriptString
+  \ contains=typescriptPredefinedType,typescriptMappedIn,typescriptString
   \ nextgroup=typescriptTypeAnnotation
   \ contained skipwhite oneline
 
@@ -184,9 +187,9 @@ syntax keyword typescriptAliasKeyword type
   \ nextgroup=typescriptAliasDeclaration
   \ skipwhite skipnl skipempty
 
-syntax region typescriptAliasDeclaration
+syntax region typescriptAliasDeclaration matchgroup=typescriptUnion
   \ start=/ / end=/=/
   \ nextgroup=@typescriptType
-  \ contains=typescriptConstraint
-  \ contained skipwhite skipnl skipempty
+  \ contains=typescriptConstraint,typescriptTypeParameters
+  \ contained skipwhite skipempty
 
