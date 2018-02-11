@@ -26,7 +26,7 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
   \ start=/< \@!/ end=/>/ skip=/\s*,\s*/
   \ contains=@typescriptType
-  \ nextgroup=@typescriptValue
+  \ nextgroup=@typescriptExpression
   \ contained skipwhite oneline
 
 syntax cluster typescriptType contains=
@@ -102,7 +102,7 @@ syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
   \ contained skipwhite skipnl
 
 syntax region typescriptFuncType matchgroup=typescriptParens
-  \ start=/(/ end=/)\ze\s*=>/
+  \ start=/(/ end=/)\s*=>/me=e-2
   \ contains=@typescriptParameterList
   \ nextgroup=typescriptFuncTypeArrow
   \ contained skipwhite skipnl oneline
@@ -151,7 +151,7 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ nextgroup=typescriptTypeAnnotation,typescriptBlock
   \ contained skipwhite skipnl
 
-syntax match typescriptTypeAnnotation /?\?:/
+syntax match typescriptTypeAnnotation /:/
   \ nextgroup=typescriptUserDefinedType,@typescriptType
   \ contained skipwhite skipnl
 
