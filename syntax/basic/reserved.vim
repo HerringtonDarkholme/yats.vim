@@ -31,6 +31,6 @@ syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved long 
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved volatile
 
 syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientClassDeclaration,@typescriptNoReserved class
-syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientVariableDeclaration,@typescriptNoReserved var
+syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved var
 syntax keyword typescriptReserved containedin=ALLBUT,
   \ @typescriptNoReserved,typescriptAmbientFunctionDeclaration function

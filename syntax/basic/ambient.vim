@@ -2,7 +2,7 @@ syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbient
   \ skipwhite skipempty skipnl
 
 syntax cluster typescriptAmbients contains=
-  \ typescriptAmbientVariableDeclaration,
+  \ typescriptVariable,
   \ typescriptAmbientFunctionDeclaration,
   \ typescriptAmbientClassDeclaration,
   \ typescriptEnumKeyword,typescriptEnum,
