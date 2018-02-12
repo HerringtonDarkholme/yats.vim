@@ -139,7 +139,7 @@ Execute:
   AssertEqual 'typescriptProp', SyntaxAt(2, 44)
   AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
 
-Given typescript (consistent value highlight):
+Given typescript (consistent value highlight for global):
   profileData = {
     value: Object.values(UserEmailType)
   }
