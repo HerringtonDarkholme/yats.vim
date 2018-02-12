@@ -3,8 +3,9 @@ syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbient
 
 syntax cluster typescriptAmbients contains=
   \ typescriptVariable,
-  \ typescriptAmbientFunctionDeclaration,
-  \ typescriptAmbientClassDeclaration,
+  \ typescriptFuncKeyword,
+  \ typescriptClassKeyword,
+  \ typescriptAbstract,
   \ typescriptEnumKeyword,typescriptEnum,
   \ typescriptAmbientModuleDeclaration
 
