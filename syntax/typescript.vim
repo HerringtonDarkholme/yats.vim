@@ -121,6 +121,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptImport               Special
   HiLink typescriptAmbientDeclaration   Special
   HiLink typescriptExport               Special
+  HiLink typescriptModule               Special
   HiLink typescriptAmbientExport        Special
   HiLink typescriptTry                  Special
   HiLink typescriptExceptions           Special
