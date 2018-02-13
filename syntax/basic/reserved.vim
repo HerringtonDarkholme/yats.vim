@@ -8,11 +8,11 @@ syntax cluster typescriptNoReserved contains=
   \ typescriptObjectLiteral,
   \ typescriptObjectLabel,
   \ typescriptClassBlock,
-  \ typescriptAmbientClassBody,
   \ typescriptMethodName,
   \ @typescriptType,
-  \ typescriptCall,
-  \ typescriptAmbientModuleBlock
+  \ typescriptCall
+  " \ typescriptAmbientModuleBlock,
+  " \ typescriptAmbientClassBody,
   " \ typescriptPropertySignature
 
 "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
@@ -30,7 +30,6 @@ syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved byte 
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved long native short synchronized transient
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved volatile
 
-syntax keyword typescriptReserved containedin=ALLBUT,typescriptAmbientClassDeclaration,@typescriptNoReserved class
+syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved class
 syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved var
-syntax keyword typescriptReserved containedin=ALLBUT,
-  \ @typescriptNoReserved,typescriptAmbientFunctionDeclaration function
+syntax keyword typescriptReserved containedin=ALLBUT,@typescriptNoReserved function

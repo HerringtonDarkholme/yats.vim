@@ -9,68 +9,68 @@ syntax cluster typescriptAmbients contains=
   \ typescriptEnumKeyword,typescriptEnum,
   \ typescriptModule
 
-syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
-  \ start=/var\>\|let\>/ end=/\ze;\|$/
-  \ contains=typescriptTypeAnnotation
-  \ contained oneline
+" syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
+"   \ start=/var\>\|let\>/ end=/\ze;\|$/
+"   \ contains=typescriptTypeAnnotation
+"   \ contained oneline
 
-syntax region typescriptAmbientFunctionDeclaration matchgroup=typescriptFuncKeyword
-  \ start=/function\>/ end=/\ze;\|$/
-  \ contains=@typescriptCallSignature
-  \ contained
+" syntax region typescriptAmbientFunctionDeclaration matchgroup=typescriptFuncKeyword
+"   \ start=/function\>/ end=/\ze;\|$/
+"   \ contains=@typescriptCallSignature
+"   \ contained
 
-syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeyword start=/class\>/ end=/\ze{/
-  \ contains=typescriptClassExtends
-  \ nextgroup=typescriptAmbientClassBody
-  \ contained skipwhite skipnl skipempty
+" syntax region typescriptAmbientClassDeclaration matchgroup=typescriptClassKeyword start=/class\>/ end=/\ze{/
+"   \ contains=typescriptClassExtends
+"   \ nextgroup=typescriptAmbientClassBody
+"   \ contained skipwhite skipnl skipempty
 
-syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
-  \ start=/{/ end=/}/
-  \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptAmbientModifier,typescriptIndexSignature,@typescriptComments
-  \ contained fold
+" syntax region  typescriptAmbientClassBody matchgroup=typescriptBraces
+"   \ start=/{/ end=/}/
+"   \ contains=typescriptAmbientPropertyMemberDeclaration,typescriptAmbientModifier,typescriptIndexSignature,@typescriptComments
+"   \ contained fold
 
-syntax keyword typescriptAmbientModifier public private protected readonly
-  \ nextgroup=typescriptAmbientPropertyMemberDeclaration
-  \ contained
-  \ skipwhite
+" syntax keyword typescriptAmbientModifier public private protected readonly
+"   \ nextgroup=typescriptAmbientPropertyMemberDeclaration
+"   \ contained
+"   \ skipwhite
 
-syntax region typescriptAmbientPropertyMemberDeclaration
-  \ start=/\v[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
-  \ nextgroup=typescriptTypeAnnotation
-  \ contains=typescriptAmbientCtor,typescriptAmbientName,@typescriptCallSignature
-  \ contained skipwhite
+" syntax region typescriptAmbientPropertyMemberDeclaration
+"   \ start=/\v[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
+"   \ nextgroup=typescriptTypeAnnotation
+"   \ contains=typescriptAmbientCtor,typescriptAmbientName,@typescriptCallSignature
+"   \ contained skipwhite
 
-syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
-  \ start=/\v(get|set)\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
-  \ nextgroup=typescriptTypeAnnotation
-  \ contains=typescriptAmbientName,@typescriptCallSignature
-  \ contained skipwhite
+" syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
+"   \ start=/\v(get|set)\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
+"   \ nextgroup=typescriptTypeAnnotation
+"   \ contains=typescriptAmbientName,@typescriptCallSignature
+"   \ contained skipwhite
 
-syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
-  \ start=/\vstatic\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
-  \ nextgroup=typescriptTypeAnnotation
-  \ contains=typescriptAmbientName,@typescriptCallSignature
-  \ contained skipwhite
+" syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
+"   \ start=/\vstatic\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
+"   \ nextgroup=typescriptTypeAnnotation
+"   \ contains=typescriptAmbientName,@typescriptCallSignature
+"   \ contained skipwhite
 
-syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
-  \ start=/\v(get|set)\s+static\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
-  \ nextgroup=typescriptTypeAnnotation
-  \ contains=typescriptAmbientName,@typescriptCallSignature
-  \ contained skipwhite
+" syntax region typescriptAmbientPropertyMemberDeclaration matchgroup=typescriptAmbientModifier
+"   \ start=/\v(get|set)\s+static\ze\s+[A-Za-z_$]\k*/ end=/;\|$\|\ze:/
+"   \ nextgroup=typescriptTypeAnnotation
+"   \ contains=typescriptAmbientName,@typescriptCallSignature
+"   \ contained skipwhite
 
-syntax match   typescriptAmbientName /\k\+/ contained
-syntax keyword typescriptAmbientCtor constructor contained
+" syntax match   typescriptAmbientName /\k\+/ contained
+" syntax keyword typescriptAmbientCtor constructor contained
 
-syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/;\|$\|{/me=e-1
-  \ contains=typescriptString
-  \ nextgroup=typescriptAmbientModuleBlock
-  \ contained keepend
+" syntax region typescriptAmbientModuleDeclaration matchgroup=typescriptExport start=/module\>/ end=/;\|$\|{/me=e-1
+"   \ contains=typescriptString
+"   \ nextgroup=typescriptAmbientModuleBlock
+"   \ contained keepend
 
 
-syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
-  \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport,@typescriptComments,typescriptAliasKeyword
-  \ contained fold
+" syntax region typescriptAmbientModuleBlock start=/{/ end=/}/
+"   \ contains=@typescriptAmbients,typescriptInterfaceKeyword,typescriptImportDef,typescriptAmbientExport,@typescriptComments,typescriptAliasKeyword
+"   \ contained fold
 
-syntax keyword typescriptAmbientExport export
-  \ nextgroup=@typescriptAmbients
-  \ contained skipwhite
+" syntax keyword typescriptAmbientExport export
+"   \ nextgroup=@typescriptAmbients
+"   \ contained skipwhite
