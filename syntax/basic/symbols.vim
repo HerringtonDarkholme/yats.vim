@@ -42,4 +42,4 @@ syntax match typescriptBinaryOp contained /\(\*\*\|\*\*=\)/ nextgroup=@typescrip
 
 " syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptValue skipwhite skipempty
 " syntax cluster typescriptSymbols               contains=typescriptUnaryOp,typescriptBinaryOp,typescriptLogicSymbols
-syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernaryOp,typescriptAssign
+syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernaryOp,typescriptAssign,typescriptCastKeyword
