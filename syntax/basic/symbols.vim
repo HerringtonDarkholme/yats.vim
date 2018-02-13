@@ -35,11 +35,4 @@ syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptV
 " 2: **, **=
 syntax match typescriptBinaryOp contained /\(\*\*\|\*\*=\)/ nextgroup=@typescriptValue
 
-" syntax match   typescriptOpSymbol  contained /\(\^\|\~\)/ " 2: ^, ~
-
-" syntax match   typescriptOpSymbols /!\+/ nextgroup=typescriptRegexpString " 1: !
-
-
-" syntax match   typescriptLogicSymbols          /[^&|]\@<=\(&&\|||\)\ze\_[^&|]/ nextgroup=@typescriptValue skipwhite skipempty
-" syntax cluster typescriptSymbols               contains=typescriptUnaryOp,typescriptBinaryOp,typescriptLogicSymbols
 syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernaryOp,typescriptAssign,typescriptCastKeyword

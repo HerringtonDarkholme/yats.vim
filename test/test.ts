@@ -46,6 +46,8 @@ class A {
     readonly photos!: Array<string>
     method?(): string
     abstract test();
+    'test': string;
+    ['computed'](): string {}
 
     constructor() {
     }

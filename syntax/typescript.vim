@@ -33,7 +33,6 @@ syntax sync fromstart
 
 " lowest priority on least used feature
 syntax match   typescriptLabel                /[a-zA-Z_$]\k*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement skipwhite skipempty
-" syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/\([\^:]\s\*\)\=\zs{/ end=/}/ contains=@htmlJavaScript fold
 syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptStatement,@typescriptComments fold
 
 
@@ -126,7 +125,6 @@ if exists("did_typescript_hilink")
   HiLink typescriptTry                  Special
   HiLink typescriptExceptions           Special
 
-  HiLink typescriptMethodName           Function
   HiLink typescriptMembers              Function
   HiLink typescriptMethodAccessor       Operator
 
@@ -166,15 +164,10 @@ if exists("did_typescript_hilink")
   HiLink typescriptMappedIn              Special
   HiLink typescriptCall                  PreProc
   HiLink typescriptConstructSignature    Identifier
-  " HiLink typescriptPropertySignature     Label
-  " HiLink typescriptMethodSignature       Label
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          TypeDef
   HiLink typescriptUserDefinedType       Keyword
   HiLink typescriptTypeReference         Identifier
-  " HiLink typescriptAmbientModifier       Keyword
-  " HiLink typescriptAmbientName           Identifier
-  " HiLink typescriptAmbientCtor           Keyword
   HiLink typescriptConstructor           Keyword
   HiLink typescriptDecorator             Special
 
