@@ -1,5 +1,5 @@
 syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbients
-  \ skipwhite skipempty skipnl
+  \ skipwhite skipempty
 
 syntax cluster typescriptAmbients contains=
   \ typescriptVariable,
@@ -7,7 +7,7 @@ syntax cluster typescriptAmbients contains=
   \ typescriptClassKeyword,
   \ typescriptAbstract,
   \ typescriptEnumKeyword,typescriptEnum,
-  \ typescriptAmbientModuleDeclaration
+  \ typescriptModule
 
 syntax region typescriptAmbientVariableDeclaration matchgroup=typescriptVariable
   \ start=/var\>\|let\>/ end=/\ze;\|$/

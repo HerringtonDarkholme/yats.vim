@@ -1,7 +1,8 @@
 "Import
 " syntax region  typescriptImportDef             start=/\<import\>/ end=/;\|['"])\?\s*$/ contains=typescriptImport,typescriptString,typescriptBlock keepend
 syntax keyword typescriptImport                from as import
-syntax keyword typescriptExport                export module
+syntax keyword typescriptExport                export
+syntax keyword typescriptModule                namespace module
 
 "this
 
@@ -29,9 +30,9 @@ syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=
   \ nextgroup=typescriptBlock
   \ skipwhite
 
-syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/namespace / end=/\ze{/
-  \ nextgroup=typescriptBlock
-  \ skipwhite
+" syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/namespace / end=/\ze{/
+"   \ nextgroup=typescriptBlock
+"   \ skipwhite
 
 syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ nextgroup=typescriptTypeAnnotation,typescriptAssign
