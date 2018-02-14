@@ -1,6 +1,6 @@
 "Class
 syntax keyword typescriptAbstract              abstract
-  \ nextgroup=typescriptClassKeyword,typescriptMembers,typescriptMethodAccessor
+  \ nextgroup=typescriptClassKeyword
   \ skipwhite skipnl
 syntax keyword typescriptClassKeyword          class
   \ nextgroup=typescriptClassName,typescriptClassExtends,typescriptClassBlock
