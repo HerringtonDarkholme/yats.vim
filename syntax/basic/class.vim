@@ -27,25 +27,14 @@ syntax match   typescriptClassHeritage         contained /\v(\k|\.|\(|\))+/
 syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/
   \ contains=@typescriptType
-  \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptMixinComma
+  \ nextgroup=typescriptClassBlock,typescriptMixinComma
   \ contained skipwhite skipnl
 
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword,typescriptMethodAccessor
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword
   \ contained fold
-
-syntax keyword typescriptClassStatic static
-  \ nextgroup=typescriptMembers
-  \ skipwhite contained
-
-syntax cluster typescriptPropertyMemberDeclaration contains=
-  \ typescriptClassStatic,
-  \ typescriptAccessibilityModifier,
-  \ typescriptMembers
-  " \ typescriptMemberVariableDeclaration
-
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite

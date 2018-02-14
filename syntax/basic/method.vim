@@ -7,3 +7,16 @@ syntax keyword typescriptMethodAccessor        contained get set
 syntax match typescriptMembers /\v[A-Za-z_$]\k*(\?|\!)?/
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ contained skipwhite
+
+syntax cluster typescriptPropertyMemberDeclaration contains=
+  \ typescriptClassStatic,
+  \ typescriptAccessibilityModifier,
+  \ typescriptMethodAccessor,
+  \ typescriptMembers
+  " \ typescriptMemberVariableDeclaration
+
+syntax keyword typescriptClassStatic static
+  \ nextgroup=typescriptMembers
+  \ skipwhite contained
+
+
