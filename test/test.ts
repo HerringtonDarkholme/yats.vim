@@ -33,6 +33,9 @@ class MyClass<string> extends Mixin({test: 123}) {
     a = '3' // ewew
 }
 
+var a = {
+}
+
 process.stdout
 document
     /* test */
@@ -47,7 +50,7 @@ class A {
     method?(): string
     abstract test();
     'test': string;
-    ['computed'](): string {}
+    [ 'computed' ](): string {}
 
     constructor() {
     }

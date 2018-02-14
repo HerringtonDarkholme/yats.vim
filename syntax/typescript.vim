@@ -125,7 +125,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptTry                  Special
   HiLink typescriptExceptions           Special
 
-  HiLink typescriptMembers              Function
+  HiLink typescriptMember              Function
   HiLink typescriptMethodAccessor       Operator
 
   HiLink typescriptAsyncFuncKeyword     Keyword

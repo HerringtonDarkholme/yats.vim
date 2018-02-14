@@ -86,7 +86,7 @@ syntax cluster typescriptTypeMember contains=
   \ @typescriptCallSignature,
   \ typescriptConstructSignature,
   \ typescriptIndexSignature,
-  \ typescriptMembers
+  \ @typescriptMembers
 
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/

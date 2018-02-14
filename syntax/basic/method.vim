@@ -4,7 +4,7 @@ syntax keyword typescriptConstructor           contained constructor
 
 syntax keyword typescriptMethodAccessor        contained get set
 
-syntax match typescriptMembers /\v[A-Za-z_$]\k*(\?|\!)?/
+syntax match typescriptMember /\v[A-Za-z_$]\k*(\?|\!)?/
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ contained skipwhite
 
@@ -12,11 +12,24 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,
   \ typescriptAccessibilityModifier,
   \ typescriptMethodAccessor,
-  \ typescriptMembers
+  \ @typescriptMembers
   " \ typescriptMemberVariableDeclaration
 
+syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember
+
 syntax keyword typescriptClassStatic static
-  \ nextgroup=typescriptMembers
+  \ nextgroup=@typescriptMembers
   \ skipwhite contained
 
 syntax keyword typescriptAccessibilityModifier public private protected readonly contained
+
+syntax region  typescriptStringMember   contained
+  \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1/
+  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+  \ skipwhite skipempty
+
+" syntax region  typescriptComputedMember   contained
+"   \ start=/\[\zs/ end=/]/
+"   \ contains=@typescriptValue
+"   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+"   \ skipwhite skipempty
