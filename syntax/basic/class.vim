@@ -37,10 +37,8 @@ syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}
   \ contained fold
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
-syntax match   typescriptInterfaceName             contained /\k\+/ nextgroup=typescriptObjectType,typescriptInterfaceExtends skipwhite
-syntax match   typescriptInterfaceName             contained /\k\+\ze\s*</
-  \ nextgroup=typescriptInterfaceTypeParameter
-  \ contained
+syntax match   typescriptInterfaceName             contained /\k\+/
+  \ nextgroup=typescriptObjectType,typescriptInterfaceExtends,typescriptInterfaceTypeParameter
   \ skipwhite
 syntax region typescriptInterfaceTypeParameter
   \ start=/</ end=/>/
