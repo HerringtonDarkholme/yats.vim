@@ -153,8 +153,6 @@ syntax cluster typescriptParameterList contains=
   \ typescriptRestOrSpread,
   \ typescriptDefaultParam
 
-syntax keyword typescriptAccessibilityModifier public private protected readonly contained
-
 syntax match typescriptDefaultParam /=/
   \ nextgroup=@typescriptValue
   \ contained skipwhite

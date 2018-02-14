@@ -19,4 +19,4 @@ syntax keyword typescriptClassStatic static
   \ nextgroup=typescriptMembers
   \ skipwhite contained
 
-
+syntax keyword typescriptAccessibilityModifier public private protected readonly contained
