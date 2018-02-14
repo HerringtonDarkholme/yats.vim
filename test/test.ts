@@ -33,6 +33,8 @@ class MyClass<string> extends Mixin({test: 123}) {
     a = '3' // ewew
 }
 
+var a = test[333]
+
 var a = {
 }
 
@@ -50,7 +52,7 @@ class A {
     method?(): string
     abstract test();
     'test': string;
-    [ 'computed' ](): string {}
+    ['computed'](): string {}
 
     constructor() {
     }

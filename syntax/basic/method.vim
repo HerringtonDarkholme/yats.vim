@@ -28,7 +28,7 @@ syntax region  typescriptStringMember   contained
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ skipwhite skipempty
 
-" syntax region  typescriptComputedMember   contained
+" syntax region  typescriptComputedMember   contained matchgrou=typescriptProperty
 "   \ start=/\[\zs/ end=/]/
 "   \ contains=@typescriptValue
 "   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
