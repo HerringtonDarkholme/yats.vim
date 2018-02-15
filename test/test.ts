@@ -28,6 +28,10 @@ if (a < (<number>b))
 
 var a: T[K] = 1213
 
+switch (eww) {
+  case 1222
+}
+
 var a = 123
 
 class MyClass<string> extends Mixin({test: 123}) {

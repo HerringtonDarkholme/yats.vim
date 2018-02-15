@@ -334,3 +334,10 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 30)
   AssertEqual 'typescriptMember', SyntaxAt(3, 21)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 37)
+
+Given typescript (basic switch case):
+  switch (a) {
+    case 123: break
+  }
+Execute:
+  AssertEqual 'typescriptCase', SyntaxAt(2, 3)
