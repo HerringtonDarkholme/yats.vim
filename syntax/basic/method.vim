@@ -15,7 +15,7 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   \ @typescriptMembers
   " \ typescriptMemberVariableDeclaration
 
-syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember
+syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember
 
 syntax keyword typescriptClassStatic static
   \ nextgroup=@typescriptMembers
@@ -28,8 +28,8 @@ syntax region  typescriptStringMember   contained
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ skipwhite skipempty
 
-" syntax region  typescriptComputedMember   contained matchgrou=typescriptProperty
-"   \ start=/\[\zs/ end=/]/
-"   \ contains=@typescriptValue
-"   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
-"   \ skipwhite skipempty
+syntax region  typescriptComputedMember   contained matchgroup=typescriptProperty
+  \ start=/\[/rs=s+1 end=/]/
+  \ contains=@typescriptValue
+  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+  \ skipwhite skipempty
