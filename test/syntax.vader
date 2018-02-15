@@ -24,6 +24,18 @@ Execute:
   AssertEqual 'typescriptMember', SyntaxAt(2, 3)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 9)
 
+Given typescript (highlight global):
+  process.stdout
+Execute:
+  AssertEqual 'typescriptNodeGlobal', SyntaxAt(1, 1)
+
+Given typescript (highlight dotNotation with comment):
+  document
+      /* test */
+      .createElement
+Execute:
+  AssertEqual 'typescriptDOMDocMethod', SyntaxAt(3, 7)
+
 Given typescript (function default param):
   function test({a = process.stdout}) {}
 Execute:

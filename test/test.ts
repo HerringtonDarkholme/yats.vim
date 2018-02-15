@@ -7,12 +7,8 @@ var a = {
 const COMPILER_PROVIDERS: Array<any[]> = null
 
 var a = {
-  test: 123,
   get method<T>(a) {
   },
-  tradition: function(a): string {
-    let a = 1223
-  }
 }
 
 var a = [/\/\//, 123]
@@ -37,10 +33,6 @@ class MyClass<string> extends Mixin({test: 123}) {
 
 var a = test[333]
 
-process.stdout
-document
-    /* test */
-    .createElement
 function test({a = process.stdout}) {}
 
 // test
