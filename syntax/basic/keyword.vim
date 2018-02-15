@@ -71,3 +71,14 @@ syntax region  typescriptLoopParen             contained matchgroup=typescriptPa
   \ skipwhite skipempty
 syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptValue nextgroup=typescriptBlock skipwhite skipempty
 syntax match   typescriptEndColons             /[;,]/
+
+syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbients
+  \ skipwhite skipempty
+
+syntax cluster typescriptAmbients contains=
+  \ typescriptVariable,
+  \ typescriptFuncKeyword,
+  \ typescriptClassKeyword,
+  \ typescriptAbstract,
+  \ typescriptEnumKeyword,typescriptEnum,
+  \ typescriptModule

@@ -56,7 +56,6 @@ runtime syntax/basic/class.vim
 runtime syntax/basic/forcomprehension.vim
 runtime syntax/basic/cluster.vim
 runtime syntax/basic/function.vim
-runtime syntax/basic/ambient.vim
 runtime syntax/basic/decorator.vim
 
 if exists("did_typescript_hilink")
