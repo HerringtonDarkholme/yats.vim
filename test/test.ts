@@ -1,15 +1,10 @@
 var p: Promise<void>
-  var a = {
-    template: /*eee*/ this.template
-  }
+
+var a = {
+  template: /*eee*/ this.template
+}
 
 const COMPILER_PROVIDERS: Array<any[]> = null
-
-function buildTimelines(
-      element: any, startingStyles: ɵStyleData|ɵStyleData[],
-      destinationStyles: ɵStyleData|ɵStyleData[], options: AnimationOptions,
-      subInstructions?: ElementInstructionMap): AnimationTimelineInstruction[] {
-}
 
 var a = {
   test: 123,
@@ -52,7 +47,6 @@ class A {
     method?(): string
     abstract test();
     'test': string;
-    ['computed'](): string {}
 
     constructor() {
     }

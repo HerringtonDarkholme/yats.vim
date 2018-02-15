@@ -4,8 +4,10 @@ syntax keyword typescriptConstructor           contained constructor
 
 syntax keyword typescriptMethodAccessor        contained get set
 
-syntax match typescriptMember /\v[A-Za-z_$]\k*(\?|\!)?/
-  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+syntax cluster memberNextGroup contains=typescriptMemberOptionali,typescriptTypeAnnotation,@typescriptCallSignature
+
+syntax match typescriptMember /\K\k*/
+  \ nextgroup=@memberNextGroup
   \ contained skipwhite
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
@@ -14,6 +16,10 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptMethodAccessor,
   \ @typescriptMembers
   " \ typescriptMemberVariableDeclaration
+
+syntax match typescriptMemberOptionality /?\|!/ contained
+  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+  \ skipwhite skipempty
 
 syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember
 
@@ -25,11 +31,11 @@ syntax keyword typescriptAccessibilityModifier public private protected readonly
 
 syntax region  typescriptStringMember   contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1/
-  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+  \ nextgroup=@memberNextGroup
   \ skipwhite skipempty
 
 syntax region  typescriptComputedMember   contained matchgroup=typescriptProperty
   \ start=/\[/rs=s+1 end=/]/
   \ contains=@typescriptValue
-  \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
+  \ nextgroup=@memberNextGroup
   \ skipwhite skipempty

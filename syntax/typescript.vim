@@ -83,6 +83,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptDocParamType         Type
   HiLink typescriptString               String
   HiLink typescriptStringLiteralType    String
+  HiLink typescriptStringMember         String
   HiLink typescriptTemplate             String
   HiLink typescriptEventString          String
   HiLink typescriptASCII                Special

@@ -299,7 +299,17 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 16)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 28)
 
-Given typescript (type alias with default generic):
+Given typescript (weird identifier):
   function buildTimelines(style: ɵStyleData) {}
 Execute:
   AssertEqual 'typescriptCall', SyntaxAt(1, 27)
+
+Given typescript (computed class member):
+  class A {
+      'test': string;
+      ['computed'](): string {}
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 16)
+  AssertEqual 'typescriptString', SyntaxAt(3, 10)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 22)
