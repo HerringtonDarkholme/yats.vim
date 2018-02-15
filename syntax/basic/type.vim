@@ -131,7 +131,7 @@ syntax keyword typescriptTypeQuery typeof keyof
 
 syntax cluster typescriptCallSignature contains=typescriptGenericCall,typescriptCall
 syntax region typescriptGenericCall matchgroup=typescriptTypeBrackets
-  \ start=/</ end=/>/ skip=/\s*,\s*/
+  \ start=/</ end=/>/
   \ contains=typescriptTypeParameter
   \ nextgroup=typescriptCall
   \ contained skipwhite skipnl
@@ -146,7 +146,6 @@ syntax match typescriptTypeAnnotation /:/
   \ contained skipwhite skipnl
 
 syntax cluster typescriptParameterList contains=
-  \ typescriptFuncComma,
   \ typescriptTypeAnnotation,
   \ typescriptAccessibilityModifier,
   \ typescriptOptionalMark,

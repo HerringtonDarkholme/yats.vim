@@ -7,6 +7,13 @@ var a = {
 const COMPILER_PROVIDERS: Array<any[]> = null
 
 var a = {
+  'wewew-eee': 333,
+  'tesees'(arg) {
+  },
+  [test]: 1222,
+  [teee](): string {
+
+  },
   test: 123,
   get method<T>(a) {
   }
