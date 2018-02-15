@@ -26,7 +26,7 @@ command -nargs=+ HiLink hi def link <args>
 setlocal iskeyword-=$
 if main_syntax == 'typescript'
   setlocal iskeyword+=$
-  syntax cluster htmlJavaScript                 contains=TOP
+  " syntax cluster htmlJavaScript                 contains=TOP
 endif
 
 syntax sync fromstart
@@ -62,7 +62,6 @@ if exists("did_typescript_hilink")
 
   HiLink typescriptEndColons            Exception
   HiLink typescriptSymbols              Normal
-  HiLink typescriptLogicSymbols         Boolean
   HiLink typescriptBraces               Function
   HiLink typescriptParens               Normal
   HiLink typescriptComment              Comment
@@ -88,7 +87,6 @@ if exists("did_typescript_hilink")
   HiLink typescriptTemplateSB           Label
   HiLink typescriptRegexpString         String
   HiLink typescriptGlobal               Constant
-  HiLink typescriptCharacter            Character
   HiLink typescriptPrototype            Type
   HiLink typescriptConditional          Conditional
   HiLink typescriptConditionalElse      Conditional
@@ -117,7 +115,6 @@ if exists("did_typescript_hilink")
   HiLink typescriptAmbientDeclaration   Special
   HiLink typescriptExport               Special
   HiLink typescriptModule               Special
-  HiLink typescriptAmbientExport        Special
   HiLink typescriptTry                  Special
   HiLink typescriptExceptions           Special
 
@@ -166,7 +163,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptConstructor           Keyword
   HiLink typescriptDecorator             Special
 
-  highlight link javaScript             NONE
+  highlight link typeScript             NONE
 
   delcommand HiLink
   unlet did_typescript_hilink
