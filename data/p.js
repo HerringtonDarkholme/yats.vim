@@ -75,7 +75,7 @@ try {
         console.log(predef + ' ' + rule +
             ' nextgroup=' + group + rule + 'Dot,typescriptFuncCallArg');
         console.log('syntax match   ' + group + rule +
-            'Dot /\\./ contained nextgroup=' + statics.join(',') + ',typescriptProp,typescriptMethod');
+            'Dot /\\./ contained nextgroup=' + statics.join(',') + ',typescriptProp');
       } else {
         if (/Style/.test(group)) {
           rule = camel(rule);
