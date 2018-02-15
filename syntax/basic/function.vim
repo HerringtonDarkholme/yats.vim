@@ -28,6 +28,12 @@ syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
+" TODO: optimize this pattern
+syntax region   typescriptArrowFuncDef          contained start=/(\_[^)]*):/ end=/=>/
+  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
+  \ nextgroup=@typescriptExpression,typescriptBlock
+  \ skipwhite skipempty keepend
+
 syntax match   typescriptArrowFunc             /=>/
 syntax match   typescriptArrowFuncArg          contained /\K\k*/
 syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
