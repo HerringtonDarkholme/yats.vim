@@ -53,7 +53,6 @@ runtime syntax/yats.vim
 runtime syntax/basic/patch.vim
 runtime syntax/basic/members.vim
 runtime syntax/basic/class.vim
-runtime syntax/basic/forcomprehension.vim
 runtime syntax/basic/cluster.vim
 runtime syntax/basic/function.vim
 runtime syntax/basic/decorator.vim
@@ -100,9 +99,6 @@ if exists("did_typescript_hilink")
   HiLink typescriptVariable             Identifier
   HiLink typescriptEnumKeyword          Identifier
   HiLink typescriptRepeat               Repeat
-  HiLink typescriptForComprehension     Repeat
-  HiLink typescriptIfComprehension      Repeat
-  HiLink typescriptOfComprehension      Repeat
   HiLink typescriptForOperator          Repeat
   HiLink typescriptStatementKeyword     Statement
   HiLink typescriptMessage              Keyword
