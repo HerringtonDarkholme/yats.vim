@@ -51,7 +51,7 @@ runtime syntax/yats.vim
 
 " patch
 runtime syntax/basic/patch.vim
-runtime syntax/basic/method.vim
+runtime syntax/basic/members.vim
 runtime syntax/basic/class.vim
 runtime syntax/basic/forcomprehension.vim
 runtime syntax/basic/cluster.vim

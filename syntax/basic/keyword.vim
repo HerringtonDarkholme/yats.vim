@@ -15,7 +15,7 @@ syntax keyword typescriptCastKeyword           as
 
 "Program Keywords
 syntax keyword typescriptIdentifier            arguments this super
-  \ nextgroup=typescriptDotNotation
+  \ nextgroup=typescriptDotNotation,typescriptIndexExpr,@typescriptSymbols
 
 syntax keyword typescriptVariable              let var const
   \ nextgroup=typescriptVariableDeclaration
@@ -38,6 +38,7 @@ syntax keyword typescriptKeywordOp
 syntax keyword typescriptOperator              delete new typeof void
   \ nextgroup=@typescriptValue
   \ skipwhite skipempty
+
 syntax keyword typescriptForOperator           contained in of
 syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty
 syntax keyword typescriptNull                  null undefined nextgroup=@typescriptSymbols skipwhite skipempty
@@ -67,9 +68,14 @@ syntax keyword typescriptAsyncFor              await nextgroup=typescriptLoopPar
 
 syntax region  typescriptLoopParen             contained matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptValue nextgroup=typescriptBlock
+  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptValue
+  \ nextgroup=typescriptBlock
   \ skipwhite skipempty
-syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptValue nextgroup=typescriptBlock skipwhite skipempty
+syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens
+  \ start=/(/ end=/)/
+  \ contains=@typescriptValue
+  \ nextgroup=typescriptBlock
+  \ skipwhite skipempty
 syntax match   typescriptEndColons             /[;,]/
 
 syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbients
