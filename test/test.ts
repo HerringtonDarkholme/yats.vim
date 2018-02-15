@@ -9,6 +9,9 @@ const COMPILER_PROVIDERS: Array<any[]> = null
 var a = {
   test: 123,
   get method<T>(a) {
+  },
+  tradition: function(a): string {
+    let a = 1223
   }
 }
 

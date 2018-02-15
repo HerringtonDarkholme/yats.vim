@@ -1,11 +1,34 @@
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
-syntax cluster typescriptStatement             contains=typescriptBlock,typescriptVariable,@typescriptExpression,typescriptConditional,typescriptRepeat,typescriptBranch,typescriptLabel,typescriptStatementKeyword,typescriptTry,typescriptExceptions,typescriptDebugger,typescriptExport,typescriptInterfaceKeyword,typescriptEnum
+syntax cluster typescriptStatement
+  \ contains=typescriptBlock,typescriptVariable,
+  \ @typescriptTopExpression,
+  \ typescriptConditional,typescriptRepeat,typescriptBranch,
+  \ typescriptLabel,typescriptStatementKeyword,
+  \ typescriptFuncKeyword,
+  \ typescriptTry,typescriptExceptions,typescriptDebugger,
+  \ typescriptExport,typescriptInterfaceKeyword,typescriptEnum
+
 syntax cluster typescriptPrimitive                 contains=typescriptString,typescriptTemplate,typescriptRegexpString,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
+
+" top level expression: no arrow func
+" also no func keyword. func is contained in statement
+syntax cluster typescriptTopExpression
+  \ contains=@typescriptPrimitive,
+  \ typescriptIdentifier,typescriptIdentifierName,
+  \ typescriptOperator,typescriptUnaryOp,
+  \ typescriptParenExp,typescriptRegexpString,
+  \ typescriptGlobal,typescriptAsyncFuncKeyword,
+  \ typescriptClassKeyword,typescriptTypeCast
+
+" no object literal, used in type cast and arrow func
+" TODO: change func keyword to funcImpl
 syntax cluster typescriptExpression
-  \ contains=@typescriptPrimitive,typescriptFuncKeyword,
-  \ typescriptIdentifier,typescriptIdentifierName,typescriptOperator,typescriptUnaryOp,typescriptArrowFuncDef,typescriptParenExp,typescriptRegexpString,typescriptGlobal,jsxRegion,typescriptAsyncFuncKeyword,typescriptClassKeyword,typescriptTypeCast
+  \ contains=@typescriptTopExpression,
+  \ typescriptArrowFuncDef,
+  \ typescriptFuncKeyword
 
 syntax cluster typescriptValue
   \ contains=@typescriptExpression,typescriptObjectLiteral
+
 syntax cluster typescriptEventExpression       contains=typescriptArrowFuncDef,typescriptParenExp,@typescriptValue,typescriptRegexpString,@typescriptEventTypes,typescriptOperator,typescriptGlobal,jsxRegion

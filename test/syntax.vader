@@ -357,6 +357,18 @@ Given typescript (object computed property):
   var a = {
   [test]: 1222,
   [teee](arg): string { },
+  }
+Execute:
+  AssertEqual 'typescriptNumber', SyntaxAt(2, 10)
+  AssertEqual 'typescriptParamImpl', SyntaxAt(3, 10)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 19)
+  AssertEqual 'typescriptBlock', SyntaxAt(3, 22)
+
+Given typescript (object computed property):
+  var a = {
+  [test]: 1222,
+  [teee](arg): string { },
+  }
 Execute:
   AssertEqual 'typescriptNumber', SyntaxAt(2, 10)
   AssertEqual 'typescriptParamImpl', SyntaxAt(3, 10)
