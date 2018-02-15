@@ -132,11 +132,11 @@ Execute:
 
 Given typescript (consistent value highlight):
   var a = {
-    template: this.template && this.template.toSummary()
+    template: this.template && this.template.toSummary( )
   }
   var b
 Execute:
-  AssertEqual 'typescriptProp', SyntaxAt(2, 44)
+  AssertEqual 'typescriptFuncCallArg', SyntaxAt(2, 54)
   AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
 
 Given typescript (consistent value highlight for global):

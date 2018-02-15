@@ -4,11 +4,13 @@ syntax match   typescriptIdentifierName        /\<\K\k*/
   \ contains=@_semantic
   \ skipnl skipwhite
 
-syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*!\?/ transparent contains=@props nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty
-syntax match   typescriptProp                  contained /[a-zA-Z_$]\w*\ze(/ contains=@props nextgroup=typescriptFuncCallArg oneline
-syntax region  typescriptProp                  contained start=/[a-zA-Z_$][a-zA-Z0-9_$]*</ end=/>\ze(/ nextgroup=typescriptFuncCallArg contains=typescriptTypeArguments oneline
-syntax region  typescriptIndexExpr      contained matchgroup=typescriptProperty start=/\[/rs=s+1 end=/]/he=e-1 contains=@typescriptValue nextgroup=@typescriptSymbols,typescriptDotNotation,typescriptFuncCallArg skipwhite skipempty
+syntax match   typescriptProp                  contained /[a-zA-Z_$][a-zA-Z0-9_$]*!\?/ transparent contains=@props nextgroup=@typescriptSymbols,typescriptDotNotation,typescriptFuncCallArg,typescriptTypeArguments skipwhite skipempty
+" syntax match   typescriptProp                  contained /[a-zA-Z_$]\w*\ze(/ contains=@props nextgroup=typescriptFuncCallArg
+" syntax region  typescriptProp                  contained start=/[a-zA-Z_$][a-zA-Z0-9_$]*</ end=/>\ze(/ nextgroup=typescriptFuncCallArg contains=typescriptTypeArguments oneline
 syntax match   typescriptMethod                contained /[a-zA-Z_$][a-zA-Z0-9_$]*@!\?\ze(/ contains=@props transparent nextgroup=typescriptFuncCallArg
+
+syntax region  typescriptIndexExpr      contained matchgroup=typescriptProperty start=/\[/rs=s+1 end=/]/he=e-1 contains=@typescriptValue nextgroup=@typescriptSymbols,typescriptDotNotation,typescriptFuncCallArg skipwhite skipempty
+
 syntax match   typescriptDotNotation           /\./ nextgroup=typescriptProp,typescriptMethod skipnl
 syntax match   typescriptDotStyleNotation      /\.style\./ nextgroup=typescriptDOMStyle transparent
 " syntax match   typescriptFuncCall              contained /[a-zA-Z]\k*\ze(/ nextgroup=typescriptFuncCallArg
