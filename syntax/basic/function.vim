@@ -35,6 +35,10 @@ syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>
 syntax region typescriptReturnAnnotation contained start=/:/ end=/{/me=e-1 contains=@typescriptType nextgroup=typescriptBlock
 
 
+syntax region typescriptFuncImpl contained start=/function/ end=/{/me=e-1
+  \ contains=typescriptFuncKeyword
+  \ nextgroup=typescriptBlock
+
 syntax cluster typescriptCallImpl contains=typescriptGenericImpl,typescriptParamImpl
 syntax region typescriptGenericImpl matchgroup=typescriptTypeBrackets
   \ start=/</ end=/>/ skip=/\s*,\s*/

@@ -37,9 +37,6 @@ class MyClass<string> extends Mixin({test: 123}) {
 
 var a = test[333]
 
-var a = {
-}
-
 process.stdout
 document
     /* test */

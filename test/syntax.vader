@@ -374,3 +374,11 @@ Execute:
   AssertEqual 'typescriptParamImpl', SyntaxAt(3, 10)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 19)
   AssertEqual 'typescriptBlock', SyntaxAt(3, 22)
+
+Given typescript (object with tpyed function return type):
+  var a = {
+    test: function (): string { }
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 24)
+  AssertEqual 'typescriptBlock', SyntaxAt(2, 30)
