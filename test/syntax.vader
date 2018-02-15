@@ -313,3 +313,24 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 16)
   AssertEqual 'typescriptString', SyntaxAt(3, 10)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 22)
+
+Given typescript (computed class member with optionality):
+  class A {
+      'test'?: string;
+      ['computed']!(): string {}
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 16)
+  AssertEqual 'typescriptString', SyntaxAt(3, 10)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 22)
+
+Given typescript (readonly modifier):
+  class A {
+    readonly photos!: Array<string>
+    abstract readonly photos?: Array<string>
+  }
+Execute:
+  AssertEqual 'typescriptMember', SyntaxAt(2, 16)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 30)
+  AssertEqual 'typescriptMember', SyntaxAt(3, 21)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 37)

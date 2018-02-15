@@ -4,7 +4,7 @@ syntax keyword typescriptConstructor           contained constructor
 
 syntax keyword typescriptMethodAccessor        contained get set
 
-syntax cluster memberNextGroup contains=typescriptMemberOptionali,typescriptTypeAnnotation,@typescriptCallSignature
+syntax cluster memberNextGroup contains=typescriptMemberOptionality,typescriptTypeAnnotation,@typescriptCallSignature
 
 syntax match typescriptMember /\K\k*/
   \ nextgroup=@memberNextGroup
