@@ -21,7 +21,7 @@ Given typescript (interface property):
     name: string;
   }
 Execute:
-  AssertEqual 'typescriptMembers', SyntaxAt(2, 3)
+  AssertEqual 'typescriptMember', SyntaxAt(2, 3)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 9)
 
 Given typescript (function default param):
@@ -85,7 +85,7 @@ Given typescript (abstract generic method):
     abstract resolveComponentFactory<T>(component: Type<T>): ComponentFactory<T>;
   }
 Execute:
-  AssertEqual 'typescriptMembers', SyntaxAt(2, 12)
+  AssertEqual 'typescriptMember', SyntaxAt(2, 12)
 
 Given typescript (binary in keyword):
   var a = a in b
@@ -234,7 +234,7 @@ Given typescript (abstract getter):
     abstract get parent(): Injector|null;
   }
 Execute:
-  AssertEqual 'typescriptMembers', SyntaxAt(2, 20)
+  AssertEqual 'typescriptMember', SyntaxAt(2, 20)
 
 Given typescript (class method overload):
   class A {
@@ -243,9 +243,9 @@ Given typescript (class method overload):
     test(s?: string): void { }
   }
 Execute:
-  AssertEqual 'typescriptMembers', SyntaxAt(2, 3)
-  AssertEqual 'typescriptMembers', SyntaxAt(3, 3)
-  AssertEqual 'typescriptMembers', SyntaxAt(4, 3)
+  AssertEqual 'typescriptMember', SyntaxAt(2, 3)
+  AssertEqual 'typescriptMember', SyntaxAt(3, 3)
+  AssertEqual 'typescriptMember', SyntaxAt(4, 3)
   AssertEqual 'typescriptBlock', SyntaxAt(4, 27)
 
 Given typescript (object literal method):
@@ -298,3 +298,8 @@ Given typescript (type alias with default generic):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 16)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 28)
+
+Given typescript (type alias with default generic):
+  function buildTimelines(style: ɵStyleData) {}
+Execute:
+  AssertEqual 'typescriptCall', SyntaxAt(1, 27)
