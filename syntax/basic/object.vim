@@ -1,19 +1,19 @@
 syntax region  typescriptObjectLiteral         matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=@typescriptComments,typescriptObjectLabel,typescriptPropertyName,typescriptComputedPropertyName
+  \ contains=@typescriptComments,typescriptObjectLabel,typescriptStringProperty,typescriptComputedPropertyName
   \ fold contained
 
 syntax match   typescriptObjectLabel  contained /\k\+\_s*/
   \ nextgroup=typescriptObjectColon,@typescriptCallImpl
   \ skipwhite skipempty
 
-syntax region  typescriptPropertyName   contained
+syntax region  typescriptStringProperty   contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1/
   \ nextgroup=typescriptObjectColon,@typescriptCallImpl
   \ skipwhite skipempty
 
 " syntax region  typescriptPropertyName    contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1(/me=e-1 nextgroup=@typescriptCallSignature skipwhite skipempty oneline
-syntax region  typescriptComputedPropertyName  contained matchgroup=typescriptPropertyName
+syntax region  typescriptComputedPropertyName  contained matchgroup=typescriptBraces
   \ start=/\[/rs=s+1 end=/]/
   \ contains=@typescriptValue
   \ nextgroup=typescriptObjectColon,@typescriptCallImpl

@@ -112,7 +112,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptBoolean              Boolean
   HiLink typescriptObjectLabel          typescriptLabel
   HiLink typescriptLabel                Label
-  HiLink typescriptPropertyName         Label
+  HiLink typescriptStringProperty       String
   HiLink typescriptImport               Special
   HiLink typescriptAmbientDeclaration   Special
   HiLink typescriptExport               Special
@@ -157,6 +157,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptFuncType              Special
   HiLink typescriptMappedIn              Special
   HiLink typescriptCall                  PreProc
+  HiLink typescriptParamImpl             PreProc
   HiLink typescriptConstructSignature    Identifier
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          TypeDef

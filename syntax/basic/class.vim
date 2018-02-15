@@ -1,4 +1,5 @@
-"Class
+"don't add typescriptMembers to nextgroup, let outer scope match it
+" so we won't match abstract method outside abstract class
 syntax keyword typescriptAbstract              abstract
   \ nextgroup=typescriptClassKeyword
   \ skipwhite skipnl
@@ -6,7 +7,7 @@ syntax keyword typescriptClassKeyword          class
   \ nextgroup=typescriptClassName,typescriptClassExtends,typescriptClassBlock
   \ skipwhite
 
-syntax match   typescriptClassName             contained /\v[A-Za-z_$]\k*/
+syntax match   typescriptClassName             contained /\K\k*/
   \ nextgroup=typescriptClassBlock,typescriptClassExtends,typescriptClassTypeParameter
   \ skipwhite skipnl
 

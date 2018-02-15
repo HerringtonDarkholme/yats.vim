@@ -341,3 +341,24 @@ Given typescript (basic switch case):
   }
 Execute:
   AssertEqual 'typescriptCase', SyntaxAt(2, 3)
+
+Given typescript (object string property):
+  var a = {
+  'wewew-eee': 333,
+  'tesees'(arg) { }
+  }
+Execute:
+  AssertEqual 'typescriptStringProperty', SyntaxAt(2, 3)
+  AssertEqual 'typescriptStringProperty', SyntaxAt(3, 3)
+  AssertEqual 'typescriptParamImpl', SyntaxAt(3, 12)
+  AssertEqual 'typescriptBlock', SyntaxAt(3, 16)
+
+Given typescript (object computed property):
+  var a = {
+  [test]: 1222,
+  [teee](arg): string { },
+Execute:
+  AssertEqual 'typescriptNumber', SyntaxAt(2, 10)
+  AssertEqual 'typescriptParamImpl', SyntaxAt(3, 10)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 19)
+  AssertEqual 'typescriptBlock', SyntaxAt(3, 22)
