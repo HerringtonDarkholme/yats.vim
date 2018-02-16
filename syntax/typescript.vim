@@ -43,7 +43,7 @@ runtime syntax/basic/literal.vim
 runtime syntax/basic/object.vim
 
 runtime syntax/basic/symbols.vim
-runtime syntax/basic/reserved.vim
+" runtime syntax/basic/reserved.vim
 runtime syntax/basic/keyword.vim
 runtime syntax/basic/doc.vim
 runtime syntax/basic/type.vim

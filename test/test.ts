@@ -56,6 +56,14 @@ list.reduce((flat: any[], item: T | T[]): T[] => {
   return (<T[]>flat).concat(flatItem);
 }, []);
 
+export function noProviderError(injector: ReflectiveInjector, key: ReflectiveKey): InjectionError {
+  return injectionError(injector, key, function(keys: ReflectiveKey[]) {
+    const first = stringify(keys[0].token);
+    return `No provider for ${first}!${constructResolvingPath(keys)}`;
+  });
+}
+
+
 export class QueryList<T>/* implements Iterable<T> */ {
   public readonly dirty = true;
 }
