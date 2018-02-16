@@ -7,7 +7,7 @@ syntax keyword typescriptModule                namespace module
 
 "JavaScript Prototype
 syntax keyword typescriptPrototype             prototype
-  \ nextgroup=typescriptDotNotation
+  \ nextgroup=@afterIdentifier
 
 syntax keyword typescriptCastKeyword           as
   \ nextgroup=@typescriptType
@@ -15,7 +15,7 @@ syntax keyword typescriptCastKeyword           as
 
 "Program Keywords
 syntax keyword typescriptIdentifier            arguments this super
-  \ nextgroup=typescriptDotNotation,typescriptIndexExpr,@typescriptSymbols
+  \ nextgroup=@afterIdentifier
 
 syntax keyword typescriptVariable              let var const
   \ nextgroup=typescriptVariableDeclaration
@@ -45,7 +45,7 @@ syntax keyword typescriptNull                  null undefined nextgroup=@typescr
 syntax keyword typescriptMessage               alert confirm prompt status
   \ nextgroup=typescriptDotNotation,typescriptFuncCallArg
 syntax keyword typescriptGlobal                self top parent
-  \ nextgroup=typescriptDotNotation
+  \ nextgroup=@afterIdentifier
 
 "Statement Keywords
 syntax keyword typescriptConditional           if else switch
