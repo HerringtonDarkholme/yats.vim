@@ -131,6 +131,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptFuncName             Function
   HiLink typescriptFuncArg              PreProc
   HiLink typescriptArrowFuncArg         PreProc
+  HiLink typescriptFuncComma            Operator
 
   HiLink typescriptClassKeyword         Keyword
   HiLink typescriptClassExtends         Keyword

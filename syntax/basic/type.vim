@@ -150,7 +150,10 @@ syntax cluster typescriptParameterList contains=
   \ typescriptAccessibilityModifier,
   \ typescriptOptionalMark,
   \ typescriptRestOrSpread,
+  \ typescriptFuncComma,
   \ typescriptDefaultParam
+
+syntax match typescriptFuncComma /,/ contained
 
 syntax match typescriptDefaultParam /=/
   \ nextgroup=@typescriptValue
