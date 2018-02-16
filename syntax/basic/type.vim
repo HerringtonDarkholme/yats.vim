@@ -24,7 +24,7 @@ syntax match typescriptGenericDefault /=/
 syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/\></ end=/>/
   \ contains=@typescriptType
-  \ nextgroup=typescriptFuncCallArg
+  \ nextgroup=typescriptFuncCallArg,@typescriptTypeOperator
   \ contained skipwhite
 
 " nextgroup doesn't contain objectLiteral, let outer region contains it
