@@ -394,3 +394,13 @@ Given typescript (object with tpyed function return type):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 24)
   AssertEqual 'typescriptBlock', SyntaxAt(2, 30)
+
+Given typescript (get as method name):
+  class A {
+    get(a: string) {}
+    get get(a: string) {}
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 11)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 17)
+  AssertEqual 'typescriptMethodAccessor', SyntaxAt(3, 3)

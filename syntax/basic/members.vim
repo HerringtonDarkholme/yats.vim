@@ -2,13 +2,15 @@ syntax keyword typescriptConstructor           contained constructor
   \ nextgroup=@typescriptCallSignature
   \ skipwhite skipempty
 
-syntax keyword typescriptMethodAccessor        contained get set
 
 syntax cluster memberNextGroup contains=typescriptMemberOptionality,typescriptTypeAnnotation,@typescriptCallSignature
 
 syntax match typescriptMember /\K\k*/
   \ nextgroup=@memberNextGroup
   \ contained skipwhite
+
+syntax match typescriptMethodAccessor contained /\v(get|set)\s\K/me=e-1
+  \ nextgroup=@typescriptMembers
 
 syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,

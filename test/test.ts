@@ -29,6 +29,8 @@ var a = 123
 class MyClass<string> extends Mixin({test: 123}) {
     noed // ewewe
     a = '3' // ewew
+    get(arg: string) {
+    }
 }
 
 var a = test[333]
