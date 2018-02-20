@@ -5,7 +5,7 @@ syntax match typescriptUnaryOp /[+\-~!]/
 
 syntax region  typescriptTernaryOp start=/?/  end=/:/ contained contains=@typescriptValue,@typescriptComments nextgroup=@typescriptValue skipwhite skipempty
 
-syntax match   typescriptAssign  contained /=/ nextgroup=@typescriptValue
+syntax match   typescriptAssign  /=/ nextgroup=@typescriptValue
   \ skipwhite skipempty
 
 " 2: ==, ===
