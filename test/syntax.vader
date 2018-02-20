@@ -404,3 +404,8 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 11)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 17)
   AssertEqual 'typescriptMethodAccessor', SyntaxAt(3, 3)
+
+Given typescript (string array):
+  function test(a: string[]) {}
+Execute:
+  AssertEqual 'typescriptTypeBracket', SyntaxAt(1, 24)

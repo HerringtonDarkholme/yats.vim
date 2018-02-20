@@ -69,7 +69,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ contained skipwhite skipempty
 
 syntax keyword typescriptPredefinedType any number boolean string void never undefined null object
-  \ nextgroup=typescriptUnion
+  \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite skipempty
 
 syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
