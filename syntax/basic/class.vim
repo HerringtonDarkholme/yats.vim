@@ -33,8 +33,10 @@ syntax region typescriptClassTypeArguments matchgroup=typescriptTypeBrackets
 
 syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritage skipwhite skipnl
 
+" we need add arrowFunc to class block for high order arrow func
+" see test case
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword,typescriptArrowFunc
   \ contained fold
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite

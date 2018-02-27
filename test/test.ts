@@ -68,3 +68,7 @@ export class QueryList<T>/* implements Iterable<T> */ {
   public readonly dirty = true;
 }
 
+
+class A {
+    a = (a: () => void) => { }
+}

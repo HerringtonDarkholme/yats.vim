@@ -409,3 +409,10 @@ Given typescript (string array):
   function test(a: string[]) {}
 Execute:
   AssertEqual 'typescriptTypeBracket', SyntaxAt(1, 24)
+
+Given typescript (high order arrow func in class):
+  class A {
+    a = (a: () => void) => { }
+  }
+Execute:
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 23)
