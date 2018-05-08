@@ -94,6 +94,16 @@ syntax cluster typescriptValue add=jsxRegion
 
 runtime syntax/common.vim
 
+highlight def link jsxTag Function
+highlight def link jsxTagName Function
+highlight def link jsxString String
+highlight def link jsxNameSpace Function
+highlight def link jsxComment Error
+highlight def link jsxAttrib Type
+highlight def link jsxEscapeJs jsxEscapeJs
+highlight def link jsxCloseTag Identifier
+highlight def link jsxCloseString Identifier
+
 let b:current_syntax = "typescriptreact"
 if main_syntax == 'typescriptreact'
   unlet main_syntax
