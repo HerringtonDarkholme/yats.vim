@@ -27,12 +27,6 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ nextgroup=typescriptFuncCallArg,@typescriptTypeOperator
   \ contained skipwhite
 
-" nextgroup doesn't contain objectLiteral, let outer region contains it
-syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
-  \ start=/< \@!/ end=/>/
-  \ contains=@typescriptType
-  \ nextgroup=@typescriptExpression
-  \ contained skipwhite oneline
 
 syntax cluster typescriptType contains=
   \ @typescriptPrimaryType,
