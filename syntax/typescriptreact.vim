@@ -90,9 +90,9 @@ syntax region jsxEscapeJs
 syntax match jsxIfOperator +?+
 syntax match jsxElseOperator +:+
 
-syntax cluster typescriptValue add=jsxRegion
-
 runtime syntax/common.vim
+
+syntax cluster typescriptExpression add=jsxRegion
 
 highlight def link jsxTag Function
 highlight def link jsxTagName Function
