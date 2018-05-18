@@ -16,6 +16,8 @@ syntax region jsxTag
       \ keepend
       \ extend
 
+syntax match jsxTag /<>/ contained
+
 
 " <tag></tag>
 " s~~~~~~~~~e
@@ -29,8 +31,18 @@ syntax region jsxRegion
       \ end=+</\_s*\z1>+
       \ end=+/>+
       \ fold
-      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsFuncBlock,
-                \@Spell
+      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsFuncBlock,jsxFragment,@Spell
+      \ extend
+
+" <>   </>
+" s~~~~~~e
+" A big start regexp borrowed from https://git.io/vDyxc
+syntax region jsxFragment
+      \ start=+\(\((\|{\|}\|\[\|,\|&&\|||\|?\|:\|=\|=>\|\Wreturn\|^return\|\Wdefault\|^\|>\)\_s*\)\@<=<>+
+      \ skip=+<!--\_.\{-}-->+
+      \ end=+</>+
+      \ fold
+      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsFuncBlock,jsxFragment,@Spell
       \ keepend
       \ extend
 
@@ -40,6 +52,8 @@ syntax match jsxCloseTag
       \ +</\_s*[^/!?<>"']\+>+
       \ contained
       \ contains=jsxNamespace
+
+syntax match jsxCloseTag +</>+ contained
 
 syntax match jsxCloseString
       \ +/>+
@@ -82,7 +96,7 @@ syntax region jsxString contained start=+'+ end=+'+ contains=jsxEntity,@Spell di
 "          s~~~~~~~~~~~~~~e
 syntax region jsxEscapeJs
     \ contained
-    \ contains=typescriptBlock,jsxRegion
+    \ contains=typescriptBlock,jsxRegion,jsxFragment
     \ start=+{+
     \ end=++
     \ extend
@@ -90,7 +104,7 @@ syntax region jsxEscapeJs
 syntax match jsxIfOperator +?+
 syntax match jsxElseOperator +:+
 
-syntax cluster typescriptValue add=jsxRegion
+syntax cluster typescriptValue add=jsxRegion,jsxFragment
 
 runtime syntax/common.vim
 
