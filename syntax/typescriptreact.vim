@@ -101,7 +101,7 @@ syntax region jsxString contained start=+'+ end=+'+ contains=jsxEntity,@Spell di
 "          s~~~~~~~~~~~~~~e
 syntax region jsxEscapeJs
     \ contained
-    \ contains=typescriptBlock,jsxRegion,jsxFragment
+    \ contains=@typescriptExpression
     \ start=+{+
     \ end=+}+
     \ extend
