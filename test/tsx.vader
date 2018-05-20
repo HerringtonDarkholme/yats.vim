@@ -3,4 +3,5 @@ Given typescriptreact (basic usage):
   var b = 123
 
 Execute:
+  AssertEqual 'jsxTag', SyntaxAt(1, 10)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)

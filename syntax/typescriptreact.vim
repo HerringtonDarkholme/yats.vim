@@ -29,9 +29,10 @@ syntax region jsxRegion
       \ start=+\(\((\|{\|}\|\[\|,\|&&\|||\|?\|:\|=\|=>\|\Wreturn\|^return\|\Wdefault\|^\|>\)\_s*\)\@<=<\_s*\z([_\$a-zA-Z]\(\.\?[\$0-9a-zA-Z]\+\)*\)+
       \ skip=+<!--\_.\{-}-->+
       \ end=+</\_s*\z1>+
-      \ end=+/>+
+      \ matchgroup=jsxCloseString end=+/>+
       \ fold
       \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsFuncBlock,jsxFragment,@Spell
+      \ keepend
       \ extend
 
 " <>   </>
