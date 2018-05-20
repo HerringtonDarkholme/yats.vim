@@ -1,3 +1,2 @@
-var fragment = () => <>
-  <div className="123"></div>
-</>
+var fragment = <div><div/>
+var a = 123

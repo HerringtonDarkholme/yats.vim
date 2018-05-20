@@ -1,0 +1,6 @@
+Given typescriptreact (basic usage):
+  var a = <div></div>
+  var b = 123
+
+Execute:
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
