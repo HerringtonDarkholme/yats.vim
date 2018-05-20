@@ -13,8 +13,6 @@ syntax region jsxTag
       \ contained
       \ contains=jsxTagName,jsxIntrinsicTagName,jsxAttrib,jsxEscapeJs,
                 \jsxCloseString
-      \ keepend
-      \ extend
 
 syntax match jsxTag /<>/ contained
 
@@ -52,7 +50,7 @@ syntax region jsxFragment
 syntax match jsxCloseTag
       \ +</\_s*[^/!?<>"']\+>+
       \ contained
-      \ contains=jsxNamespace
+      \ contains=jsxTagName,jsxIntrinsicTagName
 
 syntax match jsxCloseTag +</>+ contained
 
@@ -70,11 +68,11 @@ syntax match jsxEntityPunct contained "[&.;]"
 " <tag key={this.props.key}>
 "  ~~~
 syntax match jsxTagName
-    \ +<\_s*\zs[^/!?<>"']\++
+    \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
     \ contained
     \ display
 syntax match jsxIntrinsicTagName
-    \ +<\_s*\zs[a-z]\++
+    \ +[</]\_s*[a-z]\++hs=s+1
     \ contained
     \ display
 
@@ -105,7 +103,7 @@ syntax region jsxEscapeJs
     \ contained
     \ contains=typescriptBlock,jsxRegion,jsxFragment
     \ start=+{+
-    \ end=++
+    \ end=+}+
     \ extend
 
 
@@ -113,15 +111,15 @@ runtime syntax/common.vim
 
 syntax cluster typescriptExpression add=jsxRegion,jsxFragment
 
-highlight def link jsxTag Function
+highlight def link jsxTag htmlTag
 highlight def link jsxTagName Function
-highlight def link jsxIntrinsicTagName Keyword
+highlight def link jsxIntrinsicTagName htmlTagName
 highlight def link jsxString String
 highlight def link jsxNameSpace Function
 highlight def link jsxComment Error
 highlight def link jsxAttrib Type
 highlight def link jsxEscapeJs jsxEscapeJs
-highlight def link jsxCloseTag Identifier
+highlight def link jsxCloseTag htmlTag
 highlight def link jsxCloseString Identifier
 
 let b:current_syntax = "typescriptreact"
