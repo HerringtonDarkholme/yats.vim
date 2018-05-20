@@ -11,7 +11,7 @@ syntax region jsxTag
       \ end=+/\@<!>+
       \ end=+\(/>\)\@=+
       \ contained
-      \ contains=jsxTag,jsxError,jsxTagName,jsxAttrib,jsxEqual,jsxString,jsxEscapeJs,
+      \ contains=jsxTagName,jsxIntrinsicTagName,jsxAttrib,jsxEscapeJs,
                 \jsxCloseString
       \ keepend
       \ extend
@@ -73,17 +73,23 @@ syntax match jsxTagName
     \ +<\_s*\zs[^/!?<>"']\++
     \ contained
     \ display
+syntax match jsxIntrinsicTagName
+    \ +<\_s*\zs[a-z]\++
+    \ contained
+    \ display
 
 " <tag key={this.props.key}>
 "      ~~~
 syntax match jsxAttrib
     \ +\(\(<\_s*\)\@<!\_s\)\@<=\<[a-zA-Z_][-0-9a-zA-Z_]*\>\(\_s\+\|\_s*[=/>]\)\@=+
+    \ nextgroup=jsxEqual skipwhite
     \ contained
     \ display
 
 " <tag id="sample">
 "        ~
-" syntax match jsxEqual +=+ display
+syntax match jsxEqual +=+ display contained
+  \ nextgroup=jsxString skipwhite
 
 " <tag id="sample">
 "         s~~~~~~e
@@ -109,6 +115,7 @@ syntax cluster typescriptExpression add=jsxRegion,jsxFragment
 
 highlight def link jsxTag Function
 highlight def link jsxTagName Function
+highlight def link jsxIntrinsicTagName Keyword
 highlight def link jsxString String
 highlight def link jsxNameSpace Function
 highlight def link jsxComment Error
