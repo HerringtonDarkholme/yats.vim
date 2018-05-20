@@ -29,7 +29,7 @@ syntax region jsxRegion
       \ end=+</\_s*\z1>+
       \ matchgroup=jsxCloseString end=+/>+
       \ fold
-      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsFuncBlock,jsxFragment,@Spell
+      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsxFragment,jsxEscapeJs,@Spell
       \ keepend
       \ extend
 
@@ -41,7 +41,7 @@ syntax region jsxFragment
       \ skip=+<!--\_.\{-}-->+
       \ end=+</>+
       \ fold
-      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsFuncBlock,jsxFragment,@Spell
+      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsxFragment,jsxEscapeJs,@Spell
       \ keepend
       \ extend
 
@@ -72,7 +72,7 @@ syntax match jsxTagName
     \ contained
     \ display
 syntax match jsxIntrinsicTagName
-    \ +[</]\_s*[a-z]\++hs=s+1
+    \ +[</]\_s*[a-z1-9-]\++hs=s+1
     \ contained
     \ display
 
