@@ -102,8 +102,6 @@ syntax region jsxEscapeJs
     \ end=++
     \ extend
 
-syntax match jsxIfOperator +?+
-syntax match jsxElseOperator +:+
 
 runtime syntax/common.vim
 

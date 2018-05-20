@@ -5,3 +5,11 @@ Given typescriptreact (basic usage):
 Execute:
   AssertEqual 'jsxTag', SyntaxAt(1, 10)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
+Given typescriptreact (basic void):
+  var a = <img/>
+  var b = 123
+
+Execute:
+  AssertEqual 'jsxTag', SyntaxAt(1, 10)
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
