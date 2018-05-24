@@ -17,7 +17,7 @@ Execute:
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
 Given typescriptreact (interpolation):
-  var a= <Option key={item}></Option>;
+  var a = <Option key={item}></Option>;
   var b = 123
 
 Execute:
@@ -26,10 +26,10 @@ Execute:
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
 Given typescriptreact (custom component):
-  var a= <ion-gesture></ion-gesture>;
+  var a = <ion-gesture></ion-gesture>;
   var b = 123
 
 Execute:
-  AssertEqual 'jsxTagName', SyntaxAt(1, 10)
-  AssertEqual 'jsxTagName', SyntaxAt(1, 30)
+  AssertEqual 'jsxTag', SyntaxAt(1, 9)
+  AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
