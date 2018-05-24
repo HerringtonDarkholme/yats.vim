@@ -24,3 +24,12 @@ Execute:
   AssertEqual 'jsxTagName', SyntaxAt(1, 10)
   AssertEqual 'jsxTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
+Given typescriptreact (custom component):
+  var a= <ion-gesture></ion-gesture>;
+  var b = 123
+
+Execute:
+  AssertEqual 'jsxTagName', SyntaxAt(1, 10)
+  AssertEqual 'jsxTagName', SyntaxAt(1, 30)
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
