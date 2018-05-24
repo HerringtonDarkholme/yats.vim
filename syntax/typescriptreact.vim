@@ -24,7 +24,7 @@ syntax match jsxTag /<>/ contained
 " s~~~~e
 " A big start regexp borrowed from https://git.io/vDyxc
 syntax region jsxRegion
-      \ start=+<\_s*\z([a-zA-Z\$_-]\+\(\.\k\+\)*\)+
+      \ start=+<\_s*\z([a-zA-Z1-9\$_-]\+\(\.\k\+\)*\)+
       \ skip=+<!--\_.\{-}-->+
       \ end=+</\_s*\z1>+
       \ matchgroup=jsxCloseString end=+/>+

@@ -33,3 +33,12 @@ Execute:
   AssertEqual 'jsxTag', SyntaxAt(1, 9)
   AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
+Given typescriptreact (digit in tagname):
+  var a = <h1></h1>;
+  var b = 123
+
+Execute:
+  AssertEqual 'jsxTag', SyntaxAt(1, 9)
+  AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 16)
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
