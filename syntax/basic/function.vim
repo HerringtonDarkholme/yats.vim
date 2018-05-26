@@ -18,7 +18,13 @@ syntax match   typescriptFuncName              contained /\K\k*/
   \ nextgroup=@typescriptCallSignature
   \ skipwhite
 
-syntax match   typescriptArrowFuncDef          contained /(\_[^)]*)\s*=>/
+" destructuring ({ a: ee }) =>
+syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\?)\s*=>/
+  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
+  \ nextgroup=@typescriptExpression,typescriptBlock
+  \ skipwhite skipempty
+
+syntax match   typescriptArrowFuncDef          contained /(\(\_[a-zA-Z$_\[]\_[^)]*\)*)\s*=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
