@@ -3,8 +3,8 @@ Given typescriptreact (basic usage):
   var b = 123
 
 Execute:
-  AssertEqual 'jsxTag', SyntaxAt(1, 9)
-  AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 10)
+  AssertEqual 'tsxTag', SyntaxAt(1, 9)
+  AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 10)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
 Given typescriptreact (basic void):
@@ -12,8 +12,8 @@ Given typescriptreact (basic void):
   var b = 123
 
 Execute:
-  AssertEqual 'jsxTag', SyntaxAt(1, 9)
-  AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 10)
+  AssertEqual 'tsxTag', SyntaxAt(1, 9)
+  AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 10)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
 Given typescriptreact (interpolation):
@@ -21,8 +21,8 @@ Given typescriptreact (interpolation):
   var b = 123
 
 Execute:
-  AssertEqual 'jsxTagName', SyntaxAt(1, 10)
-  AssertEqual 'jsxTagName', SyntaxAt(1, 30)
+  AssertEqual 'tsxTagName', SyntaxAt(1, 10)
+  AssertEqual 'tsxTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
 Given typescriptreact (custom component):
@@ -30,8 +30,8 @@ Given typescriptreact (custom component):
   var b = 123
 
 Execute:
-  AssertEqual 'jsxTag', SyntaxAt(1, 9)
-  AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 30)
+  AssertEqual 'tsxTag', SyntaxAt(1, 9)
+  AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
 Given typescriptreact (digit in tagname):
@@ -39,6 +39,6 @@ Given typescriptreact (digit in tagname):
   var b = 123
 
 Execute:
-  AssertEqual 'jsxTag', SyntaxAt(1, 9)
-  AssertEqual 'jsxIntrinsicTagName', SyntaxAt(1, 16)
+  AssertEqual 'tsxTag', SyntaxAt(1, 9)
+  AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 16)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)

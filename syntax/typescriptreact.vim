@@ -5,16 +5,16 @@ if !exists("main_syntax")
   let main_syntax = 'typescriptreact'
 endif
 
-syntax region jsxTag
+syntax region tsxTag
       \ start=+<\([^/!?<>="':]\+\)\@=+
       \ skip=+</[^ /!?<>"']\+>+
       \ end=+/\@<!>+
       \ end=+\(/>\)\@=+
       \ contained
-      \ contains=jsxTagName,jsxIntrinsicTagName,jsxAttrib,jsxEscapeJs,
-                \jsxCloseString
+      \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscapeJs,
+                \tsxCloseString
 
-syntax match jsxTag /<>/ contained
+syntax match tsxTag /<>/ contained
 
 
 " <tag></tag>
@@ -23,83 +23,83 @@ syntax match jsxTag /<>/ contained
 " <tag/>
 " s~~~~e
 " A big start regexp borrowed from https://git.io/vDyxc
-syntax region jsxRegion
+syntax region tsxRegion
       \ start=+<\_s*\z([a-zA-Z1-9\$_-]\+\(\.\k\+\)*\)+
       \ skip=+<!--\_.\{-}-->+
       \ end=+</\_s*\z1>+
-      \ matchgroup=jsxCloseString end=+/>+
+      \ matchgroup=tsxCloseString end=+/>+
       \ fold
-      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsxFragment,jsxEscapeJs,@Spell
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscapeJs,@Spell
       \ keepend
       \ extend
 
 " <>   </>
 " s~~~~~~e
 " A big start regexp borrowed from https://git.io/vDyxc
-syntax region jsxFragment
+syntax region tsxFragment
       \ start=+\(\((\|{\|}\|\[\|,\|&&\|||\|?\|:\|=\|=>\|\Wreturn\|^return\|\Wdefault\|^\|>\)\_s*\)\@<=<>+
       \ skip=+<!--\_.\{-}-->+
       \ end=+</>+
       \ fold
-      \ contains=jsxRegion,jsxCloseString,jsxCloseTag,jsxTag,jsxComment,jsxFragment,jsxEscapeJs,@Spell
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscapeJs,@Spell
       \ keepend
       \ extend
 
 " </tag>
 " ~~~~~~
-syntax match jsxCloseTag
+syntax match tsxCloseTag
       \ +</\_s*[^/!?<>"']\+>+
       \ contained
-      \ contains=jsxTagName,jsxIntrinsicTagName
+      \ contains=tsxTagName,tsxIntrinsicTagName
 
-syntax match jsxCloseTag +</>+ contained
+syntax match tsxCloseTag +</>+ contained
 
-syntax match jsxCloseString
+syntax match tsxCloseString
       \ +/>+
       \ contained
 
 " <!-- -->
 " ~~~~~~~~
-syntax match jsxComment /<!--\_.\{-}-->/ display
+syntax match tsxComment /<!--\_.\{-}-->/ display
 
-syntax match jsxEntity "&[^; \t]*;" contains=jsxEntityPunct
-syntax match jsxEntityPunct contained "[&.;]"
+syntax match tsxEntity "&[^; \t]*;" contains=tsxEntityPunct
+syntax match tsxEntityPunct contained "[&.;]"
 
 " <tag key={this.props.key}>
 "  ~~~
-syntax match jsxTagName
+syntax match tsxTagName
     \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
     \ contained
     \ display
-syntax match jsxIntrinsicTagName
+syntax match tsxIntrinsicTagName
     \ +[</]\_s*[a-z1-9-]\++hs=s+1
     \ contained
     \ display
 
 " <tag key={this.props.key}>
 "      ~~~
-syntax match jsxAttrib
+syntax match tsxAttrib
     \ +\(\(<\_s*\)\@<!\_s\)\@<=\<[a-zA-Z_][-0-9a-zA-Z_]*\>\(\_s\+\|\_s*[=/>]\)\@=+
-    \ nextgroup=jsxEqual skipwhite
+    \ nextgroup=tsxEqual skipwhite
     \ contained
     \ display
 
 " <tag id="sample">
 "        ~
-syntax match jsxEqual +=+ display contained
-  \ nextgroup=jsxString skipwhite
+syntax match tsxEqual +=+ display contained
+  \ nextgroup=tsxString skipwhite
 
 " <tag id="sample">
 "         s~~~~~~e
-syntax region jsxString contained start=+"+ end=+"+ contains=jsxEntity,@Spell display
+syntax region tsxString contained start=+"+ end=+"+ contains=tsxEntity,@Spell display
 
 " <tag id='sample'>
 "         s~~~~~~e
-syntax region jsxString contained start=+'+ end=+'+ contains=jsxEntity,@Spell display
+syntax region tsxString contained start=+'+ end=+'+ contains=tsxEntity,@Spell display
 
 " <tag key={this.props.key}>
 "          s~~~~~~~~~~~~~~e
-syntax region jsxEscapeJs
+syntax region tsxEscapeJs
     \ contained
     \ contains=@typescriptExpression
     \ start=+{+
@@ -109,18 +109,18 @@ syntax region jsxEscapeJs
 
 runtime syntax/common.vim
 
-syntax cluster typescriptExpression add=jsxRegion,jsxFragment
+syntax cluster typescriptExpression add=tsxRegion,tsxFragment
 
-highlight def link jsxTag htmlTag
-highlight def link jsxTagName Function
-highlight def link jsxIntrinsicTagName htmlTagName
-highlight def link jsxString String
-highlight def link jsxNameSpace Function
-highlight def link jsxComment Error
-highlight def link jsxAttrib Type
-highlight def link jsxEscapeJs jsxEscapeJs
-highlight def link jsxCloseTag htmlTag
-highlight def link jsxCloseString Identifier
+highlight def link tsxTag htmlTag
+highlight def link tsxTagName Function
+highlight def link tsxIntrinsicTagName htmlTagName
+highlight def link tsxString String
+highlight def link tsxNameSpace Function
+highlight def link tsxComment Error
+highlight def link tsxAttrib Type
+highlight def link tsxEscapeJs tsxEscapeJs
+highlight def link tsxCloseTag htmlTag
+highlight def link tsxCloseString Identifier
 
 let b:current_syntax = "typescriptreact"
 if main_syntax == 'typescriptreact'
