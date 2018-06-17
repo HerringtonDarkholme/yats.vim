@@ -19,3 +19,25 @@ var a = <ion-gesture>
 </ion-gesture>
 
 var b = 123
+var c = (
+  <>
+  <Route component={this.renderHome} />
+  </>
+)
+
+class A {
+  render() {
+    var d = (
+      <Link to="/" className={styles.logo} onClick={this.closeNavBar}>
+        {this.renderStuff()}
+      </Link>
+    )
+    return <Route exact/>
+  }
+}
+
+// paren + function child
+var d =  (
+  <Route component={() => <Home/>}/>
+)
+
