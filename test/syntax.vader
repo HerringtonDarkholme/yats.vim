@@ -425,3 +425,9 @@ Given typescript (line break after interface):
   }
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 6)
+
+Given typescript (nested namespace):
+  declare namespace Outer {
+    namespace Inner {}}
+Execute:
+  AssertEqual 'typescriptModule', SyntaxAt(2, 3)
