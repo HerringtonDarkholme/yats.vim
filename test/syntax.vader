@@ -416,3 +416,12 @@ Given typescript (high order arrow func in class):
   }
 Execute:
   AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 23)
+
+
+Given typescript (line break after interface):
+  interface A
+  {
+    a: number
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 6)

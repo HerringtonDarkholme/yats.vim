@@ -42,7 +42,7 @@ syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
 syntax match   typescriptInterfaceName             contained /\k\+/
   \ nextgroup=typescriptObjectType,typescriptInterfaceExtends,typescriptInterfaceTypeParameter
-  \ skipwhite
+  \ skipwhite skipnl
 syntax region typescriptInterfaceTypeParameter
   \ start=/</ end=/>/
   \ contains=typescriptTypeParameter
