@@ -42,3 +42,11 @@ Execute:
   AssertEqual 'tsxTag', SyntaxAt(1, 9)
   AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 16)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
+Given typescriptreact (paren + render props):
+  var d =  (
+    <Route component={() => <Home/>}/>
+  )
+
+Execute:
+  AssertEqual 'tsxTagName', SyntaxAt(2, 4)

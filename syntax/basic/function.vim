@@ -24,7 +24,10 @@ syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax match   typescriptArrowFuncDef          contained /(\(\_[a-zA-Z$_\[]\_[^)]*\)*)\s*=>/
+" matches `(a) =>` or `([a]) =>` or
+" `(
+"  a) =>`
+syntax match   typescriptArrowFuncDef          contained /(\(\_s*\[a-zA-Z\$_\[]\_[^)]*\)*)\s*=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
