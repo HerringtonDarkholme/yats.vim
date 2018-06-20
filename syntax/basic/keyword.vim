@@ -17,21 +17,21 @@ syntax keyword typescriptCastKeyword           as
 syntax keyword typescriptIdentifier            arguments this super
   \ nextgroup=@afterIdentifier
 
-syntax keyword typescriptVariable              let var const
+syntax keyword typescriptVariable              let var
   \ nextgroup=typescriptVariableDeclaration
   \ skipwhite skipempty skipnl
 
-syntax keyword typescriptEnumKeyword const
+syntax keyword typescriptVariable const
   \ nextgroup=typescriptEnum,typescriptVariableDeclaration
-  \ skipwhite
-
-syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
-  \ nextgroup=typescriptBlock
   \ skipwhite
 
 syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
   \ nextgroup=typescriptTypeAnnotation,typescriptAssign
   \ contained skipwhite skipempty skipnl
+
+syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
+  \ nextgroup=typescriptBlock
+  \ skipwhite
 
 syntax keyword typescriptKeywordOp
   \ contained in instanceof nextgroup=@typescriptValue

@@ -73,3 +73,7 @@ class A {
 }
 
 var a = ({a: () => 123})
+
+enum A {
+
+}
