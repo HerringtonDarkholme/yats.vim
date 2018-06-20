@@ -22,7 +22,6 @@ setlocal indentkeys+=*<Return>,<>>,<<>,/
 " Multiline end tag regex (line beginning with '>' or '/>')
 let s:endtag = '^\s*\/\?>\s*;\='
 let s:startexp = '[\{\(]\s*$'
-let s:endexp = '[})][\s;]*$'
 
 " Get all syntax types at the beginning of a given line.
 fu! SynSOL(lnum)
@@ -90,7 +89,7 @@ fu! GetTsxIndent()
 
     " Align '/>' and '>' with '<' for multiline tags.
     " Align end of expression ')' or '}'.
-    if l:line =~? s:endtag || l:line =~? s:endexp
+    if l:line =~? s:endtag
       let ind = ind - &sw
     endif
 
