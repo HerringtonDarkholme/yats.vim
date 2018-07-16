@@ -15,7 +15,7 @@ syntax match   typescriptAsyncFunc             contained /*/
   \ skipwhite skipempty
 
 syntax match   typescriptFuncName              contained /\K\k*/
-  \ nextgroup=@typescriptCallSignature
+  \ nextgroup=@typescriptCallSignature,typescriptTemplate
   \ skipwhite
 
 " destructuring ({ a: ee }) =>
