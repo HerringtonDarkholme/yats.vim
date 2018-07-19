@@ -213,7 +213,7 @@ Execute:
 Given typescript (template tag string as default value):
   var a = (a: string = T`my template`) => 1
 Execute:
-  AssertEqual 'typescriptTaggedTemplate', SyntaxAt(1, 24)
+  AssertEqual 'typescriptTaggedTemplate', SyntaxAt(1, 22)
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 26)
 
 Given typescript (multi line arrow func):
