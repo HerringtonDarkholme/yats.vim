@@ -62,7 +62,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite skipempty
 
-syntax keyword typescriptPredefinedType any number boolean string void never undefined null object
+syntax keyword typescriptPredefinedType any number boolean string void never undefined null object unknown
   \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite skipempty
 
