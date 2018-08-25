@@ -69,12 +69,12 @@ syntax keyword typescriptAsyncFor              await nextgroup=typescriptLoopPar
 
 syntax region  typescriptLoopParen             contained matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptValue
+  \ contains=typescriptVariable,typescriptForOperator,typescriptEndColons,@typescriptValue,@typescriptComments
   \ nextgroup=typescriptBlock
   \ skipwhite skipempty
 syntax region  typescriptConditionalParen             contained matchgroup=typescriptParens
   \ start=/(/ end=/)/
-  \ contains=@typescriptValue
+  \ contains=@typescriptValue,@typescriptComments
   \ nextgroup=typescriptBlock
   \ skipwhite skipempty
 syntax match   typescriptEndColons             /[;,]/

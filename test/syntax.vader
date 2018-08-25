@@ -436,3 +436,13 @@ Given typescript (const enum):
   const enum Outer {}
 Execute:
   AssertEqual 'typescriptEnumKeyword', SyntaxAt(1, 7)
+
+Given typescript (comment in if):
+  if (/*rete*/123) {}
+Execute:
+  AssertEqual 'typescriptComment', SyntaxAt(1, 5)
+
+Given typescript (comment in while):
+  while (/*test*/ss) {}
+Execute:
+  AssertEqual 'typescriptComment', SyntaxAt(1, 10)

@@ -12,9 +12,15 @@ var a = {
 
 var a = [/\/\//, 123]
 
+if (/*rete*/123) {}
+
 
 if (a < (<number>b))
     a
+}
+while (
+ // sdkfsld
+  ss) {
 }
 
 var a: T[K] = 1213
