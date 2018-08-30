@@ -446,3 +446,10 @@ Given typescript (comment in while):
   while (/*test*/ss) {}
 Execute:
   AssertEqual 'typescriptComment', SyntaxAt(1, 10)
+
+Given typescript (class expression):
+  var a = class extends Object<any> implements TestInterface {}
+Execute:
+  AssertEqual 'typescriptClassKeyword', SyntaxAt(1, 9)
+  AssertEqual 'typescriptClassExtends', SyntaxAt(1, 15)
+  AssertEqual 'typescriptClassExtends', SyntaxAt(1, 35)
