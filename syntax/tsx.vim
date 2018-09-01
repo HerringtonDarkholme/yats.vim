@@ -70,16 +70,18 @@ syntax match tsxEntityPunct contained "[&.;]"
 syntax match tsxTagName
     \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
     \ contained
+    \ nextgroup=tsxAttrib
     \ display
 syntax match tsxIntrinsicTagName
     \ +[</]\_s*[a-z1-9-]\++hs=s+1
     \ contained
+    \ nextgroup=tsxAttrib
     \ display
 
 " <tag key={this.props.key}>
 "      ~~~
 syntax match tsxAttrib
-    \ +\(\(<\_s*\)\@<!\_s\)\@<=\<[a-zA-Z_][-0-9a-zA-Z_]*\>\(\_s\+\|\_s*[=/>]\)\@=+
+    \ +[a-zA-Z_][-0-9a-zA-Z_]*+
     \ nextgroup=tsxEqual skipwhite
     \ contained
     \ display
@@ -92,10 +94,6 @@ syntax match tsxEqual +=+ display contained
 " <tag id="sample">
 "         s~~~~~~e
 syntax region tsxString contained start=+"+ end=+"+ contains=tsxEntity,@Spell display
-
-" <tag id='sample'>
-"         s~~~~~~e
-syntax region tsxString contained start=+'+ end=+'+ contains=tsxEntity,@Spell display
 
 " <tag key={this.props.key}>
 "          s~~~~~~~~~~~~~~e
