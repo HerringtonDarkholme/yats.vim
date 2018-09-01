@@ -104,9 +104,6 @@ syntax region tsxEscapeJs
     \ end=+}+
     \ extend
 
-
-runtime syntax/common.vim
-
 syntax cluster typescriptExpression add=tsxRegion,tsxFragment
 
 highlight def link tsxTag htmlTag
