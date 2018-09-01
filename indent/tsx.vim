@@ -1,4 +1,3 @@
-exe 'runtime! indent/typescript.vim'
 " Save the current JavaScript indentexpr.
 let b:tsx_ts_indentexpr = &indentexpr
 
