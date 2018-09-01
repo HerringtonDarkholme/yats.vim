@@ -1,5 +1,3 @@
-" Ported over from https://github.com/mxw/vim-jsx "
-
 if !exists("main_syntax")
   if exists("b:current_syntax") && b:current_syntax != 'typescript'
     finish
@@ -7,43 +5,122 @@ if !exists("main_syntax")
   let main_syntax = 'typescript.tsx'
 endif
 
-syn include @XMLSyntax syntax/xml.vim
+syntax region tsxTag
+      \ start=+<\([^/!?<>="':]\+\)\@=+
+      \ skip=+</[^ /!?<>"']\+>+
+      \ end=+/\@<!>+
+      \ end=+\(/>\)\@=+
+      \ contained
+      \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscapeJs,
+                \tsxCloseString
 
-" JSX attributes should color as JS.  Note the trivial end pattern; we let
-" jsBlock take care of ending the region.
-syn region xmlString contained start=+{+ end=++ contains=typescriptBlock
+syntax match tsxTag /<>/ contained
 
-" JSX comments inside XML tag should color as comment.  Note the trivial end pattern; we let
-" jsComment take care of ending the region.
-syn region xmlString contained start=+//+ end=++ contains=typescriptComment
 
-" JSX child blocks behave just like JSX attributes, except that (a) they are
-" syntactically distinct, and (b) they need the syn-extend argument, or else
-" nested XML end-tag patterns may end the outer jsxRegion.
-syn region tsxChild contained start=+{+ end=++ contains=typescriptBlock
-  \ extend
+" <tag></tag>
+" s~~~~~~~~~e
+" and self close tag
+" <tag/>
+" s~~~~e
+" A big start regexp borrowed from https://git.io/vDyxc
+syntax region tsxRegion
+      \ start=+<\_s*\z([a-zA-Z1-9\$_-]\+\(\.\k\+\)*\)+
+      \ skip=+<!--\_.\{-}-->+
+      \ end=+</\_s*\z1>+
+      \ matchgroup=tsxCloseString end=+/>+
+      \ fold
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscapeJs,@Spell
+      \ keepend
+      \ extend
 
-" Highlight JSX regions as XML; recursively match.
-"
-" Note that we prohibit JSX tags from having a < or word character immediately
-" preceding it, to avoid conflicts with, respectively, the left shift operator
-" and generic Flow type annotations (http://flowtype.org/).
-syn region tsxRegion
-  \ contains=@Spell,@XMLSyntax,tsxRegion,tsxChild,typescriptBlock
-  \ start=+\%(<\|\w\)\@<!<\z([a-zA-Z_][a-zA-Z0-9:\-.]*\>[:,]\@!\)\([^>]*>(\)\@!+
-  \ skip=+<!--\_.\{-}-->+
-  \ end=+</\z1\_\s\{-}>+
-  \ end=+/>+
-  \ keepend
-  \ extend
+" <>   </>
+" s~~~~~~e
+" A big start regexp borrowed from https://git.io/vDyxc
+syntax region tsxFragment
+      \ start=+\(\((\|{\|}\|\[\|,\|&&\|||\|?\|:\|=\|=>\|\Wreturn\|^return\|\Wdefault\|^\|>\)\_s*\)\@<=<>+
+      \ skip=+<!--\_.\{-}-->+
+      \ end=+</>+
+      \ fold
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscapeJs,@Spell
+      \ keepend
+      \ extend
 
-" Add jsxRegion to the lowest-level JS syntax cluster.
-syn cluster typescriptExpression add=tsxRegion
+" </tag>
+" ~~~~~~
+syntax match tsxCloseTag
+      \ +</\_s*[^/!?<>"']\+>+
+      \ contained
+      \ contains=tsxTagName,tsxIntrinsicTagName
 
-" Allow jsxRegion to contain reserved words.
-"syn cluster javascriptNoReserved add=jsxRegion
+syntax match tsxCloseTag +</>+ contained
+
+syntax match tsxCloseString
+      \ +/>+
+      \ contained
+
+" <!-- -->
+" ~~~~~~~~
+syntax match tsxComment /<!--\_.\{-}-->/ display
+
+syntax match tsxEntity "&[^; \t]*;" contains=tsxEntityPunct
+syntax match tsxEntityPunct contained "[&.;]"
+
+" <tag key={this.props.key}>
+"  ~~~
+syntax match tsxTagName
+    \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
+    \ contained
+    \ display
+syntax match tsxIntrinsicTagName
+    \ +[</]\_s*[a-z1-9-]\++hs=s+1
+    \ contained
+    \ display
+
+" <tag key={this.props.key}>
+"      ~~~
+syntax match tsxAttrib
+    \ +\(\(<\_s*\)\@<!\_s\)\@<=\<[a-zA-Z_][-0-9a-zA-Z_]*\>\(\_s\+\|\_s*[=/>]\)\@=+
+    \ nextgroup=tsxEqual skipwhite
+    \ contained
+    \ display
+
+" <tag id="sample">
+"        ~
+syntax match tsxEqual +=+ display contained
+  \ nextgroup=tsxString skipwhite
+
+" <tag id="sample">
+"         s~~~~~~e
+syntax region tsxString contained start=+"+ end=+"+ contains=tsxEntity,@Spell display
+
+" <tag id='sample'>
+"         s~~~~~~e
+syntax region tsxString contained start=+'+ end=+'+ contains=tsxEntity,@Spell display
+
+" <tag key={this.props.key}>
+"          s~~~~~~~~~~~~~~e
+syntax region tsxEscapeJs
+    \ contained
+    \ contains=@typescriptExpression
+    \ start=+{+
+    \ end=+}+
+    \ extend
+
 
 runtime syntax/common.vim
+
+syntax cluster typescriptExpression add=tsxRegion,tsxFragment
+
+highlight def link tsxTag htmlTag
+highlight def link tsxTagName Function
+highlight def link tsxIntrinsicTagName htmlTagName
+highlight def link tsxString String
+highlight def link tsxNameSpace Function
+highlight def link tsxComment Error
+highlight def link tsxAttrib Type
+highlight def link tsxEscapeJs tsxEscapeJs
+highlight def link tsxCloseTag htmlTag
+highlight def link tsxCloseString Identifier
 
 let b:current_syntax = "typescript.tsx"
 if main_syntax == 'typescript.tsx'
