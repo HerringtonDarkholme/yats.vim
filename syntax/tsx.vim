@@ -71,11 +71,13 @@ syntax match tsxTagName
     \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
     \ contained
     \ nextgroup=tsxAttrib
+    \ skipwhite
     \ display
 syntax match tsxIntrinsicTagName
     \ +[</]\_s*[a-z1-9-]\++hs=s+1
     \ contained
     \ nextgroup=tsxAttrib
+    \ skipwhite
     \ display
 
 " <tag key={this.props.key}>
