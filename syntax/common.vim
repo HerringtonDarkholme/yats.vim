@@ -7,7 +7,7 @@ command -nargs=+ HiLink hi def link <args>
 
 "Dollar sign is permitted anywhere in an identifier
 setlocal iskeyword-=$
-if main_syntax == 'typescript' || main_syntax == 'typescriptreact'
+if main_syntax == 'typescript' || main_syntax == 'typescript.tsx'
   setlocal iskeyword+=$
   " syntax cluster htmlJavaScript                 contains=TOP
 endif

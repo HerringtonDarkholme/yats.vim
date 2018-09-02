@@ -1,4 +1,4 @@
-Given typescriptreact (html end tags):
+Given typescript.tsx (html end tags):
   <div>
   name="cat"
   value={value}
@@ -11,7 +11,7 @@ Given typescriptreact (html end tags):
 Do (indent the block):
   gg=G
 
-Expect typescriptreact indented block:
+Expect typescript.tsx indented block:
   <div>
   	name="cat"
   	value={value}
@@ -21,7 +21,7 @@ Expect typescriptreact indented block:
   	onremove={() => console.log('bye')}
   </div>
 
-Given typescriptreact (badly indented component):
+Given typescript.tsx (badly indented component):
   class MyComponent {
   	public render() {
   	return (
@@ -56,7 +56,92 @@ Given typescriptreact (badly indented component):
 Do (indent the block):
   gg=G
 
-Expect typescriptreact indented blocks:
+Expect typescript.tsx indented blocks:
+  class MyComponent {
+  	public render() {
+  		return (
+  			<Table disableHeader={false}
+  				key1="123123"
+  				key2="423123"
+  				headerHeight={50}
+  				rowCount={this.state.data.length}
+  				ref="Table"
+  				rowGetter={(row) => this.state.data[row.index]}
+  				rowHeight={30}>
+  				<Column
+  					label="Age"
+  					rowHeight={30}
+  					width={90}
+  					height={100} />
+  				<Column
+  					width={210}
+  					label="Title"
+  					height={100}
+  				/>
+  				<Column
+  					width={210}
+  					label="Title"
+  					height={100} />
+
+  			</Table>
+  		);
+  	}
+  }
+
+Given typescript.tsx (badly indented component + non tsx):
+    interface MyComponentProps {
+  first: string;
+    second: boolean;
+             third: {
+                [key: string]: string | number;
+        count: number;
+                };
+        }
+
+  class MyComponent {
+  	public render() {
+  	return (
+  	<Table disableHeader={false}
+  		key1="123123"
+  		key2="423123"
+  	headerHeight={50}
+  	rowCount={this.state.data.length}
+  	ref="Table"
+  	rowGetter={(row) => this.state.data[row.index]}
+  	rowHeight={30}>
+  	<Column
+  	label="Age"
+  		rowHeight={30}
+  	width={90}
+  	height={100} />
+  	<Column
+  	width={210}
+  	label="Title"
+  	height={100}
+  	/>
+  	<Column
+  	width={210}
+  		label="Title"
+  	height={100} />
+
+  	</Table>
+  	);
+  		}
+  }
+
+Do (indent the block):
+  gg=G
+
+Expect typescript.tsx indented blocks:
+  interface MyComponentProps {
+  	first: string;
+  	second: boolean;
+  	third: {
+  		[key: string]: string | number;
+  		count: number;
+  	};
+  }
+
   class MyComponent {
   	public render() {
   		return (
