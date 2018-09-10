@@ -78,7 +78,6 @@ syntax region  typescriptConditionalParen             contained matchgroup=types
   \ nextgroup=typescriptBlock
   \ skipwhite skipempty
 syntax match   typescriptEndColons             /[;,]/
-syntax cluster typescriptSymbols add=typescriptEndColons
 
 syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbients
   \ skipwhite skipempty

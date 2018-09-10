@@ -35,4 +35,6 @@ syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptV
 " 2: **, **=
 syntax match typescriptBinaryOp contained /\*\*=\?/ nextgroup=@typescriptValue
 
-syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernary,typescriptAssign,typescriptCastKeyword
+syntax match typescriptSemicolons /;/
+
+syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernary,typescriptAssign,typescriptCastKeyword,typescriptSemicolons

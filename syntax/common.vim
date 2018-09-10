@@ -16,7 +16,7 @@ endif
 syntax match   typescriptLabel                /[a-zA-Z_$]\k*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement skipwhite skipempty
 
 " other keywords like return,case,yield uses containedin
-syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptStatement,@typescriptComments fold
+syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptStatement,@typescriptSymbols,@typescriptComments fold
 
 
 runtime syntax/basic/identifiers.vim

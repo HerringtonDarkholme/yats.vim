@@ -72,7 +72,7 @@ syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=@typescriptTypeMember,@typescriptComments,typescriptAccessibilityModifier
+  \ contains=@typescriptTypeMember,typescriptEndColons,@typescriptComments,typescriptAccessibilityModifier
   \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite fold
 
