@@ -36,7 +36,7 @@ syntax match typescriptMixinComma /,/ contained nextgroup=typescriptClassHeritag
 " we need add arrowFunc to class block for high order arrow func
 " see test case
 syntax region  typescriptClassBlock matchgroup=typescriptBraces start=/{/ end=/}/
-  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword,typescriptArrowFunc
+  \ contains=@typescriptPropertyMemberDeclaration,typescriptAbstract,@typescriptComments,typescriptBlock,typescriptAssign,typescriptDecorator,typescriptAsyncFuncKeyword,typescriptArrowFunc,@typescriptSymbols
   \ contained fold
 
 syntax keyword typescriptInterfaceKeyword          interface nextgroup=typescriptInterfaceName skipwhite
