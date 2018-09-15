@@ -77,7 +77,7 @@ syntax region  typescriptConditionalParen             contained matchgroup=types
   \ contains=@typescriptValue,@typescriptComments
   \ nextgroup=typescriptBlock
   \ skipwhite skipempty
-syntax match   typescriptEndColons             /[;,]/
+syntax match   typescriptEndColons             /[;,]/ contained
 
 syntax keyword typescriptAmbientDeclaration declare nextgroup=@typescriptAmbients
   \ skipwhite skipempty
