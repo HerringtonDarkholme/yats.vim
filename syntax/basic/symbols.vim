@@ -3,7 +3,7 @@ syntax match typescriptUnaryOp /[+\-~!]/
  \ nextgroup=@typescriptValue
  \ skipwhite
 
-syntax region  typescriptTernaryOp start=/?/  end=/:/ contained contains=@typescriptValue,@typescriptComments nextgroup=@typescriptValue skipwhite skipempty
+syntax region typescriptTernary matchgroup=typescriptTernaryOp start=/?/ end=/:/ contained contains=@typescriptValue,@typescriptComments nextgroup=@typescriptValue skipwhite skipempty
 
 syntax match   typescriptAssign  /=/ nextgroup=@typescriptValue
   \ skipwhite skipempty
@@ -35,4 +35,4 @@ syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptV
 " 2: **, **=
 syntax match typescriptBinaryOp contained /\*\*=\?/ nextgroup=@typescriptValue
 
-syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernaryOp,typescriptAssign,typescriptCastKeyword
+syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernary,typescriptAssign,typescriptCastKeyword
