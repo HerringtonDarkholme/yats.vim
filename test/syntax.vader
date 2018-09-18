@@ -458,3 +458,9 @@ Given typescript (export interface):
   export default interface A {}
 Execute:
   AssertEqual 'typescriptInterfaceKeyword', SyntaxAt(1, 16)
+
+Given typescript (interface extends with newline):
+  interface SomeRandomLongName<Parameter1, Parameter2, Parameter3>
+      extends SomeOtherInterface {}
+Execute:
+  AssertEqual 'typescriptInterfaceExtends', SyntaxAt(2, 5)

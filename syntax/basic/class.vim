@@ -48,7 +48,7 @@ syntax region typescriptInterfaceTypeParameter
   \ contains=typescriptTypeParameter
   \ nextgroup=typescriptObjectType,typescriptInterfaceExtends
   \ contained
-  \ skipwhite
+  \ skipwhite skipnl
 
 syntax keyword typescriptInterfaceExtends          contained extends nextgroup=typescriptInterfaceHeritage skipwhite skipnl
 
