@@ -26,7 +26,7 @@ syntax match typescriptMemberOptionality /?\|!/ contained
 syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember
 
 syntax keyword typescriptClassStatic static
-  \ nextgroup=@typescriptMembers
+  \ nextgroup=@typescriptMembers,typescriptAsyncFuncKeyword
   \ skipwhite contained
 
 syntax keyword typescriptAccessibilityModifier public private protected readonly contained
@@ -38,6 +38,6 @@ syntax region  typescriptStringMember   contained
 
 syntax region  typescriptComputedMember   contained matchgroup=typescriptProperty
   \ start=/\[/rs=s+1 end=/]/
-  \ contains=@typescriptValue,typescriptMember
+  \ contains=@typescriptValue,typescriptMember,typescriptMappedIn
   \ nextgroup=@memberNextGroup
   \ skipwhite skipempty
