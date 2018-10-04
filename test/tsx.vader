@@ -75,3 +75,12 @@ Execute:
   AssertEqual 'tsxTagName', SyntaxAt(2, 28)
   AssertEqual 'tsxAttrib', SyntaxAt(3, 5)
   AssertEqual 'tsxAttrib', SyntaxAt(3, 13)
+
+Given typescript.tsx (object in jsx attribute):
+  var d = <Route component={{ test: 1 }}
+    another-attribute="1"
+  />
+
+Execute:
+  AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 28)
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(1, 29)
