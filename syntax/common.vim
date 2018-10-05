@@ -30,7 +30,9 @@ runtime syntax/basic/doc.vim
 runtime syntax/basic/type.vim
 
 " extension
-runtime syntax/yats.vim
+if get(g:, 'yats_host_keyword', 1)
+  runtime syntax/yats.vim
+endif
 
 " patch
 runtime syntax/basic/patch.vim

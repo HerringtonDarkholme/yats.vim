@@ -16,6 +16,10 @@ Key differences:
 * Syntax fold. Fold long code block, semantically!
 * Remove old, unused syntax definitions.
 
+Config
+----
+`let g:yats_host_keyword = 1`: configure yats to highlight host specific keywords like `addEventListener`. Default is 1. Set it 0 to turn off highlighting.
+
 Credits
 -------
 
