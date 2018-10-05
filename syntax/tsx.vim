@@ -101,7 +101,7 @@ syntax region tsxString contained start=+"+ end=+"+ contains=tsxEntity,@Spell di
 "          s~~~~~~~~~~~~~~e
 syntax region tsxEscapeJs
     \ contained
-    \ contains=@typescriptExpression,typescriptObjectLiteral
+    \ contains=@typescriptValue
     \ matchgroup=typescriptBraces
     \ start=+{+
     \ end=+}+
