@@ -11,7 +11,7 @@ syntax region tsxTag
       \ end=+/\@<!>+
       \ end=+\(/>\)\@=+
       \ contained
-      \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscapeJs,
+      \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscJs,
                 \tsxCloseString
 
 syntax match tsxTag /<>/ contained
@@ -29,7 +29,7 @@ syntax region tsxRegion
       \ end=+</\_s*\z1>+
       \ matchgroup=tsxCloseString end=+/>+
       \ fold
-      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscapeJs,@Spell
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscJs,@Spell
       \ keepend
       \ extend
 
@@ -41,7 +41,7 @@ syntax region tsxFragment
       \ skip=+<!--\_.\{-}-->+
       \ end=+</>+
       \ fold
-      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscapeJs,@Spell
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscJs,@Spell
       \ keepend
       \ extend
 
@@ -99,7 +99,7 @@ syntax region tsxString contained start=+"+ end=+"+ contains=tsxEntity,@Spell di
 
 " <tag key={this.props.key}>
 "          s~~~~~~~~~~~~~~e
-syntax region tsxEscapeJs
+syntax region tsxEscJs
     \ contained
     \ contains=@typescriptValue
     \ matchgroup=typescriptBraces
@@ -117,6 +117,7 @@ highlight def link tsxNameSpace Function
 highlight def link tsxComment Error
 highlight def link tsxAttrib Type
 highlight def link tsxEscapeJs tsxEscapeJs
+highlight def link tsxEscJs tsxEscapeJs
 highlight def link tsxCloseTag htmlTag
 highlight def link tsxCloseString Identifier
 
