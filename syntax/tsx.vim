@@ -12,7 +12,7 @@ syntax region tsxTag
       \ end=+\(/>\)\@=+
       \ contained
       \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscJs,
-                \tsxCloseString,tsxLineComment
+                \tsxCloseString,@tsxComment
 
 syntax match tsxTag /<>/ contained
 
@@ -80,7 +80,7 @@ syntax match tsxEntityPunct contained "[&.;]"
 " <tag key={this.props.key}>
 "  ~~~
 syntax match tsxTagName
-    \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
+    \ +[</]\_s*[^/!?<>"'* ]\++hs=s+1
     \ contained
     \ nextgroup=tsxAttrib
     \ skipwhite
