@@ -84,3 +84,60 @@ Given typescript.tsx (object in jsx attribute):
 Execute:
   AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 28)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(1, 29)
+
+Given typescript.tsx (line comment in tsxTag):
+  const foo = () => (
+    <div
+      // this is a comment
+      className="foo"
+    >
+      Hello World
+    </div>
+  )
+Execute:
+    AssertEqual 'tsxLineComment', SyntaxAt(3, 12)
+
+Given typescript.tsx (line comment in tsxRegion):
+  const foo = () => (
+    <div>
+      { // this is a comment
+      }
+      <h1>Hello World</h1>
+      { // trailing brace is commented out }
+    </div>
+  )
+Execute:
+  AssertEqual 'tsxLineComment', SyntaxAt(3, 10)
+  AssertEqual 'tsxLineComment', SyntaxAt(6, 42)
+
+Given typescript.tsx (block comment in tsxTag):
+  const foo = () => (
+    <div
+      /*
+
+          this is a comment
+
+      */
+      className="foo"
+    >
+      Hello World
+    </div>
+  )
+Execute:
+  AssertEqual 'tsxBlockComment', SyntaxAt(5, 11)
+
+Given typescript.tsx (block comment in tsxRegion):
+  const foo = () => (
+    <div>
+      {/* this is a comment */}
+
+      {/*
+          this is a comment
+      */}
+      <h1>Hello World</h1>
+    </div>
+  )
+Execute:
+  AssertEqual 'tsxBlockComment', SyntaxAt(3, 9)
+  AssertNotEqual 'tsxBlockComment', SyntaxAt(4, 0)
+  AssertEqual 'tsxBlockComment', SyntaxAt(6, 9)
