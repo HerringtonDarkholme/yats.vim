@@ -12,7 +12,7 @@ syntax region tsxTag
       \ end=+\(/>\)\@=+
       \ contained
       \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscJs,
-                \tsxCloseString
+                \tsxCloseString,@tsxComment
 
 syntax match tsxTag /<>/ contained
 
@@ -29,7 +29,7 @@ syntax region tsxRegion
       \ end=+</\_s*\z1>+
       \ matchgroup=tsxCloseString end=+/>+
       \ fold
-      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscJs,@Spell
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxCommentInvalid,tsxFragment,tsxEscJs,@Spell
       \ keepend
       \ extend
 
@@ -41,7 +41,7 @@ syntax region tsxFragment
       \ skip=+<!--\_.\{-}-->+
       \ end=+</>+
       \ fold
-      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxComment,tsxFragment,tsxEscJs,@Spell
+      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxCommentInvalid,tsxFragment,tsxEscJs,@Spell
       \ keepend
       \ extend
 
@@ -60,7 +60,19 @@ syntax match tsxCloseString
 
 " <!-- -->
 " ~~~~~~~~
-syntax match tsxComment /<!--\_.\{-}-->/ display
+syntax match tsxCommentInvalid /<!--\_.\{-}-->/ display
+
+syntax region tsxBlockComment
+    \ contained
+    \ start="/\*"
+    \ end="\*/"
+
+syntax match tsxLineComment
+    \ "//.*$"
+    \ contained
+    \ display
+
+syntax cluster tsxComment contains=tsxBlockComment,tsxLineComment
 
 syntax match tsxEntity "&[^; \t]*;" contains=tsxEntityPunct
 syntax match tsxEntityPunct contained "[&.;]"
@@ -68,7 +80,7 @@ syntax match tsxEntityPunct contained "[&.;]"
 " <tag key={this.props.key}>
 "  ~~~
 syntax match tsxTagName
-    \ +[</]\_s*[^/!?<>"' ]\++hs=s+1
+    \ +[</]\_s*[^/!?<>"'* ]\++hs=s+1
     \ contained
     \ nextgroup=tsxAttrib
     \ skipwhite
@@ -101,7 +113,7 @@ syntax region tsxString contained start=+"+ end=+"+ contains=tsxEntity,@Spell di
 "          s~~~~~~~~~~~~~~e
 syntax region tsxEscJs
     \ contained
-    \ contains=@typescriptValue
+    \ contains=@typescriptValue,@tsxComment
     \ matchgroup=typescriptBraces
     \ start=+{+
     \ end=+}+
@@ -114,7 +126,9 @@ highlight def link tsxTagName Function
 highlight def link tsxIntrinsicTagName htmlTagName
 highlight def link tsxString String
 highlight def link tsxNameSpace Function
-highlight def link tsxComment Error
+highlight def link tsxCommentInvalid Error
+highlight def link tsxBlockComment Comment
+highlight def link tsxLineComment Comment
 highlight def link tsxAttrib Type
 highlight def link tsxEscapeJs tsxEscapeJs
 highlight def link tsxEscJs tsxEscapeJs
