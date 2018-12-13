@@ -6,7 +6,8 @@ syntax cluster typescriptStatement
   \ typescriptLabel,typescriptStatementKeyword,
   \ typescriptFuncKeyword,
   \ typescriptTry,typescriptExceptions,typescriptDebugger,
-  \ typescriptExport,typescriptInterfaceKeyword,typescriptEnum,typescriptModule
+  \ typescriptExport,typescriptInterfaceKeyword,typescriptEnum,
+  \ typescriptModule,typescriptAliasKeyword,typescriptImport
 
 syntax cluster typescriptPrimitive  contains=typescriptString,typescriptTemplate,typescriptRegexpString,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 
