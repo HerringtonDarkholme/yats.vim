@@ -60,7 +60,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
   \ nextgroup=@typescriptTypeOperator
-  \ contained skipwhite skipempty
+  \ contained skipwhite skipempty fold
 
 syntax keyword typescriptPredefinedType any number boolean string void never undefined null object unknown
   \ nextgroup=@typescriptTypeOperator
