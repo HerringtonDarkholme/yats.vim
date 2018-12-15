@@ -85,6 +85,20 @@ Execute:
   AssertEqual 'typescriptAmbientDeclaration', SyntaxAt(1, 1)
   AssertEqual 'typescriptAmbientDeclaration', SyntaxAt(2, 1)
 
+Given typescript (declare module with imports):
+  declare module 'foo' {
+    import { Foo, Bar } from 'foobar';
+  }
+Execute:
+  AssertEqual 'typescriptImport', SyntaxAt(2, 3)
+
+Given typescript (declare module with types):
+  declare module 'foo' {
+    type FooBar = 'foo' | 'bar';
+  }
+Execute:
+  AssertEqual 'typescriptAliasKeyword', SyntaxAt(2, 3)
+
 Given typescript (double ambient declare):
   function test() {
     return { name: 123, }
