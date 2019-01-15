@@ -478,3 +478,8 @@ Given typescript (interface extends with newline):
       extends SomeOtherInterface {}
 Execute:
   AssertEqual 'typescriptInterfaceExtends', SyntaxAt(2, 5)
+
+Given typescript (template string in object):
+  var a = { test: css`color: red` }
+Execute:
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 20)

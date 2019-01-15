@@ -1,6 +1,7 @@
 syntax cluster afterIdentifier contains=
   \ typescriptDotNotation,
   \ typescriptFuncCallArg,
+  \ typescriptTemplate,
   \ typescriptIndexExpr,
   \ @typescriptSymbols,
   \ typescriptTypeArguments
