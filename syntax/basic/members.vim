@@ -15,6 +15,7 @@ syntax match typescriptMethodAccessor contained /\v(get|set)\s\K/me=e-1
 syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,
   \ typescriptAccessibilityModifier,
+  \ typescriptReadonlyModifier,
   \ typescriptMethodAccessor,
   \ @typescriptMembers
   " \ typescriptMemberVariableDeclaration
@@ -26,10 +27,12 @@ syntax match typescriptMemberOptionality /?\|!/ contained
 syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember
 
 syntax keyword typescriptClassStatic static
-  \ nextgroup=@typescriptMembers,typescriptAsyncFuncKeyword
+  \ nextgroup=@typescriptMembers,typescriptAsyncFuncKeyword,typescriptReadonlyModifier
   \ skipwhite contained
 
-syntax keyword typescriptAccessibilityModifier public private protected readonly contained
+syntax keyword typescriptAccessibilityModifier public private protected contained
+
+syntax keyword typescriptReadonlyModifier readonly contained
 
 syntax region  typescriptStringMember   contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1/
