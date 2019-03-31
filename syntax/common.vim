@@ -133,6 +133,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptTypeParameter         Identifier
   HiLink typescriptConstraint            Keyword
   HiLink typescriptPredefinedType        Type
+  HiLink typescriptReadonlyArrayKeyword  Keyword
   HiLink typescriptUnion                 Operator
   HiLink typescriptFuncTypeArrow         Function
   HiLink typescriptConstructorType       Function
@@ -147,7 +148,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptAliasDeclaration      Identifier
   HiLink typescriptAliasKeyword          Keyword
   HiLink typescriptUserDefinedType       Keyword
-  HiLink typescriptTypeReference         Type
+  HiLink typescriptTypeReference         Identifier
   HiLink typescriptConstructor           Keyword
   HiLink typescriptDecorator             Special
 

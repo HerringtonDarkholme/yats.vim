@@ -49,7 +49,8 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptObjectType,
   \ typescriptTupleType,
   \ typescriptTypeQuery,
-  \ typescriptStringLiteralType
+  \ typescriptStringLiteralType,
+  \ typescriptReadonlyArrayKeyword
 
 syntax region  typescriptStringLiteralType contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
@@ -62,13 +63,17 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite skipempty fold
 
+syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
+  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType
+  \ skipwhite contained skipempty
+
 syntax keyword typescriptPredefinedType any number boolean string void never undefined null object unknown
   \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite skipempty
 
-syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
-  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType
-  \ skipwhite contained skipempty
+syntax match typescriptPredefinedType /unique symbol/
+  \ nextgroup=@typescriptTypeOperator
+  \ contained skipwhite skipempty
 
 syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
@@ -177,3 +182,6 @@ syntax region typescriptAliasDeclaration matchgroup=typescriptUnion
   \ contains=typescriptConstraint,typescriptTypeParameters
   \ contained skipwhite skipempty
 
+syntax keyword typescriptReadonlyArrayKeyword readonly
+  \ nextgroup=@typescriptPrimaryType
+  \ skipwhite

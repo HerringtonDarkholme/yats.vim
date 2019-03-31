@@ -3,6 +3,10 @@ var p: Promise<void>
 var a = { template: /*eee*/ this.template
 }
 
+var b: unique symbol = 123
+
+var c: readonly t.MyClass<T>[] = 333
+
 const COMPILER_PROVIDERS: Array<any[]> = null
 
 var a = {
