@@ -483,3 +483,11 @@ Given typescript (template string in object):
   var a = { test: css`color: red` }
 Execute:
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 20)
+
+Given typescript (unicode escape characters in strings):
+  const str = 'test\u200btest'
+Execute:
+  AssertEqual 'typescriptString', SyntaxAt(1, 17)
+  AssertEqual 'typescriptSpecial', SyntaxAt(1, 18)
+  AssertEqual 'typescriptString', SyntaxAt(1, 24)
+

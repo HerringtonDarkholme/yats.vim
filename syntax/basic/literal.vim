@@ -8,10 +8,13 @@ syntax region  typescriptTemplateSubstitution matchgroup=typescriptTemplateSB
   \ contains=@typescriptValue
   \ contained
 
-syntax region  typescriptString
-  \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
-  \ nextgroup=@typescriptSymbols
-  \ skipwhite skipempty
+
+syntax region  typescriptString 
+  \ start=+\z(["']\)+  skip=+\\\%(\z1\|$\)+  end=+\z1+ end=+$+
+  \ contains=typescriptSpecial,@Spell
+  \ extend
+
+syntax match   typescriptSpecial            contained "\v\\%(x\x\x|u%(\x{4}|\{\x{4,5}})|c\u|.)"
 
 " From vim runtime
 " <https://github.com/vim/vim/blob/master/runtime/syntax/javascript.vim#L48>
