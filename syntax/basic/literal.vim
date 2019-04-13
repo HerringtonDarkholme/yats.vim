@@ -28,7 +28,7 @@ syntax region  typescriptArray matchgroup=typescriptBraces
   \ start=/\[/ end=/]/
   \ contains=@typescriptValue,@typescriptComments
   \ nextgroup=@typescriptSymbols,typescriptDotNotation
-  \ skipwhite skipempty
+  \ skipwhite skipempty fold
 
 " Number
 syntax match typescriptNumber /\<0[bB][01][01_]*\>/        nextgroup=@typescriptSymbols skipwhite skipempty
