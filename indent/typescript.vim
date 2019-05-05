@@ -191,9 +191,9 @@ function s:GetVarIndent(lnum)
 
     " if the previous line doesn't end in a comma, return to regular indent
     if (line !~ s:comma_last)
-      return indent(prev_lnum) - &sw
+      return indent(prev_lnum) - shiftwidth()
     else
-      return indent(lvar) + &sw
+      return indent(lvar) + shiftwidth()
     endif
   endif
 
@@ -321,7 +321,7 @@ function GetTypescriptIndent()
           return indent(prevline)
         " otherwise we indent 1 level
         else
-          return indent(lvar) + &sw
+          return indent(lvar) + shiftwidth()
         endif
       endif
     endif
@@ -340,14 +340,14 @@ function GetTypescriptIndent()
 
   " If the line is comma first, dedent 1 level
   if (getline(prevline) =~ s:comma_first)
-    return indent(prevline) - &sw
+    return indent(prevline) - shiftwidth()
   endif
 
   if (line =~ s:ternary)
     if (getline(prevline) =~ s:ternary_q)
       return indent(prevline)
     else
-      return indent(prevline) + &sw
+      return indent(prevline) + shiftwidth()
     endif
   endif
 
@@ -391,7 +391,7 @@ function GetTypescriptIndent()
 
   " If the previous line ended with a block opening, add a level of indent.
   if s:Match(lnum, s:block_regex)
-    return indent(s:GetMSL(lnum, 0)) + &sw
+    return indent(s:GetMSL(lnum, 0)) + shiftwidth()
   endif
 
   " If the previous line contained an opening bracket, and we are still in it,
@@ -400,12 +400,12 @@ function GetTypescriptIndent()
     let counts = s:LineHasOpeningBrackets(lnum)
     if counts[0] == '1' && searchpair('(', '', ')', 'bW', s:skip_expr) > 0
       if col('.') + 1 == col('$')
-        return ind + &sw
+        return ind + shiftwidth()
       else
         return virtcol('.')
       endif
     elseif counts[1] == '1' || counts[2] == '1'
-      return ind + &sw
+      return ind + shiftwidth()
     else
       call cursor(v:lnum, vcol)
     end
@@ -415,18 +415,18 @@ function GetTypescriptIndent()
   " --------------------------
 
   let ind_con = ind
-  let ind = s:IndentWithContinuation(lnum, ind_con, &sw)
+  let ind = s:IndentWithContinuation(lnum, ind_con, shiftwidth())
 
   " }}}2
   "
   "
   let ols = s:InOneLineScope(lnum)
   if ols > 0
-    let ind = ind + &sw
+    let ind = ind + shiftwidth()
   else
     let ols = s:ExitingOneLineScope(lnum)
     while ols > 0 && ind > 0
-      let ind = ind - &sw
+      let ind = ind - shiftwidth()
       let ols = s:InOneLineScope(ols - 1)
     endwhile
   endif
