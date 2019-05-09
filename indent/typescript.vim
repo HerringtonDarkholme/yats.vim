@@ -65,6 +65,8 @@ let s:var_stmt = '^\s*var'
 let s:comma_first = '^\s*,'
 let s:comma_last = ',\s*$'
 
+let s:dot_first = '^\s*\.'
+
 let s:ternary = '^\s\+[?|:]'
 let s:ternary_q = '^\s\+?'
 
@@ -340,6 +342,10 @@ function GetTypescriptIndent()
 
   " If the line is comma first, dedent 1 level
   if (getline(prevline) =~ s:comma_first)
+    return indent(prevline) - shiftwidth()
+  elseif (!(getline(prevline) =~ s:dot_first) && line =~ s:dot_first)
+    return indent(prevline) + shiftwidth()
+  elseif (getline(prevline) =~ s:dot_first && !(line =~ s:dot_first))
     return indent(prevline) - shiftwidth()
   endif
 
