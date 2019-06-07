@@ -16,6 +16,7 @@ runtime syntax/yats/es6-promise.vim
 runtime syntax/yats/es6-reflect.vim
 runtime syntax/yats/ecma-402.vim
 runtime syntax/yats/node.vim
+runtime syntax/yats/test.vim
 runtime syntax/yats/web.vim
 runtime syntax/yats/web-window.vim
 runtime syntax/yats/web-navigator.vim

@@ -1,0 +1,12 @@
+typescriptGlobal:
+  - describe
+  - it
+  - test
+  - before
+  - after
+  - beforeEach
+  - afterEach
+  - beforeAll
+  - afterAll
+  - expect
+  - assert
