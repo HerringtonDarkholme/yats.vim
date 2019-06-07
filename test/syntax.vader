@@ -491,3 +491,8 @@ Execute:
   AssertEqual 'typescriptSpecial', SyntaxAt(1, 18)
   AssertEqual 'typescriptString', SyntaxAt(1, 24)
 
+Given typescript (decorator generics):
+  @foo<string>()
+  class FooBar {}
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 6)
