@@ -1,4 +1,4 @@
-typescriptGlobal:
+typescriptTestGlobal:
   - describe
   - it
   - test

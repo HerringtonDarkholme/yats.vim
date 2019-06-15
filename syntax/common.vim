@@ -73,6 +73,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptTemplateSB           Label
   HiLink typescriptRegexpString         String
   HiLink typescriptGlobal               Constant
+  HiLink typescriptTestGlobal           Keyword
   HiLink typescriptPrototype            Type
   HiLink typescriptConditional          Conditional
   HiLink typescriptConditionalElse      Conditional
