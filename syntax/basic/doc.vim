@@ -32,6 +32,8 @@ syntax match   typescriptDocNotation           contained /@/ nextgroup=typescrip
 syntax keyword typescriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
 syntax keyword typescriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct internal
 syntax keyword typescriptDocTags               contained example global
+syntax keyword typescriptDocTags               contained alpha beta defaultValue eventProperty experimental label
+syntax keyword typescriptDocTags               contained packageDocumentation privateRemarks remarks sealed typeParam
 
 " syntax keyword typescriptDocTags               contained ngdoc nextgroup=typescriptDocNGDirective
 syntax keyword typescriptDocTags               contained ngdoc scope priority animations
