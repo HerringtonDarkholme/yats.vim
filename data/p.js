@@ -121,7 +121,7 @@ try {
     }
 
     hilink = true;
-    if (group === 'typescriptGlobal' && file !== 'typescript') {
+    if (['typescriptGlobal','typescriptTestGlobal'].indexOf(group) >= 0 && file !== 'typescript') {
         hilink = false;
     }
     if (hilink) {
