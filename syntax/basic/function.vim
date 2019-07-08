@@ -27,7 +27,7 @@ syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\
 " matches `(a) =>` or `([a]) =>` or
 " `(
 "  a) =>`
-syntax match   typescriptArrowFuncDef          contained /(\(\_s*[a-zA-Z\$_\[]\_[^)]*\)*)\s*=>/
+syntax match   typescriptArrowFuncDef          contained /(\(\_s*[a-zA-Z\$_\[.]\_[^)]*\)*)\s*=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
