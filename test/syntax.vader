@@ -496,3 +496,10 @@ Given typescript (decorator generics):
   class FooBar {}
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 6)
+
+Given typescript (spread arguments in arrow function):
+  let a = (...a: any[]) => {}
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 10)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 13)
