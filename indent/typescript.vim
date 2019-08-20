@@ -462,7 +462,7 @@ function! Fixedgq(lnum, count)
     if l:count > 1
         while l:count > 1
             let l:count -= 1
-            normal J
+            normal! J
         endwhile
     endif
 
