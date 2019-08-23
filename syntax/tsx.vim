@@ -130,7 +130,6 @@ highlight def link tsxCommentInvalid Error
 highlight def link tsxBlockComment Comment
 highlight def link tsxLineComment Comment
 highlight def link tsxAttrib Type
-highlight def link tsxEscapeJs tsxEscapeJs
 highlight def link tsxEscJs tsxEscapeJs
 highlight def link tsxCloseTag htmlTag
 highlight def link tsxCloseString Identifier
