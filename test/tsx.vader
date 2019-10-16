@@ -1,4 +1,4 @@
-Given typescript.tsx (basic usage):
+Given typescriptreact (basic usage):
   var a = <div></div>
   var b = 123
 
@@ -7,7 +7,7 @@ Execute:
   AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 10)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
-Given typescript.tsx (basic void):
+Given typescriptreact (basic void):
   var a = <img/>
   var b = 123
 
@@ -16,7 +16,7 @@ Execute:
   AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 10)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
-Given typescript.tsx (interpolation):
+Given typescriptreact (interpolation):
   var a = <Option key={item}></Option>;
   var b = 123
 
@@ -25,7 +25,7 @@ Execute:
   AssertEqual 'tsxTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
-Given typescript.tsx (custom component):
+Given typescriptreact (custom component):
   var a = <ion-gesture></ion-gesture>;
   var b = 123
 
@@ -34,7 +34,7 @@ Execute:
   AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 30)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
-Given typescript.tsx (digit in tagname):
+Given typescriptreact (digit in tagname):
   var a = <h1></h1>;
   var b = 123
 
@@ -43,7 +43,7 @@ Execute:
   AssertEqual 'tsxIntrinsicTagName', SyntaxAt(1, 16)
   AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
 
-Given typescript.tsx (paren + render props):
+Given typescriptreact (paren + render props):
   var d =  (
     <Route component={() => <Home/>}/>
   )
@@ -51,7 +51,7 @@ Given typescript.tsx (paren + render props):
 Execute:
   AssertEqual 'tsxTagName', SyntaxAt(2, 4)
 
-Given typescript.tsx (attributes):
+Given typescriptreact (attributes):
   var d = <Route component={() => <Home/>}
     another-attribute="1"
   />
@@ -63,7 +63,7 @@ Execute:
   AssertEqual 'tsxAttrib', SyntaxAt(2, 3)
   AssertEqual 'tsxAttrib', SyntaxAt(2, 11)
 
-Given typescript.tsx (paren + attributes):
+Given typescriptreact (paren + attributes):
   var d = (
     <Route component={() => <Home/>}
       another-attribute="1"
@@ -76,7 +76,7 @@ Execute:
   AssertEqual 'tsxAttrib', SyntaxAt(3, 5)
   AssertEqual 'tsxAttrib', SyntaxAt(3, 13)
 
-Given typescript.tsx (object in jsx attribute):
+Given typescriptreact (object in jsx attribute):
   var d = <Route component={{ test: 1 }}
     another-attribute="1"
   />
@@ -85,7 +85,7 @@ Execute:
   AssertEqual 'typescriptObjectLiteral', SyntaxAt(1, 28)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(1, 29)
 
-Given typescript.tsx (line comment in tsxTag):
+Given typescriptreact (line comment in tsxTag):
   const foo = () => (
     <div
       // this is a comment
@@ -97,7 +97,7 @@ Given typescript.tsx (line comment in tsxTag):
 Execute:
     AssertEqual 'tsxLineComment', SyntaxAt(3, 12)
 
-Given typescript.tsx (line comment in tsxRegion):
+Given typescriptreact (line comment in tsxRegion):
   const foo = () => (
     <div>
       { // this is a comment
@@ -110,7 +110,7 @@ Execute:
   AssertEqual 'tsxLineComment', SyntaxAt(3, 10)
   AssertEqual 'tsxLineComment', SyntaxAt(6, 42)
 
-Given typescript.tsx (block comment in tsxTag):
+Given typescriptreact (block comment in tsxTag):
   const foo = () => (
     <div
       /*
@@ -126,7 +126,7 @@ Given typescript.tsx (block comment in tsxTag):
 Execute:
   AssertEqual 'tsxBlockComment', SyntaxAt(5, 11)
 
-Given typescript.tsx (block comment in tsxRegion):
+Given typescriptreact (block comment in tsxRegion):
   const foo = () => (
     <div>
       {/* this is a comment */}
