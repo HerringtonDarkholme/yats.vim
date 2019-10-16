@@ -1,4 +1,4 @@
-Given typescript.tsx (html end tags):
+Given typescriptreact (html end tags):
   <div>
   name="cat"
   value={value}
@@ -11,7 +11,7 @@ Given typescript.tsx (html end tags):
 Do (indent the block):
   gg=G
 
-Expect typescript.tsx indented block:
+Expect typescriptreact indented block:
   <div>
   	name="cat"
   	value={value}
@@ -21,7 +21,7 @@ Expect typescript.tsx indented block:
   	onremove={() => console.log('bye')}
   </div>
 
-Given typescript.tsx (badly indented component):
+Given typescriptreact (badly indented component):
   class MyComponent {
   	public render() {
   	return (
@@ -56,7 +56,7 @@ Given typescript.tsx (badly indented component):
 Do (indent the block):
   gg=G
 
-Expect typescript.tsx indented blocks:
+Expect typescriptreact indented blocks:
   class MyComponent {
   	public render() {
   		return (
@@ -88,7 +88,7 @@ Expect typescript.tsx indented blocks:
   	}
   }
 
-Given typescript.tsx (badly indented component + non tsx):
+Given typescriptreact (badly indented component + non tsx):
     interface MyComponentProps {
   first: string;
     second: boolean;
@@ -132,7 +132,7 @@ Given typescript.tsx (badly indented component + non tsx):
 Do (indent the block):
   gg=G
 
-Expect typescript.tsx indented blocks:
+Expect typescriptreact indented blocks:
   interface MyComponentProps {
   	first: string;
   	second: boolean;

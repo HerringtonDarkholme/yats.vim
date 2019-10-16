@@ -2,7 +2,7 @@ if !exists("main_syntax")
   if exists("b:current_syntax") && b:current_syntax != 'typescript'
     finish
   endif
-  let main_syntax = 'typescript.tsx'
+  let main_syntax = 'typescriptreact'
 endif
 
 syntax region tsxTag
@@ -134,7 +134,7 @@ highlight def link tsxEscJs tsxEscapeJs
 highlight def link tsxCloseTag htmlTag
 highlight def link tsxCloseString Identifier
 
-let b:current_syntax = "typescript.tsx"
-if main_syntax == 'typescript.tsx'
+let b:current_syntax = "typescriptreact"
+if main_syntax == 'typescriptreact'
   unlet main_syntax
 endif
