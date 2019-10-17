@@ -503,3 +503,11 @@ Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 9)
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 10)
   AssertEqual 'typescriptCall', SyntaxAt(1, 13)
+
+Given typescript (multiline tuple type):
+  type Tuple = [
+    /* Name */ string,
+  ]
+Execute:
+  AssertEqual 'typescriptComment', SyntaxAt(2, 8)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 18)

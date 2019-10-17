@@ -3,6 +3,11 @@ var p: Promise<void>
 var a = { template: /*eee*/ this.template
 }
 
+type A = [
+    /*test*/ string,
+    /*test*/ string,
+]
+
 var b: unique symbol = 123
 
 var c: readonly t.MyClass<T>[] = 333
