@@ -1,5 +1,5 @@
 if !exists("main_syntax")
-  if exists("b:current_syntax") && b:current_syntax != 'typescript'
+  if exists("b:current_syntax")
     finish
   endif
   let main_syntax = 'typescriptreact'
@@ -118,6 +118,8 @@ syntax region tsxEscJs
     \ start=+{+
     \ end=+}+
     \ extend
+
+runtime syntax/common.vim
 
 syntax cluster typescriptExpression add=tsxRegion,tsxFragment
 
