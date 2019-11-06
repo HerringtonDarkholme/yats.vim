@@ -511,3 +511,26 @@ Given typescript (multiline tuple type):
 Execute:
   AssertEqual 'typescriptComment', SyntaxAt(2, 8)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 18)
+
+Given typescript (assertion functions for nullish assertion):
+  function assert(cond: any): asserts cond {
+    if (!cond) throw new Error('oops!');
+  }
+Execute:
+  AssertEqual 'typescriptAssertType', SyntaxAt(1, 29)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 37)
+
+Given typescript (assertion functions for type assertion):
+  function assertString(v: any): asserts v is string {
+    if (typeof v !== 'stirng') throw new Error('oops!');
+  }
+Execute:
+  AssertEqual 'typescriptAssertType', SyntaxAt(1, 32)
+  AssertEqual 'typescriptUserDefinedType', SyntaxAt(1, 42)
+
+Given typescript (asserts keyword only in type is highlighted):
+  asserts('hello')
+  asserts += 1
+Execute:
+  AssertNotEqual 'typescriptAssertType', SyntaxAt(1, 1)
+  AssertNotEqual 'typescriptAssertType', SyntaxAt(2, 1)
