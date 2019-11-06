@@ -50,7 +50,8 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptTupleType,
   \ typescriptTypeQuery,
   \ typescriptStringLiteralType,
-  \ typescriptReadonlyArrayKeyword
+  \ typescriptReadonlyArrayKeyword,
+  \ typescriptAssertType
 
 syntax region  typescriptStringLiteralType contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
@@ -125,6 +126,10 @@ syntax keyword typescriptUserDefinedType is
   \ contained nextgroup=@typescriptType skipwhite skipempty
 
 syntax keyword typescriptTypeQuery typeof keyof
+  \ nextgroup=typescriptTypeReference
+  \ contained skipwhite skipnl
+
+syntax keyword typescriptAssertType asserts
   \ nextgroup=typescriptTypeReference
   \ contained skipwhite skipnl
 
