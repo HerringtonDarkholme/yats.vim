@@ -12,6 +12,8 @@ var b: unique symbol = 123
 
 var c: readonly t.MyClass<T>[] = 333
 
+c?.test
+
 const COMPILER_PROVIDERS: Array<any[]> = null
 
 var a = {

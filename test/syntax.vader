@@ -534,3 +534,9 @@ Given typescript (asserts keyword only in type is highlighted):
 Execute:
   AssertNotEqual 'typescriptAssertType', SyntaxAt(1, 1)
   AssertNotEqual 'typescriptAssertType', SyntaxAt(2, 1)
+
+Given typescript (optional chaining):
+  test?.optional?.chaining
+Execute:
+  AssertEqual 'typescriptDotNotation', SyntaxAt(1, 5)
+  AssertEqual 'typescriptDotNotation', SyntaxAt(1, 15)
