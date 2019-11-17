@@ -22,7 +22,7 @@ syntax region  typescriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|
 
 syntax region  typescriptTemplate
   \ start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
-  \ contains=typescriptTemplateSubstitution
+  \ contains=typescriptTemplateSubstitution,typescriptSpecial,@Spell
   \ nextgroup=@typescriptSymbols
   \ skipwhite skipempty
 
