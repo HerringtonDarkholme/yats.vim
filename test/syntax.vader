@@ -540,3 +540,15 @@ Given typescript (optional chaining):
 Execute:
   AssertEqual 'typescriptDotNotation', SyntaxAt(1, 5)
   AssertEqual 'typescriptDotNotation', SyntaxAt(1, 15)
+
+Given typescript (special characters in template string):
+  `nl\nbs\\bt\`foo`
+Execute:
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 1)
+  AssertEqual 'typescriptSpecial', SyntaxAt(1, 4)
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 6)
+  AssertEqual 'typescriptSpecial', SyntaxAt(1, 8)
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 10)
+  AssertEqual 'typescriptSpecial', SyntaxAt(1, 12)
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 14)
+  AssertEqual 'typescriptTemplate', SyntaxAt(1, 17)
