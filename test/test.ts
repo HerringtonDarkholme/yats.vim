@@ -94,3 +94,8 @@ var a = ({a: () => 123})
 enum A {
 
 }
+
+interface FooBar<T extends Record<string, any> = Record<string, any>> {
+  foo: string;
+  bar: number;
+}

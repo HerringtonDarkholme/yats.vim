@@ -291,6 +291,24 @@ Execute:
   " TODO
   " AssertEqual 'typescriptMethodAccessor', SyntaxAt(2, 3)
 
+Given typescript (generic default):
+  interface FooBar<T = string> {
+    foo: string
+  }
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 25)
+  AssertEqual 'typescriptMember', SyntaxAt(2, 3)
+
+Given typescript (generic default after extends):
+  interface FooBar<T extends string = string> {}
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 40)
+
+Given typescript (generic default with nested brackets):
+  interface FooBar<T extends string = Record<string, any>> {}
+Execute:
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 45)
+
 Given typescript (object literal generic method):
   var a = {
     test<T>() {}

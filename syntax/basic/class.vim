@@ -13,7 +13,7 @@ syntax match   typescriptClassName             contained /\K\k*/
 
 syntax region typescriptClassTypeParameter
   \ start=/</ end=/>/
-  \ contains=typescriptTypeParameter
+  \ contains=@typescriptTypeParameterCluster
   \ nextgroup=typescriptClassBlock,typescriptClassExtends
   \ contained skipwhite skipnl
 
@@ -45,7 +45,7 @@ syntax match   typescriptInterfaceName             contained /\k\+/
   \ skipwhite skipnl
 syntax region typescriptInterfaceTypeParameter
   \ start=/</ end=/>/
-  \ contains=typescriptTypeParameter
+  \ contains=@typescriptTypeParameterCluster
   \ nextgroup=typescriptObjectType,typescriptInterfaceExtends
   \ contained
   \ skipwhite skipnl
