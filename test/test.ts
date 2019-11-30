@@ -60,7 +60,7 @@ type A = 42
 
 
 test({
-  a: test ? // test
+  async a: test ? // test
   test: ee
 })
 
