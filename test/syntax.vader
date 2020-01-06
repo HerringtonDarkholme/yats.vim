@@ -522,6 +522,29 @@ Execute:
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 10)
   AssertEqual 'typescriptCall', SyntaxAt(1, 13)
 
+Given typescript (spread arguments in arrow function with return type):
+  let a = (...a: any[]): void => {}
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 10)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 13)
+
+Given typescript (parenthesized arrow function):
+  let a = ((...a: any[]) => {})
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptParens', SyntaxAt(1, 10)
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 11)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 14)
+
+Given typescript (parenthesized arrow function with return type):
+  let a = ((...a: any[]): void => {})
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptParens', SyntaxAt(1, 10)
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 11)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 14)
+
 Given typescript (multiline tuple type):
   type Tuple = [
     /* Name */ string,
