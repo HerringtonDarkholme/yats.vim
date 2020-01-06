@@ -515,6 +515,15 @@ Given typescript (decorator generics):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 6)
 
+Given typescript (simple arrow function):
+  let a = ( a: string ) => { console.log(arg) }
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 11)
+  AssertEqual 'typescriptParens', SyntaxAt(1, 21)
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 22)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 23)
+
 Given typescript (spread arguments in arrow function):
   let a = (...a: any[]) => {}
 Execute:
@@ -536,6 +545,17 @@ Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 10)
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 11)
   AssertEqual 'typescriptCall', SyntaxAt(1, 14)
+
+Given typescript (parenthesized empty arrow function):
+  let a = ( () => {} )
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptParens', SyntaxAt(1, 11)
+  AssertEqual 'typescriptParens', SyntaxAt(1, 12)
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 14)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 15)
+  AssertEqual 'typescriptParenExp', SyntaxAt(1, 16)
 
 Given typescript (parenthesized arrow function with return type):
   let a = ((...a: any[]): void => {})
