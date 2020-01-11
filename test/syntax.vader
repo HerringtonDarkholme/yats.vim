@@ -613,3 +613,16 @@ Execute:
   AssertEqual 'typescriptSpecial', SyntaxAt(1, 12)
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 14)
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 17)
+
+Given typescript (private class instance field):
+  class C {
+    #abc = 10;
+    foo() {
+      this.#abc;
+    }
+  }
+Execute:
+  " At '#' in '#abc'
+  AssertEqual 'typescriptMember', SyntaxAt(2, 3)
+  " At 'c' in '#abc'
+  AssertEqual 'typescriptMember', SyntaxAt(2, 6)

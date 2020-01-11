@@ -11,6 +11,8 @@ if main_syntax == 'typescript' || main_syntax == 'typescriptreact'
   setlocal iskeyword+=$
   " syntax cluster htmlJavaScript                 contains=TOP
 endif
+" For private field added from TypeScript 3.8
+setlocal iskeyword+=#
 
 " lowest priority on least used feature
 syntax match   typescriptLabel                /[a-zA-Z_$]\k*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement skipwhite skipempty
