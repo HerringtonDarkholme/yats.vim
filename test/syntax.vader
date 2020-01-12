@@ -634,9 +634,9 @@ Given typescript (type-only import and export statements):
   type Foo = number;
   export type Foo = number;
 Execute:
-  AssertEqual 'typescriptImport', SyntaxAt(1, 8)
+  AssertEqual 'typescriptImportType', SyntaxAt(1, 8)
   AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(1, 13)
-  AssertEqual 'typescriptImport', SyntaxAt(2, 8)
+  AssertEqual 'typescriptImportType', SyntaxAt(2, 8)
   AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(2, 13)
   AssertEqual 'typescriptExportType', SyntaxAt(3, 8)
   AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(3, 13)
