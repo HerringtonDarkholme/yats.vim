@@ -1,6 +1,10 @@
 "Import
 syntax keyword typescriptImport                from as
-syntax match typescriptImport                  /\<import\%(\s\+type\)\?\>/
+syntax keyword typescriptImport                import
+  \ nextgroup=typescriptImportType
+  \ skipwhite
+syntax keyword typescriptImportType            type
+  \ contained
 syntax keyword typescriptExport                export
   \ nextgroup=typescriptExportType
   \ skipwhite

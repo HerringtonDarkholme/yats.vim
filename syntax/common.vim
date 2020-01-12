@@ -101,6 +101,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptLabel                Label
   HiLink typescriptStringProperty       String
   HiLink typescriptImport               Special
+  HiLink typescriptImportType           Special
   HiLink typescriptAmbientDeclaration   Special
   HiLink typescriptExport               Special
   HiLink typescriptExportType           Special
