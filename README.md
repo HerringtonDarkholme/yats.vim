@@ -18,7 +18,9 @@ Key differences:
 
 Config
 ----
-`let g:yats_host_keyword = 1`: configure yats to highlight host specific keywords like `addEventListener`. Default is 1. Set it 0 to turn off highlighting.
+* `let g:yats_host_keyword = 1`: configure yats to highlight host specific keywords like `addEventListener`. Default is 1. Set it 0 to turn off highlighting.
+
+* Note: `set re=1` explicitly in your vimrc. Old regexp engine will incur performance issues for yats and old engine is usually turned on by other plugins.
 
 Credits
 -------
