@@ -645,3 +645,11 @@ Execute:
   AssertEqual 'typescriptAliasDeclaration', SyntaxAt(4, 6)
   AssertEqual 'typescriptAliasKeyword', SyntaxAt(5, 8)
   AssertEqual 'typescriptAliasDeclaration', SyntaxAt(5, 13)
+
+Given typescript (multi-line union (issue 162)):
+  type Foo =
+    | { bar: string }
+    | { baz?(): number }
+Execute:
+  AssertEqual 'typescriptUnion', SyntaxAt(3, 3)
+  AssertEqual 'typescriptMember', SyntaxAt(3, 7)
