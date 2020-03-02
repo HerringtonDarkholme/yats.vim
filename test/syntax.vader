@@ -613,3 +613,43 @@ Execute:
   AssertEqual 'typescriptSpecial', SyntaxAt(1, 12)
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 14)
   AssertEqual 'typescriptTemplate', SyntaxAt(1, 17)
+
+Given typescript (private class instance field):
+  class C {
+    #abc = 10;
+    foo() {
+      this.#abc;
+    }
+  }
+Execute:
+  " At '#' in '#abc'
+  AssertEqual 'typescriptMember', SyntaxAt(2, 3)
+  " At 'c' in '#abc'
+  AssertEqual 'typescriptMember', SyntaxAt(2, 6)
+
+Given typescript (type-only import and export statements):
+  import type Foo from "mod";
+  import type {Foo, Bar} from "mod";
+  export type {SomeThing};
+  type Foo = number;
+  export type Foo = number;
+Execute:
+  AssertEqual 'typescriptImportType', SyntaxAt(1, 8)
+  AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(1, 13)
+  AssertEqual 'typescriptImportType', SyntaxAt(2, 8)
+  AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(2, 13)
+  AssertEqual 'typescriptExportType', SyntaxAt(3, 8)
+  AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(3, 13)
+  " Check `type Foo = ...` and `export type Foo = ...` are not broken
+  AssertEqual 'typescriptAliasKeyword', SyntaxAt(4, 1)
+  AssertEqual 'typescriptAliasDeclaration', SyntaxAt(4, 6)
+  AssertEqual 'typescriptAliasKeyword', SyntaxAt(5, 8)
+  AssertEqual 'typescriptAliasDeclaration', SyntaxAt(5, 13)
+
+Given typescript (multi-line union (issue 162)):
+  type Foo =
+    | { bar: string }
+    | { baz?(): number }
+Execute:
+  AssertEqual 'typescriptUnion', SyntaxAt(3, 3)
+  AssertEqual 'typescriptMember', SyntaxAt(3, 7)
