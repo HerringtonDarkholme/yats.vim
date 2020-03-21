@@ -131,6 +131,8 @@ if main_syntax == 'typescript' || main_syntax == 'typescriptreact'
   setlocal iskeyword+=$
   " syntax cluster htmlJavaScript                 contains=TOP
 endif
+" For private field added from TypeScript 3.8
+setlocal iskeyword+=#
 
 " lowest priority on least used feature
 syntax match   typescriptLabel                /[a-zA-Z_$]\k*:/he=e-1 contains=typescriptReserved nextgroup=@typescriptStatement skipwhite skipempty
@@ -187,7 +189,7 @@ syntax match   typescriptSpecial            contained "\v\\%(x\x\x|u%(\x{4}|\{\x
 
 " From vim runtime
 " <https://github.com/vim/vim/blob/master/runtime/syntax/javascript.vim#L48>
-syntax region  typescriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gimuy]\{0,5\}\s*$+ end=+/[gimuy]\{0,5\}\s*[;.,)\]}]+me=e-1 nextgroup=typescriptDotNotation oneline
+syntax region  typescriptRegexpString          start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gimuy]\{0,5\}\s*$+ end=+/[gimuy]\{0,5\}\s*[;.,)\]}:]+me=e-1 nextgroup=typescriptDotNotation oneline
 
 syntax region  typescriptTemplate
   \ start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
@@ -283,8 +285,17 @@ syntax cluster typescriptSymbols               contains=typescriptBinaryOp,types
 
 " runtime syntax/basic/reserved.vim
 "Import
-syntax keyword typescriptImport                from as import
+syntax keyword typescriptImport                from as
+syntax keyword typescriptImport                import
+  \ nextgroup=typescriptImportType
+  \ skipwhite
+syntax keyword typescriptImportType            type
+  \ contained
 syntax keyword typescriptExport                export
+  \ nextgroup=typescriptExportType
+  \ skipwhite
+syntax match typescriptExportType              /\<type\s*{\@=/
+  \ contained skipwhite skipempty skipnl
 syntax keyword typescriptModule                namespace module
 
 "this
@@ -451,7 +462,7 @@ syntax region  typescriptDocLinkTag            contained matchgroup=typescriptDo
 
 syntax cluster typescriptDocs                  contains=typescriptDocParamType,typescriptDocNamedParamType,typescriptDocParam
 
-if main_syntax == "typescript"
+if exists("main_syntax") && main_syntax == "typescript"
   syntax sync clear
   syntax sync ccomment typescriptComment minlines=200
 endif
@@ -544,7 +555,7 @@ syntax region typescriptObjectType matchgroup=typescriptBraces
   \ start=/{/ end=/}/
   \ contains=@typescriptTypeMember,typescriptEndColons,@typescriptComments,typescriptAccessibilityModifier,typescriptReadonlyModifier
   \ nextgroup=@typescriptTypeOperator
-  \ contained skipwhite fold
+  \ contained skipwhite skipnl fold
 
 syntax cluster typescriptTypeMember contains=
   \ @typescriptCallSignature,
@@ -1914,7 +1925,7 @@ syntax keyword typescriptConstructor           contained constructor
 
 syntax cluster memberNextGroup contains=typescriptMemberOptionality,typescriptTypeAnnotation,@typescriptCallSignature
 
-syntax match typescriptMember /\K\k*/
+syntax match typescriptMember /#\?\K\k*/
   \ nextgroup=@memberNextGroup
   \ contained skipwhite
 
@@ -2080,7 +2091,7 @@ syntax match   typescriptFuncName              contained /\K\k*/
   \ skipwhite
 
 " destructuring ({ a: ee }) =>
-syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\?)\s*=>/
+syntax match   typescriptArrowFuncDef          contained /(\(\s*\({\_[^}]*}\|\k\+\)\(:\_[^)]\)\?,\?\)\+)\s*=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
@@ -2099,7 +2110,7 @@ syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
   \ skipwhite skipempty
 
 " TODO: optimize this pattern
-syntax region   typescriptArrowFuncDef          contained start=/(\_[^)]*):/ end=/=>/
+syntax region   typescriptArrowFuncDef          contained start=/(\_[^(^)]*):/ end=/=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend
@@ -2128,7 +2139,7 @@ syntax region typescriptParamImpl matchgroup=typescriptParens
   \ contained skipwhite skipnl
 
 syntax match typescriptDecorator /@\([_$a-zA-Z][_$a-zA-Z0-9]*\.\)*[_$a-zA-Z][_$a-zA-Z0-9]*\>/
-  \ nextgroup=typescriptArgumentList,typescriptTypeArguments
+  \ nextgroup=typescriptFuncCallArg,typescriptTypeArguments
   \ contains=@_semantic,typescriptDotNotation
 
 
@@ -2189,8 +2200,10 @@ if exists("did_typescript_hilink")
   HiLink typescriptLabel                Label
   HiLink typescriptStringProperty       String
   HiLink typescriptImport               Special
+  HiLink typescriptImportType           Special
   HiLink typescriptAmbientDeclaration   Special
   HiLink typescriptExport               Special
+  HiLink typescriptExportType           Special
   HiLink typescriptModule               Special
   HiLink typescriptTry                  Special
   HiLink typescriptExceptions           Special
