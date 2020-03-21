@@ -1,3 +1,4 @@
+var a = (): string => 123
 var p: Promise<void>
 
 var a = { template: /*eee*/ this.template
@@ -66,6 +67,8 @@ test({
 
 getSymbolIterator(3) in obj;
 
+const a = (): string => '123'
+
 
 list.reduce((flat: any[], item: T | T[]): T[] => {
   const flatItem = Array.isArray(item) ? flatten(item) : item;
@@ -99,3 +102,7 @@ interface FooBar<T extends Record<string, any> = Record<string, any>> {
   foo: string;
   bar: number;
 }
+
+[].map(({num}, index) => {
+    const key = `${num}`
+})
