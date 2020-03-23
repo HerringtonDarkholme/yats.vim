@@ -8,4 +8,6 @@ if exists("loaded_matchit") && !exists('b:tsx_match_words')
     \ : b:tsx_match_words
 endif
 
+setlocal formatoptions-=t formatoptions+=croql
+
 set suffixesadd+=.tsx
