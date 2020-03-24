@@ -3,9 +3,11 @@
     "version": "1.0.0",
     "description": "Yet another TypeScript syntax for Vim",
     "devDependencies": {
-        "js-yaml": "*",
         "camel-case": "*",
-        "is-upper-case": "*"
+        "imgur": "^0.3.1",
+        "is-upper-case": "*",
+        "js-yaml": "*",
+        "puppeteer": "^2.1.1"
     },
     "license": "Same as Vim"
 }
