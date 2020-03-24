@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Styling
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - name: install deps
+      run: npm install
+
+    # Runs a single command using the runners shell
+    - name: Store html files
+      run: |
+        for file in "test/test.tsx" "test/test.ts"; do
+          vim -u ./.github/vimrc +TOhtml "+w %" '+qall!' $file > /dev/null
+        done
+
+    - name: Generate images
+      id: report
+      run: |
+        node .github/generate-issue-comment.js test/*.html > ./.github/report.md
+
+    - name: Comment on PR
+      uses: Schniz/comment-on-pr@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        file_path: ./.github/report.md
+        unique_id: VIM_HTML_EXPORTS
