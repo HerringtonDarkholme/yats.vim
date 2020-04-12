@@ -1,4 +1,4 @@
-name: Styling
+name: Syntax Preview
 on: [pull_request]
 
 jobs:
