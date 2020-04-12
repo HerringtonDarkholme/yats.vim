@@ -4,10 +4,8 @@
     "description": "Yet another TypeScript syntax for Vim",
     "devDependencies": {
         "camel-case": "*",
-        "imgur": "^0.3.1",
         "is-upper-case": "*",
-        "js-yaml": "*",
-        "puppeteer": "^2.1.1"
+        "js-yaml": "*"
     },
     "license": "Same as Vim"
 }
