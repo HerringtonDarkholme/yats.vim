@@ -653,3 +653,19 @@ Given typescript (multi-line union (issue 162)):
 Execute:
   AssertEqual 'typescriptUnion', SyntaxAt(3, 3)
   AssertEqual 'typescriptMember', SyntaxAt(3, 7)
+
+Given typescript (@ts-* magic comments):
+  // @ts-ignore
+  // @ts-ignore: ignore this
+  // @ts-expect-error
+  // @ts-expect-error: for some reasons
+  // @ts-not-magic
+Execute:
+  " Check @ts-ignore
+  AssertEqual 'typescriptMagicComment', SyntaxAt(1, 4)
+  AssertEqual 'typescriptMagicComment', SyntaxAt(2, 4)
+  " Check @ts-expect-error
+  AssertEqual 'typescriptMagicComment', SyntaxAt(3, 4)
+  AssertEqual 'typescriptMagicComment', SyntaxAt(4, 4)
+  " Starts with '@ts-' but not magic
+  AssertNotEqual 'typescriptMagicComment', SyntaxAt(5, 4)
