@@ -55,6 +55,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptLineComment          Comment
   HiLink typescriptDocComment           Comment
   HiLink typescriptCommentTodo          Todo
+  HiLink typescriptMagicComment         SpecialComment
   HiLink typescriptRef                  Include
   HiLink typescriptDocNotation          SpecialComment
   HiLink typescriptDocTags              SpecialComment
