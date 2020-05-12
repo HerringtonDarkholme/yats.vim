@@ -669,3 +669,12 @@ Execute:
   AssertEqual 'typescriptMagicComment', SyntaxAt(4, 4)
   " Starts with '@ts-' but not magic
   AssertNotEqual 'typescriptMagicComment', SyntaxAt(5, 4)
+
+Given typescript (number literals with prefixes (issue 184)):
+  0xc0ffee
+  0b101010
+  0o755644
+Execute:
+  AssertEqual 'typescriptNumber', SyntaxAt(1, 2)
+  AssertEqual 'typescriptNumber', SyntaxAt(2, 2)
+  AssertEqual 'typescriptNumber', SyntaxAt(3, 2)
