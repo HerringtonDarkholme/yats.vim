@@ -678,3 +678,27 @@ Execute:
   AssertEqual 'typescriptNumber', SyntaxAt(1, 2)
   AssertEqual 'typescriptNumber', SyntaxAt(2, 2)
   AssertEqual 'typescriptNumber', SyntaxAt(3, 2)
+
+Given typescript (number literals without prefixes (PR 186)):
+  0
+  123
+  1.2
+  123e4
+  1.2e4
+  0E4
+  1e+1
+  1e-1
+Execute:
+  AssertEqual 'typescriptNumber', SyntaxAt(1, 1) " 0
+  AssertEqual 'typescriptNumber', SyntaxAt(2, 1) " 1 in 123
+  AssertEqual 'typescriptNumber', SyntaxAt(2, 3) " 3 in 123
+  AssertEqual 'typescriptNumber', SyntaxAt(3, 1) " 1 in 1.2
+  AssertEqual 'typescriptNumber', SyntaxAt(3, 2) " . in 1.2
+  AssertEqual 'typescriptNumber', SyntaxAt(3, 3) " 2 in 1.2
+  AssertEqual 'typescriptNumber', SyntaxAt(4, 4) " e in 123e4
+  AssertEqual 'typescriptNumber', SyntaxAt(4, 5) " 4 in 123e4
+  AssertEqual 'typescriptNumber', SyntaxAt(5, 4) " e in 1.2e4
+  AssertEqual 'typescriptNumber', SyntaxAt(5, 5) " 4 in 1.2e4
+  AssertEqual 'typescriptNumber', SyntaxAt(6, 2) " E in 0E4
+  AssertEqual 'typescriptNumber', SyntaxAt(7, 3) " + in 1e+1
+  AssertEqual 'typescriptNumber', SyntaxAt(8, 3) " - in 1e-1
