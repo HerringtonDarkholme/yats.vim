@@ -742,3 +742,10 @@ Execute:
   AssertEqual 'typescriptNumber', SyntaxAt(9, 11)
   " 9 in 1_2_3.4_5e6_7
   AssertEqual 'typescriptNumber', SyntaxAt(9, 13)
+
+Given typescript (identifier starting with 'function'):
+  (functionName)
+  [functionName]
+Execute:
+  AssertEqual 'typescriptParenExp', SyntaxAt(1, 2)
+  AssertEqual 'typescriptArray', SyntaxAt(2, 2)
