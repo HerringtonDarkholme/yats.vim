@@ -372,12 +372,18 @@ Given typescript (readonly modifier):
   class A {
     readonly photos!: Array<string>
     abstract readonly photos?: Array<string>
+    constructor(readonly photos?: Array<string>) {}
+    constructor(protected readonly photos?: Array<string>) {}
   }
 Execute:
+  AssertEqual 'typescriptReadonlyModifier', SyntaxAt(2, 3)
   AssertEqual 'typescriptMember', SyntaxAt(2, 16)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 30)
+  AssertEqual 'typescriptReadonlyModifier', SyntaxAt(3, 12)
   AssertEqual 'typescriptMember', SyntaxAt(3, 21)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(3, 37)
+  AssertEqual 'typescriptReadonlyModifier', SyntaxAt(4, 15)
+  AssertEqual 'typescriptReadonlyModifier', SyntaxAt(5, 25)
 
 Given typescript (basic switch case):
   switch (a) {
