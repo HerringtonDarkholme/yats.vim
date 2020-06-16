@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+cd $(dirname "$0")
 vim -u vimrc -c 'Vader! ./*.vader'
