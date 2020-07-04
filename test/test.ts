@@ -9,6 +9,13 @@ type A = [
     /*test*/ string,
 ]
 
+function tail<T extends any[]>(arr: readonly [any, ...T]) {
+    const [_ignored, ...rest] = arr;
+    return rest;
+}
+
+type Range = [start: number, end: number, rest?: () => 123];
+
 var b: unique symbol = 123
 
 var c: readonly t.MyClass<T>[] = 333

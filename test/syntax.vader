@@ -749,3 +749,17 @@ Given typescript (identifier starting with 'function'):
 Execute:
   AssertEqual 'typescriptParenExp', SyntaxAt(1, 2)
   AssertEqual 'typescriptArray', SyntaxAt(2, 2)
+
+Given typescript (labeled tuple):
+  type Range = [start: number, end: number];
+Execute:
+  AssertEqual 'typescriptTupleLable', SyntaxAt(1, 20)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 25)
+
+Given typescript (variadic tuple type):
+  function tail<T extends any[]>(arr: readonly [any, ...T]) {
+    const [_ignored, ...rest] = arr;
+    return rest;
+  }
+Execute:
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 54)
