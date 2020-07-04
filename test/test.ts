@@ -14,6 +14,9 @@ function tail<T extends any[]>(arr: readonly [any, ...T]) {
     return rest;
 }
 
+let resp = await someAPI()
+resp &&= resp.data
+
 type Range = [start: number, end: number, rest?: () => 123];
 
 var b: unique symbol = 123
