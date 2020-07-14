@@ -1,0 +1,15 @@
+Given typescript (Correct indentation after equals):
+  function foo(
+    bar = 1,
+  ): {
+    return bar
+  }
+  const d = {
+    foo: `another=word`,
+    bar: true
+  };
+Do:
+  ggVG=
+Execute:
+  AssertEqual 'typescriptStatementKeyword', SyntaxAt(4, 3)
+  AssertEqual 'typescriptObjectLabel', SyntaxAt(8, 3)
