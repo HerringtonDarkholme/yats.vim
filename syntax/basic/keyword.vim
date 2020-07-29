@@ -34,44 +34,6 @@ syntax keyword typescriptVariable const
   \ nextgroup=typescriptEnum,@typescriptVariableDeclarations
   \ skipwhite skipempty
 
-syntax cluster typescriptVariableDeclarations
-  \ contains=typescriptVariableDeclaration,@typescriptDestructurings
-
-syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
-  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
-  \ contained skipwhite skipempty
-
-syntax cluster typescriptDestructuredVariables contains=
-  \ typescriptRestOrSpread,
-  \ typescriptDestructuredVariable,
-  \ @typescriptDestructurings
-
-syntax match typescriptDestructuredVariable    /[A-Za-z_$]\k*/
-  \ nextgroup=typescriptDestructuredAs
-  \ contained skipwhite skipempty
-
-syntax match typescriptDestructuredAsVariable  /[A-Za-z_$]\k*/ contained
-
-syntax match typescriptDestructuredAs /:/
-  \ nextgroup=typescriptDestructuredAsVariable,@typescriptDestructurings
-  \ contained skipwhite skipempty
-
-syntax cluster typescriptDestructurings contains=
-  \ typescriptArrayDestructuring,
-  \ typescriptObjectDestructuring
-
-syntax region typescriptArrayDestructuring matchgroup=typescriptBraces
-  \ start=/\[/ end=/]/
-  \ contains=@typescriptDestructuredVariables,@typescriptComments
-  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
-  \ contained skipwhite skipempty fold
-
-syntax region typescriptObjectDestructuring matchgroup=typescriptBraces
-  \ start=/{/ end=/}/
-  \ contains=@typescriptDestructuredVariables,@typescriptComments
-  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
-  \ contained skipwhite skipempty fold
-
 syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
   \ nextgroup=typescriptBlock
   \ skipwhite

@@ -27,3 +27,41 @@ syntax region  typescriptParenExp              matchgroup=typescriptParens start
 syntax region  typescriptFuncCallArg           contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptValue,@typescriptComments nextgroup=@typescriptSymbols,typescriptDotNotation skipwhite skipempty skipnl
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 syntax region  typescriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=typescriptASCII,@events
+
+syntax cluster typescriptVariableDeclarations
+  \ contains=typescriptVariableDeclaration,@typescriptDestructurings
+
+syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
+  \ contained skipwhite skipempty
+
+syntax cluster typescriptDestructuredVariables contains=
+  \ typescriptRestOrSpread,
+  \ typescriptDestructuredVariable,
+  \ @typescriptDestructurings
+
+syntax match typescriptDestructuredVariable    /[A-Za-z_$]\k*/
+  \ nextgroup=typescriptDestructuredAs
+  \ contained skipwhite skipempty
+
+syntax match typescriptDestructuredAsVariable  /[A-Za-z_$]\k*/ contained
+
+syntax match typescriptDestructuredAs /:/
+  \ nextgroup=typescriptDestructuredAsVariable,@typescriptDestructurings
+  \ contained skipwhite skipempty
+
+syntax cluster typescriptDestructurings contains=
+  \ typescriptArrayDestructuring,
+  \ typescriptObjectDestructuring
+
+syntax region typescriptArrayDestructuring matchgroup=typescriptBraces
+  \ start=/\[/ end=/]/
+  \ contains=@typescriptDestructuredVariables,@typescriptComments
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
+  \ contained skipwhite skipempty fold
+
+syntax region typescriptObjectDestructuring matchgroup=typescriptBraces
+  \ start=/{/ end=/}/
+  \ contains=@typescriptDestructuredVariables,@typescriptComments
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
+  \ contained skipwhite skipempty fold
