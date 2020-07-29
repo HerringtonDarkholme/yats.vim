@@ -116,3 +116,21 @@ interface FooBar<T extends Record<string, any> = Record<string, any>> {
 [].map(({num}, index) => {
     const key = `${num}`
 })
+
+const [foo, [bar, baz = 1], ...rest] = arr;
+const [
+  foo = 'alice',
+  ...rest,
+] = arr;
+
+const {foo, bar: {baz = 1, qux: quux, 'foo bar': foobar}, ...rest} = obj;
+const {
+  foo = 'alice',
+  bar: {
+    qux: quux,
+    'foo bar': foobar,
+  },
+  ...rest,
+} = obj;
+
+const {foo: [a, {b, 'bar': d}, ...x], ...y} = obj;

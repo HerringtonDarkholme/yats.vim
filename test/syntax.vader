@@ -763,3 +763,95 @@ Given typescript (variadic tuple type):
   }
 Execute:
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 54)
+
+Given typescript (array destructuring variable declaration):
+  const [foo, [bar, baz = 1], ...rest] = arr;
+  let [foo, [bar, baz], ...rest] = arr;
+  var [foo, [bar, baz], ...rest] = arr;
+Execute:
+  " const .. foo
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 8)
+  " const .. bar
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 14)
+  " const .. baz
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 19)
+  " const .. = 1 (default value)
+  AssertEqual 'typescriptNumber', SyntaxAt(1, 25)
+  " const .. ...rest
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 29)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 32)
+  " let .. baz
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(2, 17)
+  " var .. baz
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(3, 17)
+
+Given typescript (multiline array destructuring variable declaration):
+  const [
+    foo = 'alice',
+    ...rest,
+  ] = arr;
+Execute:
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(2, 3)
+  AssertEqual 'typescriptString', SyntaxAt(2, 10)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(3, 6)
+
+Given typescript (object destructuring variable declaration):
+  const {foo, bar: {baz = 1, qux: quux, 'foo bar': foobar}, ...rest} = obj;
+  let {foo, bar, ...rest} = obj;
+  var {foo, bar, ...rest} = obj;
+Execute:
+  " const .. foo
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 8)
+  " const .. bar
+  AssertEqual 'typescriptDestructureLabel', SyntaxAt(1, 13)
+  " const .. baz
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 19)
+  " const .. = 1 (default value)
+  AssertEqual 'typescriptNumber', SyntaxAt(1, 25)
+  " const .. quux (aliased name)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 33)
+  " const .. 'foo bar' (string property)
+  AssertEqual 'typescriptDestructureString', SyntaxAt(1, 40)
+  " const .. foobar (aliased name)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 50)
+  " const .. ...rest
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 59)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 62)
+  " let .. bar
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(2, 11)
+  " var .. bar
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(3, 11)
+
+Given typescript (multiline object destructuring variable declaration):
+  const {
+    foo = 'alice',
+    bar: {
+      qux: quux,
+      'foo bar': foobar,
+    },
+    ...rest,
+  } = obj;
+Execute:
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(2, 3)
+  AssertEqual 'typescriptString', SyntaxAt(2, 10)
+  AssertEqual 'typescriptDestructureLabel', SyntaxAt(3, 3)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(4, 10)
+  AssertEqual 'typescriptDestructureString', SyntaxAt(5, 6)
+
+Given typescript (object and array complex destructuring):
+  const {foo: [a, {b, 'bar': d}, ...x], ...y} = obj;
+Execute:
+  " const .. foo
+  AssertEqual 'typescriptDestructureLabel', SyntaxAt(1, 8)
+  " const .. a
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 14)
+  " const .. 'bar'
+  AssertEqual 'typescriptDestructureString', SyntaxAt(1, 22)
+  " const .. d
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 28)
+  " const .. ...x
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 32)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 35)
+  " const .. ...y
+  AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 39)
+  AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 42)
