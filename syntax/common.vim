@@ -72,6 +72,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptStringMember         String
   HiLink typescriptTemplate             String
   HiLink typescriptEventString          String
+  HiLink typescriptDestructuringString  String
   HiLink typescriptASCII                Special
   HiLink typescriptTemplateSB           Label
   HiLink typescriptRegexpString         String

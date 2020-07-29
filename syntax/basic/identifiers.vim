@@ -28,6 +28,8 @@ syntax region  typescriptFuncCallArg           contained matchgroup=typescriptPa
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 syntax region  typescriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=typescriptASCII,@events
 
+syntax region  typescriptDestructuringString   contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=typescriptASCII
+
 syntax cluster typescriptVariableDeclarations
   \ contains=typescriptVariableDeclaration,@typescriptDestructurings
 
@@ -62,6 +64,6 @@ syntax region typescriptArrayDestructuring matchgroup=typescriptBraces
 
 syntax region typescriptObjectDestructuring matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=@typescriptDestructuredVariables,@typescriptComments
+  \ contains=typescriptDestructuringString,@typescriptDestructuredVariables,@typescriptComments
   \ nextgroup=typescriptTypeAnnotation,typescriptAssign
   \ contained skipwhite skipempty fold
