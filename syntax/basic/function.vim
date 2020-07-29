@@ -1,5 +1,5 @@
 syntax keyword typescriptAsyncFuncKeyword      async
-  \ nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef
+  \ nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef,typescriptGenericArrowFuncDef
   \ skipwhite
 
 syntax keyword typescriptAsyncFuncKeyword      await
@@ -38,6 +38,13 @@ syntax region  typescriptArrowFuncDef matchgroup=typescriptParens
   \ start=/(\ze\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*:/ end=/=>/me=s-1
   \ contains=typescriptArrowFuncReturnAnnotation,typescriptArrowFuncArg,@typescriptParameterList,@typescriptComments
   \ nextgroup=typescriptArrowFunc
+  \ contained skipwhite skipempty
+
+" <C, ...>
+syntax region  typescriptGenericArrowFuncDef matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/
+  \ contains=typescriptTypeParameter
+  \ nextgroup=typescriptArrowFuncDef
   \ contained skipwhite skipempty
 
 " TODO: return type contains parenthesized type

@@ -30,6 +30,7 @@ syntax cluster typescriptTopExpression
 syntax cluster typescriptExpression
   \ contains=@typescriptTopExpression,
   \ typescriptArrowFuncDef,
+  \ typescriptGenericArrowFuncDef,
   \ typescriptFuncImpl
 
 syntax cluster typescriptValue
