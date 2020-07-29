@@ -113,16 +113,16 @@ syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
   \ containedin=typescriptFunctionType
   \ contained skipwhite skipnl
 
-syntax region typescriptFuncType matchgroup=typescriptParens
-  \ start=/(/ end=/)\s*=>/me=e-2
-  \ contains=@typescriptParameterList
-  \ nextgroup=typescriptFuncTypeArrow
-  \ contained skipwhite skipnl oneline
-
-syntax match typescriptFuncTypeArrow /=>/
+" TODO: arguments type contains recursively parens
+syntax region  typescriptFuncType
+  \ matchgroup=typescriptParens start=/(\ze\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/
+  \ matchgroup=typescriptFuncTypeArrow end=/\%()\_s*\)\@<==>/
+  \ contains=@typescriptParameterList,@typescriptComments
   \ nextgroup=@typescriptType
-  \ containedin=typescriptFuncType
-  \ contained skipwhite skipnl
+  \ contained skipwhite skipempty
+
+syntax match   typescriptParens  /)\ze\_s*=>/
+  \ contained containedin=typescriptFuncType
 
 
 syntax keyword typescriptConstructorType new
@@ -157,6 +157,7 @@ syntax match typescriptTypeAnnotation /:/
   \ contained skipwhite skipnl
 
 syntax cluster typescriptParameterList contains=
+  \ @typescriptDestructurings,
   \ typescriptTypeAnnotation,
   \ typescriptAccessibilityModifier,
   \ typescriptReadonlyModifier,

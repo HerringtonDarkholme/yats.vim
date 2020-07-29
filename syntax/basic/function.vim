@@ -1,5 +1,5 @@
 syntax keyword typescriptAsyncFuncKeyword      async
-  \ nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef
+  \ nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef,typescriptGenericArrowFuncDef
   \ skipwhite
 
 syntax keyword typescriptAsyncFuncKeyword      await
@@ -18,34 +18,47 @@ syntax match   typescriptFuncName              contained /\K\k*/
   \ nextgroup=@typescriptCallSignature
   \ skipwhite
 
-" destructuring ({ a: ee }) =>
-syntax match   typescriptArrowFuncDef          contained /(\(\s*\({\_[^}]*}\|\k\+\)\(:\_[^)]\)\?,\?\)\+)\s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty
+" a => ...
+syntax match   typescriptArrowFuncDef  /\K\k*\s*=>/me=e-2
+  \ contains=typescriptArrowFuncArg
+  \ nextgroup=typescriptArrowFunc
+  \ contained skipwhite skipempty extend
 
-" matches `(a) =>` or `([a]) =>` or
-" `(
-"  a) =>`
-syntax match   typescriptArrowFuncDef          contained /(\(\_s*[a-zA-Z\$_\[.]\_[^)]*\)*)\s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty
+" (a, {b}, [c], ...) => ...
+" TODO: arguments type contains recursively parens
+syntax region  typescriptArrowFuncDef matchgroup=typescriptParens
+  \ start=/(\ze\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/ end=/)\_s*=>/me=e-2
+  \ contains=typescriptArrowFuncArg,@typescriptParameterList,@typescriptComments
+  \ nextgroup=typescriptArrowFunc
+  \ contained skipwhite skipempty
 
-syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty
+" (a, {b}, [c], ...): ... => ...
+" TODO: arguments type contains recursively parens
+syntax region  typescriptArrowFuncDef matchgroup=typescriptParens
+  \ start=/(\ze\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*:/ end=/=>/me=s-1
+  \ contains=typescriptArrowFuncReturnAnnotation,typescriptArrowFuncArg,@typescriptParameterList,@typescriptComments
+  \ nextgroup=typescriptArrowFunc
+  \ contained skipwhite skipempty
 
-" TODO: optimize this pattern
-syntax region   typescriptArrowFuncDef          contained start=/(\_[^(^)]*):/ end=/=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty keepend
+" <C, ...>
+syntax region  typescriptGenericArrowFuncDef matchgroup=typescriptTypeBrackets
+  \ start=/</ end=/>/
+  \ contains=typescriptTypeParameter
+  \ nextgroup=typescriptArrowFuncDef
+  \ contained skipwhite skipempty
+
+" TODO: return type contains parenthesized type
+syntax region  typescriptArrowFuncReturnAnnotation
+  \ matchgroup=typescriptParens start=/)\ze\_s*:/ end=/=>/me=s-1
+  \ contains=typescriptTypeAnnotation
+  \ contained
 
 syntax match   typescriptArrowFunc             /=>/
+  \ nextgroup=@typescriptExpression,typescriptBlock
+  \ skipwhite skipempty
+
 syntax match   typescriptArrowFuncArg          contained /\K\k*/
-syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
+  \ nextgroup=typescriptTypeAnnotation
 
 syntax region typescriptReturnAnnotation contained start=/:/ end=/{/me=e-1 contains=@typescriptType nextgroup=typescriptBlock
 
