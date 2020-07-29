@@ -85,6 +85,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptBranch               Conditional
   HiLink typescriptIdentifier           Structure
   HiLink typescriptVariable             Identifier
+  HiLink typescriptDestructuredVariable PreProc
   HiLink typescriptEnumKeyword          Identifier
   HiLink typescriptRepeat               Repeat
   HiLink typescriptForOperator          Repeat
