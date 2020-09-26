@@ -55,6 +55,7 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptTypeQuery,
   \ typescriptStringLiteralType,
   \ typescriptTemplateLiteralType,
+  \ typescriptNumericLiteralType,
   \ typescriptReadonlyArrayKeyword,
   \ typescriptAssertType
 
@@ -73,6 +74,12 @@ syntax region  typescriptTemplateSubstitutionType matchgroup=typescriptTemplateS
   \ start=/\${/ end=/}/
   \ contains=@typescriptType
   \ contained
+
+syntax match typescriptNumericLiteralType /\<0[bB][01][01_]*\>/        nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+syntax match typescriptNumericLiteralType /\<0[oO][0-7][0-7_]*\>/       nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+syntax match typescriptNumericLiteralType /\<0[xX][0-9a-fA-F][0-9a-fA-F_]*\>/ nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+syntax match typescriptNumericLiteralType /\<\%(\d[0-9_]*\%(\.\d[0-9_]*\)\=\|\.\d[0-9_]*\)\%([eE][+-]\=\d[0-9_]*\)\=\>/
+  \ nextgroup=@typescriptTypeOperator skipwhite skipempty contained
 
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/

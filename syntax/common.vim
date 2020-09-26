@@ -70,6 +70,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptSpecial              Special
   HiLink typescriptStringLiteralType    String
   HiLink typescriptTemplateLiteralType  String
+  HiLink typescriptNumericLiteralType   Number
   HiLink typescriptStringMember         String
   HiLink typescriptTemplate             String
   HiLink typescriptEventString          String

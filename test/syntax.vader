@@ -324,6 +324,13 @@ Given typescript (string literal type):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 23)
 
+Given typescript (numeric literal type):
+  type T = 1 | string
+Execute:
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(1, 10)
+  AssertEqual 'typescriptUnion', SyntaxAt(1, 12)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 14)
+
 Given typescript (array return type):
   function prop<T>(t: T): T[] {
     let a = 123
