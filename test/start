@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
 
+# USAGE:
+#  Run all tests:
+#    start
+#  Run specific tests:
+#    start {suite_name1} {suite_name2} ...
+#  Example:
+#    start syntax # Run tests in syntax.vader
+
 cd $(dirname "$0")
-vim -u vimrc -c 'Vader! ./*.vader'
+if [ "$#" -eq 0 ]; then
+  vim -u vimrc -c 'Vader! ./*.vader'
+else
+  while [ "$#" -gt 0 ]; do
+    vim -u vimrc -c "Vader! ./${1}.vader"
+    shift
+  done
+fi
