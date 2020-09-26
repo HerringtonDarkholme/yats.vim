@@ -134,3 +134,5 @@ const {
 } = obj;
 
 const {foo: [a, {b, 'bar': d}, ...x], ...y} = obj;
+
+type X = Y extends string ? string : Y

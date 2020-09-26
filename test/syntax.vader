@@ -855,3 +855,13 @@ Execute:
   " const .. ...y
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 39)
   AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 42)
+
+Given typescript (conditional types):
+  type X = Y extends string ? string : Y
+Execute:
+  AssertEqual 'typescriptConstraint', SyntaxAt(1, 12)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 20)
+  AssertEqual 'typescriptConditional', SyntaxAt(1, 27)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 29)
+  AssertEqual 'typescriptConditional', SyntaxAt(1, 36)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 38)
