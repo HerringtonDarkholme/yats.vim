@@ -764,6 +764,11 @@ Given typescript (variadic tuple type):
 Execute:
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 54)
 
+Given typescript (type operator after tuple):
+  type T = [U] | V
+Execute:
+  AssertEqual 'typescriptUnion', SyntaxAt(1, 14)
+
 Given typescript (array destructuring variable declaration):
   const [foo, [bar, baz = 1], ...rest] = arr;
   let [foo, [bar, baz], ...rest] = arr;

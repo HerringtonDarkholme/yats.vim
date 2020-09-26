@@ -110,6 +110,7 @@ syntax match typescriptTupleLable /\K\k*?\?:/
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
   \ contains=@typescriptType,@typescriptComments,typescriptRestOrSpread,typescriptTupleLable
+  \ nextgroup=@typescriptTypeOperator
   \ contained skipwhite
 
 syntax cluster typescriptTypeOperator
