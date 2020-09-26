@@ -101,9 +101,11 @@ syntax region typescriptTupleType matchgroup=typescriptBraces
   \ contained skipwhite
 
 syntax cluster typescriptTypeOperator
-  \ contains=typescriptUnion,typescriptTypeBracket
+  \ contains=typescriptUnion,typescriptTypeBracket,typescriptConstraint,typescriptConditionalType
 
 syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
+
+syntax match typescriptConditionalType /?\|:/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
 
 syntax cluster typescriptFunctionType contains=typescriptGenericFunc,typescriptFuncType
 syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
