@@ -42,7 +42,7 @@ syntax cluster typescriptType contains=
 " type indexing A['key']
 syntax region typescriptTypeBracket contained
   \ start=/\[/ end=/\]/
-  \ contains=typescriptString,typescriptNumber
+  \ contains=typescriptStringLiteralType,typescriptNumericLiteralType,typescriptTypeReference
   \ nextgroup=@typescriptTypeOperator
   \ skipwhite skipempty
 

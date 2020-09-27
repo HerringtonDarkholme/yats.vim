@@ -883,3 +883,16 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 29)
   AssertEqual 'typescriptConditional', SyntaxAt(1, 36)
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 38)
+
+Given typescript (indexed access operator for types):
+  type T = X[1]
+  type T = X['foo']
+  type T = X[K]
+  type T = X[1 | 2][3]
+Execute:
+  AssertEqual 'typescriptTypeBracket', SyntaxAt(1, 11)
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(1, 12)
+  AssertEqual 'typescriptStringLiteralType', SyntaxAt(2, 12)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 12)
+  AssertEqual 'typescriptUnion', SyntaxAt(4, 14)
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(4, 19)
