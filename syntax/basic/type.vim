@@ -29,7 +29,7 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/\></ end=/>/
   \ contains=@typescriptType
   \ nextgroup=typescriptFuncCallArg,@typescriptTypeOperator
-  \ contained skipwhite
+  \ contained skipwhite skipempty
 
 
 syntax cluster typescriptType contains=
@@ -61,13 +61,13 @@ syntax cluster typescriptPrimaryType contains=
 
 syntax region  typescriptStringLiteralType contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
-  \ nextgroup=typescriptUnion
+  \ nextgroup=@typescriptTypeOperator
   \ skipwhite skipempty
 
 syntax region  typescriptTemplateLiteralType contained
   \ start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
   \ contains=typescriptTemplateSubstitutionType
-  \ nextgroup=typescriptTypeOperator
+  \ nextgroup=@typescriptTypeOperator
   \ skipwhite skipempty
 
 syntax region  typescriptTemplateSubstitutionType matchgroup=typescriptTemplateSB
