@@ -910,6 +910,8 @@ Given typescript (types with newline):
     ? (A)
     : A extends G
     ? `foo${A}`
+    : A extends H
+    ? [A] 
     : never
   var a;
 Execute:
@@ -919,8 +921,9 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(8, 9)
   AssertEqual 'typescriptTypeReference', SyntaxAt(10, 6)
   AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(12, 5)
-  AssertEqual 'typescriptPredefinedType', SyntaxAt(13, 5)
-  AssertEqual 'typescriptVariable', SyntaxAt(14, 1)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(14, 6)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(15, 5)
+  AssertEqual 'typescriptVariable', SyntaxAt(16, 1)
 
 Given typescript (infer keyword):
   type T = A extends F<infer B> ? C : D

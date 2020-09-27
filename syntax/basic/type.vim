@@ -119,7 +119,7 @@ syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
   \ contains=@typescriptType,@typescriptComments,typescriptRestOrSpread,typescriptTupleLable
   \ nextgroup=@typescriptTypeOperator
-  \ contained skipwhite
+  \ contained skipwhite skipempty
 
 syntax cluster typescriptTypeOperator
   \ contains=typescriptUnion,typescriptTypeBracket,typescriptConstraint,typescriptConditionalType
