@@ -856,6 +856,12 @@ Execute:
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 39)
   AssertEqual 'typescriptDestructureVariable', SyntaxAt(1, 42)
 
+Given typescript (Template literal types):
+  type Greeting = `hello ${World}`;
+Execute:
+  AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(1, 17)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 26)
+
 Given typescript (conditional types):
   type X = Y extends string ? string : Y
 Execute:
