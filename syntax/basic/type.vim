@@ -85,7 +85,7 @@ syntax match typescriptNumericLiteralType /\<\%(\d[0-9_]*\%(\.\d[0-9_]*\)\=\|\.\
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
-  \ nextgroup=@typescriptTypeOperator
+  \ nextgroup=@typescriptTypeOperator,typescriptFuncTypeArrow
   \ contained skipwhite skipempty fold
 
 syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/

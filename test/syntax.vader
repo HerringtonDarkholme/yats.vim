@@ -929,3 +929,15 @@ Given typescript (infer keyword):
   type T = A extends F<infer B> ? C : D
 Execute:
   AssertEqual 'typescriptInferTypeKeyword', SyntaxAt(1, 22)
+
+Given typescript (function type with newline):
+  type T = (
+    arg: A
+  ) => B
+  var a
+Execute:
+  " This is not precise(`arg` should typescriptFuncType) but better than before.
+  " And more precise analysis is difficult
+  AssertEqual 'typescriptTypeReference', SyntaxAt(2, 3)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 6)
+  AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
