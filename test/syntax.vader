@@ -583,7 +583,7 @@ Given typescript (multiline tuple type):
     /* Name */ string,
   ]
 Execute:
-  AssertEqual 'typescriptComment', SyntaxAt(2, 8)
+  AssertEqual 'typescriptCommentBeforeType', SyntaxAt(2, 8)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 18)
 
 Given typescript (assertion functions for nullish assertion):
@@ -941,3 +941,13 @@ Execute:
   AssertEqual 'typescriptTypeReference', SyntaxAt(2, 3)
   AssertEqual 'typescriptTypeReference', SyntaxAt(3, 6)
   AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
+
+Given typescript (comment in type):
+  type A =
+    // A is X
+    X
+    /* ... or Y */
+    | B
+Execute:
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 3)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(5, 5)

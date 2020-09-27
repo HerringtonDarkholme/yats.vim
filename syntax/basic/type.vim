@@ -47,6 +47,8 @@ syntax region typescriptTypeBracket contained
   \ skipwhite skipempty
 
 syntax cluster typescriptPrimaryType contains=
+  \ typescriptCommentBeforeType,
+  \ typescriptLineCommentBeforeType,
   \ typescriptParenthesizedType,
   \ typescriptPredefinedType,
   \ typescriptTypeReference,
@@ -59,6 +61,28 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptReadonlyArrayKeyword,
   \ typescriptInferTypeKeyword,
   \ typescriptAssertType
+
+syntax match   typescriptLineCommentBeforeType "//.*"
+  \ contained
+  \ nextgroup=@typescriptPrimaryType
+  \ skipempty skipwhite
+
+syntax region  typescriptCommentBeforeType
+  \ start="/\*"  end="\*/"
+  \ contained
+  \ nextgroup=@typescriptPrimaryType
+  \ skipempty skipwhite
+
+syntax match   typescriptLineCommentBeforeTypeOperator "//.*"
+  \ contained
+  \ nextgroup=@typescriptTypeOperator
+  \ skipempty skipwhite
+
+syntax region  typescriptCommentBeforeTypeOperator
+  \ start="/\*"  end="\*/"
+  \ contained
+  \ nextgroup=@typescriptTypeOperator
+  \ skipempty skipwhite
 
 syntax region  typescriptStringLiteralType contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
@@ -122,7 +146,13 @@ syntax region typescriptTupleType matchgroup=typescriptBraces
   \ contained skipwhite skipempty
 
 syntax cluster typescriptTypeOperator
-  \ contains=typescriptUnion,typescriptTypeBracket,typescriptConstraint,typescriptConditionalType
+  \ contains=
+  \ typescriptCommentBeforeTypeOperator,
+  \ typescriptLineCommentBeforeTypeOperator,
+  \ typescriptUnion,
+  \ typescriptTypeBracket,
+  \ typescriptConstraint,
+  \ typescriptConditionalType
 
 syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
 
