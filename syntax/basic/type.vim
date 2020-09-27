@@ -57,6 +57,7 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptTemplateLiteralType,
   \ typescriptNumericLiteralType,
   \ typescriptReadonlyArrayKeyword,
+  \ typescriptInferTypeKeyword,
   \ typescriptAssertType
 
 syntax region  typescriptStringLiteralType contained
@@ -219,4 +220,9 @@ syntax region typescriptAliasDeclaration matchgroup=typescriptUnion
 
 syntax keyword typescriptReadonlyArrayKeyword readonly
   \ nextgroup=@typescriptPrimaryType
+  \ skipwhite
+
+syntax keyword typescriptInferTypeKeyword infer
+  \ contained
+  \ nextgroup=typescriptTypeReference
   \ skipwhite

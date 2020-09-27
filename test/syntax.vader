@@ -921,3 +921,8 @@ Execute:
   AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(12, 5)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(13, 5)
   AssertEqual 'typescriptVariable', SyntaxAt(14, 1)
+
+Given typescript (infer keyword):
+  type T = A extends F<infer B> ? C : D
+Execute:
+  AssertEqual 'typescriptInferTypeKeyword', SyntaxAt(1, 22)

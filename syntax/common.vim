@@ -147,6 +147,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptConstraint            Keyword
   HiLink typescriptPredefinedType        Type
   HiLink typescriptReadonlyArrayKeyword  Keyword
+  HiLink typescriptInferTypeKeyword      Keyword
   HiLink typescriptUnion                 Operator
   HiLink typescriptFuncTypeArrow         Function
   HiLink typescriptConstructorType       Function
