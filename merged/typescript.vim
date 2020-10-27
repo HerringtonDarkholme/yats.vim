@@ -74,6 +74,56 @@ syntax region  typescriptFuncCallArg           contained matchgroup=typescriptPa
 syntax region  typescriptEventFuncCallArg      contained matchgroup=typescriptParens start=/(/ end=/)/ contains=@typescriptEventExpression
 syntax region  typescriptEventString           contained start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/ contains=typescriptASCII,@events
 
+syntax region  typescriptDestructureString
+  \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
+  \ contains=typescriptASCII
+  \ nextgroup=typescriptDestructureAs
+  \ contained skipwhite skipempty
+
+syntax cluster typescriptVariableDeclarations
+  \ contains=typescriptVariableDeclaration,@typescriptDestructures
+
+syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
+  \ contained skipwhite skipempty
+
+syntax cluster typescriptDestructureVariables contains=
+  \ typescriptRestOrSpread,
+  \ typescriptDestructureComma,
+  \ typescriptDestructureLabel,
+  \ typescriptDestructureVariable,
+  \ @typescriptDestructures
+
+syntax match typescriptDestructureVariable    /[A-Za-z_$]\k*/ contained
+  \ nextgroup=typescriptDefaultParam
+  \ contained skipwhite skipempty
+
+syntax match typescriptDestructureLabel       /[A-Za-z_$]\k*\ze\_s*:/
+  \ nextgroup=typescriptDestructureAs
+  \ contained skipwhite skipempty
+
+syntax match typescriptDestructureAs /:/
+  \ nextgroup=typescriptDestructureVariable,@typescriptDestructures
+  \ contained skipwhite skipempty
+
+syntax match typescriptDestructureComma /,/ contained
+
+syntax cluster typescriptDestructures contains=
+  \ typescriptArrayDestructure,
+  \ typescriptObjectDestructure
+
+syntax region typescriptArrayDestructure matchgroup=typescriptBraces
+  \ start=/\[/ end=/]/
+  \ contains=@typescriptDestructureVariables,@typescriptComments
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
+  \ transparent contained skipwhite skipempty fold
+
+syntax region typescriptObjectDestructure matchgroup=typescriptBraces
+  \ start=/{/ end=/}/
+  \ contains=typescriptDestructureString,@typescriptDestructureVariables,@typescriptComments
+  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
+  \ transparent contained skipwhite skipempty fold
+
 "Syntax in the JavaScript code
 
 " String
@@ -113,10 +163,8 @@ syntax region  typescriptArray matchgroup=typescriptBraces
 syntax match typescriptNumber /\<0[bB][01][01_]*\>/        nextgroup=@typescriptSymbols skipwhite skipempty
 syntax match typescriptNumber /\<0[oO][0-7][0-7_]*\>/       nextgroup=@typescriptSymbols skipwhite skipempty
 syntax match typescriptNumber /\<0[xX][0-9a-fA-F][0-9a-fA-F_]*\>/ nextgroup=@typescriptSymbols skipwhite skipempty
-syntax match typescriptNumber /\d[0-9_]*\.\d[0-9_]*\|\d[0-9_]*\|\.\d[0-9]*/
-  \ nextgroup=typescriptExponent,@typescriptSymbols skipwhite skipempty
-syntax match typescriptExponent /[eE][+-]\=\d[0-9]*\>/
-  \ nextgroup=@typescriptSymbols skipwhite skipempty contained
+syntax match typescriptNumber /\<\%(\d[0-9_]*\%(\.\d[0-9_]*\)\=\|\.\d[0-9_]*\)\%([eE][+-]\=\d[0-9_]*\)\=\>/
+  \ nextgroup=typescriptSymbols skipwhite skipempty
 
 syntax region  typescriptObjectLiteral         matchgroup=typescriptBraces
   \ start=/{/ end=/}/
@@ -165,10 +213,12 @@ syntax match   typescriptBinaryOp contained /===\?/ nextgroup=@typescriptValue s
 syntax match   typescriptBinaryOp contained />\(>>=\|>>\|>=\|>\|=\)\?/ nextgroup=@typescriptValue skipwhite skipempty
 " 4: <<=, <<, <=, <
 syntax match   typescriptBinaryOp contained /<\(<=\|<\|=\)\?/ nextgroup=@typescriptValue skipwhite skipempty
-" 3: ||, |=, |
-syntax match   typescriptBinaryOp contained /|\(|\|=\)\?/ nextgroup=@typescriptValue skipwhite skipempty
-" 3: &&, &=, &
-syntax match   typescriptBinaryOp contained /&\(&\|=\)\?/ nextgroup=@typescriptValue skipwhite skipempty
+" 3: ||, |=, |, ||=
+syntax match   typescriptBinaryOp contained /||\?=\?/ nextgroup=@typescriptValue skipwhite skipempty
+" 4: &&, &=, &, &&=
+syntax match   typescriptBinaryOp contained /&&\?=\?/ nextgroup=@typescriptValue skipwhite skipempty
+" 2: ??, ??=
+syntax match   typescriptBinaryOp contained /??=\?/ nextgroup=@typescriptValue skipwhite skipempty
 " 2: *=, *
 syntax match   typescriptBinaryOp contained /\*=\?/ nextgroup=@typescriptValue skipwhite skipempty
 " 2: %=, %
@@ -218,16 +268,12 @@ syntax keyword typescriptIdentifier            arguments this super
   \ nextgroup=@afterIdentifier
 
 syntax keyword typescriptVariable              let var
-  \ nextgroup=typescriptVariableDeclaration
-  \ skipwhite skipempty skipnl
+  \ nextgroup=@typescriptVariableDeclarations
+  \ skipwhite skipempty
 
 syntax keyword typescriptVariable const
-  \ nextgroup=typescriptEnum,typescriptVariableDeclaration
-  \ skipwhite
-
-syntax match typescriptVariableDeclaration /[A-Za-z_$]\k*/
-  \ nextgroup=typescriptTypeAnnotation,typescriptAssign
-  \ contained skipwhite skipempty skipnl
+  \ nextgroup=typescriptEnum,@typescriptVariableDeclarations
+  \ skipwhite skipempty
 
 syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
   \ nextgroup=typescriptBlock
@@ -297,8 +343,9 @@ syntax match   shellbang "^#!.*iojs\>"
 
 "JavaScript comments
 syntax keyword typescriptCommentTodo TODO FIXME XXX TBD
+syntax match typescriptMagicComment "@ts-\%(ignore\|expect-error\)\>"
 syntax match   typescriptLineComment "//.*"
-  \ contains=@Spell,typescriptCommentTodo,typescriptRef
+  \ contains=@Spell,typescriptCommentTodo,typescriptRef,typescriptMagicComment
 syntax region  typescriptComment
   \ start="/\*"  end="\*/"
   \ contains=@Spell,typescriptCommentTodo extend
@@ -430,6 +477,7 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptTupleType,
   \ typescriptTypeQuery,
   \ typescriptStringLiteralType,
+  \ typescriptTemplateLiteralType,
   \ typescriptReadonlyArrayKeyword,
   \ typescriptAssertType
 
@@ -437,6 +485,17 @@ syntax region  typescriptStringLiteralType contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
   \ nextgroup=typescriptUnion
   \ skipwhite skipempty
+
+syntax region  typescriptTemplateLiteralType contained
+  \ start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
+  \ contains=typescriptTemplateSubstitutionType
+  \ nextgroup=typescriptTypeOperator
+  \ skipwhite skipempty
+
+syntax region  typescriptTemplateSubstitutionType matchgroup=typescriptTemplateSB
+  \ start=/\${/ end=/}/
+  \ contains=@typescriptType
+  \ contained
 
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
@@ -468,15 +527,20 @@ syntax cluster typescriptTypeMember contains=
   \ typescriptIndexSignature,
   \ @typescriptMembers
 
+syntax match typescriptTupleLable /\K\k*?\?:/
+    \ contained
+
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
-  \ contains=@typescriptType,@typescriptComments
+  \ contains=@typescriptType,@typescriptComments,typescriptRestOrSpread,typescriptTupleLable
   \ contained skipwhite
 
 syntax cluster typescriptTypeOperator
-  \ contains=typescriptUnion,typescriptTypeBracket
+  \ contains=typescriptUnion,typescriptTypeBracket,typescriptConstraint,typescriptConditionalType
 
 syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
+
+syntax match typescriptConditionalType /?\|:/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
 
 syntax cluster typescriptFunctionType contains=typescriptGenericFunc,typescriptFuncType
 syntax region typescriptGenericFunc matchgroup=typescriptTypeBrackets
@@ -532,6 +596,7 @@ syntax match typescriptTypeAnnotation /:/
 syntax cluster typescriptParameterList contains=
   \ typescriptTypeAnnotation,
   \ typescriptAccessibilityModifier,
+  \ typescriptReadonlyModifier,
   \ typescriptOptionalMark,
   \ typescriptRestOrSpread,
   \ typescriptFuncComma,
@@ -2027,7 +2092,7 @@ syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>
 syntax region typescriptReturnAnnotation contained start=/:/ end=/{/me=e-1 contains=@typescriptType nextgroup=typescriptBlock
 
 
-syntax region typescriptFuncImpl contained start=/function/ end=/{/me=e-1
+syntax region typescriptFuncImpl contained start=/function\>/ end=/{/me=e-1
   \ contains=typescriptFuncKeyword
   \ nextgroup=typescriptBlock
 
@@ -2059,6 +2124,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptLineComment          Comment
   HiLink typescriptDocComment           Comment
   HiLink typescriptCommentTodo          Todo
+  HiLink typescriptMagicComment         SpecialComment
   HiLink typescriptRef                  Include
   HiLink typescriptDocNotation          SpecialComment
   HiLink typescriptDocTags              SpecialComment
@@ -2072,9 +2138,11 @@ if exists("did_typescript_hilink")
   HiLink typescriptString               String
   HiLink typescriptSpecial              Special
   HiLink typescriptStringLiteralType    String
+  HiLink typescriptTemplateLiteralType  String
   HiLink typescriptStringMember         String
   HiLink typescriptTemplate             String
   HiLink typescriptEventString          String
+  HiLink typescriptDestructureString    String
   HiLink typescriptASCII                Special
   HiLink typescriptTemplateSB           Label
   HiLink typescriptRegexpString         String
@@ -2088,6 +2156,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptBranch               Conditional
   HiLink typescriptIdentifier           Structure
   HiLink typescriptVariable             Identifier
+  HiLink typescriptDestructureVariable  PreProc
   HiLink typescriptEnumKeyword          Identifier
   HiLink typescriptRepeat               Repeat
   HiLink typescriptForOperator          Repeat
@@ -2099,10 +2168,11 @@ if exists("did_typescript_hilink")
   HiLink typescriptType                 Type
   HiLink typescriptNull                 Boolean
   HiLink typescriptNumber               Number
-  HiLink typescriptExponent             Number
   HiLink typescriptBoolean              Boolean
   HiLink typescriptObjectLabel          typescriptLabel
+  HiLink typescriptDestructureLabel     Function
   HiLink typescriptLabel                Label
+  HiLink typescriptTupleLable           Label
   HiLink typescriptStringProperty       String
   HiLink typescriptImport               Special
   HiLink typescriptImportType           Special
