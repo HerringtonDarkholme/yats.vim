@@ -14,7 +14,10 @@ setlocal commentstring=//\ %s
 " Set 'formatoptions' to break comment lines but not other lines,
 " " and insert the comment leader when hitting <CR> or using "o".
 setlocal formatoptions-=t formatoptions+=croql
-setlocal formatexpr=Fixedgq(v:lnum,v:count)
+
+if !&l:formatexpr && !&l:formatprg
+    setlocal formatprg=Fixedgq(v:lnum,v:count)
+endif
 
 " setlocal foldmethod=syntax
 
