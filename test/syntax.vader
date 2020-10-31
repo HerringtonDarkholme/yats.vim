@@ -453,8 +453,38 @@ Given typescript (high order arrow func in class):
     a = (a: () => void) => { }
   }
 Execute:
+  AssertEqual 'typescriptFuncTypeArrow', SyntaxAt(2, 14)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 17)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 23)
 
+Given typescript (high order arrow func with return type in class):
+  class A {
+    a = (a: () => void): void => { }
+  }
+Execute:
+  AssertEqual 'typescriptFuncTypeArrow', SyntaxAt(2, 14)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 17)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 24)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 29)
+
+Given typescript (assign arrow func in expression paren):
+  let a
+  const b = (a = () => void 0)
+  const c = 1
+Execute:
+  AssertEqual 'typescriptParenExp', SyntaxAt(2, 13)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 19)
+  AssertEqual 'typescriptVariable', SyntaxAt(3, 1)
+
+Given typescript (assign arrow func with return type in expression paren):
+  let a
+  const b = (a = (): void => void 0)
+  const c = 1
+Execute:
+  AssertEqual 'typescriptParenExp', SyntaxAt(2, 13)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 20)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 25)
+  AssertEqual 'typescriptVariable', SyntaxAt(3, 1)
 
 Given typescript (line break after interface):
   interface A
