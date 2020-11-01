@@ -867,7 +867,7 @@ Given typescript (conditional types):
 Execute:
   AssertEqual 'typescriptConstraint', SyntaxAt(1, 12)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 20)
-  AssertEqual 'typescriptConditional', SyntaxAt(1, 27)
+  AssertEqual 'typescriptConditionalType', SyntaxAt(1, 27)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 29)
-  AssertEqual 'typescriptConditional', SyntaxAt(1, 36)
+  AssertEqual 'typescriptConditionalType', SyntaxAt(1, 36)
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 38)
