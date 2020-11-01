@@ -871,3 +871,11 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 29)
   AssertEqual 'typescriptConditionalType', SyntaxAt(1, 36)
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 38)
+
+Given typescript (ternary in objeect):
+  const func = a => {
+    return { a: b === 'test' ? `${val}` : 'test' }
+  }
+Execute:
+  AssertEqual 'typescriptTemplateSubstitution', SyntaxAt(2, 33)
+  AssertEqual 'typescriptTemplateSB', SyntaxAt(2, 36)
