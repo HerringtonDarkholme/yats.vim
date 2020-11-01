@@ -56,6 +56,10 @@ if exists("did_typescript_hilink")
   HiLink typescriptDocComment           Comment
   HiLink typescriptCommentTodo          Todo
   HiLink typescriptMagicComment         SpecialComment
+  HiLink typescriptCommentBeforeType    Comment
+  HiLink typescriptLineCommentBeforeType Comment
+  HiLink typescriptCommentBeforeTypeOperator     Comment
+  HiLink typescriptLineCommentBeforeTypeOperator Comment
   HiLink typescriptRef                  Include
   HiLink typescriptDocNotation          SpecialComment
   HiLink typescriptDocTags              SpecialComment
@@ -70,6 +74,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptSpecial              Special
   HiLink typescriptStringLiteralType    String
   HiLink typescriptTemplateLiteralType  String
+  HiLink typescriptNumericLiteralType   Number
   HiLink typescriptStringMember         String
   HiLink typescriptTemplate             String
   HiLink typescriptEventString          String
@@ -146,6 +151,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptConstraint            Keyword
   HiLink typescriptPredefinedType        Type
   HiLink typescriptReadonlyArrayKeyword  Keyword
+  HiLink typescriptInferTypeKeyword      Keyword
   HiLink typescriptUnion                 Operator
   HiLink typescriptFuncTypeArrow         Function
   HiLink typescriptConstructorType       Function

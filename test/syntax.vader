@@ -324,6 +324,13 @@ Given typescript (string literal type):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 23)
 
+Given typescript (numeric literal type):
+  type T = 1 | string
+Execute:
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(1, 10)
+  AssertEqual 'typescriptUnion', SyntaxAt(1, 12)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 14)
+
 Given typescript (array return type):
   function prop<T>(t: T): T[] {
     let a = 123
@@ -576,7 +583,7 @@ Given typescript (multiline tuple type):
     /* Name */ string,
   ]
 Execute:
-  AssertEqual 'typescriptComment', SyntaxAt(2, 8)
+  AssertEqual 'typescriptCommentBeforeType', SyntaxAt(2, 8)
   AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 18)
 
 Given typescript (assertion functions for nullish assertion):
@@ -764,6 +771,11 @@ Given typescript (variadic tuple type):
 Execute:
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 54)
 
+Given typescript (type operator after tuple):
+  type T = [U] | V
+Execute:
+  AssertEqual 'typescriptUnion', SyntaxAt(1, 14)
+
 Given typescript (array destructuring variable declaration):
   const [foo, [bar, baz = 1], ...rest] = arr;
   let [foo, [bar, baz], ...rest] = arr;
@@ -871,3 +883,71 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 29)
   AssertEqual 'typescriptConditionalType', SyntaxAt(1, 36)
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 38)
+
+Given typescript (indexed access operator for types):
+  type T = X[1]
+  type T = X['foo']
+  type T = X[K]
+  type T = X[1 | 2][3]
+Execute:
+  AssertEqual 'typescriptTypeBracket', SyntaxAt(1, 11)
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(1, 12)
+  AssertEqual 'typescriptStringLiteralType', SyntaxAt(2, 12)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 12)
+  AssertEqual 'typescriptUnion', SyntaxAt(4, 14)
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(4, 19)
+
+Given typescript (types with newline):
+  type T = A extends B
+    ? 'foo'
+    : A extends C
+    ? 123
+    : A extends D
+    ? Foo<X>
+    : A extends E
+    ? {a: number}
+    : A extends F
+    ? (A)
+    : A extends G
+    ? `foo${A}`
+    : A extends H
+    ? [A] 
+    : never
+  var a;
+Execute:
+  AssertEqual 'typescriptStringLiteralType', SyntaxAt(2, 5)
+  AssertEqual 'typescriptNumericLiteralType', SyntaxAt(4, 5)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(6, 5)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(8, 9)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(10, 6)
+  AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(12, 5)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(14, 6)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(15, 5)
+  AssertEqual 'typescriptVariable', SyntaxAt(16, 1)
+
+Given typescript (infer keyword):
+  type T = A extends F<infer B> ? C : D
+Execute:
+  AssertEqual 'typescriptInferTypeKeyword', SyntaxAt(1, 22)
+
+Given typescript (function type with newline):
+  type T = (
+    arg: A
+  ) => B
+  var a
+Execute:
+  " This is not precise(`arg` should typescriptFuncType) but better than before.
+  " And more precise analysis is difficult
+  AssertEqual 'typescriptTypeReference', SyntaxAt(2, 3)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 6)
+  AssertEqual 'typescriptVariable', SyntaxAt(4, 1)
+
+Given typescript (comment in type):
+  type A =
+    // A is X
+    X
+    /* ... or Y */
+    | B
+Execute:
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 3)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(5, 5)

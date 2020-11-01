@@ -29,7 +29,7 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/\></ end=/>/
   \ contains=@typescriptType
   \ nextgroup=typescriptFuncCallArg,@typescriptTypeOperator
-  \ contained skipwhite
+  \ contained skipwhite skipempty
 
 
 syntax cluster typescriptType contains=
@@ -42,11 +42,13 @@ syntax cluster typescriptType contains=
 " type indexing A['key']
 syntax region typescriptTypeBracket contained
   \ start=/\[/ end=/\]/
-  \ contains=typescriptString,typescriptNumber
+  \ contains=typescriptStringLiteralType,typescriptNumericLiteralType,typescriptTypeReference
   \ nextgroup=@typescriptTypeOperator
   \ skipwhite skipempty
 
 syntax cluster typescriptPrimaryType contains=
+  \ typescriptCommentBeforeType,
+  \ typescriptLineCommentBeforeType,
   \ typescriptParenthesizedType,
   \ typescriptPredefinedType,
   \ typescriptTypeReference,
@@ -55,18 +57,42 @@ syntax cluster typescriptPrimaryType contains=
   \ typescriptTypeQuery,
   \ typescriptStringLiteralType,
   \ typescriptTemplateLiteralType,
+  \ typescriptNumericLiteralType,
   \ typescriptReadonlyArrayKeyword,
+  \ typescriptInferTypeKeyword,
   \ typescriptAssertType
+
+syntax match   typescriptLineCommentBeforeType "//.*"
+  \ contained
+  \ nextgroup=@typescriptPrimaryType
+  \ skipempty skipwhite
+
+syntax region  typescriptCommentBeforeType
+  \ start="/\*"  end="\*/"
+  \ contained
+  \ nextgroup=@typescriptPrimaryType
+  \ skipempty skipwhite
+
+syntax match   typescriptLineCommentBeforeTypeOperator "//.*"
+  \ contained
+  \ nextgroup=@typescriptTypeOperator
+  \ skipempty skipwhite
+
+syntax region  typescriptCommentBeforeTypeOperator
+  \ start="/\*"  end="\*/"
+  \ contained
+  \ nextgroup=@typescriptTypeOperator
+  \ skipempty skipwhite
 
 syntax region  typescriptStringLiteralType contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1\|$/
-  \ nextgroup=typescriptUnion
+  \ nextgroup=@typescriptTypeOperator
   \ skipwhite skipempty
 
 syntax region  typescriptTemplateLiteralType contained
   \ start=/`/  skip=/\\\\\|\\`\|\n/  end=/`\|$/
   \ contains=typescriptTemplateSubstitutionType
-  \ nextgroup=typescriptTypeOperator
+  \ nextgroup=@typescriptTypeOperator
   \ skipwhite skipempty
 
 syntax region  typescriptTemplateSubstitutionType matchgroup=typescriptTemplateSB
@@ -74,10 +100,16 @@ syntax region  typescriptTemplateSubstitutionType matchgroup=typescriptTemplateS
   \ contains=@typescriptType
   \ contained
 
+syntax match typescriptNumericLiteralType /\<0[bB][01][01_]*\>/        nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+syntax match typescriptNumericLiteralType /\<0[oO][0-7][0-7_]*\>/       nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+syntax match typescriptNumericLiteralType /\<0[xX][0-9a-fA-F][0-9a-fA-F_]*\>/ nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+syntax match typescriptNumericLiteralType /\<\%(\d[0-9_]*\%(\.\d[0-9_]*\)\=\|\.\d[0-9_]*\)\%([eE][+-]\=\d[0-9_]*\)\=\>/
+  \ nextgroup=@typescriptTypeOperator skipwhite skipempty contained
+
 syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ start=/(/ end=/)/
   \ contains=@typescriptType
-  \ nextgroup=@typescriptTypeOperator
+  \ nextgroup=@typescriptTypeOperator,typescriptFuncTypeArrow
   \ contained skipwhite skipempty fold
 
 syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
@@ -110,10 +142,17 @@ syntax match typescriptTupleLable /\K\k*?\?:/
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
   \ contains=@typescriptType,@typescriptComments,typescriptRestOrSpread,typescriptTupleLable
-  \ contained skipwhite
+  \ nextgroup=@typescriptTypeOperator
+  \ contained skipwhite skipempty
 
 syntax cluster typescriptTypeOperator
-  \ contains=typescriptUnion,typescriptTypeBracket,typescriptConstraint,typescriptConditionalType
+  \ contains=
+  \ typescriptCommentBeforeTypeOperator,
+  \ typescriptLineCommentBeforeTypeOperator,
+  \ typescriptUnion,
+  \ typescriptTypeBracket,
+  \ typescriptConstraint,
+  \ typescriptConditionalType
 
 syntax match typescriptUnion /|\|&/ contained nextgroup=@typescriptPrimaryType skipwhite skipempty
 
@@ -211,4 +250,9 @@ syntax region typescriptAliasDeclaration matchgroup=typescriptUnion
 
 syntax keyword typescriptReadonlyArrayKeyword readonly
   \ nextgroup=@typescriptPrimaryType
+  \ skipwhite
+
+syntax keyword typescriptInferTypeKeyword infer
+  \ contained
+  \ nextgroup=typescriptTypeReference
   \ skipwhite
