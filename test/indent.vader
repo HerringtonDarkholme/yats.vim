@@ -1,7 +1,7 @@
 Given typescript (Correct indentation after equals):
   function foo(
     bar = 1,
-  ): {
+  ): number {
     return bar
   }
   const d = {
