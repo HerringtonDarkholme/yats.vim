@@ -81,7 +81,7 @@ syntax region typescriptParenthesizedType matchgroup=typescriptParens
   \ contained skipwhite skipempty fold
 
 syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
-  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType
+  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType,typescriptCastKeyword
   \ skipwhite contained skipempty
 
 syntax keyword typescriptPredefinedType any number boolean string void never undefined null object unknown

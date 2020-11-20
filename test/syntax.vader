@@ -909,3 +909,13 @@ Given typescript (ternary in objeect):
 Execute:
   AssertEqual 'typescriptTemplateSubstitution', SyntaxAt(2, 33)
   AssertEqual 'typescriptTemplateSB', SyntaxAt(2, 36)
+
+Given typescript (key mapping in mapped types):
+  type MappedTypeWithNewKeys<T> = {
+    [K in keyof T as NewKeyType]: T[K]
+  }
+Execute:
+  " 'a' at 'as' to check the keyword is highlighted
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(2, 17)
+  " 'N' at 'NewKeyType' to check converted type is highlighted
+  AssertEqual 'typescriptTypeReference', SyntaxAt(2, 20)
