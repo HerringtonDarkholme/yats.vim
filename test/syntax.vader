@@ -910,12 +910,38 @@ Execute:
   AssertEqual 'typescriptTemplateSubstitution', SyntaxAt(2, 33)
   AssertEqual 'typescriptTemplateSB', SyntaxAt(2, 36)
 
-Given typescript (key mapping in mapped types):
-  type MappedTypeWithNewKeys<T> = {
+Given typescript (key remapping in mapped types):
+  type A<T> = {
     [K in keyof T as NewKeyType]: T[K]
-  }
+  };
+  type B<T, U> = {
+    [K in keyof SomeType<U> as NewKeyType]: T[K]
+  };
+  type B<T, X, Y, Z> = {
+    [K in keyof X | Y | Z as NewKeyType]: T[K]
+  };
+  type RemoveKindField<T> = {
+    [K in keyof T as Exclude<K, "kind">]: T[K]
+  };
+  type Getters<T> = {
+    [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K]
+  };
 Execute:
   " 'a' at 'as' to check the keyword is highlighted
   AssertEqual 'typescriptCastKeyword', SyntaxAt(2, 17)
   " 'N' at 'NewKeyType' to check converted type is highlighted
   AssertEqual 'typescriptTypeReference', SyntaxAt(2, 20)
+  " A bit complicated type at operand of keyof
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(5, 27)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(5, 30)
+  " Union type at operand of keyof
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(8, 25)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(8, 28)
+  " Type modification at operand of 'as'
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(11, 17)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(11, 20)
+  AssertEqual 'typescriptStringLiteralType', SyntaxAt(11, 31)
+  " Template literal type at operand of 'as'
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(14, 17)
+  AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(14, 20)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(14, 26)
