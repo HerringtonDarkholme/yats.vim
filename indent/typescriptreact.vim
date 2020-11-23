@@ -20,6 +20,11 @@ setlocal indentkeys=0{,0},0),0],0\,,!^F,o,O,e
 " XML indentkeys
 setlocal indentkeys+=*<Return>,<>>,<<>,/
 
+" Only define the function once.
+if exists("*GetTsxIndent")
+  finish
+endif
+
 " Multiline end tag regex (line beginning with '>' or '/>')
 let s:endtag = '^\s*\/\?>\s*;\='
 let s:startexp = '[\{\(]\s*$'
