@@ -23,13 +23,13 @@ syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax match   typescriptArrowFuncDef          contained /(\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
+syntax match   typescriptArrowFuncDef          contained /\(<.*>\)\?(\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/
+  \ contains=typescriptTypeParameters,typescriptArrowFuncArg,typescriptArrowFunc
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\+\|(\_[^()]*)\)*):/ end=/=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
+syntax region  typescriptArrowFuncDef          contained start=/\(<.*>\)\?(\%(\_[^()]\+\|(\_[^()]*)\)*):/ end=/=>/
+  \ contains=typescriptTypeParameters,typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend
 

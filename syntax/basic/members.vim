@@ -24,7 +24,7 @@ syntax match typescriptMemberOptionality /?\|!/ contained
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ skipwhite skipempty
 
-syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember
+syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember,typescriptNumber
 
 syntax keyword typescriptClassStatic static
   \ nextgroup=@typescriptMembers,typescriptAsyncFuncKeyword,typescriptReadonlyModifier

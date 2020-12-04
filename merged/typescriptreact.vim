@@ -263,7 +263,7 @@ syntax match typescriptNumber /\<\%(\d[0-9_]*\%(\.\d[0-9_]*\)\=\|\.\d[0-9_]*\)\%
 
 syntax region  typescriptObjectLiteral         matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=@typescriptComments,typescriptObjectLabel,typescriptStringProperty,typescriptComputedPropertyName,typescriptObjectAsyncKeyword
+  \ contains=@typescriptComments,typescriptObjectLabel,typescriptStringProperty,typescriptComputedPropertyName,typescriptObjectAsyncKeyword,typescriptTernary
   \ fold contained
 
 syntax keyword typescriptObjectAsyncKeyword async contained
@@ -2009,7 +2009,7 @@ syntax match typescriptMemberOptionality /?\|!/ contained
   \ nextgroup=typescriptTypeAnnotation,@typescriptCallSignature
   \ skipwhite skipempty
 
-syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember
+syntax cluster typescriptMembers contains=typescriptMember,typescriptStringMember,typescriptComputedMember,typescriptNumber
 
 syntax keyword typescriptClassStatic static
   \ nextgroup=@typescriptMembers,typescriptAsyncFuncKeyword,typescriptReadonlyModifier
@@ -2026,7 +2026,7 @@ syntax region  typescriptStringMember   contained
 
 syntax region  typescriptComputedMember   contained matchgroup=typescriptProperty
   \ start=/\[/rs=s+1 end=/]/
-  \ contains=@typescriptValue,typescriptMember,typescriptMappedIn
+  \ contains=@typescriptValue,typescriptMember,typescriptMappedIn,typescriptCastKeyword
   \ nextgroup=@memberNextGroup
   \ skipwhite skipempty
 
@@ -2155,28 +2155,18 @@ syntax match   typescriptFuncName              contained /\K\k*/
   \ nextgroup=@typescriptCallSignature
   \ skipwhite
 
-" destructuring ({ a: ee }) =>
-syntax match   typescriptArrowFuncDef          contained /(\(\s*\({\_[^}]*}\|\k\+\)\(:\_[^)]\)\?,\?\)\+)\s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty
-
-" matches `(a) =>` or `([a]) =>` or
-" `(
-"  a) =>`
-syntax match   typescriptArrowFuncDef          contained /(\(\_s*[a-zA-Z\$_\[.]\_[^)]*\)*)\s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty
-
 syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-" TODO: optimize this pattern
-syntax region   typescriptArrowFuncDef          contained start=/(\_[^(^)]*):/ end=/=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
+syntax match   typescriptArrowFuncDef          contained /\(<.*>\)\?(\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/
+  \ contains=typescriptTypeParameters,typescriptArrowFuncArg,typescriptArrowFunc
+  \ nextgroup=@typescriptExpression,typescriptBlock
+  \ skipwhite skipempty
+
+syntax region  typescriptArrowFuncDef          contained start=/\(<.*>\)\?(\%(\_[^()]\+\|(\_[^()]*)\)*):/ end=/=>/
+  \ contains=typescriptTypeParameters,typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend
 
