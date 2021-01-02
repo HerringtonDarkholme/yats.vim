@@ -618,13 +618,27 @@ Given typescript (decorator generics):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 6)
 
+Given typescript (empty arrow function):
+  let a = () => { }
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 11)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 12)
+
+Given typescript (single argument arrow function):
+  let a = a => a
+Execute:
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 9)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 10)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 11)
+
 Given typescript (simple arrow function):
   let a = ( a: string ) => { console.log(arg) }
 Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 9)
   AssertEqual 'typescriptCall', SyntaxAt(1, 11)
   AssertEqual 'typescriptParens', SyntaxAt(1, 21)
-  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 22)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 22)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 23)
 
 Given typescript (spread arguments in arrow function):
@@ -655,10 +669,20 @@ Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 9)
   AssertEqual 'typescriptParens', SyntaxAt(1, 11)
   AssertEqual 'typescriptParens', SyntaxAt(1, 12)
-  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 13)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 14)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 15)
   AssertEqual 'typescriptParenExp', SyntaxAt(1, 16)
+
+Given typescript (parenthesized single argument arrow function):
+  let a = ( a => {} )
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 11)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 12)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 14)
+  AssertEqual 'typescriptParenExp', SyntaxAt(1, 15)
 
 Given typescript (parenthesized arrow function with return type):
   let a = ((...a: any[]): void => {})
@@ -667,6 +691,31 @@ Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 10)
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 11)
   AssertEqual 'typescriptCall', SyntaxAt(1, 14)
+
+Given typescript (generic arrow function):
+  let a = <T>( a: T ) => { }
+Execute:
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 10)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 20)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 21)
+
+Given typescript (async arrow function):
+  let a = async ( a: T ) => { }
+Execute:
+  AssertEqual 'typescriptAsyncFuncKeyword', SyntaxAt(1, 9)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 16)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 23)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 24)
+
+Given typescript (async generic arrow function):
+  let a = async <T>( a: T ) => { }
+Execute:
+  AssertEqual 'typescriptAsyncFuncKeyword', SyntaxAt(1, 9)
+  AssertEqual 'typescriptTypeParameter', SyntaxAt(1, 16)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 19)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 26)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 27)
 
 Given typescript (multiline tuple type):
   type Tuple = [
