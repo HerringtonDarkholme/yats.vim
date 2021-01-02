@@ -1,5 +1,5 @@
 syntax keyword typescriptAsyncFuncKeyword      async
-  \ nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef
+  \ nextgroup=typescriptFuncKeyword,typescriptArrowFuncDef,typescriptArrowFuncTypeParameter
   \ skipwhite
 
 syntax keyword typescriptAsyncFuncKeyword      await
@@ -24,18 +24,22 @@ syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
   \ skipwhite skipempty
 
 syntax match   typescriptArrowFuncDef          contained /(\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
+  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,@typescriptCallSignature
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\+\|(\_[^()]*)\)*):/ end=/=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
+syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\+\|(\_[^()]*)\)*):/ matchgroup=typescriptArrowFunc end=/=>/
+  \ contains=typescriptArrowFuncArg,typescriptTypeAnnotation,@typescriptCallSignature
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend
 
+syntax region  typescriptArrowFuncTypeParameter start=/</ end=/>/
+  \ contains=@typescriptTypeParameterCluster
+  \ nextgroup=typescriptArrowFuncDef
+  \ contained skipwhite skipnl
+
 syntax match   typescriptArrowFunc             /=>/
 syntax match   typescriptArrowFuncArg          contained /\K\k*/
-syntax region  typescriptArrowFuncArg          contained start=/<\|(/ end=/\ze=>/ contains=@typescriptCallSignature
 
 syntax region typescriptReturnAnnotation contained start=/:/ end=/{/me=e-1 contains=@typescriptType nextgroup=typescriptBlock
 
