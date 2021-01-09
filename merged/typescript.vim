@@ -236,7 +236,7 @@ syntax match   typescriptBinaryOp contained /-\(-\|=\)\?/ nextgroup=@typescriptV
 " 2: **, **=
 syntax match typescriptBinaryOp contained /\*\*=\?/ nextgroup=@typescriptValue
 
-syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernary,typescriptAssign,typescriptCastKeyword
+syntax cluster typescriptSymbols               contains=typescriptBinaryOp,typescriptKeywordOp,typescriptTernary,typescriptAssign,typescriptCastKeyword,typescriptRestOrSpread,typescriptObjectSpread
 
 " runtime syntax/basic/reserved.vim
 "Import
@@ -589,7 +589,7 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ nextgroup=typescriptTypeAnnotation,typescriptBlock
   \ contained skipwhite skipnl
 
-syntax match typescriptTypeAnnotation /:/
+syntax match typescriptTypeAnnotation /:\ze\s*[a-z]/
   \ nextgroup=@typescriptType
   \ contained skipwhite skipnl
 

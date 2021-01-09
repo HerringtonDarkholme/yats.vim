@@ -28,7 +28,7 @@ syntax match   typescriptArrowFuncDef          contained /(\%(\_[^()]\+\|(\_[^()
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\+\|(\_[^()]*)\)*):/ matchgroup=typescriptArrowFunc end=/=>/
+syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\+\|(\_[^()]*)\)*):\s*\K/ matchgroup=typescriptArrowFunc end=/=>/
   \ contains=typescriptArrowFuncArg,typescriptTypeAnnotation,@typescriptCallSignature
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend

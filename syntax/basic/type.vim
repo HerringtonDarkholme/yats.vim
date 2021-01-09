@@ -166,7 +166,7 @@ syntax region typescriptCall matchgroup=typescriptParens
   \ nextgroup=typescriptTypeAnnotation,typescriptBlock
   \ contained skipwhite skipnl
 
-syntax match typescriptTypeAnnotation /:/
+syntax match typescriptTypeAnnotation /:\ze\s*\K/
   \ nextgroup=@typescriptType
   \ contained skipwhite skipnl
 
