@@ -1080,3 +1080,9 @@ Execute:
   AssertEqual 'typescriptVariable', SyntaxAt(2, 3)
   AssertEqual 'typescriptAssign', SyntaxAt(2, 14)
   AssertEqual 'typescriptString', SyntaxAt(2, 16)
+
+Given typescript (expressions after property accessor with bracket notation):
+  a[0] || a
+Execute:
+  AssertEqual 'typescriptProperty', SyntaxAt(1, 2)
+  AssertEqual 'typescriptBinaryOp', SyntaxAt(1, 6)
