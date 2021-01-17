@@ -1061,3 +1061,22 @@ Execute:
   AssertEqual 'typescriptCastKeyword', SyntaxAt(14, 17)
   AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(14, 20)
   AssertEqual 'typescriptTypeReference', SyntaxAt(14, 26)
+
+Given typescript (arrow function and parenthesized types inside function arguments):
+  export const fn = async (fn: (a: number, b: number) => number, arg: (T | U)[]) => {
+    const body = "isWrong"
+  }
+Execute:
+  " Arrow function inside function arguments
+  AssertEqual 'typescriptCall', SyntaxAt(1, 26)
+  AssertEqual 'typescriptFuncType', SyntaxAt(1, 31)
+  AssertEqual 'typescriptFuncType', SyntaxAt(1, 42)
+  AssertEqual 'typescriptFuncTypeArrow', SyntaxAt(1, 53)
+  " Types in parenthesis inside function arguments
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 70)
+  AssertEqual 'typescriptUnion', SyntaxAt(1, 72)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 74)
+  " Function body
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 3)
+  AssertEqual 'typescriptAssign', SyntaxAt(2, 14)
+  AssertEqual 'typescriptString', SyntaxAt(2, 16)
