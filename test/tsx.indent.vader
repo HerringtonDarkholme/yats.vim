@@ -8,7 +8,7 @@ Given typescriptreact (html end tags):
   onremove={() => console.log('bye')}
   </div>
 
-Do (indent the block):
+Do (FIXME: indent the block):
   gg=G
 
 Expect typescriptreact indented block:
@@ -53,7 +53,7 @@ Given typescriptreact (badly indented component):
   		}
   }
 
-Do (indent the block):
+Do (FIXME: indent the block):
   gg=G
 
 Expect typescriptreact indented blocks:
@@ -129,7 +129,7 @@ Given typescriptreact (badly indented component + non tsx):
   		}
   }
 
-Do (indent the block):
+Do (FIXME: indent the block):
   gg=G
 
 Expect typescriptreact indented blocks:
