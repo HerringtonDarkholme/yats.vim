@@ -22,6 +22,35 @@ Config
 
 * Note: `set re=0` explicitly in your vimrc. Old regexp engine will incur performance issues for yats and old engine is usually turned on by other plugins.
 
+Concealing Characters
+----
+
+You can customize concealing characters, if your font provides the glyph you want, by defining one or more of the following variables:
+
+```vim
+let g:typescript_conceal_function             = "ƒ"
+let g:typescript_conceal_null                 = "ø"
+let g:typescript_conceal_this                 = "@"
+let g:typescript_conceal_return               = "⇚"
+let g:typescript_conceal_undefined            = "¿"
+let g:typescript_conceal_prototype            = "¶"
+let g:typescript_conceal_super                = "Ω"
+```
+
+You can enable concealing within VIM with:
+
+```vim
+set conceallevel=1
+```
+
+OR if you wish to toggle concealing you may wish to bind a command such as the following which will map `<LEADER>l` (leader is usually the `\` key) to toggling conceal mode:
+
+```vim
+map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+```
+
+
+
 Credits
 -------
 

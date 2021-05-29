@@ -12,19 +12,11 @@ syntax match typescriptExportType              /\<type\s*{\@=/
   \ contained skipwhite skipempty skipnl
 syntax keyword typescriptModule                namespace module
 
-"this
-
-"JavaScript Prototype
-syntax keyword typescriptPrototype             prototype
-  \ nextgroup=@afterIdentifier
 
 syntax keyword typescriptCastKeyword           as
   \ nextgroup=@typescriptType
   \ skipwhite
 
-"Program Keywords
-syntax keyword typescriptIdentifier            arguments this super
-  \ nextgroup=@afterIdentifier
 
 syntax keyword typescriptVariable              let var
   \ nextgroup=@typescriptVariableDeclarations
@@ -46,7 +38,6 @@ syntax keyword typescriptOperator              delete new typeof void
 
 syntax keyword typescriptForOperator           contained in of
 syntax keyword typescriptBoolean               true false nextgroup=@typescriptSymbols skipwhite skipempty
-syntax keyword typescriptNull                  null undefined nextgroup=@typescriptSymbols skipwhite skipempty
 syntax keyword typescriptMessage               alert confirm prompt status
   \ nextgroup=typescriptDotNotation,typescriptFuncCallArg
 syntax keyword typescriptGlobal                self top parent
@@ -64,7 +55,6 @@ syntax keyword typescriptCase                  case nextgroup=@typescriptPrimiti
 syntax keyword typescriptDefault               default containedin=typescriptBlock nextgroup=@typescriptValue,typescriptClassKeyword,typescriptInterfaceKeyword skipwhite oneline
 syntax keyword typescriptStatementKeyword      with
 syntax keyword typescriptStatementKeyword      yield skipwhite nextgroup=@typescriptValue containedin=typescriptBlock
-syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock
 
 syntax keyword typescriptTry                   try
 syntax keyword typescriptExceptions            catch throw finally
@@ -94,3 +84,14 @@ syntax cluster typescriptAmbients contains=
   \ typescriptAbstract,
   \ typescriptEnumKeyword,typescriptEnum,
   \ typescriptModule
+
+"Program Keywords
+syntax keyword typescriptNull                  null nextgroup=@typescriptSymbols skipwhite skipempty
+syntax keyword typescriptNull                  undefined nextgroup=@typescriptSymbols skipwhite skipempty
+"this
+syntax keyword typescriptIdentifier            arguments  nextgroup=@afterIdentifier
+syntax keyword typescriptIdentifier            this  nextgroup=@afterIdentifier
+syntax keyword typescriptIdentifier            super nextgroup=@afterIdentifier
+"JavaScript Prototype
+syntax keyword typescriptPrototype             prototype nextgroup=@afterIdentifier
+syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock
