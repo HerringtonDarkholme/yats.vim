@@ -85,13 +85,14 @@ syntax cluster typescriptAmbients contains=
   \ typescriptEnumKeyword,typescriptEnum,
   \ typescriptModule
 
-"Program Keywords
-syntax keyword typescriptNull                  null nextgroup=@typescriptSymbols skipwhite skipempty
-syntax keyword typescriptNull                  undefined nextgroup=@typescriptSymbols skipwhite skipempty
-"this
 syntax keyword typescriptIdentifier            arguments  nextgroup=@afterIdentifier
-syntax keyword typescriptIdentifier            this  nextgroup=@afterIdentifier
-syntax keyword typescriptIdentifier            super nextgroup=@afterIdentifier
+
+"Program Keywords
+exec 'syntax keyword typescriptNull null '.(exists('g:typescript_conceal_null') ? 'conceal cchar='.g:typescript_conceal_null : '').' nextgroup=@typescriptSymbols skipwhite skipempty'
+exec 'syntax keyword typescriptNull undefined '.(exists('g:typescript_conceal_undefined') ? 'conceal cchar='.g:typescript_conceal_undefined : '').' nextgroup=@typescriptSymbols skipwhite skipempty'
+"this
+exec 'syntax keyword typescriptIdentifier this '.(exists('g:typescript_conceal_this') ? 'conceal cchar='.g:typescript_conceal_this : '').' nextgroup=@afterIdentifier'
+exec 'syntax keyword typescriptIdentifier super '.(exists('g:typescript_conceal_super') ? 'conceal cchar='.g:typescript_conceal_super : '').' nextgroup=@afterIdentifier'
 "JavaScript Prototype
-syntax keyword typescriptPrototype             prototype nextgroup=@afterIdentifier
-syntax keyword typescriptStatementKeyword      return skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock
+exec 'syntax keyword typescriptPrototype prototype '.(exists('g:typescript_conceal_prototype') ? 'conceal cchar='.g:typescript_conceal_prototype : '').' nextgroup=@afterIdentifier'
+exec 'syntax keyword typescriptStatementKeyword return '.(exists('g:typescript_conceal_return') ? 'conceal cchar='.g:typescript_conceal_return : '').' skipwhite contained nextgroup=@typescriptValue containedin=typescriptBlock'
