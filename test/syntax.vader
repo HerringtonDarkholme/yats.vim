@@ -143,7 +143,74 @@ Execute:
 Given typescript (as in paren):
   (this as number)
 Execute:
-  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 12)
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 7)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 10)
+
+Given typescript (as in function call arguments):
+  foo(this as number)
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 10)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 13)
+
+Given typescript (as in array initialization):
+  const a = [this as number]
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 17)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 20)
+
+Given typescript (as in object initialization):
+  const a = {a: 1 as number}
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 17)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 20)
+
+Given typescript (as in property expression):
+  this["foo" as string]
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 12)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 15)
+
+Given typescript (as in template substitution):
+  const a = `foo${1 as number}`
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 19)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 22)
+
+Given typescript (as after number):
+  const a = 1 as number
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 13)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 16)
+
+Given typescript (as after boolean):
+  const a = true as boolean
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 16)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 19)
+
+Given typescript (as after string):
+  const a = "foo" as string
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 17)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 20)
+
+Given typescript (as after paren):
+  const a = (a) as T
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 15)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 18)
+
+Given typescript (as after array):
+  const a = [a] as T
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 15)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 18)
+
+Given typescript (as after object):
+  const a = {a} as T
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 15)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 18)
 
 Given typescript (access property):
   const offset = abc[i]
@@ -453,8 +520,38 @@ Given typescript (high order arrow func in class):
     a = (a: () => void) => { }
   }
 Execute:
+  AssertEqual 'typescriptFuncTypeArrow', SyntaxAt(2, 14)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 17)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 23)
 
+Given typescript (high order arrow func with return type in class):
+  class A {
+    a = (a: () => void): void => { }
+  }
+Execute:
+  AssertEqual 'typescriptFuncTypeArrow', SyntaxAt(2, 14)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 17)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 24)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 29)
+
+Given typescript (assign arrow func in expression paren):
+  let a
+  const b = (a = () => void 0)
+  const c = 1
+Execute:
+  AssertEqual 'typescriptParenExp', SyntaxAt(2, 13)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 19)
+  AssertEqual 'typescriptVariable', SyntaxAt(3, 1)
+
+Given typescript (assign arrow func with return type in expression paren):
+  let a
+  const b = (a = (): void => void 0)
+  const c = 1
+Execute:
+  AssertEqual 'typescriptParenExp', SyntaxAt(2, 13)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 20)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(2, 25)
+  AssertEqual 'typescriptVariable', SyntaxAt(3, 1)
 
 Given typescript (line break after interface):
   interface A
@@ -521,13 +618,27 @@ Given typescript (decorator generics):
 Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 6)
 
+Given typescript (empty arrow function):
+  let a = () => { }
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 11)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 12)
+
+Given typescript (single argument arrow function):
+  let a = a => a
+Execute:
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 9)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 10)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 11)
+
 Given typescript (simple arrow function):
   let a = ( a: string ) => { console.log(arg) }
 Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 9)
   AssertEqual 'typescriptCall', SyntaxAt(1, 11)
   AssertEqual 'typescriptParens', SyntaxAt(1, 21)
-  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 22)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 22)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 23)
 
 Given typescript (spread arguments in arrow function):
@@ -558,10 +669,20 @@ Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 9)
   AssertEqual 'typescriptParens', SyntaxAt(1, 11)
   AssertEqual 'typescriptParens', SyntaxAt(1, 12)
-  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 13)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 14)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 15)
   AssertEqual 'typescriptParenExp', SyntaxAt(1, 16)
+
+Given typescript (parenthesized single argument arrow function):
+  let a = ( a => {} )
+Execute:
+  AssertEqual 'typescriptParens', SyntaxAt(1, 9)
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(1, 11)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 12)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 14)
+  AssertEqual 'typescriptParenExp', SyntaxAt(1, 15)
 
 Given typescript (parenthesized arrow function with return type):
   let a = ((...a: any[]): void => {})
@@ -570,6 +691,31 @@ Execute:
   AssertEqual 'typescriptParens', SyntaxAt(1, 10)
   AssertEqual 'typescriptRestOrSpread', SyntaxAt(1, 11)
   AssertEqual 'typescriptCall', SyntaxAt(1, 14)
+
+Given typescript (generic arrow function):
+  let a = <T>( a: T ) => { }
+Execute:
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 10)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 13)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 20)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 21)
+
+Given typescript (async arrow function):
+  let a = async ( a: T ) => { }
+Execute:
+  AssertEqual 'typescriptAsyncFuncKeyword', SyntaxAt(1, 9)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 16)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 23)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 24)
+
+Given typescript (async generic arrow function):
+  let a = async <T>( a: T ) => { }
+Execute:
+  AssertEqual 'typescriptAsyncFuncKeyword', SyntaxAt(1, 9)
+  AssertEqual 'typescriptTypeParameter', SyntaxAt(1, 16)
+  AssertEqual 'typescriptCall', SyntaxAt(1, 19)
+  AssertEqual 'typescriptArrowFuncDef', SyntaxAt(1, 26)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(1, 27)
 
 Given typescript (multiline tuple type):
   type Tuple = [
@@ -879,3 +1025,58 @@ Given typescript (ternary in objeect):
 Execute:
   AssertEqual 'typescriptTemplateSubstitution', SyntaxAt(2, 33)
   AssertEqual 'typescriptTemplateSB', SyntaxAt(2, 36)
+
+Given typescript (key remapping in mapped types):
+  type A<T> = {
+    [K in keyof T as NewKeyType]: T[K]
+  };
+  type B<T, U> = {
+    [K in keyof SomeType<U> as NewKeyType]: T[K]
+  };
+  type B<T, X, Y, Z> = {
+    [K in keyof X | Y | Z as NewKeyType]: T[K]
+  };
+  type RemoveKindField<T> = {
+    [K in keyof T as Exclude<K, "kind">]: T[K]
+  };
+  type Getters<T> = {
+    [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K]
+  };
+Execute:
+  " 'a' at 'as' to check the keyword is highlighted
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(2, 17)
+  " 'N' at 'NewKeyType' to check converted type is highlighted
+  AssertEqual 'typescriptTypeReference', SyntaxAt(2, 20)
+  " A bit complicated type at operand of keyof
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(5, 27)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(5, 30)
+  " Union type at operand of keyof
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(8, 25)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(8, 28)
+  " Type modification at operand of 'as'
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(11, 17)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(11, 20)
+  AssertEqual 'typescriptStringLiteralType', SyntaxAt(11, 31)
+  " Template literal type at operand of 'as'
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(14, 17)
+  AssertEqual 'typescriptTemplateLiteralType', SyntaxAt(14, 20)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(14, 26)
+
+Given typescript (arrow function and parenthesized types inside function arguments):
+  export const fn = async (fn: (a: number, b: number) => number, arg: (T | U)[]) => {
+    const body = "isWrong"
+  }
+Execute:
+  " Arrow function inside function arguments
+  AssertEqual 'typescriptCall', SyntaxAt(1, 26)
+  AssertEqual 'typescriptFuncType', SyntaxAt(1, 31)
+  AssertEqual 'typescriptFuncType', SyntaxAt(1, 42)
+  AssertEqual 'typescriptFuncTypeArrow', SyntaxAt(1, 53)
+  " Types in parenthesis inside function arguments
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 70)
+  AssertEqual 'typescriptUnion', SyntaxAt(1, 72)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 74)
+  " Function body
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 3)
+  AssertEqual 'typescriptAssign', SyntaxAt(2, 14)
+  AssertEqual 'typescriptString', SyntaxAt(2, 16)

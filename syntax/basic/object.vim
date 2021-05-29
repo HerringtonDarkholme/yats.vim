@@ -1,6 +1,6 @@
 syntax region  typescriptObjectLiteral         matchgroup=typescriptBraces
   \ start=/{/ end=/}/
-  \ contains=@typescriptComments,typescriptObjectLabel,typescriptStringProperty,typescriptComputedPropertyName,typescriptObjectAsyncKeyword,typescriptTernary
+  \ contains=@typescriptComments,typescriptObjectLabel,typescriptStringProperty,typescriptComputedPropertyName,typescriptObjectAsyncKeyword,typescriptTernary,typescriptCastKeyword
   \ fold contained
 
 syntax keyword typescriptObjectAsyncKeyword async contained
