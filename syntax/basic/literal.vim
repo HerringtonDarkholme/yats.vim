@@ -28,6 +28,8 @@ syntax region  typescriptTemplate
   \ nextgroup=@typescriptSymbols
   \ skipwhite skipempty
 
+syntax match typescriptTaggedTemplate /\<\K\k*\ze`/ nextgroup=typescriptTemplate
+
 "Array
 syntax region  typescriptArray matchgroup=typescriptBraces
   \ start=/\[/ end=/]/
