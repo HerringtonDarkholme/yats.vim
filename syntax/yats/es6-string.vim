@@ -10,7 +10,7 @@ syntax keyword typescriptStringMethod contained padStart padEnd repeat replace s
 syntax keyword typescriptStringMethod contained slice split startsWith substr substring nextgroup=typescriptFuncCallArg
 syntax keyword typescriptStringMethod contained toLocaleLowerCase toLocaleUpperCase nextgroup=typescriptFuncCallArg
 syntax keyword typescriptStringMethod contained toLowerCase toString toUpperCase trim nextgroup=typescriptFuncCallArg
-syntax keyword typescriptStringMethod contained valueOf nextgroup=typescriptFuncCallArg
+syntax keyword typescriptStringMethod contained trimEnd trimStart valueOf nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptStringMethod
 if exists("did_typescript_hilink") | HiLink typescriptStringMethod Keyword
 endif
