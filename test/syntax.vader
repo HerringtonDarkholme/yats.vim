@@ -1086,3 +1086,9 @@ Given typescript (expressions after property accessor with bracket notation):
 Execute:
   AssertEqual 'typescriptProperty', SyntaxAt(1, 2)
   AssertEqual 'typescriptBinaryOp', SyntaxAt(1, 6)
+
+Given typescript (type modifier on import name):
+  import { type BaseType } from "./some-module.js";
+Execute:
+  AssertEqual 'typescriptImportType', SyntaxAt(1, 10)
+  AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(1, 15)
