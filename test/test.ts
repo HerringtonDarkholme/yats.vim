@@ -1,3 +1,4 @@
+import { EEE, type Test, DDD } from 'test'
 var a = (): string => 123
 var p: Promise<void>
 
