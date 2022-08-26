@@ -13,10 +13,9 @@ syntax match typescriptExportType              /\<type\s*{\@=/
 syntax keyword typescriptModule                namespace module
 
 
-syntax keyword typescriptCastKeyword           as
+syntax keyword typescriptCastKeyword           as satisfies
   \ nextgroup=@typescriptType
   \ skipwhite
-
 
 syntax keyword typescriptVariable              let var
   \ nextgroup=@typescriptVariableDeclarations

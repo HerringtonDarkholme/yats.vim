@@ -212,6 +212,12 @@ Execute:
   AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 15)
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 18)
 
+Given typescript (contextual operator):
+  let p = { kind: "cat", meows: true } satisfies Animal;
+Execute:
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 40)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 52)
+
 Given typescript (access property):
   const offset = abc[i]
   const index = offset + i;
