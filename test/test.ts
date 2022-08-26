@@ -1,3 +1,5 @@
+import { type b} from 'eee'
+
 import { EEE, type Test, DDD } from 'test'
 var a = (): string => 123
 var p: Promise<void>
@@ -138,3 +140,4 @@ const {foo: [a, {b, 'bar': d}, ...x], ...y} = obj;
 
 type Greeting = `hello ${World}`;
 type X = Y extends string ? string : Y
+
