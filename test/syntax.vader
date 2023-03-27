@@ -1098,3 +1098,9 @@ Given typescript (type modifier on import name):
 Execute:
   AssertEqual 'typescriptImportType', SyntaxAt(1, 10)
   AssertNotEqual 'typescriptAliasDeclaration', SyntaxAt(1, 15)
+
+
+Given typescript (console method):
+  var a = { error: val => console.error('ewewe'), }
+Execute:
+  AssertEqual 'typescriptString', SyntaxAt(1, 40)
