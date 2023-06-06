@@ -9,9 +9,9 @@ syntax cluster typescriptStatement
   \ typescriptExport,typescriptInterfaceKeyword,typescriptEnum,
   \ typescriptModule,typescriptAliasKeyword,typescriptImport
 
-syntax cluster typescriptPrimitive  contains=typescriptString,typescriptTemplate,typescriptRegexpString,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
+syntax cluster typescriptPrimitive  contains=typescriptString,typescriptTaggedTemplate,typescriptTemplate,typescriptRegexpString,typescriptNumber,typescriptBoolean,typescriptNull,typescriptArray
 
-syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
+syntax cluster typescriptEventTypes            contains=typescriptEventString,typescriptTaggedTemplate,typescriptTemplate,typescriptNumber,typescriptBoolean,typescriptNull
 
 " top level expression: no arrow func
 " also no func keyword. funcKeyword is contained in statement
