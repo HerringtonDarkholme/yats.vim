@@ -352,7 +352,7 @@ update:
 	@URL=http://github.com/c9s/vim-makefile/raw/master/Makefile ; \
 	if type curl &>/dev/null ; then \
 		curl $$URL -o Makefile ; \
-	if type wget &>/dev/null ; then \
+	elif type wget &>/dev/null ; then \
 		wget -c $$URL ; \
 	elif type fetch &>/dev/null ; then \
 		fetch $$URL ; \
