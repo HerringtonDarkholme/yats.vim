@@ -109,9 +109,9 @@ fetch_url = \
 			exit								\
 		; fi	 							    \
 		; echo " => $(2)"						\
-		; if [[ ! -z `which curl` ]] ; then   \
+		; if type curl &>/dev/null ; then   \
 			curl $(CURL_OPT) $(1) -o $(2) ;					\
-		; elif [[ ! -z `which wget` ]] ; then 	\
+		; elif type wget &>/dev/null ; then	\
 			wget $(WGET_OPT) $(1) -O $(2)  				    \
 		; fi  									\
 		; echo $(2) >> .bundlefiles
@@ -129,9 +129,9 @@ fetch_github = \
 			exit								\
 		; fi	 							    \
 		; echo " => $(5)"						\
-		; if [[ ! -z `which curl` ]] ; then                        	    \
+		; if type curl &>/dev/null ; then	    \
 			curl $(CURL_OPT) http://github.com/$(1)/$(2)/raw/$(3)/$(4) -o $(5)      \
-		; elif [[ ! -z `which wget` ]] ; then                               \
+		; elif type wget &>/dev/null ; then	\
 			wget $(WGET_OPT) http://github.com/$(1)/$(2)/raw/$(3)/$(4) -O $(5)  \
 		; fi									\
 		; echo $(5) >> .bundlefiles
@@ -203,15 +203,15 @@ all: install-deps install
 
 install-deps:
 	# check required binaries
-	[[ -n $$(which git) ]]
-	[[ -n $$(which bash) ]]
-	[[ -n $$(which vim) ]]
-	[[ -n $$(which wget) || -n $$(which curl) ]]
+	type git &>/dev/null
+	type bash &>/dev/null
+	type vim &>/dev/null
+	(type wget || type curl) &>/dev/null
 	$(call install_git_sources)
 
 check-require:
-	@if [[ -n `which wget` || -n `which curl` || -n `which fetch` ]]; then echo "wget|curl|fetch: OK" ; else echo "wget|curl|fetch: NOT OK" ; fi
-	@if [[ -n `which vim` ]] ; then echo "vim: OK" ; else echo "vim: NOT OK" ; fi
+	@if (type wget || type curl || type fetch) &>/dev/null ; then echo "wget|curl|fetch: OK" ; else echo "wget|curl|fetch: NOT OK" ; fi
+	@if type vim &>/dev/null ; then echo "vim: OK" ; else echo "vim: NOT OK" ; fi
 
 config:
 	@rm -f $(CONFIG_FILE)
@@ -243,7 +243,7 @@ init-runtime:
 			mkdir -vp $(VIMRUNTIME)/$$dir ; done ; fi
 
 release:
-	if [[ -n `which vimup` ]] ; then \
+	if type vimup &>/dev/null ; then \
 	fi
 
 pure-install:
@@ -350,11 +350,11 @@ clean-bundle-deps:
 update:
 	@echo "Updating Makefile..."
 	@URL=http://github.com/c9s/vim-makefile/raw/master/Makefile ; \
-	if [[ -n `which curl` ]]; then \
+	if type curl &>/dev/null ; then \
 		curl $$URL -o Makefile ; \
-	if [[ -n `which wget` ]]; then \
+	if type wget &>/dev/null ; then \
 		wget -c $$URL ; \
-	elif [[ -n `which fetch` ]]; then \
+	elif type fetch &>/dev/null ; then \
 		fetch $$URL ; \
 	fi
 
