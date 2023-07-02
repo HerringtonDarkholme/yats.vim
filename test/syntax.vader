@@ -1110,3 +1110,8 @@ Given typescript (ambient export default):
   export function y(): string;
 Execute:
   AssertEqual 'typescriptExport', SyntaxAt(2, 1)
+
+Given typescript (backtick in Error):
+  a = {b: Error(`${a}`)}
+Execute:
+  AssertEqual 'typescriptBraces', SyntaxAt(1, 22)
