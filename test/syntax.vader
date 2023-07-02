@@ -1104,3 +1104,9 @@ Given typescript (console method):
   var a = { error: val => console.error('ewewe'), }
 Execute:
   AssertEqual 'typescriptString', SyntaxAt(1, 40)
+
+Given typescript (ambient export default):
+  export default function x(): number;
+  export function y(): string;
+Execute:
+  AssertEqual 'typescriptExport', SyntaxAt(2, 1)
