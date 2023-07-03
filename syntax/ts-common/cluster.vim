@@ -1,6 +1,6 @@
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
 syntax cluster typescriptStatement
-  \ contains=typescriptBlock,typescriptVariable,
+  \ contains=typescriptBlock,typescriptVariable,typescriptUsing,
   \ @typescriptTopExpression,typescriptAssign,
   \ typescriptConditional,typescriptRepeat,typescriptBranch,
   \ typescriptLabel,typescriptStatementKeyword,

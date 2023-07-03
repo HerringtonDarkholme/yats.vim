@@ -3,7 +3,7 @@ syntax keyword typescriptAsyncFuncKeyword      async
   \ skipwhite
 
 syntax keyword typescriptAsyncFuncKeyword      await
-  \ nextgroup=@typescriptValue
+  \ nextgroup=@typescriptValue,typescriptUsing
   \ skipwhite
 
 exec 'syntax keyword typescriptFuncKeyword '.(exists('g:typescript_conceal_function') ? 'conceal cchar='.g:typescript_conceal_function : '').' function nextgroup=typescriptAsyncFunc,typescriptFuncName,@typescriptCallSignature skipwhite skipempty'

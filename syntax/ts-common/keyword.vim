@@ -25,6 +25,10 @@ syntax keyword typescriptVariable const
   \ nextgroup=typescriptEnum,@typescriptVariableDeclarations
   \ skipwhite skipempty
 
+syntax keyword typescriptUsing              using
+  \ nextgroup=@typescriptVariableDeclarations
+  \ skipwhite skipempty
+
 syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
   \ nextgroup=typescriptBlock
   \ skipwhite
