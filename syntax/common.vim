@@ -21,15 +21,15 @@ syntax match   typescriptLabel                /[a-zA-Z_$]\k*:/he=e-1 contains=ty
 syntax region  typescriptBlock                 matchgroup=typescriptBraces start=/{/ end=/}/ contains=@typescriptStatement,@typescriptComments fold
 
 
-runtime syntax/basic/identifiers.vim
-runtime syntax/basic/literal.vim
-runtime syntax/basic/object.vim
+runtime syntax/ts-common/identifiers.vim
+runtime syntax/ts-common/literal.vim
+runtime syntax/ts-common/object.vim
 
-runtime syntax/basic/symbols.vim
-" runtime syntax/basic/reserved.vim
-runtime syntax/basic/keyword.vim
-runtime syntax/basic/doc.vim
-runtime syntax/basic/type.vim
+runtime syntax/ts-common/symbols.vim
+" runtime syntax/ts-common/reserved.vim
+runtime syntax/ts-common/keyword.vim
+runtime syntax/ts-common/doc.vim
+runtime syntax/ts-common/type.vim
 
 " extension
 if get(g:, 'yats_host_keyword', 1)
@@ -37,12 +37,12 @@ if get(g:, 'yats_host_keyword', 1)
 endif
 
 " patch
-runtime syntax/basic/patch.vim
-runtime syntax/basic/members.vim
-runtime syntax/basic/class.vim
-runtime syntax/basic/cluster.vim
-runtime syntax/basic/function.vim
-runtime syntax/basic/decorator.vim
+runtime syntax/ts-common/patch.vim
+runtime syntax/ts-common/members.vim
+runtime syntax/ts-common/class.vim
+runtime syntax/ts-common/cluster.vim
+runtime syntax/ts-common/function.vim
+runtime syntax/ts-common/decorator.vim
 
 if exists("did_typescript_hilink")
   HiLink typescriptReserved             Error
