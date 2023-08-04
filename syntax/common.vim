@@ -125,7 +125,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptAsyncFunc            Keyword
   HiLink typescriptArrowFunc            Type
   HiLink typescriptFuncName             Function
-  HiLink typescriptFuncArg              PreProc
+  HiLink typescriptFuncCallArg          PreProc
   HiLink typescriptArrowFuncArg         PreProc
   HiLink typescriptFuncComma            Operator
 
