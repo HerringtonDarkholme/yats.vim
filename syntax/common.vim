@@ -152,6 +152,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptConstructorType       Function
   HiLink typescriptTypeQuery             Keyword
   HiLink typescriptAccessibilityModifier Keyword
+  HiLink typescriptAutoAccessor          Keyword
   HiLink typescriptOptionalMark          PreProc
   HiLink typescriptFuncType              Special
   HiLink typescriptMappedIn              Special
