@@ -1115,3 +1115,13 @@ Given typescript (backtick in Error):
   a = {b: Error(`${a}`)}
 Execute:
   AssertEqual 'typescriptBraces', SyntaxAt(1, 22)
+
+Given typescript (auto accessor):
+  class X {
+    accessor test = true;
+    @decolator accessor test2 = false;
+  }
+Execute:
+  AssertEqual 'typescriptAutoAccessor', SyntaxAt(2, 3)
+  AssertEqual 'typescriptDecorator', SyntaxAt(3, 3)
+  AssertEqual 'typescriptAutoAccessor', SyntaxAt(3, 14)
