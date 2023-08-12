@@ -35,7 +35,7 @@ syntax keyword typescriptAccessibilityModifier public private protected containe
 
 syntax keyword typescriptReadonlyModifier readonly override contained
 
-syntax keyword typescriptAutoAccessor accessor
+syntax keyword typescriptAutoAccessor accessor contained
 
 syntax region  typescriptStringMember   contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1/
