@@ -279,6 +279,10 @@ syntax keyword typescriptVariable const
   \ nextgroup=typescriptEnum,@typescriptVariableDeclarations
   \ skipwhite skipempty
 
+syntax keyword typescriptUsing              using
+  \ nextgroup=@typescriptVariableDeclarations
+  \ skipwhite skipempty
+
 syntax region typescriptEnum matchgroup=typescriptEnumKeyword start=/enum / end=/\ze{/
   \ nextgroup=typescriptBlock
   \ skipwhite
@@ -1931,6 +1935,7 @@ syntax cluster typescriptPropertyMemberDeclaration contains=
   \ typescriptClassStatic,
   \ typescriptAccessibilityModifier,
   \ typescriptReadonlyModifier,
+  \ typescriptAutoAccessor,
   \ typescriptMethodAccessor,
   \ @typescriptMembers
   " \ typescriptMemberVariableDeclaration
@@ -1948,6 +1953,8 @@ syntax keyword typescriptClassStatic static
 syntax keyword typescriptAccessibilityModifier public private protected contained
 
 syntax keyword typescriptReadonlyModifier readonly override contained
+
+syntax keyword typescriptAutoAccessor accessor contained
 
 syntax region  typescriptStringMember   contained
   \ start=/\z(["']\)/  skip=/\\\\\|\\\z1\|\\\n/  end=/\z1/
@@ -2028,7 +2035,7 @@ syntax match typescriptInterfaceComma /,/ contained nextgroup=typescriptInterfac
 
 "Block VariableStatement EmptyStatement ExpressionStatement IfStatement IterationStatement ContinueStatement BreakStatement ReturnStatement WithStatement LabelledStatement SwitchStatement ThrowStatement TryStatement DebuggerStatement
 syntax cluster typescriptStatement
-  \ contains=typescriptBlock,typescriptVariable,
+  \ contains=typescriptBlock,typescriptVariable,typescriptUsing,
   \ @typescriptTopExpression,typescriptAssign,
   \ typescriptConditional,typescriptRepeat,typescriptBranch,
   \ typescriptLabel,typescriptStatementKeyword,
@@ -2070,7 +2077,7 @@ syntax keyword typescriptAsyncFuncKeyword      async
   \ skipwhite
 
 syntax keyword typescriptAsyncFuncKeyword      await
-  \ nextgroup=@typescriptValue
+  \ nextgroup=@typescriptValue,typescriptUsing
   \ skipwhite
 
 exec 'syntax keyword typescriptFuncKeyword '.(exists('g:typescript_conceal_function') ? 'conceal cchar='.g:typescript_conceal_function : '').' function nextgroup=typescriptAsyncFunc,typescriptFuncName,@typescriptCallSignature skipwhite skipempty'
@@ -2173,6 +2180,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptBranch               Conditional
   HiLink typescriptIdentifier           Structure
   HiLink typescriptVariable             Identifier
+  HiLink typescriptUsing                Identifier
   HiLink typescriptDestructureVariable  PreProc
   HiLink typescriptEnumKeyword          Identifier
   HiLink typescriptRepeat               Repeat
@@ -2237,6 +2245,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptConstructorType       Function
   HiLink typescriptTypeQuery             Keyword
   HiLink typescriptAccessibilityModifier Keyword
+  HiLink typescriptAutoAccessor          Keyword
   HiLink typescriptOptionalMark          PreProc
   HiLink typescriptFuncType              Special
   HiLink typescriptMappedIn              Special
