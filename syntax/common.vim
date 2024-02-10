@@ -75,7 +75,7 @@ if exists("did_typescript_hilink")
   HiLink typescriptEventString          String
   HiLink typescriptDestructureString    String
   HiLink typescriptASCII                Special
-  HiLink typescriptTemplateSB           Label
+  HiLink typescriptTemplateSB           Special
   HiLink typescriptRegexpString         String
   HiLink typescriptGlobal               Constant
   HiLink typescriptTestGlobal           Function
