@@ -60,7 +60,8 @@ syntax keyword typescriptStatementKeyword      with
 syntax keyword typescriptStatementKeyword      yield skipwhite nextgroup=@typescriptValue containedin=typescriptBlock
 
 syntax keyword typescriptTry                   try
-syntax keyword typescriptExceptions            catch throw finally
+syntax keyword typescriptExceptions            throw finally
+syntax keyword typescriptExceptions            catch nextgroup=typescriptCall skipwhite skipempty oneline
 syntax keyword typescriptDebugger              debugger
 
 syntax keyword typescriptAsyncFor              await nextgroup=typescriptLoopParen skipwhite skipempty contained

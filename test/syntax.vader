@@ -1125,3 +1125,39 @@ Execute:
   AssertEqual 'typescriptAutoAccessor', SyntaxAt(2, 3)
   AssertEqual 'typescriptDecorator', SyntaxAt(3, 3)
   AssertEqual 'typescriptAutoAccessor', SyntaxAt(3, 14)
+
+Given typescript (catch block argument):
+  try {
+    // ...
+  } catch(err) {
+    // ...
+  }
+  try {
+    // ...
+  } catch(err: unknown) {
+    // ...
+  }
+  // `catch` method calls are not affected
+  foo().catch(err => {/*...*/});
+  foo().catch((err: unknown) => {/*...*/});
+  foo().catch(errorHandler);
+Execute:
+  " Validate `catch(err)`
+  AssertEqual 'typescriptExceptions', SyntaxAt(3, 3)
+  AssertEqual 'typescriptParens', SyntaxAt(3, 8)
+  AssertEqual 'typescriptCall', SyntaxAt(3, 9)
+  AssertEqual 'typescriptParens', SyntaxAt(3, 12)
+  " Validate `catch(err: unknown)`
+  AssertEqual 'typescriptExceptions', SyntaxAt(8, 3)
+  AssertEqual 'typescriptParens', SyntaxAt(8, 8)
+  AssertEqual 'typescriptCall', SyntaxAt(8, 9)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(8, 14)
+  AssertEqual 'typescriptParens', SyntaxAt(8, 21)
+  " Validate `.catch(...)` method call is not affected
+  AssertEqual 'typescriptPromiseMethod', SyntaxAt(12, 7)
+  AssertEqual 'typescriptArrowFuncArg', SyntaxAt(12, 13)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(12, 17)
+  AssertEqual 'typescriptPromiseMethod', SyntaxAt(13, 7)
+  AssertEqual 'typescriptArrowFunc', SyntaxAt(13, 28)
+  AssertEqual 'typescriptPromiseMethod', SyntaxAt(14, 7)
+  AssertEqual 'typescriptFuncCallArg', SyntaxAt(14, 13)
