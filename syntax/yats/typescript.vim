@@ -16,8 +16,7 @@ syntax keyword typescriptGlobal containedin=typescriptIdentifierName ArrayBuffer
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Iterator Generator nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Reflect Proxy nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName arguments
-if exists("did_typescript_hilink") | HiLink typescriptGlobal Structure
-endif
+hi def link typescriptGlobal Structure
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName eval uneval nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName isFinite nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName isNaN parseFloat nextgroup=typescriptFuncCallArg
@@ -27,5 +26,4 @@ syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName decod
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName encodeURI nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName encodeURIComponent nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptGlobalMethod
-if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
-endif
+hi def link typescriptGlobalMethod Structure
