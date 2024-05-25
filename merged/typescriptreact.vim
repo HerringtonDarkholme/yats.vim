@@ -119,11 +119,8 @@ syntax region tsxEscJs
     \ end=+}+
     \ extend
 " Define the default highlighting.
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-let did_typescript_hilink = 1
 
 syntax sync fromstart
-command -nargs=+ HiLink hi def link <args>
 
 "Dollar sign is permitted anywhere in an identifier
 setlocal iskeyword-=$
@@ -781,8 +778,7 @@ syntax keyword typescriptGlobal containedin=typescriptIdentifierName ArrayBuffer
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Iterator Generator nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Reflect Proxy nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName arguments
-if exists("did_typescript_hilink") | HiLink typescriptGlobal Structure
-endif
+hi def link typescriptGlobal Structure
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName eval uneval nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName isFinite nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName isNaN parseFloat nextgroup=typescriptFuncCallArg
@@ -792,31 +788,26 @@ syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName decod
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName encodeURI nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName encodeURIComponent nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptGlobalMethod
-if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
-endif
+hi def link typescriptGlobalMethod Structure
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Number nextgroup=typescriptGlobalNumberDot,typescriptFuncCallArg
 syntax match   typescriptGlobalNumberDot /\./ contained nextgroup=typescriptNumberStaticProp,typescriptNumberStaticMethod,typescriptProp
 syntax keyword typescriptNumberStaticProp contained EPSILON MAX_SAFE_INTEGER MAX_VALUE
 syntax keyword typescriptNumberStaticProp contained MIN_SAFE_INTEGER MIN_VALUE NEGATIVE_INFINITY
 syntax keyword typescriptNumberStaticProp contained NaN POSITIVE_INFINITY
-if exists("did_typescript_hilink") | HiLink typescriptNumberStaticProp Keyword
-endif
+hi def link typescriptNumberStaticProp Keyword
 syntax keyword typescriptNumberStaticMethod contained isFinite isInteger isNaN isSafeInteger nextgroup=typescriptFuncCallArg
 syntax keyword typescriptNumberStaticMethod contained parseFloat parseInt nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptNumberStaticMethod Keyword
-endif
+hi def link typescriptNumberStaticMethod Keyword
 syntax keyword typescriptNumberMethod contained toExponential toFixed toLocaleString nextgroup=typescriptFuncCallArg
 syntax keyword typescriptNumberMethod contained toPrecision toSource toString valueOf nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptNumberMethod
-if exists("did_typescript_hilink") | HiLink typescriptNumberMethod Keyword
-endif
+hi def link typescriptNumberMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName String nextgroup=typescriptGlobalStringDot,typescriptFuncCallArg
 syntax match   typescriptGlobalStringDot /\./ contained nextgroup=typescriptStringStaticMethod,typescriptProp
 syntax keyword typescriptStringStaticMethod contained fromCharCode fromCodePoint raw nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptStringStaticMethod Keyword
-endif
+hi def link typescriptStringStaticMethod Keyword
 syntax keyword typescriptStringMethod contained anchor charAt charCodeAt codePointAt nextgroup=typescriptFuncCallArg
 syntax keyword typescriptStringMethod contained concat endsWith includes indexOf lastIndexOf nextgroup=typescriptFuncCallArg
 syntax keyword typescriptStringMethod contained link localeCompare match matchAll normalize nextgroup=typescriptFuncCallArg
@@ -826,14 +817,12 @@ syntax keyword typescriptStringMethod contained toLocaleLowerCase toLocaleUpperC
 syntax keyword typescriptStringMethod contained toLowerCase toString toUpperCase trim nextgroup=typescriptFuncCallArg
 syntax keyword typescriptStringMethod contained trimEnd trimStart valueOf nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptStringMethod
-if exists("did_typescript_hilink") | HiLink typescriptStringMethod Keyword
-endif
+hi def link typescriptStringMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Array nextgroup=typescriptGlobalArrayDot,typescriptFuncCallArg
 syntax match   typescriptGlobalArrayDot /\./ contained nextgroup=typescriptArrayStaticMethod,typescriptProp
 syntax keyword typescriptArrayStaticMethod contained from isArray of nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptArrayStaticMethod Keyword
-endif
+hi def link typescriptArrayStaticMethod Keyword
 syntax keyword typescriptArrayMethod contained concat copyWithin entries every fill nextgroup=typescriptFuncCallArg
 syntax keyword typescriptArrayMethod contained filter find findIndex flat flatMap forEach nextgroup=typescriptFuncCallArg
 syntax keyword typescriptArrayMethod contained includes indexOf join keys lastIndexOf map nextgroup=typescriptFuncCallArg
@@ -841,8 +830,7 @@ syntax keyword typescriptArrayMethod contained pop push reduce reduceRight rever
 syntax keyword typescriptArrayMethod contained shift slice some sort splice toLocaleString nextgroup=typescriptFuncCallArg
 syntax keyword typescriptArrayMethod contained toSource toString unshift values nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptArrayMethod
-if exists("did_typescript_hilink") | HiLink typescriptArrayMethod Keyword
-endif
+hi def link typescriptArrayMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Object nextgroup=typescriptGlobalObjectDot,typescriptFuncCallArg
 syntax match   typescriptGlobalObjectDot /\./ contained nextgroup=typescriptObjectStaticMethod,typescriptProp
@@ -852,15 +840,13 @@ syntax keyword typescriptObjectStaticMethod contained getOwnPropertyDescriptor g
 syntax keyword typescriptObjectStaticMethod contained getOwnPropertySymbols getPrototypeOf nextgroup=typescriptFuncCallArg
 syntax keyword typescriptObjectStaticMethod contained is isExtensible isFrozen isSealed nextgroup=typescriptFuncCallArg
 syntax keyword typescriptObjectStaticMethod contained keys preventExtensions values nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptObjectStaticMethod Keyword
-endif
+hi def link typescriptObjectStaticMethod Keyword
 syntax keyword typescriptObjectMethod contained getOwnPropertyDescriptors hasOwnProperty nextgroup=typescriptFuncCallArg
 syntax keyword typescriptObjectMethod contained isPrototypeOf propertyIsEnumerable nextgroup=typescriptFuncCallArg
 syntax keyword typescriptObjectMethod contained toLocaleString toString valueOf seal nextgroup=typescriptFuncCallArg
 syntax keyword typescriptObjectMethod contained setPrototypeOf nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptObjectMethod
-if exists("did_typescript_hilink") | HiLink typescriptObjectMethod Keyword
-endif
+hi def link typescriptObjectMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Symbol nextgroup=typescriptGlobalSymbolDot,typescriptFuncCallArg
 syntax match   typescriptGlobalSymbolDot /\./ contained nextgroup=typescriptSymbolStaticProp,typescriptSymbolStaticMethod,typescriptProp
@@ -868,38 +854,32 @@ syntax keyword typescriptSymbolStaticProp contained description length iterator 
 syntax keyword typescriptSymbolStaticProp contained search split hasInstance isConcatSpreadable
 syntax keyword typescriptSymbolStaticProp contained unscopables species toPrimitive
 syntax keyword typescriptSymbolStaticProp contained toStringTag
-if exists("did_typescript_hilink") | HiLink typescriptSymbolStaticProp Keyword
-endif
+hi def link typescriptSymbolStaticProp Keyword
 syntax keyword typescriptSymbolStaticMethod contained for keyFor nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptSymbolStaticMethod Keyword
-endif
+hi def link typescriptSymbolStaticMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Function
 syntax keyword typescriptFunctionMethod contained apply bind call nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptFunctionMethod
-if exists("did_typescript_hilink") | HiLink typescriptFunctionMethod Keyword
-endif
+hi def link typescriptFunctionMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Math nextgroup=typescriptGlobalMathDot,typescriptFuncCallArg
 syntax match   typescriptGlobalMathDot /\./ contained nextgroup=typescriptMathStaticProp,typescriptMathStaticMethod,typescriptProp
 syntax keyword typescriptMathStaticProp contained E LN10 LN2 LOG10E LOG2E PI SQRT1_2
 syntax keyword typescriptMathStaticProp contained SQRT2
-if exists("did_typescript_hilink") | HiLink typescriptMathStaticProp Keyword
-endif
+hi def link typescriptMathStaticProp Keyword
 syntax keyword typescriptMathStaticMethod contained abs acos acosh asin asinh atan nextgroup=typescriptFuncCallArg
 syntax keyword typescriptMathStaticMethod contained atan2 atanh cbrt ceil clz32 cos nextgroup=typescriptFuncCallArg
 syntax keyword typescriptMathStaticMethod contained cosh exp expm1 floor fround hypot nextgroup=typescriptFuncCallArg
 syntax keyword typescriptMathStaticMethod contained imul log log10 log1p log2 max nextgroup=typescriptFuncCallArg
 syntax keyword typescriptMathStaticMethod contained min pow random round sign sin nextgroup=typescriptFuncCallArg
 syntax keyword typescriptMathStaticMethod contained sinh sqrt tan tanh trunc nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptMathStaticMethod Keyword
-endif
+hi def link typescriptMathStaticMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Date nextgroup=typescriptGlobalDateDot,typescriptFuncCallArg
 syntax match   typescriptGlobalDateDot /\./ contained nextgroup=typescriptDateStaticMethod,typescriptProp
 syntax keyword typescriptDateStaticMethod contained UTC now parse nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptDateStaticMethod Keyword
-endif
+hi def link typescriptDateStaticMethod Keyword
 syntax keyword typescriptDateMethod contained getDate getDay getFullYear getHours nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDateMethod contained getMilliseconds getMinutes getMonth nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDateMethod contained getSeconds getTime getTimezoneOffset nextgroup=typescriptFuncCallArg
@@ -915,68 +895,56 @@ syntax keyword typescriptDateMethod contained toLocaleFormat toLocaleString toLo
 syntax keyword typescriptDateMethod contained toSource toString toTimeString toUTCString nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDateMethod contained valueOf nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptDateMethod
-if exists("did_typescript_hilink") | HiLink typescriptDateMethod Keyword
-endif
+hi def link typescriptDateMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName JSON nextgroup=typescriptGlobalJSONDot,typescriptFuncCallArg
 syntax match   typescriptGlobalJSONDot /\./ contained nextgroup=typescriptJSONStaticMethod,typescriptProp
 syntax keyword typescriptJSONStaticMethod contained parse stringify nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptJSONStaticMethod Keyword
-endif
+hi def link typescriptJSONStaticMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName RegExp nextgroup=typescriptGlobalRegExpDot,typescriptFuncCallArg
 syntax match   typescriptGlobalRegExpDot /\./ contained nextgroup=typescriptRegExpStaticProp,typescriptProp
 syntax keyword typescriptRegExpStaticProp contained lastIndex
-if exists("did_typescript_hilink") | HiLink typescriptRegExpStaticProp Keyword
-endif
+hi def link typescriptRegExpStaticProp Keyword
 syntax keyword typescriptRegExpProp contained dotAll global ignoreCase multiline source sticky
 syntax cluster props add=typescriptRegExpProp
-if exists("did_typescript_hilink") | HiLink typescriptRegExpProp Keyword
-endif
+hi def link typescriptRegExpProp Keyword
 syntax keyword typescriptRegExpMethod contained exec test nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptRegExpMethod
-if exists("did_typescript_hilink") | HiLink typescriptRegExpMethod Keyword
-endif
+hi def link typescriptRegExpMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Map WeakMap
 syntax keyword typescriptES6MapProp contained size
 syntax cluster props add=typescriptES6MapProp
-if exists("did_typescript_hilink") | HiLink typescriptES6MapProp Keyword
-endif
+hi def link typescriptES6MapProp Keyword
 syntax keyword typescriptES6MapMethod contained clear delete entries forEach get has nextgroup=typescriptFuncCallArg
 syntax keyword typescriptES6MapMethod contained keys set values nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptES6MapMethod
-if exists("did_typescript_hilink") | HiLink typescriptES6MapMethod Keyword
-endif
+hi def link typescriptES6MapMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Set WeakSet
 syntax keyword typescriptES6SetProp contained size
 syntax cluster props add=typescriptES6SetProp
-if exists("did_typescript_hilink") | HiLink typescriptES6SetProp Keyword
-endif
+hi def link typescriptES6SetProp Keyword
 syntax keyword typescriptES6SetMethod contained add clear delete entries forEach has nextgroup=typescriptFuncCallArg
 syntax keyword typescriptES6SetMethod contained values nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptES6SetMethod
-if exists("did_typescript_hilink") | HiLink typescriptES6SetMethod Keyword
-endif
+hi def link typescriptES6SetMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Proxy
 syntax keyword typescriptProxyAPI contained getOwnPropertyDescriptor getOwnPropertyNames
 syntax keyword typescriptProxyAPI contained defineProperty deleteProperty freeze seal
 syntax keyword typescriptProxyAPI contained preventExtensions has hasOwn get set enumerate
 syntax keyword typescriptProxyAPI contained iterate ownKeys apply construct
-if exists("did_typescript_hilink") | HiLink typescriptProxyAPI Keyword
-endif
+hi def link typescriptProxyAPI Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Promise nextgroup=typescriptGlobalPromiseDot,typescriptFuncCallArg
 syntax match   typescriptGlobalPromiseDot /\./ contained nextgroup=typescriptPromiseStaticMethod,typescriptProp
 syntax keyword typescriptPromiseStaticMethod contained all allSettled any race reject resolve nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptPromiseStaticMethod Keyword
-endif
+hi def link typescriptPromiseStaticMethod Keyword
 syntax keyword typescriptPromiseMethod contained then catch finally nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptPromiseMethod
-if exists("did_typescript_hilink") | HiLink typescriptPromiseMethod Keyword
-endif
+hi def link typescriptPromiseMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Reflect
 syntax keyword typescriptReflectMethod contained apply construct defineProperty deleteProperty nextgroup=typescriptFuncCallArg
@@ -984,15 +952,13 @@ syntax keyword typescriptReflectMethod contained enumerate get getOwnPropertyDes
 syntax keyword typescriptReflectMethod contained getPrototypeOf has isExtensible ownKeys nextgroup=typescriptFuncCallArg
 syntax keyword typescriptReflectMethod contained preventExtensions set setPrototypeOf nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptReflectMethod
-if exists("did_typescript_hilink") | HiLink typescriptReflectMethod Keyword
-endif
+hi def link typescriptReflectMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Intl
 syntax keyword typescriptIntlMethod contained Collator DateTimeFormat NumberFormat nextgroup=typescriptFuncCallArg
 syntax keyword typescriptIntlMethod contained PluralRules nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptIntlMethod
-if exists("did_typescript_hilink") | HiLink typescriptIntlMethod Keyword
-endif
+hi def link typescriptIntlMethod Keyword
 
 syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName global process
 syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName console Buffer
@@ -1001,8 +967,7 @@ syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName setTime
 syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName clearTimeout
 syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName setInterval
 syntax keyword typescriptNodeGlobal containedin=typescriptIdentifierName clearInterval
-if exists("did_typescript_hilink") | HiLink typescriptNodeGlobal Structure
-endif
+hi def link typescriptNodeGlobal Structure
 
 syntax keyword typescriptTestGlobal containedin=typescriptIdentifierName describe
 syntax keyword typescriptTestGlobal containedin=typescriptIdentifierName it test before
@@ -1259,8 +1224,7 @@ syntax keyword typescriptBOM containedin=typescriptIdentifierName Window Worker 
 syntax keyword typescriptBOM containedin=typescriptIdentifierName WorkerLocation WorkerNavigator
 syntax keyword typescriptBOM containedin=typescriptIdentifierName XDomainRequest XMLDocument
 syntax keyword typescriptBOM containedin=typescriptIdentifierName XMLHttpRequestEventTarget
-if exists("did_typescript_hilink") | HiLink typescriptBOM Structure
-endif
+hi def link typescriptBOM Structure
 
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName applicationCache
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName closed
@@ -1304,8 +1268,7 @@ syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName tool
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName top visualViewport
 syntax keyword typescriptBOMWindowProp containedin=typescriptIdentifierName window
 syntax cluster props add=typescriptBOMWindowProp
-if exists("did_typescript_hilink") | HiLink typescriptBOMWindowProp Structure
-endif
+hi def link typescriptBOMWindowProp Structure
 syntax keyword typescriptBOMWindowMethod containedin=typescriptIdentifierName alert nextgroup=typescriptFuncCallArg
 syntax keyword typescriptBOMWindowMethod containedin=typescriptIdentifierName atob nextgroup=typescriptFuncCallArg
 syntax keyword typescriptBOMWindowMethod containedin=typescriptIdentifierName blur nextgroup=typescriptFuncCallArg
@@ -1351,8 +1314,7 @@ syntax keyword typescriptBOMWindowMethod containedin=typescriptIdentifierName si
 syntax keyword typescriptBOMWindowMethod containedin=typescriptIdentifierName stop nextgroup=typescriptFuncCallArg
 syntax keyword typescriptBOMWindowMethod containedin=typescriptIdentifierName updateCommands nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptBOMWindowMethod
-if exists("did_typescript_hilink") | HiLink typescriptBOMWindowMethod Structure
-endif
+hi def link typescriptBOMWindowMethod Structure
 syntax keyword typescriptBOMWindowEvent contained onabort onbeforeunload onblur onchange
 syntax keyword typescriptBOMWindowEvent contained onclick onclose oncontextmenu ondevicelight
 syntax keyword typescriptBOMWindowEvent contained ondevicemotion ondeviceorientation
@@ -1364,21 +1326,18 @@ syntax keyword typescriptBOMWindowEvent contained onmozbeforepaint onpaint onpop
 syntax keyword typescriptBOMWindowEvent contained onreset onresize onscroll onselect
 syntax keyword typescriptBOMWindowEvent contained onsubmit onunload onuserproximity
 syntax keyword typescriptBOMWindowEvent contained onpageshow onpagehide
-if exists("did_typescript_hilink") | HiLink typescriptBOMWindowEvent Keyword
-endif
+hi def link typescriptBOMWindowEvent Keyword
 syntax keyword typescriptBOMWindowCons containedin=typescriptIdentifierName DOMParser
 syntax keyword typescriptBOMWindowCons containedin=typescriptIdentifierName QueryInterface
 syntax keyword typescriptBOMWindowCons containedin=typescriptIdentifierName XMLSerializer
-if exists("did_typescript_hilink") | HiLink typescriptBOMWindowCons Structure
-endif
+hi def link typescriptBOMWindowCons Structure
 
 syntax keyword typescriptBOMNavigatorProp contained battery buildID connection cookieEnabled
 syntax keyword typescriptBOMNavigatorProp contained doNotTrack maxTouchPoints oscpu
 syntax keyword typescriptBOMNavigatorProp contained productSub push serviceWorker
 syntax keyword typescriptBOMNavigatorProp contained vendor vendorSub
 syntax cluster props add=typescriptBOMNavigatorProp
-if exists("did_typescript_hilink") | HiLink typescriptBOMNavigatorProp Keyword
-endif
+hi def link typescriptBOMNavigatorProp Keyword
 syntax keyword typescriptBOMNavigatorMethod contained addIdleObserver geolocation nextgroup=typescriptFuncCallArg
 syntax keyword typescriptBOMNavigatorMethod contained getDeviceStorage getDeviceStorages nextgroup=typescriptFuncCallArg
 syntax keyword typescriptBOMNavigatorMethod contained getGamepads getUserMedia registerContentHandler nextgroup=typescriptFuncCallArg
@@ -1386,33 +1345,27 @@ syntax keyword typescriptBOMNavigatorMethod contained removeIdleObserver request
 syntax keyword typescriptBOMNavigatorMethod contained share vibrate watch registerProtocolHandler nextgroup=typescriptFuncCallArg
 syntax keyword typescriptBOMNavigatorMethod contained sendBeacon nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptBOMNavigatorMethod
-if exists("did_typescript_hilink") | HiLink typescriptBOMNavigatorMethod Keyword
-endif
+hi def link typescriptBOMNavigatorMethod Keyword
 syntax keyword typescriptServiceWorkerMethod contained register nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptServiceWorkerMethod
-if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerMethod Keyword
-endif
+hi def link typescriptServiceWorkerMethod Keyword
 
 syntax keyword typescriptBOMLocationProp contained href protocol host hostname port
 syntax keyword typescriptBOMLocationProp contained pathname search hash username password
 syntax keyword typescriptBOMLocationProp contained origin
 syntax cluster props add=typescriptBOMLocationProp
-if exists("did_typescript_hilink") | HiLink typescriptBOMLocationProp Keyword
-endif
+hi def link typescriptBOMLocationProp Keyword
 syntax keyword typescriptBOMLocationMethod contained assign reload replace toString nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptBOMLocationMethod
-if exists("did_typescript_hilink") | HiLink typescriptBOMLocationMethod Keyword
-endif
+hi def link typescriptBOMLocationMethod Keyword
 
 syntax keyword typescriptBOMHistoryProp contained length current next previous state
 syntax keyword typescriptBOMHistoryProp contained scrollRestoration
 syntax cluster props add=typescriptBOMHistoryProp
-if exists("did_typescript_hilink") | HiLink typescriptBOMHistoryProp Keyword
-endif
+hi def link typescriptBOMHistoryProp Keyword
 syntax keyword typescriptBOMHistoryMethod contained back forward go pushState replaceState nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptBOMHistoryMethod
-if exists("did_typescript_hilink") | HiLink typescriptBOMHistoryMethod Keyword
-endif
+hi def link typescriptBOMHistoryMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName console nextgroup=typescriptGlobalConsoleDot
 syntax match   typescriptGlobalConsoleDot /\./ contained nextgroup=typescriptConsoleMethod,typescriptProp
@@ -1420,23 +1373,19 @@ syntax keyword typescriptConsoleMethod contained count dir error group groupColl
 syntax keyword typescriptConsoleMethod contained groupEnd info log time timeEnd trace nextgroup=typescriptFuncCallArg
 syntax keyword typescriptConsoleMethod contained warn nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptConsoleMethod
-if exists("did_typescript_hilink") | HiLink typescriptConsoleMethod Keyword
-endif
+hi def link typescriptConsoleMethod Keyword
 
 syntax keyword typescriptXHRGlobal containedin=typescriptIdentifierName XMLHttpRequest
-if exists("did_typescript_hilink") | HiLink typescriptXHRGlobal Structure
-endif
+hi def link typescriptXHRGlobal Structure
 syntax keyword typescriptXHRProp contained onreadystatechange readyState response
 syntax keyword typescriptXHRProp contained responseText responseType responseXML status
 syntax keyword typescriptXHRProp contained statusText timeout ontimeout upload withCredentials
 syntax cluster props add=typescriptXHRProp
-if exists("did_typescript_hilink") | HiLink typescriptXHRProp Keyword
-endif
+hi def link typescriptXHRProp Keyword
 syntax keyword typescriptXHRMethod contained abort getAllResponseHeaders getResponseHeader nextgroup=typescriptFuncCallArg
 syntax keyword typescriptXHRMethod contained open overrideMimeType send setRequestHeader nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptXHRMethod
-if exists("did_typescript_hilink") | HiLink typescriptXHRMethod Keyword
-endif
+hi def link typescriptXHRMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Blob BlobBuilder
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName File FileReader
@@ -1447,156 +1396,124 @@ syntax keyword typescriptGlobal containedin=typescriptIdentifierName URLUtils
 syntax keyword typescriptFileMethod contained readAsArrayBuffer readAsBinaryString nextgroup=typescriptFuncCallArg
 syntax keyword typescriptFileMethod contained readAsDataURL readAsText nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptFileMethod
-if exists("did_typescript_hilink") | HiLink typescriptFileMethod Keyword
-endif
+hi def link typescriptFileMethod Keyword
 syntax keyword typescriptFileReaderProp contained error readyState result
 syntax cluster props add=typescriptFileReaderProp
-if exists("did_typescript_hilink") | HiLink typescriptFileReaderProp Keyword
-endif
+hi def link typescriptFileReaderProp Keyword
 syntax keyword typescriptFileReaderMethod contained abort readAsArrayBuffer readAsBinaryString nextgroup=typescriptFuncCallArg
 syntax keyword typescriptFileReaderMethod contained readAsDataURL readAsText nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptFileReaderMethod
-if exists("did_typescript_hilink") | HiLink typescriptFileReaderMethod Keyword
-endif
+hi def link typescriptFileReaderMethod Keyword
 syntax keyword typescriptFileListMethod contained item nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptFileListMethod
-if exists("did_typescript_hilink") | HiLink typescriptFileListMethod Keyword
-endif
+hi def link typescriptFileListMethod Keyword
 syntax keyword typescriptBlobMethod contained append getBlob getFile nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptBlobMethod
-if exists("did_typescript_hilink") | HiLink typescriptBlobMethod Keyword
-endif
+hi def link typescriptBlobMethod Keyword
 syntax keyword typescriptURLUtilsProp contained hash host hostname href origin password
 syntax keyword typescriptURLUtilsProp contained pathname port protocol search searchParams
 syntax keyword typescriptURLUtilsProp contained username
 syntax cluster props add=typescriptURLUtilsProp
-if exists("did_typescript_hilink") | HiLink typescriptURLUtilsProp Keyword
-endif
+hi def link typescriptURLUtilsProp Keyword
 syntax keyword typescriptURLStaticMethod contained createObjectURL revokeObjectURL nextgroup=typescriptFuncCallArg
-if exists("did_typescript_hilink") | HiLink typescriptURLStaticMethod Keyword
-endif
+hi def link typescriptURLStaticMethod Keyword
 
 syntax keyword typescriptCryptoGlobal containedin=typescriptIdentifierName crypto
-if exists("did_typescript_hilink") | HiLink typescriptCryptoGlobal Structure
-endif
+hi def link typescriptCryptoGlobal Structure
 syntax keyword typescriptSubtleCryptoMethod contained encrypt decrypt sign verify nextgroup=typescriptFuncCallArg
 syntax keyword typescriptSubtleCryptoMethod contained digest nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptSubtleCryptoMethod
-if exists("did_typescript_hilink") | HiLink typescriptSubtleCryptoMethod Keyword
-endif
+hi def link typescriptSubtleCryptoMethod Keyword
 syntax keyword typescriptCryptoProp contained subtle
 syntax cluster props add=typescriptCryptoProp
-if exists("did_typescript_hilink") | HiLink typescriptCryptoProp Keyword
-endif
+hi def link typescriptCryptoProp Keyword
 syntax keyword typescriptCryptoMethod contained getRandomValues nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptCryptoMethod
-if exists("did_typescript_hilink") | HiLink typescriptCryptoMethod Keyword
-endif
+hi def link typescriptCryptoMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Headers Request
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Response
 syntax keyword typescriptGlobalMethod containedin=typescriptIdentifierName fetch nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptGlobalMethod
-if exists("did_typescript_hilink") | HiLink typescriptGlobalMethod Structure
-endif
+hi def link typescriptGlobalMethod Structure
 syntax keyword typescriptHeadersMethod contained append delete get getAll has set nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptHeadersMethod
-if exists("did_typescript_hilink") | HiLink typescriptHeadersMethod Keyword
-endif
+hi def link typescriptHeadersMethod Keyword
 syntax keyword typescriptRequestProp contained method url headers context referrer
 syntax keyword typescriptRequestProp contained mode credentials cache
 syntax cluster props add=typescriptRequestProp
-if exists("did_typescript_hilink") | HiLink typescriptRequestProp Keyword
-endif
+hi def link typescriptRequestProp Keyword
 syntax keyword typescriptRequestMethod contained clone nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptRequestMethod
-if exists("did_typescript_hilink") | HiLink typescriptRequestMethod Keyword
-endif
+hi def link typescriptRequestMethod Keyword
 syntax keyword typescriptResponseProp contained type url status statusText headers
 syntax keyword typescriptResponseProp contained redirected
 syntax cluster props add=typescriptResponseProp
-if exists("did_typescript_hilink") | HiLink typescriptResponseProp Keyword
-endif
+hi def link typescriptResponseProp Keyword
 syntax keyword typescriptResponseMethod contained clone nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptResponseMethod
-if exists("did_typescript_hilink") | HiLink typescriptResponseMethod Keyword
-endif
+hi def link typescriptResponseMethod Keyword
 
 syntax keyword typescriptServiceWorkerProp contained controller ready
 syntax cluster props add=typescriptServiceWorkerProp
-if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerProp Keyword
-endif
+hi def link typescriptServiceWorkerProp Keyword
 syntax keyword typescriptServiceWorkerMethod contained register getRegistration nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptServiceWorkerMethod
-if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerMethod Keyword
-endif
+hi def link typescriptServiceWorkerMethod Keyword
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Cache
 syntax keyword typescriptCacheMethod contained match matchAll add addAll put delete nextgroup=typescriptFuncCallArg
 syntax keyword typescriptCacheMethod contained keys nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptCacheMethod
-if exists("did_typescript_hilink") | HiLink typescriptCacheMethod Keyword
-endif
+hi def link typescriptCacheMethod Keyword
 
 syntax keyword typescriptEncodingGlobal containedin=typescriptIdentifierName TextEncoder
 syntax keyword typescriptEncodingGlobal containedin=typescriptIdentifierName TextDecoder
-if exists("did_typescript_hilink") | HiLink typescriptEncodingGlobal Structure
-endif
+hi def link typescriptEncodingGlobal Structure
 syntax keyword typescriptEncodingProp contained encoding fatal ignoreBOM
 syntax cluster props add=typescriptEncodingProp
-if exists("did_typescript_hilink") | HiLink typescriptEncodingProp Keyword
-endif
+hi def link typescriptEncodingProp Keyword
 syntax keyword typescriptEncodingMethod contained encode decode nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptEncodingMethod
-if exists("did_typescript_hilink") | HiLink typescriptEncodingMethod Keyword
-endif
+hi def link typescriptEncodingMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Geolocation
 syntax keyword typescriptGeolocationMethod contained getCurrentPosition watchPosition nextgroup=typescriptFuncCallArg
 syntax keyword typescriptGeolocationMethod contained clearWatch nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptGeolocationMethod
-if exists("did_typescript_hilink") | HiLink typescriptGeolocationMethod Keyword
-endif
+hi def link typescriptGeolocationMethod Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName NetworkInformation
 syntax keyword typescriptBOMNetworkProp contained downlink downlinkMax effectiveType
 syntax keyword typescriptBOMNetworkProp contained rtt type
 syntax cluster props add=typescriptBOMNetworkProp
-if exists("did_typescript_hilink") | HiLink typescriptBOMNetworkProp Keyword
-endif
+hi def link typescriptBOMNetworkProp Keyword
 
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName PaymentRequest
 syntax keyword typescriptPaymentMethod contained show abort canMakePayment nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptPaymentMethod
-if exists("did_typescript_hilink") | HiLink typescriptPaymentMethod Keyword
-endif
+hi def link typescriptPaymentMethod Keyword
 syntax keyword typescriptPaymentProp contained shippingAddress shippingOption result
 syntax cluster props add=typescriptPaymentProp
-if exists("did_typescript_hilink") | HiLink typescriptPaymentProp Keyword
-endif
+hi def link typescriptPaymentProp Keyword
 syntax keyword typescriptPaymentEvent contained onshippingaddresschange onshippingoptionchange
-if exists("did_typescript_hilink") | HiLink typescriptPaymentEvent Keyword
-endif
+hi def link typescriptPaymentEvent Keyword
 syntax keyword typescriptPaymentResponseMethod contained complete nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptPaymentResponseMethod
-if exists("did_typescript_hilink") | HiLink typescriptPaymentResponseMethod Keyword
-endif
+hi def link typescriptPaymentResponseMethod Keyword
 syntax keyword typescriptPaymentResponseProp contained details methodName payerEmail
 syntax keyword typescriptPaymentResponseProp contained payerPhone shippingAddress
 syntax keyword typescriptPaymentResponseProp contained shippingOption
 syntax cluster props add=typescriptPaymentResponseProp
-if exists("did_typescript_hilink") | HiLink typescriptPaymentResponseProp Keyword
-endif
+hi def link typescriptPaymentResponseProp Keyword
 syntax keyword typescriptPaymentAddressProp contained addressLine careOf city country
 syntax keyword typescriptPaymentAddressProp contained country dependentLocality languageCode
 syntax keyword typescriptPaymentAddressProp contained organization phone postalCode
 syntax keyword typescriptPaymentAddressProp contained recipient region sortingCode
 syntax cluster props add=typescriptPaymentAddressProp
-if exists("did_typescript_hilink") | HiLink typescriptPaymentAddressProp Keyword
-endif
+hi def link typescriptPaymentAddressProp Keyword
 syntax keyword typescriptPaymentShippingOptionProp contained id label amount selected
 syntax cluster props add=typescriptPaymentShippingOptionProp
-if exists("did_typescript_hilink") | HiLink typescriptPaymentShippingOptionProp Keyword
-endif
+hi def link typescriptPaymentShippingOptionProp Keyword
 
 syntax keyword typescriptDOMNodeProp contained attributes baseURI baseURIObject childNodes
 syntax keyword typescriptDOMNodeProp contained firstChild lastChild localName namespaceURI
@@ -1604,8 +1521,7 @@ syntax keyword typescriptDOMNodeProp contained nextSibling nodeName nodePrincipa
 syntax keyword typescriptDOMNodeProp contained nodeType nodeValue ownerDocument parentElement
 syntax keyword typescriptDOMNodeProp contained parentNode prefix previousSibling textContent
 syntax cluster props add=typescriptDOMNodeProp
-if exists("did_typescript_hilink") | HiLink typescriptDOMNodeProp Keyword
-endif
+hi def link typescriptDOMNodeProp Keyword
 syntax keyword typescriptDOMNodeMethod contained appendChild cloneNode compareDocumentPosition nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDOMNodeMethod contained getUserData hasAttributes hasChildNodes nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDOMNodeMethod contained insertBefore isDefaultNamespace isEqualNode nextgroup=typescriptFuncCallArg
@@ -1614,15 +1530,13 @@ syntax keyword typescriptDOMNodeMethod contained lookupPrefix normalize removeCh
 syntax keyword typescriptDOMNodeMethod contained replaceChild setUserData nextgroup=typescriptFuncCallArg
 syntax match typescriptDOMNodeMethod contained /contains/
 syntax cluster props add=typescriptDOMNodeMethod
-if exists("did_typescript_hilink") | HiLink typescriptDOMNodeMethod Keyword
-endif
+hi def link typescriptDOMNodeMethod Keyword
 syntax keyword typescriptDOMNodeType contained ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE
 syntax keyword typescriptDOMNodeType contained CDATA_SECTION_NODEN_NODE ENTITY_REFERENCE_NODE
 syntax keyword typescriptDOMNodeType contained ENTITY_NODE PROCESSING_INSTRUCTION_NODEN_NODE
 syntax keyword typescriptDOMNodeType contained COMMENT_NODE DOCUMENT_NODE DOCUMENT_TYPE_NODE
 syntax keyword typescriptDOMNodeType contained DOCUMENT_FRAGMENT_NODE NOTATION_NODE
-if exists("did_typescript_hilink") | HiLink typescriptDOMNodeType Keyword
-endif
+hi def link typescriptDOMNodeType Keyword
 
 syntax keyword typescriptDOMElemAttrs contained accessKey clientHeight clientLeft
 syntax keyword typescriptDOMElemAttrs contained clientTop clientWidth id innerHTML
@@ -1631,8 +1545,7 @@ syntax keyword typescriptDOMElemAttrs contained oncopy oncut onpaste onwheel scr
 syntax keyword typescriptDOMElemAttrs contained scrollLeft scrollTop scrollWidth tagName
 syntax keyword typescriptDOMElemAttrs contained classList className name outerHTML
 syntax keyword typescriptDOMElemAttrs contained style
-if exists("did_typescript_hilink") | HiLink typescriptDOMElemAttrs Keyword
-endif
+hi def link typescriptDOMElemAttrs Keyword
 syntax keyword typescriptDOMElemFuncs contained getAttributeNS getAttributeNode getAttributeNodeNS
 syntax keyword typescriptDOMElemFuncs contained getBoundingClientRect getClientRects
 syntax keyword typescriptDOMElemFuncs contained getElementsByClassName getElementsByTagName
@@ -1645,8 +1558,7 @@ syntax keyword typescriptDOMElemFuncs contained requestPointerLock scrollIntoVie
 syntax keyword typescriptDOMElemFuncs contained setAttribute setAttributeNS setAttributeNode
 syntax keyword typescriptDOMElemFuncs contained setAttributeNodeNS setCapture supports
 syntax keyword typescriptDOMElemFuncs contained getAttribute
-if exists("did_typescript_hilink") | HiLink typescriptDOMElemFuncs Keyword
-endif
+hi def link typescriptDOMElemFuncs Keyword
 
 syntax keyword typescriptDOMDocProp contained activeElement body cookie defaultView
 syntax keyword typescriptDOMDocProp contained designMode dir domain embeds forms head
@@ -1661,8 +1573,7 @@ syntax keyword typescriptDOMDocProp contained nodePrincipal ononline pointerLock
 syntax keyword typescriptDOMDocProp contained popupNode preferredStyleSheetSet selectedStyleSheetSet
 syntax keyword typescriptDOMDocProp contained styleSheetSets textContent tooltipNode
 syntax cluster props add=typescriptDOMDocProp
-if exists("did_typescript_hilink") | HiLink typescriptDOMDocProp Keyword
-endif
+hi def link typescriptDOMDocProp Keyword
 syntax keyword typescriptDOMDocMethod contained caretPositionFromPoint close createNodeIterator nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDOMDocMethod contained createRange createTreeWalker elementFromPoint nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDOMDocMethod contained getElementsByName adoptNode createAttribute nextgroup=typescriptFuncCallArg
@@ -1678,14 +1589,12 @@ syntax keyword typescriptDOMDocMethod contained hasFocus importNode loadOverlay 
 syntax keyword typescriptDOMDocMethod contained queryCommandSupported querySelector nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDOMDocMethod contained querySelectorAll write writeln nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptDOMDocMethod
-if exists("did_typescript_hilink") | HiLink typescriptDOMDocMethod Keyword
-endif
+hi def link typescriptDOMDocMethod Keyword
 
 syntax keyword typescriptDOMEventTargetMethod contained addEventListener removeEventListener nextgroup=typescriptEventFuncCallArg
 syntax keyword typescriptDOMEventTargetMethod contained dispatchEvent waitUntil nextgroup=typescriptEventFuncCallArg
 syntax cluster props add=typescriptDOMEventTargetMethod
-if exists("did_typescript_hilink") | HiLink typescriptDOMEventTargetMethod Keyword
-endif
+hi def link typescriptDOMEventTargetMethod Keyword
 syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName AnimationEvent
 syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName AudioProcessingEvent
 syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName BeforeInputEvent
@@ -1731,42 +1640,34 @@ syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName Trans
 syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName UIEvent
 syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName UserProximityEvent
 syntax keyword typescriptDOMEventCons containedin=typescriptIdentifierName WheelEvent
-if exists("did_typescript_hilink") | HiLink typescriptDOMEventCons Structure
-endif
+hi def link typescriptDOMEventCons Structure
 syntax keyword typescriptDOMEventProp contained bubbles cancelable currentTarget defaultPrevented
 syntax keyword typescriptDOMEventProp contained eventPhase target timeStamp type isTrusted
 syntax keyword typescriptDOMEventProp contained isReload
 syntax cluster props add=typescriptDOMEventProp
-if exists("did_typescript_hilink") | HiLink typescriptDOMEventProp Keyword
-endif
+hi def link typescriptDOMEventProp Keyword
 syntax keyword typescriptDOMEventMethod contained initEvent preventDefault stopImmediatePropagation nextgroup=typescriptEventFuncCallArg
 syntax keyword typescriptDOMEventMethod contained stopPropagation respondWith default nextgroup=typescriptEventFuncCallArg
 syntax cluster props add=typescriptDOMEventMethod
-if exists("did_typescript_hilink") | HiLink typescriptDOMEventMethod Keyword
-endif
+hi def link typescriptDOMEventMethod Keyword
 
 syntax keyword typescriptDOMStorage contained sessionStorage localStorage
-if exists("did_typescript_hilink") | HiLink typescriptDOMStorage Keyword
-endif
+hi def link typescriptDOMStorage Keyword
 syntax keyword typescriptDOMStorageProp contained length
 syntax cluster props add=typescriptDOMStorageProp
-if exists("did_typescript_hilink") | HiLink typescriptDOMStorageProp Keyword
-endif
+hi def link typescriptDOMStorageProp Keyword
 syntax keyword typescriptDOMStorageMethod contained getItem key setItem removeItem nextgroup=typescriptFuncCallArg
 syntax keyword typescriptDOMStorageMethod contained clear nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptDOMStorageMethod
-if exists("did_typescript_hilink") | HiLink typescriptDOMStorageMethod Keyword
-endif
+hi def link typescriptDOMStorageMethod Keyword
 
 syntax keyword typescriptDOMFormProp contained acceptCharset action elements encoding
 syntax keyword typescriptDOMFormProp contained enctype length method name target
 syntax cluster props add=typescriptDOMFormProp
-if exists("did_typescript_hilink") | HiLink typescriptDOMFormProp Keyword
-endif
+hi def link typescriptDOMFormProp Keyword
 syntax keyword typescriptDOMFormMethod contained reportValidity reset submit nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptDOMFormMethod
-if exists("did_typescript_hilink") | HiLink typescriptDOMFormMethod Keyword
-endif
+hi def link typescriptDOMFormMethod Keyword
 
 syntax keyword typescriptDOMStyle contained alignContent alignItems alignSelf animation
 syntax keyword typescriptDOMStyle contained animationDelay animationDirection animationDuration
@@ -1837,8 +1738,7 @@ syntax keyword typescriptDOMStyle contained transitionTimingFunction unicodeBidi
 syntax keyword typescriptDOMStyle contained userSelect userZoom verticalAlign visibility
 syntax keyword typescriptDOMStyle contained whiteSpace width willChange wordBreak
 syntax keyword typescriptDOMStyle contained wordSpacing wordWrap writingMode zIndex
-if exists("did_typescript_hilink") | HiLink typescriptDOMStyle Keyword
-endif
+hi def link typescriptDOMStyle Keyword
 
 
 
@@ -1847,56 +1747,46 @@ syntax keyword typescriptAnimationEvent contained animationend animationiteratio
 syntax keyword typescriptAnimationEvent contained animationstart beginEvent endEvent
 syntax keyword typescriptAnimationEvent contained repeatEvent
 syntax cluster events add=typescriptAnimationEvent
-if exists("did_typescript_hilink") | HiLink typescriptAnimationEvent Title
-endif
+hi def link typescriptAnimationEvent Title
 syntax keyword typescriptCSSEvent contained CssRuleViewRefreshed CssRuleViewChanged
 syntax keyword typescriptCSSEvent contained CssRuleViewCSSLinkClicked transitionend
 syntax cluster events add=typescriptCSSEvent
-if exists("did_typescript_hilink") | HiLink typescriptCSSEvent Title
-endif
+hi def link typescriptCSSEvent Title
 syntax keyword typescriptDatabaseEvent contained blocked complete error success upgradeneeded
 syntax keyword typescriptDatabaseEvent contained versionchange
 syntax cluster events add=typescriptDatabaseEvent
-if exists("did_typescript_hilink") | HiLink typescriptDatabaseEvent Title
-endif
+hi def link typescriptDatabaseEvent Title
 syntax keyword typescriptDocumentEvent contained DOMLinkAdded DOMLinkRemoved DOMMetaAdded
 syntax keyword typescriptDocumentEvent contained DOMMetaRemoved DOMWillOpenModalDialog
 syntax keyword typescriptDocumentEvent contained DOMModalDialogClosed unload
 syntax cluster events add=typescriptDocumentEvent
-if exists("did_typescript_hilink") | HiLink typescriptDocumentEvent Title
-endif
+hi def link typescriptDocumentEvent Title
 syntax keyword typescriptDOMMutationEvent contained DOMAttributeNameChanged DOMAttrModified
 syntax keyword typescriptDOMMutationEvent contained DOMCharacterDataModified DOMContentLoaded
 syntax keyword typescriptDOMMutationEvent contained DOMElementNameChanged DOMNodeInserted
 syntax keyword typescriptDOMMutationEvent contained DOMNodeInsertedIntoDocument DOMNodeRemoved
 syntax keyword typescriptDOMMutationEvent contained DOMNodeRemovedFromDocument DOMSubtreeModified
 syntax cluster events add=typescriptDOMMutationEvent
-if exists("did_typescript_hilink") | HiLink typescriptDOMMutationEvent Title
-endif
+hi def link typescriptDOMMutationEvent Title
 syntax keyword typescriptDragEvent contained drag dragdrop dragend dragenter dragexit
 syntax keyword typescriptDragEvent contained draggesture dragleave dragover dragstart
 syntax keyword typescriptDragEvent contained drop
 syntax cluster events add=typescriptDragEvent
-if exists("did_typescript_hilink") | HiLink typescriptDragEvent Title
-endif
+hi def link typescriptDragEvent Title
 syntax keyword typescriptElementEvent contained invalid overflow underflow DOMAutoComplete
 syntax keyword typescriptElementEvent contained command commandupdate
 syntax cluster events add=typescriptElementEvent
-if exists("did_typescript_hilink") | HiLink typescriptElementEvent Title
-endif
+hi def link typescriptElementEvent Title
 syntax keyword typescriptFocusEvent contained blur change DOMFocusIn DOMFocusOut focus
 syntax keyword typescriptFocusEvent contained focusin focusout
 syntax cluster events add=typescriptFocusEvent
-if exists("did_typescript_hilink") | HiLink typescriptFocusEvent Title
-endif
+hi def link typescriptFocusEvent Title
 syntax keyword typescriptFormEvent contained reset submit
 syntax cluster events add=typescriptFormEvent
-if exists("did_typescript_hilink") | HiLink typescriptFormEvent Title
-endif
+hi def link typescriptFormEvent Title
 syntax keyword typescriptFrameEvent contained DOMFrameContentLoaded
 syntax cluster events add=typescriptFrameEvent
-if exists("did_typescript_hilink") | HiLink typescriptFrameEvent Title
-endif
+hi def link typescriptFrameEvent Title
 syntax keyword typescriptInputDeviceEvent contained click contextmenu DOMMouseScroll
 syntax keyword typescriptInputDeviceEvent contained dblclick gamepadconnected gamepaddisconnected
 syntax keyword typescriptInputDeviceEvent contained keydown keypress keyup MozGamepadButtonDown
@@ -1906,8 +1796,7 @@ syntax keyword typescriptInputDeviceEvent contained mouseover mouseup mousewheel
 syntax keyword typescriptInputDeviceEvent contained pointerlockchange pointerlockerror
 syntax keyword typescriptInputDeviceEvent contained wheel
 syntax cluster events add=typescriptInputDeviceEvent
-if exists("did_typescript_hilink") | HiLink typescriptInputDeviceEvent Title
-endif
+hi def link typescriptInputDeviceEvent Title
 syntax keyword typescriptMediaEvent contained audioprocess canplay canplaythrough
 syntax keyword typescriptMediaEvent contained durationchange emptied ended ended loadeddata
 syntax keyword typescriptMediaEvent contained loadedmetadata MozAudioAvailable pause
@@ -1915,93 +1804,73 @@ syntax keyword typescriptMediaEvent contained play playing ratechange seeked see
 syntax keyword typescriptMediaEvent contained stalled suspend timeupdate volumechange
 syntax keyword typescriptMediaEvent contained waiting complete
 syntax cluster events add=typescriptMediaEvent
-if exists("did_typescript_hilink") | HiLink typescriptMediaEvent Title
-endif
+hi def link typescriptMediaEvent Title
 syntax keyword typescriptMenuEvent contained DOMMenuItemActive DOMMenuItemInactive
 syntax cluster events add=typescriptMenuEvent
-if exists("did_typescript_hilink") | HiLink typescriptMenuEvent Title
-endif
+hi def link typescriptMenuEvent Title
 syntax keyword typescriptNetworkEvent contained datachange dataerror disabled enabled
 syntax keyword typescriptNetworkEvent contained offline online statuschange connectionInfoUpdate
 syntax cluster events add=typescriptNetworkEvent
-if exists("did_typescript_hilink") | HiLink typescriptNetworkEvent Title
-endif
+hi def link typescriptNetworkEvent Title
 syntax keyword typescriptProgressEvent contained abort error load loadend loadstart
 syntax keyword typescriptProgressEvent contained progress timeout uploadprogress
 syntax cluster events add=typescriptProgressEvent
-if exists("did_typescript_hilink") | HiLink typescriptProgressEvent Title
-endif
+hi def link typescriptProgressEvent Title
 syntax keyword typescriptResourceEvent contained cached error load
 syntax cluster events add=typescriptResourceEvent
-if exists("did_typescript_hilink") | HiLink typescriptResourceEvent Title
-endif
+hi def link typescriptResourceEvent Title
 syntax keyword typescriptScriptEvent contained afterscriptexecute beforescriptexecute
 syntax cluster events add=typescriptScriptEvent
-if exists("did_typescript_hilink") | HiLink typescriptScriptEvent Title
-endif
+hi def link typescriptScriptEvent Title
 syntax keyword typescriptSensorEvent contained compassneedscalibration devicelight
 syntax keyword typescriptSensorEvent contained devicemotion deviceorientation deviceproximity
 syntax keyword typescriptSensorEvent contained orientationchange userproximity
 syntax cluster events add=typescriptSensorEvent
-if exists("did_typescript_hilink") | HiLink typescriptSensorEvent Title
-endif
+hi def link typescriptSensorEvent Title
 syntax keyword typescriptSessionHistoryEvent contained pagehide pageshow popstate
 syntax cluster events add=typescriptSessionHistoryEvent
-if exists("did_typescript_hilink") | HiLink typescriptSessionHistoryEvent Title
-endif
+hi def link typescriptSessionHistoryEvent Title
 syntax keyword typescriptStorageEvent contained change storage
 syntax cluster events add=typescriptStorageEvent
-if exists("did_typescript_hilink") | HiLink typescriptStorageEvent Title
-endif
+hi def link typescriptStorageEvent Title
 syntax keyword typescriptSVGEvent contained SVGAbort SVGError SVGLoad SVGResize SVGScroll
 syntax keyword typescriptSVGEvent contained SVGUnload SVGZoom
 syntax cluster events add=typescriptSVGEvent
-if exists("did_typescript_hilink") | HiLink typescriptSVGEvent Title
-endif
+hi def link typescriptSVGEvent Title
 syntax keyword typescriptTabEvent contained visibilitychange
 syntax cluster events add=typescriptTabEvent
-if exists("did_typescript_hilink") | HiLink typescriptTabEvent Title
-endif
+hi def link typescriptTabEvent Title
 syntax keyword typescriptTextEvent contained compositionend compositionstart compositionupdate
 syntax keyword typescriptTextEvent contained copy cut paste select text
 syntax cluster events add=typescriptTextEvent
-if exists("did_typescript_hilink") | HiLink typescriptTextEvent Title
-endif
+hi def link typescriptTextEvent Title
 syntax keyword typescriptTouchEvent contained touchcancel touchend touchenter touchleave
 syntax keyword typescriptTouchEvent contained touchmove touchstart
 syntax cluster events add=typescriptTouchEvent
-if exists("did_typescript_hilink") | HiLink typescriptTouchEvent Title
-endif
+hi def link typescriptTouchEvent Title
 syntax keyword typescriptUpdateEvent contained checking downloading error noupdate
 syntax keyword typescriptUpdateEvent contained obsolete updateready
 syntax cluster events add=typescriptUpdateEvent
-if exists("did_typescript_hilink") | HiLink typescriptUpdateEvent Title
-endif
+hi def link typescriptUpdateEvent Title
 syntax keyword typescriptValueChangeEvent contained hashchange input readystatechange
 syntax cluster events add=typescriptValueChangeEvent
-if exists("did_typescript_hilink") | HiLink typescriptValueChangeEvent Title
-endif
+hi def link typescriptValueChangeEvent Title
 syntax keyword typescriptViewEvent contained fullscreen fullscreenchange fullscreenerror
 syntax keyword typescriptViewEvent contained resize scroll
 syntax cluster events add=typescriptViewEvent
-if exists("did_typescript_hilink") | HiLink typescriptViewEvent Title
-endif
+hi def link typescriptViewEvent Title
 syntax keyword typescriptWebsocketEvent contained close error message open
 syntax cluster events add=typescriptWebsocketEvent
-if exists("did_typescript_hilink") | HiLink typescriptWebsocketEvent Title
-endif
+hi def link typescriptWebsocketEvent Title
 syntax keyword typescriptWindowEvent contained DOMWindowCreated DOMWindowClose DOMTitleChanged
 syntax cluster events add=typescriptWindowEvent
-if exists("did_typescript_hilink") | HiLink typescriptWindowEvent Title
-endif
+hi def link typescriptWindowEvent Title
 syntax keyword typescriptUncategorizedEvent contained beforeunload message open show
 syntax cluster events add=typescriptUncategorizedEvent
-if exists("did_typescript_hilink") | HiLink typescriptUncategorizedEvent Title
-endif
+hi def link typescriptUncategorizedEvent Title
 syntax keyword typescriptServiceWorkerEvent contained install activate fetch
 syntax cluster events add=typescriptServiceWorkerEvent
-if exists("did_typescript_hilink") | HiLink typescriptServiceWorkerEvent Title
-endif
+hi def link typescriptServiceWorkerEvent Title
 
 
 endif
@@ -2233,134 +2102,129 @@ syntax match typescriptDecorator /@\([_$a-zA-Z][_$a-zA-Z0-9]*\.\)*[_$a-zA-Z][_$a
   \ contains=@_semantic,typescriptDotNotation
 
 
-if exists("did_typescript_hilink")
-  HiLink typescriptReserved             Error
+hi def link typescriptReserved              Error
 
-  HiLink typescriptEndColons            Exception
-  HiLink typescriptSymbols              Normal
-  HiLink typescriptBraces               Function
-  HiLink typescriptParens               Normal
-  HiLink typescriptComment              Comment
-  HiLink typescriptLineComment          Comment
-  HiLink typescriptDocComment           Comment
-  HiLink typescriptCommentTodo          Todo
-  HiLink typescriptMagicComment         SpecialComment
-  HiLink typescriptRef                  Include
-  HiLink typescriptDocNotation          SpecialComment
-  HiLink typescriptDocTags              SpecialComment
-  HiLink typescriptDocNGParam           typescriptDocParam
-  HiLink typescriptDocParam             Function
-  HiLink typescriptDocNumParam          Function
-  HiLink typescriptDocEventRef          Function
-  HiLink typescriptDocNamedParamType    Type
-  HiLink typescriptDocParamName         Type
-  HiLink typescriptDocParamType         Type
-  HiLink typescriptString               String
-  HiLink typescriptSpecial              Special
-  HiLink typescriptStringLiteralType    String
-  HiLink typescriptTemplateLiteralType  String
-  HiLink typescriptStringMember         String
-  HiLink typescriptTemplate             String
-  HiLink typescriptEventString          String
-  HiLink typescriptDestructureString    String
-  HiLink typescriptASCII                Special
-  HiLink typescriptTemplateSB           Label
-  HiLink typescriptRegexpString         String
-  HiLink typescriptGlobal               Constant
-  HiLink typescriptTestGlobal           Function
-  HiLink typescriptPrototype            Type
-  HiLink typescriptConditional          Conditional
-  HiLink typescriptConditionalElse      Conditional
-  HiLink typescriptCase                 Conditional
-  HiLink typescriptDefault              typescriptCase
-  HiLink typescriptBranch               Conditional
-  HiLink typescriptIdentifier           Structure
-  HiLink typescriptVariable             Identifier
-  HiLink typescriptUsing                Identifier
-  HiLink typescriptDestructureVariable  PreProc
-  HiLink typescriptEnumKeyword          Identifier
-  HiLink typescriptRepeat               Repeat
-  HiLink typescriptForOperator          Repeat
-  HiLink typescriptStatementKeyword     Statement
-  HiLink typescriptMessage              Keyword
-  HiLink typescriptOperator             Identifier
-  HiLink typescriptKeywordOp            Identifier
-  HiLink typescriptCastKeyword          Special
-  HiLink typescriptType                 Type
-  HiLink typescriptNull                 Boolean
-  HiLink typescriptNumber               Number
-  HiLink typescriptBoolean              Boolean
-  HiLink typescriptObjectLabel          typescriptLabel
-  HiLink typescriptDestructureLabel     Function
-  HiLink typescriptLabel                Label
-  HiLink typescriptTupleLable           Label
-  HiLink typescriptStringProperty       String
-  HiLink typescriptImport               Special
-  HiLink typescriptImportType           Special
-  HiLink typescriptAmbientDeclaration   Special
-  HiLink typescriptExport               Special
-  HiLink typescriptExportType           Special
-  HiLink typescriptModule               Special
-  HiLink typescriptTry                  Special
-  HiLink typescriptExceptions           Special
+hi def link typescriptEndColons             Exception
+hi def link typescriptSymbols               Normal
+hi def link typescriptBraces                Function
+hi def link typescriptParens                Normal
+hi def link typescriptComment               Comment
+hi def link typescriptLineComment           Comment
+hi def link typescriptDocComment            Comment
+hi def link typescriptCommentTodo           Todo
+hi def link typescriptMagicComment          SpecialComment
+hi def link typescriptRef                   Include
+hi def link typescriptDocNotation           SpecialComment
+hi def link typescriptDocTags               SpecialComment
+hi def link typescriptDocNGParam            typescriptDocParam
+hi def link typescriptDocParam              Function
+hi def link typescriptDocNumParam           Function
+hi def link typescriptDocEventRef           Function
+hi def link typescriptDocNamedParamType     Type
+hi def link typescriptDocParamName          Type
+hi def link typescriptDocParamType          Type
+hi def link typescriptString                String
+hi def link typescriptSpecial               Special
+hi def link typescriptStringLiteralType     String
+hi def link typescriptTemplateLiteralType   String
+hi def link typescriptStringMember          String
+hi def link typescriptTemplate              String
+hi def link typescriptEventString           String
+hi def link typescriptDestructureString     String
+hi def link typescriptASCII                 Special
+hi def link typescriptTemplateSB            Label
+hi def link typescriptRegexpString          String
+hi def link typescriptGlobal                Constant
+hi def link typescriptTestGlobal            Function
+hi def link typescriptPrototype             Type
+hi def link typescriptConditional           Conditional
+hi def link typescriptConditionalElse       Conditional
+hi def link typescriptCase                  Conditional
+hi def link typescriptDefault               typescriptCase
+hi def link typescriptBranch                Conditional
+hi def link typescriptIdentifier            Structure
+hi def link typescriptVariable              Identifier
+hi def link typescriptUsing                 Identifier
+hi def link typescriptDestructureVariable   PreProc
+hi def link typescriptEnumKeyword           Identifier
+hi def link typescriptRepeat                Repeat
+hi def link typescriptForOperator           Repeat
+hi def link typescriptStatementKeyword      Statement
+hi def link typescriptMessage               Keyword
+hi def link typescriptOperator              Identifier
+hi def link typescriptKeywordOp             Identifier
+hi def link typescriptCastKeyword           Special
+hi def link typescriptType                  Type
+hi def link typescriptNull                  Boolean
+hi def link typescriptNumber                Number
+hi def link typescriptBoolean               Boolean
+hi def link typescriptObjectLabel           typescriptLabel
+hi def link typescriptDestructureLabel      Function
+hi def link typescriptLabel                 Label
+hi def link typescriptTupleLable            Label
+hi def link typescriptStringProperty        String
+hi def link typescriptImport                Special
+hi def link typescriptImportType            Special
+hi def link typescriptAmbientDeclaration    Special
+hi def link typescriptExport                Special
+hi def link typescriptExportType            Special
+hi def link typescriptModule                Special
+hi def link typescriptTry                   Special
+hi def link typescriptExceptions            Special
 
-  HiLink typescriptMember              Function
-  HiLink typescriptMethodAccessor       Operator
+hi def link typescriptMember                Function
+hi def link typescriptMethodAccessor        Operator
 
-  HiLink typescriptAsyncFuncKeyword     Keyword
-  HiLink typescriptObjectAsyncKeyword   Keyword
-  HiLink typescriptAsyncFor             Keyword
-  HiLink typescriptFuncKeyword          Keyword
-  HiLink typescriptAsyncFunc            Keyword
-  HiLink typescriptArrowFunc            Type
-  HiLink typescriptFuncName             Function
-  HiLink typescriptFuncCallArg          PreProc
-  HiLink typescriptArrowFuncArg         PreProc
-  HiLink typescriptFuncComma            Operator
+hi def link typescriptAsyncFuncKeyword      Keyword
+hi def link typescriptObjectAsyncKeyword    Keyword
+hi def link typescriptAsyncFor              Keyword
+hi def link typescriptFuncKeyword           Keyword
+hi def link typescriptAsyncFunc             Keyword
+hi def link typescriptArrowFunc             Type
+hi def link typescriptFuncName              Function
+hi def link typescriptFuncCallArg           PreProc
+hi def link typescriptArrowFuncArg          PreProc
+hi def link typescriptFuncComma             Operator
 
-  HiLink typescriptClassKeyword         Keyword
-  HiLink typescriptClassExtends         Keyword
-  " HiLink typescriptClassName            Function
-  HiLink typescriptAbstract             Special
-  " HiLink typescriptClassHeritage        Function
-  " HiLink typescriptInterfaceHeritage    Function
-  HiLink typescriptClassStatic          StorageClass
-  HiLink typescriptReadonlyModifier     Keyword
-  HiLink typescriptInterfaceKeyword     Keyword
-  HiLink typescriptInterfaceExtends     Keyword
-  HiLink typescriptInterfaceName        Function
+hi def link typescriptClassKeyword          Keyword
+hi def link typescriptClassExtends          Keyword
+" hi def link typescriptClassName             Function
+hi def link typescriptAbstract              Special
+" hi def link typescriptClassHeritage         Function
+" hi def link typescriptInterfaceHeritage     Function
+hi def link typescriptClassStatic           StorageClass
+hi def link typescriptReadonlyModifier      Keyword
+hi def link typescriptInterfaceKeyword      Keyword
+hi def link typescriptInterfaceExtends      Keyword
+hi def link typescriptInterfaceName         Function
 
-  HiLink shellbang                      Comment
+hi def link shellbang                       Comment
 
-  HiLink typescriptTypeParameter         Identifier
-  HiLink typescriptConstraint            Keyword
-  HiLink typescriptPredefinedType        Type
-  HiLink typescriptReadonlyArrayKeyword  Keyword
-  HiLink typescriptUnion                 Operator
-  HiLink typescriptFuncTypeArrow         Function
-  HiLink typescriptConstructorType       Function
-  HiLink typescriptTypeQuery             Keyword
-  HiLink typescriptAccessibilityModifier Keyword
-  HiLink typescriptAutoAccessor          Keyword
-  HiLink typescriptOptionalMark          PreProc
-  HiLink typescriptFuncType              Special
-  HiLink typescriptMappedIn              Special
-  HiLink typescriptCall                  PreProc
-  HiLink typescriptParamImpl             PreProc
-  HiLink typescriptConstructSignature    Identifier
-  HiLink typescriptAliasDeclaration      Identifier
-  HiLink typescriptAliasKeyword          Keyword
-  HiLink typescriptUserDefinedType       Keyword
-  HiLink typescriptTypeReference         Identifier
-  HiLink typescriptConstructor           Keyword
-  HiLink typescriptDecorator             Special
-  HiLink typescriptAssertType            Keyword
+hi def link typescriptTypeParameter         Identifier
+hi def link typescriptConstraint            Keyword
+hi def link typescriptPredefinedType        Type
+hi def link typescriptReadonlyArrayKeyword  Keyword
+hi def link typescriptUnion                 Operator
+hi def link typescriptFuncTypeArrow         Function
+hi def link typescriptConstructorType       Function
+hi def link typescriptTypeQuery             Keyword
+hi def link typescriptAccessibilityModifier Keyword
+hi def link typescriptAutoAccessor          Keyword
+hi def link typescriptOptionalMark          PreProc
+hi def link typescriptFuncType              Special
+hi def link typescriptMappedIn              Special
+hi def link typescriptCall                  PreProc
+hi def link typescriptParamImpl             PreProc
+hi def link typescriptConstructSignature    Identifier
+hi def link typescriptAliasDeclaration      Identifier
+hi def link typescriptAliasKeyword          Keyword
+hi def link typescriptUserDefinedType       Keyword
+hi def link typescriptTypeReference         Identifier
+hi def link typescriptConstructor           Keyword
+hi def link typescriptDecorator             Special
+hi def link typescriptAssertType            Keyword
 
-  highlight link typeScript             NONE
-
-  delcommand HiLink
-  unlet did_typescript_hilink
-endif
+hi def link typeScript                      NONE
 
 
 syntax cluster typescriptExpression add=tsxRegion,tsxFragment

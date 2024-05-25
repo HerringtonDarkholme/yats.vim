@@ -1,5 +1,4 @@
 syntax keyword typescriptGlobal containedin=typescriptIdentifierName Function
 syntax keyword typescriptFunctionMethod contained apply bind call nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptFunctionMethod
-if exists("did_typescript_hilink") | HiLink typescriptFunctionMethod Keyword
-endif
+hi def link typescriptFunctionMethod Keyword

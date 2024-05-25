@@ -1,16 +1,12 @@
 syntax keyword typescriptCryptoGlobal containedin=typescriptIdentifierName crypto
-if exists("did_typescript_hilink") | HiLink typescriptCryptoGlobal Structure
-endif
+hi def link typescriptCryptoGlobal Structure
 syntax keyword typescriptSubtleCryptoMethod contained encrypt decrypt sign verify nextgroup=typescriptFuncCallArg
 syntax keyword typescriptSubtleCryptoMethod contained digest nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptSubtleCryptoMethod
-if exists("did_typescript_hilink") | HiLink typescriptSubtleCryptoMethod Keyword
-endif
+hi def link typescriptSubtleCryptoMethod Keyword
 syntax keyword typescriptCryptoProp contained subtle
 syntax cluster props add=typescriptCryptoProp
-if exists("did_typescript_hilink") | HiLink typescriptCryptoProp Keyword
-endif
+hi def link typescriptCryptoProp Keyword
 syntax keyword typescriptCryptoMethod contained getRandomValues nextgroup=typescriptFuncCallArg
 syntax cluster props add=typescriptCryptoMethod
-if exists("did_typescript_hilink") | HiLink typescriptCryptoMethod Keyword
-endif
+hi def link typescriptCryptoMethod Keyword
