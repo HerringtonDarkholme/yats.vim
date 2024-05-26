@@ -3,10 +3,13 @@ on: [push, pull_request]
 
 env:
   TERM: 'xterm'
-  DISPLAY: ':0.0'
 
 jobs:
-  vim:
+  unit-tests:
+    strategy:
+      matrix:
+        editor: ['vim', 'neovim']
+      fail-fast: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,7 +17,9 @@ jobs:
           submodules: true
       - uses: rhysd/action-setup-vim@v1
         id: vim
-      - name: Run syntax tests on Vim
+        with:
+          neovim: ${{ matrix.editor == 'neovim' }}
+      - name: Run syntax tests
         working-directory: test
         run: |
           ${{ steps.vim.outputs.executable }} -u vimrc -U NONE -i NONE -n -N -e -s -c 'Vader! syntax.vader tsx.vader'
