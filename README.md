@@ -1,7 +1,7 @@
 YATS: Yet Another TypeScript Syntax
 ===================================
 
-[![Build Status](https://travis-ci.org/HerringtonDarkholme/yats.vim.svg?branch=master)](https://travis-ci.org/HerringtonDarkholme/yats.vim)
+[![Build Status](https://github.com/HerringtonDarkholme/yats.vim/actions/workflows/ci.yml/badge.svg)](https://github.com/HerringtonDarkholme/yats.vim/actions/workflows/ci.yml)
 
 ![screenshot](https://raw.githubusercontent.com/HerringtonDarkholme/yats.vim/master/screenshot.png)
 
