@@ -104,6 +104,7 @@ Given typescriptreact (line comment in tsxRegion):
       }
       <h1>Hello World</h1>
       { // trailing brace is commented out }
+      }
     </div>
   )
 Execute:
@@ -141,3 +142,37 @@ Execute:
   AssertEqual 'tsxBlockComment', SyntaxAt(3, 9)
   AssertNotEqual 'tsxBlockComment', SyntaxAt(4, 0)
   AssertEqual 'tsxBlockComment', SyntaxAt(6, 9)
+
+Given typescriptreact (string literals in props):
+  const foo =
+    <Foo
+      singleQuote='test'
+      doubleQuote="test"
+      singleInDouble="'"
+      doubleInSingle='"'
+      escapedSingle='\''
+      escapedDouble="\""
+      otherProp={42}
+    >
+    </Foo>;
+Execute:
+  " Check 'test' and "test"
+  for line in [3, 4]
+    for col in range(17, 22)
+      AssertEqual 'tsxString', SyntaxAt(line, col)
+    endfor
+  endfor
+  " Check "'" and '"'
+  for line in [5, 6]
+    for col in range(20, 22)
+      AssertEqual 'tsxString', SyntaxAt(line, col)
+    endfor
+  endfor
+  " Check '\'' and "\""
+  for line in [7, 8]
+    for col in range(19, 22)
+      AssertEqual 'tsxString', SyntaxAt(line, col)
+    endfor
+  endfor
+  " Check if the string literal highlight terminated correctly
+  AssertEqual 'tsxAttrib', SyntaxAt(9, 5)
