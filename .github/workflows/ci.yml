@@ -1,0 +1,20 @@
+name: CI
+on: [push, pull_request]
+
+env:
+  TERM: 'xterm'
+  DISPLAY: ':0.0'
+
+jobs:
+  vim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: rhysd/action-setup-vim@v1
+        id: vim
+      - name: Run syntax tests on Vim
+        working-directory: test
+        run: |
+          ${{ steps.vim.outputs.executable }} -u vimrc -U NONE -i NONE -n -N -e -s -c 'Vader! syntax.vader tsx.vader'
