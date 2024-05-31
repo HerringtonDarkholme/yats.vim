@@ -18,8 +18,8 @@ setlocal formatoptions-=t formatoptions+=croql
 let b:undo_ftplugin = 'setl fo< cms<'
 
 if !&l:formatexpr && !&l:formatprg
-    setlocal formatexpr=Fixedgq(v:lnum,v:count)
-    let b:undo_ftplugin .= ' fex<'
+  setlocal formatexpr=Fixedgq(v:lnum,v:count)
+  let b:undo_ftplugin .= ' fex<'
 endif
 
 " setlocal foldmethod=syntax
@@ -28,64 +28,64 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 
 function! Fixedgq(lnum, count)
-    let l:tw = &tw ? &tw : 80
+  let l:tw = &tw ? &tw : 80
 
-    let l:count = a:count
-    let l:first_char = indent(a:lnum) + 1
+  let l:count = a:count
+  let l:first_char = indent(a:lnum) + 1
 
-    if mode() == 'i' " gq was not pressed, but tw was set
-        return 1
-    endif
+  if mode() == 'i' " gq was not pressed, but tw was set
+    return 1
+  endif
 
-    " This gq is only meant to do code with strings, not comments
-    if yats#IsLineComment(a:lnum, l:first_char) || yats#IsInMultilineComment(a:lnum, l:first_char)
-        return 1
-    endif
+  " This gq is only meant to do code with strings, not comments
+  if yats#IsLineComment(a:lnum, l:first_char) || yats#IsInMultilineComment(a:lnum, l:first_char)
+    return 1
+  endif
 
-    if len(getline(a:lnum)) < l:tw && l:count == 1 " No need for gq
-        return 1
-    endif
+  if len(getline(a:lnum)) < l:tw && l:count == 1 " No need for gq
+    return 1
+  endif
 
-    " Put all the lines on one line and do normal splitting after that
-    if l:count > 1
-        while l:count > 1
-            let l:count -= 1
-            normal! J
-        endwhile
-    endif
+  " Put all the lines on one line and do normal splitting after that
+  if l:count > 1
+    while l:count > 1
+      let l:count -= 1
+      normal! J
+    endwhile
+  endif
 
-    let l:winview = winsaveview()
+  let l:winview = winsaveview()
 
+  call cursor(a:lnum, l:tw + 1)
+  let orig_breakpoint = searchpairpos(' ', '', '\.', 'bcW', '', a:lnum)
+  call cursor(a:lnum, l:tw + 1)
+  let breakpoint = searchpairpos(' ', '', '\.', 'bcW', s:skip_expr, a:lnum)
+
+  " No need for special treatment, normal gq handles edgecases better
+  if breakpoint[1] == orig_breakpoint[1]
+    call winrestview(l:winview)
+    return 1
+  endif
+
+  " Try breaking after string
+  if breakpoint[1] <= indent(a:lnum)
     call cursor(a:lnum, l:tw + 1)
-    let orig_breakpoint = searchpairpos(' ', '', '\.', 'bcW', '', a:lnum)
-    call cursor(a:lnum, l:tw + 1)
-    let breakpoint = searchpairpos(' ', '', '\.', 'bcW', s:skip_expr, a:lnum)
-
-    " No need for special treatment, normal gq handles edgecases better
-    if breakpoint[1] == orig_breakpoint[1]
-        call winrestview(l:winview)
-        return 1
-    endif
-
-    " Try breaking after string
-    if breakpoint[1] <= indent(a:lnum)
-        call cursor(a:lnum, l:tw + 1)
-        let breakpoint = searchpairpos('\.', '', ' ', 'cW', s:skip_expr, a:lnum)
-    endif
+    let breakpoint = searchpairpos('\.', '', ' ', 'cW', s:skip_expr, a:lnum)
+  endif
 
 
-    if breakpoint[1] != 0
-        call feedkeys("r\<CR>")
-    else
-        let l:count = l:count - 1
-    endif
+  if breakpoint[1] != 0
+    call feedkeys("r\<CR>")
+  else
+    let l:count = l:count - 1
+  endif
 
-    " run gq on new lines
-    if l:count == 1
-        call feedkeys("gqq")
-    endif
+  " run gq on new lines
+  if l:count == 1
+    call feedkeys("gqq")
+  endif
 
-    return 0
+  return 0
 endfunction
 
 function! TsIncludeExpr(file)
