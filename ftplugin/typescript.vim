@@ -15,8 +15,11 @@ setlocal commentstring=//\ %s
 " " and insert the comment leader when hitting <CR> or using "o".
 setlocal formatoptions-=t formatoptions+=croql
 
+let b:undo_ftplugin = 'setl fo< cms<'
+
 if !&l:formatexpr && !&l:formatprg
     setlocal formatexpr=Fixedgq(v:lnum,v:count)
+    let b:undo_ftplugin .= ' fex<'
 endif
 
 " setlocal foldmethod=syntax
@@ -98,6 +101,8 @@ set path+=./node_modules/**,node_modules/**
 set include=import\_s.\\zs[^'\"]*\\ze
 set includeexpr=TsIncludeExpr(v:fname)
 set suffixesadd+=.ts
+
+let b:undo_ftplugin .= ' pa< inc< inex< fex<'
 
 "
 " TagBar
