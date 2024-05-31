@@ -97,10 +97,10 @@ function! TsIncludeExpr(file)
   endif
 endfunction
 
-set path+=./node_modules/**,node_modules/**
-set include=import\_s.\\zs[^'\"]*\\ze
-set includeexpr=TsIncludeExpr(v:fname)
-set suffixesadd+=.ts
+setlocal path+=./node_modules/**,node_modules/**
+setlocal include=import\_s.\\zs[^'\"]*\\ze
+setlocal includeexpr=TsIncludeExpr(v:fname)
+setlocal suffixesadd+=.ts
 
 let b:undo_ftplugin .= ' pa< inc< inex< fex<'
 
