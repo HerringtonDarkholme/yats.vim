@@ -82,7 +82,7 @@ hi def link typescriptCase                  Conditional
 hi def link typescriptDefault               typescriptCase
 hi def link typescriptBranch                Conditional
 hi def link typescriptIdentifier            Structure
-hi def link typescriptVariable              Identifier
+hi def link typescriptVariable              Keyword
 hi def link typescriptUsing                 Identifier
 hi def link typescriptDestructureVariable   PreProc
 hi def link typescriptEnumKeyword           Identifier
