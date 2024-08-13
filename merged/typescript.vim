@@ -2048,7 +2048,7 @@ hi def link typescriptCase                  Conditional
 hi def link typescriptDefault               typescriptCase
 hi def link typescriptBranch                Conditional
 hi def link typescriptIdentifier            Structure
-hi def link typescriptVariable              Identifier
+hi def link typescriptVariable              Keyword
 hi def link typescriptUsing                 Identifier
 hi def link typescriptDestructureVariable   PreProc
 hi def link typescriptEnumKeyword           Identifier
@@ -2056,8 +2056,8 @@ hi def link typescriptRepeat                Repeat
 hi def link typescriptForOperator           Repeat
 hi def link typescriptStatementKeyword      Statement
 hi def link typescriptMessage               Keyword
-hi def link typescriptOperator              Identifier
-hi def link typescriptKeywordOp             Identifier
+hi def link typescriptOperator              Operator
+hi def link typescriptKeywordOp             Operator
 hi def link typescriptCastKeyword           Special
 hi def link typescriptType                  Type
 hi def link typescriptNull                  Boolean
@@ -2068,14 +2068,14 @@ hi def link typescriptDestructureLabel      Function
 hi def link typescriptLabel                 Label
 hi def link typescriptTupleLable            Label
 hi def link typescriptStringProperty        String
-hi def link typescriptImport                Special
+hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Special
 hi def link typescriptAmbientDeclaration    Special
 hi def link typescriptExport                Special
 hi def link typescriptExportType            Special
 hi def link typescriptModule                Special
-hi def link typescriptTry                   Special
-hi def link typescriptExceptions            Special
+hi def link typescriptTry                   Exception
+hi def link typescriptExceptions            Exception
 
 hi def link typescriptMember                Function
 hi def link typescriptMethodAccessor        Operator
