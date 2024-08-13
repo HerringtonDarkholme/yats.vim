@@ -6,7 +6,7 @@ var common = fs.readFileSync('syntax/common.vim', 'utf8')
 
 function replace(_, indentation, filename) {
   var source = fs.readFileSync(filename, 'utf8')
-  return importFile(source.replace(/^/gm, indentation))
+  return importFile(source.replace(/^(?!$)/gm, indentation))
 }
 
 function importFile(source) {
