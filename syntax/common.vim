@@ -90,8 +90,8 @@ hi def link typescriptRepeat                Repeat
 hi def link typescriptForOperator           Repeat
 hi def link typescriptStatementKeyword      Statement
 hi def link typescriptMessage               Keyword
-hi def link typescriptOperator              Identifier
-hi def link typescriptKeywordOp             Identifier
+hi def link typescriptOperator              Operator
+hi def link typescriptKeywordOp             Operator
 hi def link typescriptCastKeyword           Special
 hi def link typescriptType                  Type
 hi def link typescriptNull                  Boolean
