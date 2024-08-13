@@ -102,7 +102,7 @@ hi def link typescriptDestructureLabel      Function
 hi def link typescriptLabel                 Label
 hi def link typescriptTupleLable            Label
 hi def link typescriptStringProperty        String
-hi def link typescriptImport                Special
+hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Special
 hi def link typescriptAmbientDeclaration    Special
 hi def link typescriptExport                Special
