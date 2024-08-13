@@ -4,13 +4,13 @@ var entry = fs.readFileSync('syntax/typescript.vim', 'utf8')
 var entryReact = fs.readFileSync('syntax/typescriptreact.vim', 'utf8')
 var common = fs.readFileSync('syntax/common.vim', 'utf8')
 
-function replace(_, filename) {
+function replace(_, indentation, filename) {
   var source = fs.readFileSync(filename, 'utf8')
-  return importFile(source)
+  return importFile(source.replace(/^/gm, indentation))
 }
 
 function importFile(source) {
-  return source.replace(/^\s*runtime (.+)?/gm, replace)
+  return source.replace(/^([ \t]*)runtime (.+)?/gm, replace)
 }
 
 var merged = importFile(entry)
