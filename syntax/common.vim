@@ -108,8 +108,8 @@ hi def link typescriptAmbientDeclaration    Special
 hi def link typescriptExport                Special
 hi def link typescriptExportType            Special
 hi def link typescriptModule                Special
-hi def link typescriptTry                   Special
-hi def link typescriptExceptions            Special
+hi def link typescriptTry                   Exception
+hi def link typescriptExceptions            Exception
 
 hi def link typescriptMember                Function
 hi def link typescriptMethodAccessor        Operator
