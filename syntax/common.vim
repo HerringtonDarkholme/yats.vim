@@ -41,6 +41,9 @@ runtime syntax/ts-common/cluster.vim
 runtime syntax/ts-common/function.vim
 runtime syntax/ts-common/decorator.vim
 
+hi def link typescriptIdentifierName        Identifier
+hi def link typescriptProp                  Identifier
+hi def link typescriptVariableDeclaration   Identifier
 hi def link typescriptReserved              Error
 
 hi def link typescriptEndColons             Exception

@@ -8,12 +8,10 @@ syntax cluster afterIdentifier contains=
 
 syntax match   typescriptIdentifierName        /\<\K\k*/
   \ nextgroup=@afterIdentifier
-  \ transparent
   \ contains=@_semantic
   \ skipnl skipwhite
 
 syntax match   typescriptProp contained /\K\k*!\?/
-  \ transparent
   \ contains=@props
   \ nextgroup=@afterIdentifier
   \ skipwhite skipempty
