@@ -899,8 +899,8 @@ Given typescript (identifier starting with 'function'):
   (functionName)
   [functionName]
 Execute:
-  AssertEqual 'typescriptParenExp', SyntaxAt(1, 2)
-  AssertEqual 'typescriptArray', SyntaxAt(2, 2)
+  AssertEqual 'typescriptIdentifierName', SyntaxAt(1, 2)
+  AssertEqual 'typescriptIdentifierName', SyntaxAt(2, 2)
 
 Given typescript (labeled tuple):
   type Range = [start: number, end: number];
@@ -1029,7 +1029,7 @@ Given typescript (ternary in objeect):
     return { a: b === 'test' ? `${val}` : 'test' }
   }
 Execute:
-  AssertEqual 'typescriptTemplateSubstitution', SyntaxAt(2, 33)
+  AssertEqual 'typescriptIdentifierName', SyntaxAt(2, 33)
   AssertEqual 'typescriptTemplateSB', SyntaxAt(2, 36)
 
 Given typescript (key remapping in mapped types):
@@ -1160,7 +1160,7 @@ Execute:
   AssertEqual 'typescriptPromiseMethod', SyntaxAt(13, 7)
   AssertEqual 'typescriptArrowFunc', SyntaxAt(13, 28)
   AssertEqual 'typescriptPromiseMethod', SyntaxAt(14, 7)
-  AssertEqual 'typescriptFuncCallArg', SyntaxAt(14, 13)
+  AssertEqual 'typescriptIdentifierName', SyntaxAt(14, 13)
 
 Given typescript (arbitrary module identifier in import block):
   import { "hello" as hello } from "./hello";
@@ -1192,7 +1192,7 @@ Execute:
   " Validate `import`
   AssertEqual 'typescriptImport', SyntaxAt(3, 1)
   " Validate `foo`
-  AssertEqual 'typescriptImportBlock', SyntaxAt(3, 10)
+  AssertEqual 'typescriptIdentifierName', SyntaxAt(3, 10)
   " Validate `"hello"`
   AssertEqual 'typescriptString', SyntaxAt(3, 15)
   " Validate `as`
