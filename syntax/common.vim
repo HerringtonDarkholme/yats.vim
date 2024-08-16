@@ -155,7 +155,7 @@ hi def link typescriptMappedIn              Special
 hi def link typescriptCall                  PreProc
 hi def link typescriptParamImpl             PreProc
 hi def link typescriptConstructSignature    Identifier
-hi def link typescriptAliasDeclaration      Identifier
+hi def link typescriptAliasDeclaration      Typedef
 hi def link typescriptAliasKeyword          Keyword
 hi def link typescriptUserDefinedType       Keyword
 hi def link typescriptTypeReference         Type
