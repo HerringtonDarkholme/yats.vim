@@ -132,7 +132,7 @@ hi def link typescriptAbstract              Special
 " hi def link typescriptClassHeritage         Function
 " hi def link typescriptInterfaceHeritage     Function
 hi def link typescriptClassStatic           StorageClass
-hi def link typescriptReadonlyModifier      Keyword
+hi def link typescriptReadonlyModifier      StorageClass
 hi def link typescriptInterfaceKeyword      Keyword
 hi def link typescriptInterfaceExtends      Keyword
 hi def link typescriptInterfaceName         Function
