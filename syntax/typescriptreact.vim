@@ -124,18 +124,18 @@ runtime syntax/common.vim
 
 syntax cluster typescriptExpression add=tsxRegion,tsxFragment
 
-highlight def link tsxTag htmlTag
-highlight def link tsxTagName Function
-highlight def link tsxIntrinsicTagName htmlTagName
-highlight def link tsxString String
-highlight def link tsxNameSpace Function
-highlight def link tsxCommentInvalid Error
-highlight def link tsxBlockComment Comment
-highlight def link tsxLineComment Comment
-highlight def link tsxAttrib Type
-highlight def link tsxEscJs tsxEscapeJs
-highlight def link tsxCloseTag htmlTag
-highlight def link tsxCloseString Identifier
+hi def link tsxTag htmlTag
+hi def link tsxTagName Function
+hi def link tsxIntrinsicTagName htmlTagName
+hi def link tsxString String
+hi def link tsxNameSpace Function
+hi def link tsxCommentInvalid Error
+hi def link tsxBlockComment Comment
+hi def link tsxLineComment Comment
+hi def link tsxAttrib Type
+hi def link tsxEscJs tsxEscapeJs
+hi def link tsxCloseTag htmlTag
+hi def link tsxCloseString Identifier
 
 let b:current_syntax = "typescriptreact"
 if main_syntax == 'typescriptreact'
