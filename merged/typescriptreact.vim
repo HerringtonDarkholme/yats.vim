@@ -2167,7 +2167,7 @@ hi def link typescriptStringProperty        String
 hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Special
 hi def link typescriptAmbientDeclaration    Special
-hi def link typescriptExport                Special
+hi def link typescriptExport                Keyword
 hi def link typescriptExportType            Special
 hi def link typescriptModule                Special
 hi def link typescriptTry                   Exception
@@ -2194,7 +2194,7 @@ hi def link typescriptAbstract              Special
 " hi def link typescriptClassHeritage         Function
 " hi def link typescriptInterfaceHeritage     Function
 hi def link typescriptClassStatic           StorageClass
-hi def link typescriptReadonlyModifier      Keyword
+hi def link typescriptReadonlyModifier      StorageClass
 hi def link typescriptInterfaceKeyword      Keyword
 hi def link typescriptInterfaceExtends      Keyword
 hi def link typescriptInterfaceName         Function
