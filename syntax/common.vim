@@ -100,10 +100,10 @@ hi def link typescriptType                  Type
 hi def link typescriptNull                  Boolean
 hi def link typescriptNumber                Number
 hi def link typescriptBoolean               Boolean
-hi def link typescriptObjectLabel           typescriptLabel
+hi def link typescriptObjectLabel           Identifier
 hi def link typescriptDestructureLabel      Function
 hi def link typescriptLabel                 Label
-hi def link typescriptTupleLable            Label
+hi def link typescriptTupleLable            Identifier
 hi def link typescriptStringProperty        String
 hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Keyword
