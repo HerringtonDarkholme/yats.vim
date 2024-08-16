@@ -155,7 +155,7 @@ hi def link typescriptAutoAccessor          Keyword
 hi def link typescriptOptionalMark          PreProc
 hi def link typescriptFuncType              Special
 hi def link typescriptMappedIn              Special
-hi def link typescriptCall                  PreProc
+hi def link typescriptCall                  Identifier
 hi def link typescriptParamImpl             PreProc
 hi def link typescriptConstructSignature    Identifier
 hi def link typescriptAliasDeclaration      Identifier
