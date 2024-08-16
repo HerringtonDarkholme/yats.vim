@@ -105,7 +105,7 @@ hi def link typescriptStringProperty        String
 hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Special
 hi def link typescriptAmbientDeclaration    Special
-hi def link typescriptExport                Special
+hi def link typescriptExport                Keyword
 hi def link typescriptExportType            Special
 hi def link typescriptModule                Special
 hi def link typescriptTry                   Exception
