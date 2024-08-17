@@ -1,3 +1,11 @@
+" Vim syntax file
+" Language:     TypeScript with React (JSX)
+" Maintainer:   Herrington Darkholme
+" Last Change:  2024 Aug 17
+" Changes:      See https://github.com/HerringtonDarkholme/yats.vim
+" Origin:       https://github.com/othree/yajs
+" Credits:      See yats.vim on github
+
 if !exists("main_syntax")
   if exists("b:current_syntax")
     finish
