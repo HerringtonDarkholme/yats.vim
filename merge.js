@@ -26,6 +26,9 @@ function importEntryFile(source) {
 var typescript = importEntryFile(entry)
 var typescriptReact = importEntryFile(entryReact)
 var mergedCommon = importFile(common)
+
+fs.mkdirSync("merged/shared", { recursive: true });
+
 fs.writeFileSync('merged/typescript.vim', typescript)
 fs.writeFileSync('merged/typescriptreact.vim', typescriptReact)
-fs.writeFileSync('merged/typescriptcommon.vim', mergedCommon)
+fs.writeFileSync('merged/shared/typescriptcommon.vim', mergedCommon)
