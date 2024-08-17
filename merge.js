@@ -19,9 +19,13 @@ function importFile(source) {
     )
 }
 
-var merged = importFile(entry)
-var mergedReact = importFile(entryReact)
+function importEntryFile(source) {
+  return source.replace("runtime syntax/common.vim", "source <sfile>:h/shared/typescriptcommon.vim");
+}
+
+var typescript = importEntryFile(entry)
+var typescriptReact = importEntryFile(entryReact)
 var mergedCommon = importFile(common)
-fs.writeFileSync('merged/typescript.vim', merged)
-fs.writeFileSync('merged/typescriptreact.vim', mergedReact)
+fs.writeFileSync('merged/typescript.vim', typescript)
+fs.writeFileSync('merged/typescriptreact.vim', typescriptReact)
 fs.writeFileSync('merged/typescriptcommon.vim', mergedCommon)
