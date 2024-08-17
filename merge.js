@@ -10,7 +10,12 @@ function replace(_, indentation, filename) {
 }
 
 function importFile(source) {
-  return source.replace(/^([ \t]*)runtime (.+)?/gm, replace)
+  return source
+    .replace(/^([ \t]*)runtime (.+)?/gm, replace)
+    .replace(
+      /exec '([^']*)'\.\(exists\('g:typescript_conceal_[a-z]*'\) \? 'conceal cchar='\.g:typescript_conceal_[a-z]* : ''\)\.' ([^']*)'/gm,
+      (_, start, end) => start + end
+    )
 }
 
 var merged = importFile(entry)
