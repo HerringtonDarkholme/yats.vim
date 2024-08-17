@@ -12,6 +12,7 @@ function replace(_, indentation, filename) {
 function importFile(source) {
   return source
     .replace(/^([ \t]*)runtime (.+)?/gm, replace)
+    .replace("yats_host_keyword", "typescript_host_keyword")
     .replace(
       /exec '([^']*)'\.\(exists\('g:typescript_conceal_[a-z]*'\) \? 'conceal cchar='\.g:typescript_conceal_[a-z]* : ''\)\.' ([^']*)'/gm,
       (_, start, end) => start + end
