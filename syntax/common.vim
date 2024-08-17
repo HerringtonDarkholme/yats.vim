@@ -1,3 +1,8 @@
+if &cpo =~ 'C'
+  let s:cpo_save = &cpo
+  set cpo&vim
+endif
+
 " Define the default highlighting.
 
 syntax sync fromstart
@@ -164,3 +169,8 @@ hi def link typescriptDecorator             Special
 hi def link typescriptAssertType            Keyword
 
 hi def link typeScript                      NONE
+
+if exists('s:cpo_save')
+  let &cpo = s:cpo_save
+  unlet s:cpo_save
+endif

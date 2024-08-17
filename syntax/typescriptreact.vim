@@ -5,6 +5,9 @@ if !exists("main_syntax")
   let main_syntax = 'typescriptreact'
 endif
 
+let s:cpo_save = &cpo
+set cpo&vim
+
 syntax region tsxTag
       \ start=+<\([^/!?<>="':]\+\)\@=+
       \ skip=+</[^ /!?<>"']\+>+
@@ -141,3 +144,6 @@ let b:current_syntax = "typescriptreact"
 if main_syntax == 'typescriptreact'
   unlet main_syntax
 endif
+
+let &cpo = s:cpo_save
+unlet s:cpo_save

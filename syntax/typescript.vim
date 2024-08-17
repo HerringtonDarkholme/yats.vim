@@ -17,6 +17,9 @@ if !exists("main_syntax")
   let main_syntax = 'typescript'
 endif
 
+let s:cpo_save = &cpo
+set cpo&vim
+
 " nextgroup doesn't contain objectLiteral, let outer region contains it
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
   \ start=/< \@!/ end=/>/
@@ -30,3 +33,6 @@ let b:current_syntax = "typescript"
 if main_syntax == 'typescript'
   unlet main_syntax
 endif
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
