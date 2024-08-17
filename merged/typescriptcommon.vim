@@ -1,125 +1,3 @@
-if !exists("main_syntax")
-  if exists("b:current_syntax")
-    finish
-  endif
-  let main_syntax = 'typescriptreact'
-endif
-
-syntax region tsxTag
-      \ start=+<\([^/!?<>="':]\+\)\@=+
-      \ skip=+</[^ /!?<>"']\+>+
-      \ end=+/\@<!>+
-      \ end=+\(/>\)\@=+
-      \ contained
-      \ contains=tsxTagName,tsxIntrinsicTagName,tsxAttrib,tsxEscJs,
-                \tsxCloseString,@tsxComment
-
-syntax match tsxTag /<>/ contained
-
-
-" <tag></tag>
-" s~~~~~~~~~e
-" and self close tag
-" <tag/>
-" s~~~~e
-" A big start regexp borrowed from https://git.io/vDyxc
-syntax region tsxRegion
-      \ start=+<\_s*\z([a-zA-Z1-9\$_-]\+\(\.\k\+\)*\)+
-      \ skip=+<!--\_.\{-}-->+
-      \ end=+</\_s*\z1>+
-      \ matchgroup=tsxCloseString end=+/>+
-      \ fold
-      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxCommentInvalid,tsxFragment,tsxEscJs,@Spell
-      \ keepend
-      \ extend
-
-" <>   </>
-" s~~~~~~e
-" A big start regexp borrowed from https://git.io/vDyxc
-syntax region tsxFragment
-      \ start=+\(\((\|{\|}\|\[\|,\|&&\|||\|?\|:\|=\|=>\|\Wreturn\|^return\|\Wdefault\|^\|>\)\_s*\)\@<=<>+
-      \ skip=+<!--\_.\{-}-->+
-      \ end=+</>+
-      \ fold
-      \ contains=tsxRegion,tsxCloseString,tsxCloseTag,tsxTag,tsxCommentInvalid,tsxFragment,tsxEscJs,@Spell
-      \ keepend
-      \ extend
-
-" </tag>
-" ~~~~~~
-syntax match tsxCloseTag
-      \ +</\_s*[^/!?<>"']\+>+
-      \ contained
-      \ contains=tsxTagName,tsxIntrinsicTagName
-
-syntax match tsxCloseTag +</>+ contained
-
-syntax match tsxCloseString
-      \ +/>+
-      \ contained
-
-" <!-- -->
-" ~~~~~~~~
-syntax match tsxCommentInvalid /<!--\_.\{-}-->/ display
-
-syntax region tsxBlockComment
-    \ contained
-    \ start="/\*"
-    \ end="\*/"
-
-syntax match tsxLineComment
-    \ "//.*$"
-    \ contained
-    \ display
-
-syntax cluster tsxComment contains=tsxBlockComment,tsxLineComment
-
-syntax match tsxEntity "&[^; \t]*;" contains=tsxEntityPunct
-syntax match tsxEntityPunct contained "[&.;]"
-
-" <tag key={this.props.key}>
-"  ~~~
-syntax match tsxTagName
-    \ +[</]\_s*[^/!?<>"'* ]\++hs=s+1
-    \ contained
-    \ nextgroup=tsxAttrib
-    \ skipwhite
-    \ display
-syntax match tsxIntrinsicTagName
-    \ +[</]\_s*[a-z1-9-]\++hs=s+1
-    \ contained
-    \ nextgroup=tsxAttrib
-    \ skipwhite
-    \ display
-
-" <tag key={this.props.key}>
-"      ~~~
-syntax match tsxAttrib
-    \ +[a-zA-Z_][-0-9a-zA-Z_]*+
-    \ nextgroup=tsxEqual skipwhite
-    \ contained
-    \ display
-
-" <tag id="sample">
-"        ~
-syntax match tsxEqual +=+ display contained
-  \ nextgroup=tsxString skipwhite
-
-" <tag id="sample">
-"         s~~~~~~e
-syntax region tsxString contained start=+"+ skip=+\\"+ end=+"+ contains=tsxEntity,@Spell display
-syntax region tsxString contained start=+'+ skip=+\\'+ end=+'+ contains=tsxEntity,@Spell display
-
-" <tag key={this.props.key}>
-"          s~~~~~~~~~~~~~~e
-syntax region tsxEscJs
-    \ contained
-    \ contains=@typescriptValue,@tsxComment,typescriptObjectSpread
-    \ matchgroup=typescriptBraces
-    \ start=+{+
-    \ end=+}+
-    \ extend
-
 " Define the default highlighting.
 
 syntax sync fromstart
@@ -2149,7 +2027,7 @@ hi def link typescriptCase                  Conditional
 hi def link typescriptDefault               typescriptCase
 hi def link typescriptBranch                Conditional
 hi def link typescriptIdentifier            Structure
-hi def link typescriptVariable              Keyword
+hi def link typescriptVariable              Identifier
 hi def link typescriptUsing                 Identifier
 hi def link typescriptDestructureVariable   PreProc
 hi def link typescriptEnumKeyword           Identifier
@@ -2157,8 +2035,8 @@ hi def link typescriptRepeat                Repeat
 hi def link typescriptForOperator           Repeat
 hi def link typescriptStatementKeyword      Statement
 hi def link typescriptMessage               Keyword
-hi def link typescriptOperator              Operator
-hi def link typescriptKeywordOp             Operator
+hi def link typescriptOperator              Identifier
+hi def link typescriptKeywordOp             Identifier
 hi def link typescriptCastKeyword           Special
 hi def link typescriptType                  Type
 hi def link typescriptNull                  Boolean
@@ -2169,14 +2047,14 @@ hi def link typescriptDestructureLabel      Function
 hi def link typescriptLabel                 Label
 hi def link typescriptTupleLable            Label
 hi def link typescriptStringProperty        String
-hi def link typescriptImport                Keyword
+hi def link typescriptImport                Special
 hi def link typescriptImportType            Special
 hi def link typescriptAmbientDeclaration    Special
-hi def link typescriptExport                Keyword
+hi def link typescriptExport                Special
 hi def link typescriptExportType            Special
 hi def link typescriptModule                Special
-hi def link typescriptTry                   Exception
-hi def link typescriptExceptions            Exception
+hi def link typescriptTry                   Special
+hi def link typescriptExceptions            Special
 
 hi def link typescriptMember                Function
 hi def link typescriptMethodAccessor        Operator
@@ -2199,7 +2077,7 @@ hi def link typescriptAbstract              Special
 " hi def link typescriptClassHeritage         Function
 " hi def link typescriptInterfaceHeritage     Function
 hi def link typescriptClassStatic           StorageClass
-hi def link typescriptReadonlyModifier      StorageClass
+hi def link typescriptReadonlyModifier      Keyword
 hi def link typescriptInterfaceKeyword      Keyword
 hi def link typescriptInterfaceExtends      Keyword
 hi def link typescriptInterfaceName         Function
@@ -2231,24 +2109,3 @@ hi def link typescriptDecorator             Special
 hi def link typescriptAssertType            Keyword
 
 hi def link typeScript                      NONE
-
-
-syntax cluster typescriptExpression add=tsxRegion,tsxFragment
-
-highlight def link tsxTag htmlTag
-highlight def link tsxTagName Function
-highlight def link tsxIntrinsicTagName htmlTagName
-highlight def link tsxString String
-highlight def link tsxNameSpace Function
-highlight def link tsxCommentInvalid Error
-highlight def link tsxBlockComment Comment
-highlight def link tsxLineComment Comment
-highlight def link tsxAttrib Type
-highlight def link tsxEscJs tsxEscapeJs
-highlight def link tsxCloseTag htmlTag
-highlight def link tsxCloseString Identifier
-
-let b:current_syntax = "typescriptreact"
-if main_syntax == 'typescriptreact'
-  unlet main_syntax
-endif
