@@ -1161,3 +1161,43 @@ Execute:
   AssertEqual 'typescriptArrowFunc', SyntaxAt(13, 28)
   AssertEqual 'typescriptPromiseMethod', SyntaxAt(14, 7)
   AssertEqual 'typescriptFuncCallArg', SyntaxAt(14, 13)
+
+Given typescript (arbitrary module identifier in import block):
+  import { "hello" as hello } from "./hello";
+  import Default, { "hello" as hello } from "./hello";
+  import { foo, "hello" as hello } from "./hello";
+Execute:
+  " Validate `import`
+  AssertEqual 'typescriptImport', SyntaxAt(1, 1)
+  " Validate `"hello"`
+  AssertEqual 'typescriptString', SyntaxAt(1, 10)
+  " Validate `as`
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(1, 18)
+  " Validate `hello`
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 21)
+  " Validate `from`
+  AssertEqual 'typescriptImport', SyntaxAt(1, 29)
+  " Validate `import`
+  AssertEqual 'typescriptImport', SyntaxAt(2, 1)
+  " Validate `Default`
+  AssertEqual 'typescriptDefaultImportName', SyntaxAt(2, 8)
+  " Validate `"hello"`
+  AssertEqual 'typescriptString', SyntaxAt(2, 19)
+  " Validate `as`
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(2, 27)
+  " Validate `hello`
+  AssertEqual 'typescriptTypeReference', SyntaxAt(2, 30)
+  " Validate `from`
+  AssertEqual 'typescriptImport', SyntaxAt(2, 38)
+  " Validate `import`
+  AssertEqual 'typescriptImport', SyntaxAt(3, 1)
+  " Validate `foo`
+  AssertEqual 'typescriptImportBlock', SyntaxAt(3, 10)
+  " Validate `"hello"`
+  AssertEqual 'typescriptString', SyntaxAt(3, 15)
+  " Validate `as`
+  AssertEqual 'typescriptCastKeyword', SyntaxAt(3, 23)
+  " Validate `hello`
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 26)
+  " Validate `from`
+  AssertEqual 'typescriptImport', SyntaxAt(3, 34)
