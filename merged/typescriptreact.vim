@@ -352,10 +352,20 @@ syntax cluster typescriptSymbols               contains=typescriptBinaryOp,types
 "Import
 syntax keyword typescriptImport                from as
 syntax keyword typescriptImport                import
-  \ nextgroup=typescriptImportType,typescriptTypeBlock,typescriptDefaultImportName
+  \ nextgroup=typescriptImportType,typescriptImportBlock,typescriptDefaultImportName
   \ skipwhite
 syntax keyword typescriptImportType            type
   \ contained
+syntax match typescriptDefaultImportName /\v\h\k*( |,)/
+  \ contained
+  \ nextgroup=typescriptImportBlock
+  \ skipwhite skipempty
+syntax region  typescriptImportBlock
+  \ matchgroup=typescriptBraces
+  \ start=/{/ end=/}/
+  \ contained
+  \ contains=typescriptIdentifierName,typescriptImportType,typescriptString
+  \ fold
 syntax keyword typescriptExport                export
   \ nextgroup=typescriptExportType
   \ skipwhite
@@ -441,17 +451,6 @@ syntax cluster typescriptAmbients contains=
   \ typescriptModule
 
 syntax keyword typescriptIdentifier            arguments  nextgroup=@afterIdentifier
-syntax match typescriptDefaultImportName /\v\h\k*( |,)/
-  \ contained
-  \ nextgroup=typescriptTypeBlock
-  \ skipwhite skipempty
-
-syntax region  typescriptTypeBlock
-  \ matchgroup=typescriptBraces
-  \ start=/{/ end=/}/
-  \ contained
-  \ contains=typescriptIdentifierName,typescriptImportType
-  \ fold
 
 "Program Keywords
 exec 'syntax keyword typescriptNull null '.(exists('g:typescript_conceal_null') ? 'conceal cchar='.g:typescript_conceal_null : '').' nextgroup=@typescriptSymbols skipwhite skipempty'
@@ -2235,18 +2234,18 @@ hi def link typeScript                      NONE
 
 syntax cluster typescriptExpression add=tsxRegion,tsxFragment
 
-highlight def link tsxTag htmlTag
-highlight def link tsxTagName Function
-highlight def link tsxIntrinsicTagName htmlTagName
-highlight def link tsxString String
-highlight def link tsxNameSpace Function
-highlight def link tsxCommentInvalid Error
-highlight def link tsxBlockComment Comment
-highlight def link tsxLineComment Comment
-highlight def link tsxAttrib Type
-highlight def link tsxEscJs tsxEscapeJs
-highlight def link tsxCloseTag htmlTag
-highlight def link tsxCloseString Identifier
+hi def link tsxTag htmlTag
+hi def link tsxTagName Function
+hi def link tsxIntrinsicTagName htmlTagName
+hi def link tsxString String
+hi def link tsxNameSpace Function
+hi def link tsxCommentInvalid Error
+hi def link tsxBlockComment Comment
+hi def link tsxLineComment Comment
+hi def link tsxAttrib Type
+hi def link tsxEscJs tsxEscapeJs
+hi def link tsxCloseTag htmlTag
+hi def link tsxCloseString Identifier
 
 let b:current_syntax = "typescriptreact"
 if main_syntax == 'typescriptreact'
