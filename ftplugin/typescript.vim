@@ -97,12 +97,31 @@ function! TsIncludeExpr(file)
   endif
 endfunction
 
-setlocal path+=./node_modules/**,node_modules/**
-setlocal include=import\_s.\\zs[^'\"]*\\ze
-setlocal includeexpr=TsIncludeExpr(v:fname)
-setlocal suffixesadd+=.ts
+setlocal includeexpr=s:TsIncludeExpr(v:fname)
+setlocal include=^\\s*\\%(import\\|export\\).*\\<from\\>\\s*['\"]\\zs[^'\"\\r\\n]\\+\\ze['\"]\\|\\<require(\\s*['\"]\\zs[^'\"\\r\\n]\\+\\ze['\"]
 
-let b:undo_ftplugin .= ' pa< inc< inex< fex<'
+let &l:define  = '^\s*\('
+      \..'\(export\s\)*\(default\s\)*\(var\|const\|let\|function\|class\|interface\)\s'
+      \..'\|\(public\|private\|protected\|readonly\|static\)\s'
+      \..'\|\(get\s\|set\s\)'
+      \..'\|\(export\sdefault\s\|abstract\sclass\s\)'
+      \..'\|\(async\s\)'
+      \..'\|\(\ze\i\+([^)]*).*{$\)'
+      \..'\)'
+
+if exists('b:match_words')
+  let b:match_words .= ','
+else
+  let b:match_words = ''
+endif
+let b:match_words = '\<function\>:\<return\>,'
+      \..'\<do\>:\<while\>,'
+      \..'\<switch\>:\<case\>:\<default\>,'
+      \..'\<if\>:\<else\>,'
+      \..'\<try\>:\<catch\>:\<finally\>'
+
+let b:undo_ftplugin .= ' pa< inc< inex< fex< define< '
+let b:undo_ftplugin .= '| unlet! b:match_words'
 
 "
 " TagBar
