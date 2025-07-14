@@ -1,10 +1,20 @@
 "Import
 syntax keyword typescriptImport                from as
 syntax keyword typescriptImport                import
-  \ nextgroup=typescriptImportType,typescriptTypeBlock,typescriptDefaultImportName
+  \ nextgroup=typescriptImportType,typescriptImportBlock,typescriptDefaultImportName
   \ skipwhite
 syntax keyword typescriptImportType            type
   \ contained
+syntax match typescriptDefaultImportName /\v\h\k*( |,)/
+  \ contained
+  \ nextgroup=typescriptImportBlock
+  \ skipwhite skipempty
+syntax region  typescriptImportBlock
+  \ matchgroup=typescriptBraces
+  \ start=/{/ end=/}/
+  \ contained
+  \ contains=typescriptIdentifierName,typescriptImportType,typescriptString
+  \ fold
 syntax keyword typescriptExport                export
   \ nextgroup=typescriptExportType
   \ skipwhite
@@ -90,17 +100,6 @@ syntax cluster typescriptAmbients contains=
   \ typescriptModule
 
 syntax keyword typescriptIdentifier            arguments  nextgroup=@afterIdentifier
-syntax match typescriptDefaultImportName /\v\h\k*( |,)/
-  \ contained
-  \ nextgroup=typescriptTypeBlock
-  \ skipwhite skipempty
-
-syntax region  typescriptTypeBlock
-  \ matchgroup=typescriptBraces
-  \ start=/{/ end=/}/
-  \ contained
-  \ contains=typescriptIdentifierName,typescriptImportType
-  \ fold
 
 "Program Keywords
 exec 'syntax keyword typescriptNull null '.(exists('g:typescript_conceal_null') ? 'conceal cchar='.g:typescript_conceal_null : '').' nextgroup=@typescriptSymbols skipwhite skipempty'

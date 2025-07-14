@@ -230,10 +230,20 @@ syntax cluster typescriptSymbols               contains=typescriptBinaryOp,types
 "Import
 syntax keyword typescriptImport                from as
 syntax keyword typescriptImport                import
-  \ nextgroup=typescriptImportType,typescriptTypeBlock,typescriptDefaultImportName
+  \ nextgroup=typescriptImportType,typescriptImportBlock,typescriptDefaultImportName
   \ skipwhite
 syntax keyword typescriptImportType            type
   \ contained
+syntax match typescriptDefaultImportName /\v\h\k*( |,)/
+  \ contained
+  \ nextgroup=typescriptImportBlock
+  \ skipwhite skipempty
+syntax region  typescriptImportBlock
+  \ matchgroup=typescriptBraces
+  \ start=/{/ end=/}/
+  \ contained
+  \ contains=typescriptIdentifierName,typescriptImportType,typescriptString
+  \ fold
 syntax keyword typescriptExport                export
   \ nextgroup=typescriptExportType
   \ skipwhite
@@ -319,17 +329,6 @@ syntax cluster typescriptAmbients contains=
   \ typescriptModule
 
 syntax keyword typescriptIdentifier            arguments  nextgroup=@afterIdentifier
-syntax match typescriptDefaultImportName /\v\h\k*( |,)/
-  \ contained
-  \ nextgroup=typescriptTypeBlock
-  \ skipwhite skipempty
-
-syntax region  typescriptTypeBlock
-  \ matchgroup=typescriptBraces
-  \ start=/{/ end=/}/
-  \ contained
-  \ contains=typescriptIdentifierName,typescriptImportType
-  \ fold
 
 "Program Keywords
 exec 'syntax keyword typescriptNull null '.(exists('g:typescript_conceal_null') ? 'conceal cchar='.g:typescript_conceal_null : '').' nextgroup=@typescriptSymbols skipwhite skipempty'
@@ -2027,7 +2026,7 @@ hi def link typescriptCase                  Conditional
 hi def link typescriptDefault               typescriptCase
 hi def link typescriptBranch                Conditional
 hi def link typescriptIdentifier            Structure
-hi def link typescriptVariable              Identifier
+hi def link typescriptVariable              Keyword
 hi def link typescriptUsing                 Identifier
 hi def link typescriptDestructureVariable   PreProc
 hi def link typescriptEnumKeyword           Identifier
@@ -2035,8 +2034,8 @@ hi def link typescriptRepeat                Repeat
 hi def link typescriptForOperator           Repeat
 hi def link typescriptStatementKeyword      Statement
 hi def link typescriptMessage               Keyword
-hi def link typescriptOperator              Identifier
-hi def link typescriptKeywordOp             Identifier
+hi def link typescriptOperator              Operator
+hi def link typescriptKeywordOp             Operator
 hi def link typescriptCastKeyword           Special
 hi def link typescriptType                  Type
 hi def link typescriptNull                  Boolean
@@ -2047,14 +2046,14 @@ hi def link typescriptDestructureLabel      Function
 hi def link typescriptLabel                 Label
 hi def link typescriptTupleLable            Label
 hi def link typescriptStringProperty        String
-hi def link typescriptImport                Special
+hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Special
 hi def link typescriptAmbientDeclaration    Special
-hi def link typescriptExport                Special
+hi def link typescriptExport                Keyword
 hi def link typescriptExportType            Special
 hi def link typescriptModule                Special
-hi def link typescriptTry                   Special
-hi def link typescriptExceptions            Special
+hi def link typescriptTry                   Exception
+hi def link typescriptExceptions            Exception
 
 hi def link typescriptMember                Function
 hi def link typescriptMethodAccessor        Operator
@@ -2077,7 +2076,7 @@ hi def link typescriptAbstract              Special
 " hi def link typescriptClassHeritage         Function
 " hi def link typescriptInterfaceHeritage     Function
 hi def link typescriptClassStatic           StorageClass
-hi def link typescriptReadonlyModifier      Keyword
+hi def link typescriptReadonlyModifier      StorageClass
 hi def link typescriptInterfaceKeyword      Keyword
 hi def link typescriptInterfaceExtends      Keyword
 hi def link typescriptInterfaceName         Function
