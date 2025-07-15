@@ -103,11 +103,11 @@ hi def link typescriptLabel                 Label
 hi def link typescriptTupleLable            Label
 hi def link typescriptStringProperty        String
 hi def link typescriptImport                Keyword
-hi def link typescriptImportType            Special
-hi def link typescriptAmbientDeclaration    Special
+hi def link typescriptImportType            Keyword
+hi def link typescriptAmbientDeclaration    Keyword
 hi def link typescriptExport                Keyword
-hi def link typescriptExportType            Special
-hi def link typescriptModule                Special
+hi def link typescriptExportType            Keyword 
+hi def link typescriptModule                Keyword
 hi def link typescriptTry                   Exception
 hi def link typescriptExceptions            Exception
 
