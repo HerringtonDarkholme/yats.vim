@@ -127,19 +127,19 @@ hi def link typescriptFuncComma             Operator
 
 hi def link typescriptClassKeyword          Keyword
 hi def link typescriptClassExtends          Keyword
-" hi def link typescriptClassName             Function
+hi def link typescriptClassName             Type
 hi def link typescriptAbstract              Special
-" hi def link typescriptClassHeritage         Function
-" hi def link typescriptInterfaceHeritage     Function
+hi def link typescriptClassHeritage         Type
+hi def link typescriptInterfaceHeritage     Type
 hi def link typescriptClassStatic           StorageClass
 hi def link typescriptReadonlyModifier      StorageClass
 hi def link typescriptInterfaceKeyword      Keyword
 hi def link typescriptInterfaceExtends      Keyword
-hi def link typescriptInterfaceName         Function
+hi def link typescriptInterfaceName         Type
 
 hi def link shellbang                       Comment
 
-hi def link typescriptTypeParameter         Identifier
+hi def link typescriptTypeParameter         Type
 hi def link typescriptConstraint            Keyword
 hi def link typescriptPredefinedType        Type
 hi def link typescriptReadonlyArrayKeyword  Keyword
@@ -155,10 +155,10 @@ hi def link typescriptMappedIn              Special
 hi def link typescriptCall                  PreProc
 hi def link typescriptParamImpl             PreProc
 hi def link typescriptConstructSignature    Identifier
-hi def link typescriptAliasDeclaration      Identifier
+hi def link typescriptAliasDeclaration      Typedef
 hi def link typescriptAliasKeyword          Keyword
 hi def link typescriptUserDefinedType       Keyword
-hi def link typescriptTypeReference         Identifier
+hi def link typescriptTypeReference         Type
 hi def link typescriptConstructor           Keyword
 hi def link typescriptDecorator             Special
 hi def link typescriptAssertType            Keyword
