@@ -1,5 +1,19 @@
+" Vim syntax file
+" Language:     TypeScript and TypeScriptReact
+" Maintainer:   Herrington Darkholme
+" Last Change:  2024 Aug 17
+" Changes:      See https://github.com/HerringtonDarkholme/yats.vim
+" Origin:       https://github.com/othree/yajs
+" Credits:      See yats.vim on github
+
+if &cpo =~ 'C'
+  let s:cpo_save = &cpo
+  set cpo&vim
+endif
+
 " Define the default highlighting.
 
+" NOTE: this results in accurate highlighting, but can be slow.
 syntax sync fromstart
 
 "Dollar sign is permitted anywhere in an identifier
@@ -164,3 +178,8 @@ hi def link typescriptDecorator             Special
 hi def link typescriptAssertType            Keyword
 
 hi def link typeScript                      NONE
+
+if exists('s:cpo_save')
+  let &cpo = s:cpo_save
+  unlet s:cpo_save
+endif

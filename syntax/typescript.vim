@@ -1,9 +1,8 @@
 " Vim syntax file
 " Language:     TypeScript
 " Maintainer:   Herrington Darkholme
-" Last Change:  2016-04-05
-" Version:      1.0
-" Changes:      Go to https:github.com/HerringtonDarkholme/yats.vim for recent changes.
+" Last Change:  2024 Aug 17
+" Changes:      Go to https://github.com/HerringtonDarkholme/yats.vim for recent changes.
 " Origin:       https://github.com/othree/yajs
 " Credits:      Kao Wei-Ko(othree), Jose Elera Campana, Zhao Yi, Claudio Fleiner, Scott Shattuck
 "               (This file is based on their hard work), gumnos (From the #vim
@@ -17,6 +16,10 @@ if !exists("main_syntax")
   let main_syntax = 'typescript'
 endif
 
+let s:cpo_save = &cpo
+set cpo&vim
+
+" this region is NOT used in TypeScriptReact
 " nextgroup doesn't contain objectLiteral, let outer region contains it
 syntax region typescriptTypeCast matchgroup=typescriptTypeBrackets
   \ start=/< \@!/ end=/>/
@@ -30,3 +33,6 @@ let b:current_syntax = "typescript"
 if main_syntax == 'typescript'
   unlet main_syntax
 endif
+
+let &cpo = s:cpo_save
+unlet s:cpo_save

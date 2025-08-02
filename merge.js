@@ -10,12 +10,25 @@ function replace(_, indentation, filename) {
 }
 
 function importFile(source) {
-  return source.replace(/^([ \t]*)runtime (.+)?/gm, replace)
+  return source
+    .replace(/^([ \t]*)runtime (.+)?/gm, replace)
+    .replace("yats_host_keyword", "typescript_host_keyword")
+    .replace(
+      /exec '([^']*)'\.\(exists\('g:typescript_conceal_[a-z]*'\) \? 'conceal cchar='\.g:typescript_conceal_[a-z]* : ''\)\.' ([^']*)'/gm,
+      (_, start, end) => start + end
+    )
 }
 
-var merged = importFile(entry)
-var mergedReact = importFile(entryReact)
+function importEntryFile(source) {
+  return source.replace("runtime syntax/common.vim", "source <sfile>:h/shared/typescriptcommon.vim");
+}
+
+var typescript = importEntryFile(entry)
+var typescriptReact = importEntryFile(entryReact)
 var mergedCommon = importFile(common)
-fs.writeFileSync('merged/typescript.vim', merged)
-fs.writeFileSync('merged/typescriptreact.vim', mergedReact)
-fs.writeFileSync('merged/typescriptcommon.vim', mergedCommon)
+
+fs.mkdirSync("merged/shared", { recursive: true });
+
+fs.writeFileSync('merged/typescript.vim', typescript)
+fs.writeFileSync('merged/typescriptreact.vim', typescriptReact)
+fs.writeFileSync('merged/shared/typescriptcommon.vim', mergedCommon)

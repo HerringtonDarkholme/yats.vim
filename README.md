@@ -49,7 +49,23 @@ OR if you wish to toggle concealing you may wish to bind a command such as the f
 map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 ```
 
+Upstreaming to vim
+-------
 
+This plugin has been included natively in vim to support syntax highlighting typescript.
+
+There is a `merge.js` script provided in this repository to ease the process of upstreaming the files to the vim repository. It makes the following changes to the files:
+
+* Merges the shared files into `typescriptcommon.vim`
+* Renames the `yats_host_keyword` option to `typescript_host_keyword`
+* Removes the [concealing characters](#concealing-characters) feature
+
+```sh
+# generate the files for vim
+node merge.js
+# copy files into vim repository
+cp -r --update=all merged/* $VIM_SRC/runtime/syntax
+```
 
 Credits
 -------

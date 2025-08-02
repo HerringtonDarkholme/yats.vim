@@ -1,9 +1,20 @@
+" Vim syntax file
+" Language:     TypeScript with React (JSX)
+" Maintainer:   Herrington Darkholme
+" Last Change:  2024 Aug 17
+" Changes:      See https://github.com/HerringtonDarkholme/yats.vim
+" Origin:       https://github.com/othree/yajs
+" Credits:      See yats.vim on github
+
 if !exists("main_syntax")
   if exists("b:current_syntax")
     finish
   endif
   let main_syntax = 'typescriptreact'
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 syntax region tsxTag
       \ start=+<\([^/!?<>="':]\+\)\@=+
@@ -141,3 +152,6 @@ let b:current_syntax = "typescriptreact"
 if main_syntax == 'typescriptreact'
   unlet main_syntax
 endif
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
