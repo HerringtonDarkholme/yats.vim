@@ -104,6 +104,7 @@ hi def link typescriptTupleLable            Label
 hi def link typescriptStringProperty        String
 hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Keyword
+hi def link typescriptImportDefer           Keyword
 hi def link typescriptAmbientDeclaration    Keyword
 hi def link typescriptExport                Keyword
 hi def link typescriptExportType            Keyword 

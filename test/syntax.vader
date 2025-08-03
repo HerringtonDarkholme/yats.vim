@@ -1201,3 +1201,18 @@ Execute:
   AssertEqual 'typescriptTypeReference', SyntaxAt(3, 26)
   " Validate `from`
   AssertEqual 'typescriptImport', SyntaxAt(3, 34)
+
+Given typescript (import defer statement):
+  import defer * as feature from "./some-feature.js";
+  import defer { doSomething } from "some-module";
+  import defer defaultExport from "some-module";
+  const defer = "test";
+Execute:
+  " `defer` is highlighted as keyword
+  AssertEqual 'typescriptImportDefer', SyntaxAt(1, 8)
+  AssertEqual 'typescriptImportDefer', SyntaxAt(1, 12)
+  " `defer` is not highlighed because these are illegal
+  AssertNotEqual 'typescriptImportDefer', SyntaxAt(2, 8)
+  AssertNotEqual 'typescriptImportDefer', SyntaxAt(3, 8)
+  " `defer` is not highlighted because it's not a part of import statement
+  AssertEqual 'typescriptVariableDeclaration', SyntaxAt(4, 7)
