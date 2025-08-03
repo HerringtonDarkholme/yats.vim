@@ -1,7 +1,7 @@
 "Import
 syntax keyword typescriptImport                from as
 syntax keyword typescriptImport                import
-  \ nextgroup=typescriptImportType,typescriptImportBlock,typescriptDefaultImportName
+  \ nextgroup=typescriptImportType,typescriptImportBlock,typescriptDefaultImportName,typescriptImportDefer
   \ skipwhite
 syntax keyword typescriptImportType            type
   \ contained
@@ -9,6 +9,8 @@ syntax match typescriptDefaultImportName /\v\h\k*( |,)/
   \ contained
   \ nextgroup=typescriptImportBlock
   \ skipwhite skipempty
+syntax match typescriptImportDefer             /\<defer\%(\s\+\*\)\@=/
+  \ contained
 syntax region  typescriptImportBlock
   \ matchgroup=typescriptBraces
   \ start=/{/ end=/}/
