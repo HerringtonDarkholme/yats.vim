@@ -5,6 +5,9 @@ var entryReact = fs.readFileSync('syntax/typescriptreact.vim', 'utf8')
 var common = fs.readFileSync('syntax/common.vim', 'utf8')
 
 function replace(_, indentation, filename) {
+  if (filename === 'syntax/common.vim') {
+    return 'source <sfile>:h/shared/typescriptcommon.vim'
+  }
   var source = fs.readFileSync(filename, 'utf8')
   return importFile(source.replace(/^(?!$)/gm, indentation))
 }
