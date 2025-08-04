@@ -88,7 +88,7 @@ function! Fixedgq(lnum, count)
   return 0
 endfunction
 
-function! TsIncludeExpr(file)
+function! s:TsIncludeExpr(file)
   if (filereadable(a:file))
     return l:file
   else
