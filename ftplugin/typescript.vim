@@ -120,7 +120,7 @@ let b:match_words = '\<function\>:\<return\>,'
       \..'\<if\>:\<else\>,'
       \..'\<try\>:\<catch\>:\<finally\>'
 
-let b:undo_ftplugin .= ' pa< inc< inex< fex< define< '
+let b:undo_ftplugin .= ' pa< inc< inex< define< '
 let b:undo_ftplugin .= '| unlet! b:match_words'
 
 "
