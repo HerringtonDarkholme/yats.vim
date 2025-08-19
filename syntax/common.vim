@@ -41,6 +41,9 @@ runtime syntax/ts-common/cluster.vim
 runtime syntax/ts-common/function.vim
 runtime syntax/ts-common/decorator.vim
 
+hi def link typescriptIdentifierName        Identifier
+hi def link typescriptProp                  Identifier
+hi def link typescriptVariableDeclaration   Identifier
 hi def link typescriptReserved              Error
 
 hi def link typescriptEndColons             Exception
@@ -97,10 +100,10 @@ hi def link typescriptType                  Type
 hi def link typescriptNull                  Boolean
 hi def link typescriptNumber                Number
 hi def link typescriptBoolean               Boolean
-hi def link typescriptObjectLabel           typescriptLabel
+hi def link typescriptObjectLabel           Identifier
 hi def link typescriptDestructureLabel      Function
 hi def link typescriptLabel                 Label
-hi def link typescriptTupleLable            Label
+hi def link typescriptTupleLable            Identifier
 hi def link typescriptStringProperty        String
 hi def link typescriptImport                Keyword
 hi def link typescriptImportType            Keyword
@@ -153,7 +156,7 @@ hi def link typescriptAutoAccessor          Keyword
 hi def link typescriptOptionalMark          PreProc
 hi def link typescriptFuncType              Special
 hi def link typescriptMappedIn              Special
-hi def link typescriptCall                  PreProc
+hi def link typescriptCall                  Identifier
 hi def link typescriptParamImpl             PreProc
 hi def link typescriptConstructSignature    Identifier
 hi def link typescriptAliasDeclaration      Identifier
