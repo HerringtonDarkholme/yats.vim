@@ -10,6 +10,6 @@ Given typescript (Correct indentation after equals):
   };
 Do:
   ggVG=
-Execute:
+Execute(FIXME):
   AssertEqual 'typescriptStatementKeyword', SyntaxAt(4, 3)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(8, 3)
