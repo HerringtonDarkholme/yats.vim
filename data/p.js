@@ -21,7 +21,7 @@ try {
   var hilink = true;
   var statics = [];
 
-  yml = yaml.safeLoad(fs.readFileSync(file + '.yml', 'utf8'));
+  yml = yaml.load(fs.readFileSync(file + '.yml', 'utf8'));
 
   var globals = {};
   for (group in yml) {

@@ -5,7 +5,7 @@
     "devDependencies": {
         "camel-case": "*",
         "is-upper-case": "*",
-        "js-yaml": "*"
+        "js-yaml": "^4.1.1"
     },
     "license": "Same as Vim"
 }
