@@ -460,7 +460,6 @@ function GetTypescriptIndent()
       return anchor > 0 ? indent(anchor) + shiftwidth() : indent(p)
     endif
   endif
-  
   " Arrow function with block body: ensure the next line indents as a normal block.
   " Use prevline (immediate previous nonblank line), not PrevNonBlankNonString(),
   " because the latter can skip over `) => {` in some contexts.
