@@ -371,12 +371,16 @@ endfunction
 function s:ExitingOneLineScope(lnum)
   let msl = s:GetMSL(a:lnum, 1)
   if msl > 0
-    " if the current line is in a one line scope ..
-    if s:Match(msl, s:one_line_scope_regex)
+    " If the current line is in a one-line scope, we're not exiting.
+    " Use InOneLineScope() so inline-statement guards (ASI) are respected.
+    if s:InOneLineScope(msl) > 0
       return 0
     else
       let prev_msl = s:GetMSL(msl - 1, 1)
-      if s:Match(prev_msl, s:one_line_scope_regex)
+
+      " Only treat it as exiting if the previous scope line is a *real* one-line scope
+      " (again, via InOneLineScope to respect ASI / inline-statement exclusions).
+      if s:Match(prev_msl, s:one_line_scope_regex) && s:InOneLineScope(prev_msl) > 0
         return prev_msl
       endif
     endif
