@@ -71,6 +71,9 @@ let s:switch_case = '^\s*\%(case\|default\)\>'
 " Object literal property-ish line (identifier or quoted key) followed by :
 let s:obj_prop_line = '^\s*\%(\h\w*\|["''][^"'']\+["'']\)\s*:'
 
+" Generic type parameter list start for multiline form: a line ending with `<`
+let s:ts_generic_open = '<\s*$'
+
 let s:var_stmt = '^\s*var'
 
 let s:comma_first = '^\s*,'
@@ -81,7 +84,6 @@ let s:ternary_q = '^\s\+?'
 
 " TS union/intersection continuation bar lines (allow `|foo` or `| foo`).
 let s:ts_bar_line = '^\s*[|&]\s*'
-
 
 " 2. Auxiliary Functions {{{1
 " ======================
@@ -129,6 +131,39 @@ function s:PrevNonBlankNonString(lnum)
   endwhile
   return lnum
 endfunction
+
+" Find the anchor line for a multiline generic parameter list (line ending with `<`).
+" Returns 0 if not found.
+function s:TsGenericAnchor(lnum)
+  let lnum = prevnonblank(a:lnum)
+  while lnum > 0
+    let l = getline(lnum)
+    let ltxt = s:RemoveTrailingComments(l)
+
+    " If we've already passed the closing `>` line, we're no longer inside the
+    " generic parameter list.
+    if ltxt =~ '^\s*>'
+      return 0
+    endif
+
+    " Stop if we hit a block boundary before finding `<`
+    if ltxt =~ '^\s*[)}\]]'
+      return 0
+    endif
+
+    " Found a multiline generic opener like `function foo<`
+    if ltxt =~ s:ts_generic_open
+      let c = matchend(ltxt, '.*<')   " position of `<` (roughly)
+      if !s:IsInStringOrComment(lnum, c)
+        return lnum
+      endif
+    endif
+
+    let lnum = prevnonblank(lnum - 1)
+  endwhile
+  return 0
+endfunction
+
 
 " Find line above 'lnum' that started the continuation 'lnum' may be part of.
 function s:GetMSL(lnum, in_one_line_scope)
@@ -384,6 +419,27 @@ function GetTypescriptIndent()
   let line = getline(v:lnum)
   " previous nonblank line number
   let prevline = prevnonblank(v:lnum - 1)
+
+  " Multiline TS generics:
+  "   function foo<
+  "     A
+  "     B,
+  "   >(x: string) {}
+  "
+  " Indent generic lines one level past the `<` anchor, and align the closing `>` to the anchor.
+  let gen_anchor = s:TsGenericAnchor(v:lnum - 1)
+  if gen_anchor > 0
+    let cur_txt = s:RemoveTrailingComments(line)
+    let c = matchend(cur_txt, '^\s*') + 1
+
+    if cur_txt =~ '^\s*>' && !s:IsInStringOrComment(v:lnum, c)
+      return indent(gen_anchor)
+    endif
+
+    if !s:IsInStringOrComment(v:lnum, c)
+      return indent(gen_anchor) + shiftwidth()
+    endif
+  endif
 
   " TS union/intersection:
   " - Every bar line aligns to (anchor indent + shiftwidth), never to its current indent.
