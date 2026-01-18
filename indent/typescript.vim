@@ -287,6 +287,25 @@ endfunction
 function s:InOneLineScope(lnum)
   let msl = s:GetMSL(a:lnum, 1)
   if msl > 0 && s:Match(msl, s:one_line_scope_regex)
+    let l = getline(msl)
+
+    " If this is an inline-statement form like `if (c) x = ...` (including
+    " continuations such as `if (c) x =`), do NOT treat it as a one-line scope.
+    " Otherwise continuation indentation and one-line-scope indentation stack,
+    " causing double-indent and carry-over.
+    if l =~ '^\s*\%(if\|for\|while\)\>' && l =~ ')\s\+\S' && l !~ ')\s*{'
+      return 0
+    endif
+    if l =~ '^\s*else\>' && l =~ '^\s*else\>\s\+\S' && l !~ '^\s*else\>\s*{'
+      return 0
+    endif
+
+    " ASI: if it doesn't open a block and doesn't look like a continuation,
+    " don't indent the next line as part of the scope.
+    if l !~ s:block_regex && l !~ s:continuation_regex
+      return 0
+    endif
+
     return msl
   endif
   return 0
