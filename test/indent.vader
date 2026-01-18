@@ -13,3 +13,90 @@ Do:
 Execute:
   AssertEqual 'typescriptStatementKeyword', SyntaxAt(4, 3)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(8, 3)
+
+Given typescript (type with leading pipe and ampersand):
+  type Foo =
+  	| string
+  	| number
+  	& { a: boolean }
+  let x = 3
+
+Do:
+  ggVG=
+
+Expect typescript (same indentation):
+  type Foo =
+  	| string
+  	| number
+  	& { a: boolean }
+  let x = 3
+
+Given typescript (functions in object type):
+  const a: A = {
+  	x: (args) => string,
+  	y: (args) => string,
+  	z: (args) => string,
+  }
+  const b = 2
+
+Do:
+  ggVG=
+
+Expect typescript (same indentation):
+  const a: A = {
+  	x: (args) => string,
+  	y: (args) => string,
+  	z: (args) => string,
+  }
+  const b = 2
+
+Given typescript (function type with object parameter):
+  type A = 
+  	(opts: {
+  		a: string,
+  		b: number,
+  		c: boolean,
+  	}) => void
+
+Do:
+  ggVG=
+
+Expect typescript (same indentation):
+  type A = 
+  	(opts: {
+  		a: string,
+  		b: number,
+  		c: boolean,
+  	}) => void
+
+Given typescript (switch statement):
+  switch(e.key) {
+  	case "Enter":
+  		doEnter();
+  		e.preventDefault();
+  	case "Tab":
+  		doTab();
+  		e.preventDefault();
+  		break;
+  	case "Shift+Tab":
+  		doShiftTab();
+  	default:
+  		doNothing();
+  }
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  switch(e.key) {
+  	case "Enter":
+  		doEnter();
+  		e.preventDefault();
+  	case "Tab":
+  		doTab();
+  		e.preventDefault();
+  		break;
+  	case "Shift+Tab":
+  		doShiftTab();
+  	default:
+  		doNothing();
+  }
