@@ -608,8 +608,6 @@ function GetTypescriptIndent()
       let p = s:PrevNonBlankNonString(p - 1)
     endwhile
   endif
-  
-  
 
   " If the previous significant line is a union/intersection bar line, we're
   " after a bar-chain: reset indentation to the chain's anchor.
