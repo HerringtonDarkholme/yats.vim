@@ -14,6 +14,8 @@ Execute:
   AssertEqual 'typescriptStatementKeyword', SyntaxAt(4, 3)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(8, 3)
 
+#------------------
+
 Given typescript (type with leading pipe and ampersand):
   type Foo =
   	| string
@@ -30,6 +32,8 @@ Expect typescript (same indentation):
   	| number
   	& { a: boolean }
   let x = 3
+
+#------------------
 
 Given typescript (functions in object type):
   const a: A = {
@@ -49,6 +53,8 @@ Expect typescript (same indentation):
   	z: (args) => string,
   }
   const b = 2
+
+#------------------
 
 Given typescript (function type with object parameter):
   type A = 
@@ -70,6 +76,8 @@ Expect typescript (same indentation):
   		c: boolean,
   	}) => void
   let x = 1
+
+#------------------
 
 Given typescript (switch statement):
   switch(e.key) {
@@ -103,6 +111,8 @@ Expect typescript (correct indentation):
   		doNothing();
   }
 
+#------------------
+
 Given typescript (one-line if):
   if (condition) y = 2
   	let z = 3
@@ -112,6 +122,8 @@ Do:
 Expect typescript (correct indentation):
   if (condition) y = 2
   let z = 3
+
+#------------------
 
 Given typescript (one-line if with continuation):
   if (condition) y =
@@ -125,6 +137,8 @@ Expect typescript (correct indentation):
   if (condition) y =
   	2
   let z = 3
+
+#------------------
 
 Given typescript (arrow function with multi-line args):
   const f = (
@@ -142,6 +156,8 @@ Expect typescript (correct indentation):
   ) => {
   	x=3
   }
+
+#------------------
 
 Given typescript (multiline generic types):
   function foo<
