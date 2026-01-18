@@ -242,6 +242,28 @@ function s:Match(lnum, regex)
   return col > 0 && !s:IsInStringOrComment(a:lnum, col) ? col : 0
 endfunction
 
+" If lnum contains a ')', find its matching '(' line number. Returns 0 if not found.
+function s:MatchParenLine(lnum)
+  let l = getline(a:lnum)
+  let c = match(l, ')')
+  if c < 0
+    return 0
+  endif
+
+  let save = getpos('.')
+  call cursor(a:lnum, c + 1)
+
+  if searchpair('(', '', ')', 'bW', s:skip_expr) > 0
+    let res = line('.')
+    call setpos('.', save)
+    return res
+  endif
+
+  call setpos('.', save)
+  return 0
+endfunction
+
+
 function s:IndentWithContinuation(lnum, ind, width)
   " Don't carry continuation indentation across a pure closing-bracket line.
   if getline(a:lnum) =~ '^\s*[])}]\s*\%([;,:]\s*\)\=$'
@@ -379,6 +401,15 @@ function GetTypescriptIndent()
     endif
   endif
   
+  " Arrow function with block body: ensure the next line indents as a normal block.
+  " Use prevline (immediate previous nonblank line), not PrevNonBlankNonString(),
+  " because the latter can skip over `) => {` in some contexts.
+  if prevline > 0
+    let prev_txt = s:RemoveTrailingComments(getline(prevline))
+    if prev_txt =~ '=>\s*{\s*$'
+      return indent(prevline) + shiftwidth()
+    endif
+  endif
 
   " If we got a closing bracket on an empty line, find its match and indent
   " according to it.  For parentheses we indent to its column - 1, for the
@@ -466,6 +497,19 @@ function GetTypescriptIndent()
     return 0
   endif
 
+  " After a multiline parenthesized arrow type like:
+  "   type A =
+  "     (opts: {
+  "       ...
+  "     }) => void
+  " the next statement should not inherit the continuation indent.
+  if getline(lnum) =~ '^\s*[])}]\+\s*=>'
+    let openp = s:MatchParenLine(lnum)
+    if openp > 0
+      return indent(s:GetMSL(openp, 0))
+    endif
+  endif
+
   " switch/case: a new case/default label should align with previous case/default
   " (or with the switch indent + one level if it's the first case).
   if line =~ s:switch_case
@@ -495,11 +539,11 @@ function GetTypescriptIndent()
   if getline(lnum) !~ s:switch_case
     let p = lnum
     while p > 0
-      let line = getline(p)
-      if line =~ s:switch_case
+      let pline = getline(p)
+      if pline =~ s:switch_case
         return indent(p) + shiftwidth()
       endif
-      if line =~ '^\s*}'
+      if pline =~ '^\s*}'
         break
       endif
       let p = s:PrevNonBlankNonString(p - 1)
