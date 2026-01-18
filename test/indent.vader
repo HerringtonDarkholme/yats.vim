@@ -140,6 +140,25 @@ Expect typescript (correct indentation):
 
 #------------------
 
+Given typescript (one-line if in a function):
+  function foo() {
+  	if (condition) y = 2
+  	z = 3
+  	a = 4
+  }
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  function foo() {
+  	if (condition) y = 2
+  	z = 3
+  	a = 4
+  }
+
+#------------------
+
 Given typescript (arrow function with multi-line args):
   const f = (
   	a: arg
