@@ -57,6 +57,7 @@ Given typescript (function type with object parameter):
   		b: number,
   		c: boolean,
   	}) => void
+  let x = 1
 
 Do:
   ggVG=
@@ -68,6 +69,7 @@ Expect typescript (same indentation):
   		b: number,
   		c: boolean,
   	}) => void
+  let x = 1
 
 Given typescript (switch statement):
   switch(e.key) {
@@ -123,3 +125,20 @@ Expect typescript (correct indentation):
   if (condition) y =
   	2
   let z = 3
+
+Given typescript (arrow function with multi-line args):
+  const f = (
+  	a: arg
+  ) => {
+  	x=3
+  }
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  const f = (
+  	a: arg
+  ) => {
+  	x=3
+  }
