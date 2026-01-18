@@ -142,3 +142,20 @@ Expect typescript (correct indentation):
   ) => {
   	x=3
   }
+
+Given typescript (multiline generic types):
+  function foo<
+  	A,
+  	B,
+  >(x: string) {
+  }
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  function foo<
+  	A,
+  	B,
+  >(x: string) {
+  }
