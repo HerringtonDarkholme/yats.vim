@@ -1032,6 +1032,16 @@ Execute:
   AssertEqual 'typescriptTemplateSubstitution', SyntaxAt(2, 33)
   AssertEqual 'typescriptTemplateSB', SyntaxAt(2, 36)
 
+Given typescript (nullish coalescing in object literal):
+  const err = { msg: (e as Error).stack ?? '' }
+  const cookie = `session-${id}`
+Execute:
+  " The second `?` of `??` must not open a ternary region: it would swallow the
+  " `}` and run on to the next `:` anywhere in the file.
+  AssertNotEqual 'typescriptTernaryOp', SyntaxAt(1, 40)
+  AssertEqual 'typescriptBraces', SyntaxAt(1, 45)
+  AssertEqual 'typescriptVariable', SyntaxAt(2, 1)
+
 Given typescript (key remapping in mapped types):
   type A<T> = {
     [K in keyof T as NewKeyType]: T[K]
