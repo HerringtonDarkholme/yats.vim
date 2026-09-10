@@ -312,7 +312,7 @@ syntax match typescriptUnaryOp /[+\-~!]/
  \ nextgroup=@typescriptValue
  \ skipwhite
 
-syntax region typescriptTernary matchgroup=typescriptTernaryOp start=/?[.?]\@!/ end=/:/ contained contains=@typescriptValue,@typescriptComments nextgroup=@typescriptValue skipwhite skipempty
+syntax region typescriptTernary matchgroup=typescriptTernaryOp start=/?\@1<!?[.?]\@!/ end=/:/ contained contains=@typescriptValue,@typescriptComments nextgroup=@typescriptValue skipwhite skipempty
 
 syntax match   typescriptAssign  /=/ nextgroup=@typescriptValue
   \ skipwhite skipempty
