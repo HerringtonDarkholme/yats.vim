@@ -13,3 +13,184 @@ Do:
 Execute:
   AssertEqual 'typescriptStatementKeyword', SyntaxAt(4, 3)
   AssertEqual 'typescriptObjectLabel', SyntaxAt(8, 3)
+
+#------------------
+
+Given typescript (type with leading pipe and ampersand):
+  type Foo =
+  	| string
+  	| number
+  	& { a: boolean }
+  let x = 3
+
+Do:
+  ggVG=
+
+Expect typescript (same indentation):
+  type Foo =
+  	| string
+  	| number
+  	& { a: boolean }
+  let x = 3
+
+#------------------
+
+Given typescript (functions in object type):
+  const a: A = {
+  	x: (args) => string,
+  	y: (args) => string,
+  	z: (args) => string,
+  }
+  const b = 2
+
+Do:
+  ggVG=
+
+Expect typescript (same indentation):
+  const a: A = {
+  	x: (args) => string,
+  	y: (args) => string,
+  	z: (args) => string,
+  }
+  const b = 2
+
+#------------------
+
+Given typescript (function type with object parameter):
+  type A = 
+  	(opts: {
+  		a: string,
+  		b: number,
+  		c: boolean,
+  	}) => void
+  let x = 1
+
+Do:
+  ggVG=
+
+Expect typescript (same indentation):
+  type A = 
+  	(opts: {
+  		a: string,
+  		b: number,
+  		c: boolean,
+  	}) => void
+  let x = 1
+
+#------------------
+
+Given typescript (switch statement):
+  switch(e.key) {
+  	case "Enter":
+  		doEnter();
+  		e.preventDefault();
+  	case "Tab":
+  		doTab();
+  		e.preventDefault();
+  		break;
+  	case "Shift+Tab":
+  		doShiftTab();
+  	default:
+  		doNothing();
+  }
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  switch(e.key) {
+  	case "Enter":
+  		doEnter();
+  		e.preventDefault();
+  	case "Tab":
+  		doTab();
+  		e.preventDefault();
+  		break;
+  	case "Shift+Tab":
+  		doShiftTab();
+  	default:
+  		doNothing();
+  }
+
+#------------------
+
+Given typescript (one-line if):
+  if (condition) y = 2
+  	let z = 3
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  if (condition) y = 2
+  let z = 3
+
+#------------------
+
+Given typescript (one-line if with continuation):
+  if (condition) y =
+  2
+  let z = 3
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  if (condition) y =
+  	2
+  let z = 3
+
+#------------------
+
+Given typescript (one-line if in a function):
+  function foo() {
+  	if (condition) y = 2
+  	z = 3
+  	a = 4
+  }
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  function foo() {
+  	if (condition) y = 2
+  	z = 3
+  	a = 4
+  }
+
+#------------------
+
+Given typescript (arrow function with multi-line args):
+  const f = (
+  	a: arg
+  ) => {
+  	x=3
+  }
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  const f = (
+  	a: arg
+  ) => {
+  	x=3
+  }
+
+#------------------
+
+Given typescript (multiline generic types):
+  function foo<
+  	A,
+  	B,
+  >(x: string) {
+  }
+
+Do:
+  ggVG=
+
+Expect typescript (correct indentation):
+  function foo<
+  	A,
+  	B,
+  >(x: string) {
+  }

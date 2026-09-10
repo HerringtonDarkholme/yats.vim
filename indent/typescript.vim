@@ -1,5 +1,9 @@
 " Vim indent file
 " Language: TypeScript
+" Maintainer: See https://github.com/HerringtonDarkholme/yats.vim
+" Last Change: 2019 Oct 18
+"              2023 Aug 28 by Vim Project (undo_indent)
+"              2025 Jun 05 by Vim Project (remove Fixedgq() formatexp, #17452)
 " Acknowledgement: Based off of vim-ruby maintained by Nikolai Weibull http://vim-ruby.rubyforge.org
 
 " 0. Initialization {{{1
@@ -15,7 +19,9 @@ setlocal nosmartindent
 
 " Now, set up our indentation expression and keys that trigger it.
 setlocal indentexpr=GetTypescriptIndent()
-setlocal indentkeys=0{,0},0),0],0\,,!^F,o,O,e
+setlocal indentkeys=0{,0},0},0),0],0\,,0\|,0&,!^F,o,O,e
+
+let b:undo_indent = "setlocal indentexpr< indentkeys< smartindent<"
 
 " Only define the function once.
 if exists("*GetTypescriptIndent")
@@ -36,13 +42,19 @@ let s:syng_strcom = 'string\|regex\|comment\c'
 " Regex of syntax group names that are strings.
 let s:syng_string = 'regex\c'
 
+" Regex of syntax group names that are strings or documentation.
+let s:syng_multiline = 'comment\c'
+
+" Regex of syntax group names that are line comment.
+let s:syng_linecom = 'linecomment\c'
+
 " Expression used to check whether we should skip a match with searchpair().
 let s:skip_expr = "synIDattr(synID(line('.'),col('.'),1),'name') =~ '".s:syng_strcom."'"
 
 let s:line_term = '\s*\%(\%(\/\/\).*\)\=$'
 
 " Regex that defines continuation lines, not including (, {, or [.
-let s:continuation_regex = '\%([\\*+/.:]\|\%(<%\)\@<![=-]\|\W[|&?]\|||\|&&\|[^=]=[^=]\)' . s:line_term
+let s:continuation_regex = '\%([\\*+/.:]\|\%(<%\)\@<![=-]\|\W[|&?]\|||\|&&\|[^=]=[^=].*,\)' . s:line_term
 
 " Regex that defines continuation lines.
 " TODO: this needs to deal with if ...: and so on
@@ -53,13 +65,25 @@ let s:one_line_scope_regex = '\<\%(if\|else\|for\|while\)\>[^{;]*' . s:line_term
 " Regex that defines blocks.
 let s:block_regex = '\%([{[]\)\s*\%(|\%([*@]\=\h\w*,\=\s*\)\%(,\s*[*@]\=\h\w*\)*|\)\=' . s:line_term
 
+" Case or default line in switch statement.
+let s:switch_case = '^\s*\%(case\|default\)\>'
+
+" Object literal property-ish line (identifier or quoted key) followed by :
+let s:obj_prop_line = '^\s*\%(\h\w*\|["''][^"'']\+["'']\)\s*:'
+
+" Generic type parameter list start for multiline form: a line ending with `<`
+let s:ts_generic_open = '<\s*$'
+
 let s:var_stmt = '^\s*var'
 
 let s:comma_first = '^\s*,'
 let s:comma_last = ',\s*$'
 
-let s:ternary = '^\s\+[?:]'
-let s:ternary_q = '^\s\+?[.?]\@!'
+let s:ternary = '^\s\+[?|:]'
+let s:ternary_q = '^\s\+?'
+
+" TS union/intersection continuation bar lines (allow `|foo` or `| foo`).
+let s:ts_bar_line = '^\s*[|&]\s*'
 
 " 2. Auxiliary Functions {{{1
 " ======================
@@ -72,6 +96,16 @@ endfunction
 " Check if the character at lnum:col is inside a string.
 function s:IsInString(lnum, col)
   return synIDattr(synID(a:lnum, a:col, 1), 'name') =~ s:syng_string
+endfunction
+
+" Check if the character at lnum:col is inside a multi-line comment.
+function s:IsInMultilineComment(lnum, col)
+  return !s:IsLineComment(a:lnum, a:col) && synIDattr(synID(a:lnum, a:col, 1), 'name') =~ s:syng_multiline
+endfunction
+
+" Check if the character at lnum:col is a line comment.
+function s:IsLineComment(lnum, col)
+  return synIDattr(synID(a:lnum, a:col, 1), 'name') =~ s:syng_linecom
 endfunction
 
 " Find line above 'lnum' that isn't empty, in a comment, or in a string.
@@ -97,6 +131,39 @@ function s:PrevNonBlankNonString(lnum)
   endwhile
   return lnum
 endfunction
+
+" Find the anchor line for a multiline generic parameter list (line ending with `<`).
+" Returns 0 if not found.
+function s:TsGenericAnchor(lnum)
+  let lnum = prevnonblank(a:lnum)
+  while lnum > 0
+    let l = getline(lnum)
+    let ltxt = s:RemoveTrailingComments(l)
+
+    " If we've already passed the closing `>` line, we're no longer inside the
+    " generic parameter list.
+    if ltxt =~ '^\s*>'
+      return 0
+    endif
+
+    " Stop if we hit a block boundary before finding `<`
+    if ltxt =~ '^\s*[)}\]]'
+      return 0
+    endif
+
+    " Found a multiline generic opener like `function foo<`
+    if ltxt =~ s:ts_generic_open
+      let c = matchend(ltxt, '.*<')   " position of `<` (roughly)
+      if !s:IsInStringOrComment(lnum, c)
+        return lnum
+      endif
+    endif
+
+    let lnum = prevnonblank(lnum - 1)
+  endwhile
+  return 0
+endfunction
+
 
 " Find line above 'lnum' that started the continuation 'lnum' may be part of.
 function s:GetMSL(lnum, in_one_line_scope)
@@ -210,7 +277,34 @@ function s:Match(lnum, regex)
   return col > 0 && !s:IsInStringOrComment(a:lnum, col) ? col : 0
 endfunction
 
+" If lnum contains a ')', find its matching '(' line number. Returns 0 if not found.
+function s:MatchParenLine(lnum)
+  let l = getline(a:lnum)
+  let c = match(l, ')')
+  if c < 0
+    return 0
+  endif
+
+  let save = getpos('.')
+  call cursor(a:lnum, c + 1)
+
+  if searchpair('(', '', ')', 'bW', s:skip_expr) > 0
+    let res = line('.')
+    call setpos('.', save)
+    return res
+  endif
+
+  call setpos('.', save)
+  return 0
+endfunction
+
+
 function s:IndentWithContinuation(lnum, ind, width)
+  " Don't carry continuation indentation across a pure closing-bracket line.
+  if getline(a:lnum) =~ '^\s*[])}]\s*\%([;,:]\s*\)\=$'
+    return a:ind
+  endif
+    
   " Set up variables to use and search for MSL to the previous line.
   let p_lnum = a:lnum
   let lnum = s:GetMSL(a:lnum, 1)
@@ -231,6 +325,13 @@ function s:IndentWithContinuation(lnum, ind, width)
   " indents an extra level.
   if s:Match(lnum, s:continuation_regex)
     if lnum == p_lnum
+
+      " Don't treat object-literal property commas as continuation leaders
+      let msl_txt = s:RemoveTrailingComments(getline(lnum))
+      if msl_txt =~ s:obj_prop_line && msl_txt =~ s:comma_last
+        return msl_ind
+      endif
+        
       return msl_ind + a:width
     else
       return msl_ind
@@ -243,6 +344,25 @@ endfunction
 function s:InOneLineScope(lnum)
   let msl = s:GetMSL(a:lnum, 1)
   if msl > 0 && s:Match(msl, s:one_line_scope_regex)
+    let l = getline(msl)
+
+    " If this is an inline-statement form like `if (c) x = ...` (including
+    " continuations such as `if (c) x =`), do NOT treat it as a one-line scope.
+    " Otherwise continuation indentation and one-line-scope indentation stack,
+    " causing double-indent and carry-over.
+    if l =~ '^\s*\%(if\|for\|while\)\>' && l =~ ')\s\+\S' && l !~ ')\s*{'
+      return 0
+    endif
+    if l =~ '^\s*else\>' && l =~ '^\s*else\>\s\+\S' && l !~ '^\s*else\>\s*{'
+      return 0
+    endif
+
+    " ASI: if it doesn't open a block and doesn't look like a continuation,
+    " don't indent the next line as part of the scope.
+    if l !~ s:block_regex && l !~ s:continuation_regex
+      return 0
+    endif
+
     return msl
   endif
   return 0
@@ -251,18 +371,39 @@ endfunction
 function s:ExitingOneLineScope(lnum)
   let msl = s:GetMSL(a:lnum, 1)
   if msl > 0
-    " if the current line is in a one line scope ..
-    if s:Match(msl, s:one_line_scope_regex)
+    " If the current line is in a one-line scope, we're not exiting.
+    " Use InOneLineScope() so inline-statement guards (ASI) are respected.
+    if s:InOneLineScope(msl) > 0
       return 0
     else
       let prev_msl = s:GetMSL(msl - 1, 1)
-      if s:Match(prev_msl, s:one_line_scope_regex)
+
+      " Only treat it as exiting if the previous scope line is a *real* one-line scope
+      " (again, via InOneLineScope to respect ASI / inline-statement exclusions).
+      if s:Match(prev_msl, s:one_line_scope_regex) && s:InOneLineScope(prev_msl) > 0
         return prev_msl
       endif
     endif
   endif
   return 0
 endfunction
+
+" True if lnum is a TS union/intersection bar line (| / &) outside string/comment.
+function s:IsTsBarLine(lnum)
+  let l = getline(a:lnum)
+  let c = matchend(l, '^\s*') + 1
+  return l =~ s:ts_bar_line && !s:IsInStringOrComment(a:lnum, c)
+endfunction
+
+" Find the anchor line for a bar-chain: the first non-bar significant line above.
+function s:TsBarAnchor(lnum)
+  let lnum = s:PrevNonBlankNonString(a:lnum - 1)
+  while lnum > 0 && s:IsTsBarLine(lnum)
+    let lnum = s:PrevNonBlankNonString(lnum - 1)
+  endwhile
+  return lnum
+endfunction
+
 
 " 3. GetTypescriptIndent Function {{{1
 " =========================
@@ -282,6 +423,52 @@ function GetTypescriptIndent()
   let line = getline(v:lnum)
   " previous nonblank line number
   let prevline = prevnonblank(v:lnum - 1)
+
+  " Multiline TS generics:
+  "   function foo<
+  "     A
+  "     B,
+  "   >(x: string) {}
+  "
+  " Indent generic lines one level past the `<` anchor, and align the closing `>` to the anchor.
+  let gen_anchor = s:TsGenericAnchor(v:lnum - 1)
+  if gen_anchor > 0
+    let cur_txt = s:RemoveTrailingComments(line)
+    let c = matchend(cur_txt, '^\s*') + 1
+
+    if cur_txt =~ '^\s*>' && !s:IsInStringOrComment(v:lnum, c)
+      return indent(gen_anchor)
+    endif
+
+    if !s:IsInStringOrComment(v:lnum, c)
+      return indent(gen_anchor) + shiftwidth()
+    endif
+  endif
+
+  " TS union/intersection:
+  " - Every bar line aligns to (anchor indent + shiftwidth), never to its current indent.
+  " - A blank line immediately after a bar line also uses that same indent (prevents waterfall while typing).
+  if s:IsTsBarLine(v:lnum)
+    let anchor = s:TsBarAnchor(v:lnum)
+    return anchor > 0 ? indent(anchor) + shiftwidth() : 0
+  endif
+
+  if line =~ '^\s*$'
+    let p = s:PrevNonBlankNonString(v:lnum - 1)
+    if p > 0 && s:IsTsBarLine(p)
+      let anchor = s:TsBarAnchor(v:lnum)
+      return anchor > 0 ? indent(anchor) + shiftwidth() : indent(p)
+    endif
+  endif
+  " Arrow function with block body: ensure the next line indents as a normal block.
+  " Use prevline (immediate previous nonblank line), not PrevNonBlankNonString(),
+  " because the latter can skip over `) => {` in some contexts.
+  if prevline > 0
+    let prev_txt = s:RemoveTrailingComments(getline(prevline))
+    if prev_txt =~ '=>\s*{\s*$'
+      return indent(prevline) + shiftwidth()
+    endif
+  endif
 
   " If we got a closing bracket on an empty line, find its match and indent
   " according to it.  For parentheses we indent to its column - 1, for the
@@ -315,7 +502,8 @@ function GetTypescriptIndent()
       if line[col-1]==')' && col('.') != col('$') - 1
         let ind = virtcol('.')-1
       else
-        let ind = indent(s:GetMSL(line('.'), 0))
+        " For } and ], align to the line containing the matching opener.
+        let ind = indent(line('.'))
       endif
     endif
     return ind
@@ -335,7 +523,7 @@ function GetTypescriptIndent()
   endif
 
   " If we are in a multi-line comment, cindent does the right thing.
-  if yats#IsInMultilineComment(v:lnum, 1) && !yats#IsLineComment(v:lnum, 1)
+  if s:IsInMultilineComment(v:lnum, 1) && !s:IsLineComment(v:lnum, 1)
     return cindent(v:lnum)
   endif
 
@@ -351,7 +539,7 @@ function GetTypescriptIndent()
   " If the line is empty and the previous nonblank line was a multi-line
   " comment, use that comment's indent. Deduct one char to account for the
   " space in ' */'.
-  if line =~ '^\s*$' && yats#IsInMultilineComment(prevline, 1)
+  if line =~ '^\s*$' && s:IsInMultilineComment(prevline, 1)
     return indent(prevline) - 1
   endif
 
@@ -368,13 +556,81 @@ function GetTypescriptIndent()
     return 0
   endif
 
+  " After a multiline parenthesized arrow type like:
+  "   type A =
+  "     (opts: {
+  "       ...
+  "     }) => void
+  " the next statement should not inherit the continuation indent.
+  if getline(lnum) =~ '^\s*[])}]\+\s*=>'
+    let openp = s:MatchParenLine(lnum)
+    if openp > 0
+      return indent(s:GetMSL(openp, 0))
+    endif
+  endif
+
+  " switch/case: a new case/default label should align with previous case/default
+  " (or with the switch indent + one level if it's the first case).
+  if line =~ s:switch_case
+    let p = s:PrevNonBlankNonString(v:lnum - 1)
+    while p > 0
+      let pline = getline(p)
+
+      " If we see another case/default above, align with it.
+      if pline =~ s:switch_case
+        return indent(p)
+      endif
+
+      " If we find the switch line, indent one level inside it.
+      if pline =~ '^\s*switch\>'
+        return indent(p) + shiftwidth()
+      endif
+
+      let p = s:PrevNonBlankNonString(p - 1)
+    endwhile
+
+    " fallback
+    return indent(prevline)
+  endif
+
+  " Switch/case body indentation:
+  " Keep indentation inside a case body until the next case/default or switch end.
+  if getline(lnum) !~ s:switch_case
+    let p = lnum
+    while p > 0
+      let pline = getline(p)
+      if pline =~ s:switch_case
+        return indent(p) + shiftwidth()
+      endif
+      if pline =~ '^\s*}'
+        break
+      endif
+      let p = s:PrevNonBlankNonString(p - 1)
+    endwhile
+  endif
+
+  " If the previous significant line is a union/intersection bar line, we're
+  " after a bar-chain: reset indentation to the chain's anchor.
+  if s:IsTsBarLine(lnum)
+    let anchor = s:TsBarAnchor(v:lnum)
+    return anchor > 0 ? indent(anchor) : 0
+  endif
+
   " Set up variables for current line.
   let line = getline(lnum)
   let ind = indent(lnum)
 
   " If the previous line ended with a block opening, add a level of indent.
+  " If that block-opening line is itself a continuation line, indent relative to
+  " the block-opening line (not the MSL anchor), so constructs like:
+  "   type A =
+  "     (opts: {
+  "       a: string
+  "     }) => void
+  " indent correctly.
   if s:Match(lnum, s:block_regex)
-    return indent(s:GetMSL(lnum, 0)) + shiftwidth()
+    let msl = s:GetMSL(lnum, 0)
+    return (msl != lnum ? indent(lnum) : indent(msl)) + shiftwidth()
   endif
 
   " If the previous line contained an opening bracket, and we are still in it,
