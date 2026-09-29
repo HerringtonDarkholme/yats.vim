@@ -2067,12 +2067,12 @@ syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax match   typescriptArrowFuncDef          contained /(\%(\_[^()]\+\|(\_[^()]*)\)*)\_s*=>/
+syntax match   typescriptArrowFuncDef          contained /(\%(\_[^()]\|(\_[^()]*)\)*)\_s*=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc,@typescriptCallSignature
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty
 
-syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\+\|(\_[^()]*)\)*):/ matchgroup=typescriptArrowFunc end=/=>/
+syntax region  typescriptArrowFuncDef          contained start=/(\%(\_[^()]\|(\_[^()]*)\)*):/ matchgroup=typescriptArrowFunc end=/=>/
   \ contains=typescriptArrowFuncArg,typescriptTypeAnnotation,@typescriptCallSignature
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend
