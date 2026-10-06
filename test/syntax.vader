@@ -323,6 +323,15 @@ Execute:
   AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 5)
   AssertEqual 'typescriptBinaryOp', SyntaxAt(2, 5)
 
+Given typescript (generic Set constructor):
+  new Set<Name>(['abc'])
+Execute:
+  AssertEqual 'typescriptGlobal', SyntaxAt(1, 5)
+  AssertEqual 'typescriptTypeBrackets', SyntaxAt(1, 8)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 9)
+  AssertEqual 'typescriptTypeBrackets', SyntaxAt(1, 13)
+  AssertEqual 'typescriptParens', SyntaxAt(1, 14)
+
 Given typescript (object label):
   var a = { test: { }}
 Execute:
