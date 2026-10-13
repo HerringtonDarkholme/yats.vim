@@ -1235,3 +1235,20 @@ Execute:
   AssertNotEqual 'typescriptImportDefer', SyntaxAt(3, 8)
   " `defer` is not highlighted because it's not a part of import statement
   AssertEqual 'typescriptVariableDeclaration', SyntaxAt(4, 7)
+
+Given typescript (arrow function definition within a small maxmempattern):
+  let fn0 = (arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) => arg0
+  let fn1 = (a: (x: number) => void, b: string): number => 1
+Execute:
+  " The backtracking engine raised E363 here before the patterns were unrolled.
+  let g:saved = [&regexpengine, &maxmempattern]
+  set regexpengine=1 maxmempattern=1
+  try
+    let g:names = [SyntaxAt(1, 71), SyntaxAt(1, 72), SyntaxAt(2, 47), SyntaxAt(2, 55)]
+  catch
+    let g:names = [v:exception]
+  finally
+    let [&regexpengine, &maxmempattern] = g:saved
+  endtry
+  AssertEqual ['typescriptArrowFuncDef', 'typescriptArrowFunc', 'typescriptArrowFuncDef', 'typescriptArrowFunc'], g:names
+  unlet g:saved g:names
