@@ -1241,12 +1241,14 @@ Given typescript (arrow function definition within a small maxmempattern):
   let fn1 = (a: (x: number) => void, b: string): number => 1
 Execute:
   " The backtracking engine raised E363 here before the patterns were unrolled.
+  let g:saved = [&regexpengine, &maxmempattern]
   set regexpengine=1 maxmempattern=1
   try
     let g:names = [SyntaxAt(1, 71), SyntaxAt(1, 72), SyntaxAt(2, 47), SyntaxAt(2, 55)]
   catch
     let g:names = [v:exception]
   finally
-    set regexpengine& maxmempattern&
+    let [&regexpengine, &maxmempattern] = g:saved
   endtry
   AssertEqual ['typescriptArrowFuncDef', 'typescriptArrowFunc', 'typescriptArrowFuncDef', 'typescriptArrowFunc'], g:names
+  unlet g:saved g:names
