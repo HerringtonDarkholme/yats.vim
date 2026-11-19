@@ -1033,6 +1033,26 @@ Execute:
   AssertEqual 'typescriptConditionalType', SyntaxAt(1, 36)
   AssertEqual 'typescriptTypeReference', SyntaxAt(1, 38)
 
+Given typescript (conditional type on a tuple type):
+  type X = [ Y ] extends [ Z ] ? string : Y
+Execute:
+  AssertEqual 'typescriptConstraint', SyntaxAt(1, 16)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 26)
+  AssertEqual 'typescriptConditionalType', SyntaxAt(1, 30)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(1, 32)
+  AssertEqual 'typescriptConditionalType', SyntaxAt(1, 39)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(1, 41)
+
+Given typescript (multiline conditional type after type arguments):
+  type X = Y extends Z<A>
+    ? string
+    : Y
+Execute:
+  AssertEqual 'typescriptConditionalType', SyntaxAt(2, 3)
+  AssertEqual 'typescriptPredefinedType', SyntaxAt(2, 5)
+  AssertEqual 'typescriptConditionalType', SyntaxAt(3, 3)
+  AssertEqual 'typescriptTypeReference', SyntaxAt(3, 5)
+
 Given typescript (ternary in objeect):
   const func = a => {
     return { a: b === 'test' ? `${val}` : 'test' }

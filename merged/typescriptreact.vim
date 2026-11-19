@@ -580,7 +580,7 @@ syntax region typescriptTypeArguments matchgroup=typescriptTypeBrackets
   \ start=/\></ end=/>/
   \ contains=@typescriptType
   \ nextgroup=typescriptFuncCallArg,@typescriptTypeOperator
-  \ contained skipwhite
+  \ contained skipwhite skipempty
 
 
 syntax cluster typescriptType contains=
@@ -661,7 +661,8 @@ syntax match typescriptTupleLable /\K\k*?\?:/
 syntax region typescriptTupleType matchgroup=typescriptBraces
   \ start=/\[/ end=/\]/
   \ contains=@typescriptType,@typescriptComments,typescriptRestOrSpread,typescriptTupleLable
-  \ contained skipwhite
+  \ nextgroup=@typescriptTypeOperator
+  \ contained skipwhite skipempty
 
 syntax cluster typescriptTypeOperator
   \ contains=typescriptUnion,typescriptTypeBracket,typescriptConstraint,typescriptConditionalType
